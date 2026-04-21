@@ -1,0 +1,116 @@
+[
+  {
+    "argomento": "programmazione",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Cosa significa l'acronimo HTML?",
+        "risposte": [
+          { "testo_risposta": "HyperText Markup Language", "spiegazione_vera_o_falsa": "Corretto." },
+          { "testo_risposta": "HighText Machine Language", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "HyperLoop Machine Language", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Helicopters Terminals Motorboats Lamborghinis", "spiegazione_vera_o_falsa": "Sbagliato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quale di questi NON è un linguaggio orientato agli oggetti?",
+        "risposte": [
+          { "testo_risposta": "Java", "spiegazione_vera_o_falsa": "Java è orientato agli oggetti." },
+          { "testo_risposta": "C++", "spiegazione_vera_o_falsa": "C++ supporta l'OO." },
+          { "testo_risposta": "C", "spiegazione_vera_o_falsa": "Corretto: il C è procedurale." },
+          { "testo_risposta": "Python", "spiegazione_vera_o_falsa": "Python supporta l'OO." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa fa una funzione ricorsiva?",
+        "risposte": [
+          { "testo_risposta": "Si ripete all'infinito", "spiegazione_vera_o_falsa": "Solo se non ha una condizione di terminazione." },
+          { "testo_risposta": "Chiama il sistema operativo", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Chiama se stessa", "spiegazione_vera_o_falsa": "Corretto." },
+          { "testo_risposta": "Restituisce sempre zero", "spiegazione_vera_o_falsa": "Sbagliato." }
+        ],
+        "risposta_corretta": 2
+      }
+    ]
+  },
+  {
+    "argomento": "reti",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Cosa significa l'acronimo LAN?",
+        "risposte": [
+          { "testo_risposta": "Local Area Network", "spiegazione_vera_o_falsa": "Corretto." },
+          { "testo_risposta": "Large Area Network", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Local Access Node", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Logical Area Network", "spiegazione_vera_o_falsa": "Sbagliato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quale protocollo è usato per inviare email?",
+        "risposte": [
+          { "testo_risposta": "HTTP", "spiegazione_vera_o_falsa": "Usato per il web." },
+          { "testo_risposta": "FTP", "spiegazione_vera_o_falsa": "Usato per il trasferimento file." },
+          { "testo_risposta": "SMTP", "spiegazione_vera_o_falsa": "Corretto (Simple Mail Transfer Protocol)." },
+          { "testo_risposta": "SSH", "spiegazione_vera_o_falsa": "Usato per l'accesso remoto sicuro." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "A quale livello del modello OSI opera il protocollo IP?",
+        "risposte": [
+          { "testo_risposta": "Fisico", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Collegamento", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Rete", "spiegazione_vera_o_falsa": "Corretto (Network Layer)." },
+          { "testo_risposta": "Trasporto", "spiegazione_vera_o_falsa": "Qui operano TCP e UDP." }
+        ],
+        "risposta_corretta": 2
+      }
+    ]
+  },
+  {
+    "argomento": "sistemi operativi",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Quale tra questi è un sistema operativo open source?",
+        "risposte": [
+          { "testo_risposta": "Windows", "spiegazione_vera_o_falsa": "Proprietario." },
+          { "testo_risposta": "macOS", "spiegazione_vera_o_falsa": "Proprietario." },
+          { "testo_risposta": "Linux", "spiegazione_vera_o_falsa": "Corretto." },
+          { "testo_risposta": "iOS", "spiegazione_vera_o_falsa": "Proprietario." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è il componente principale (cuore) di un sistema operativo?",
+        "risposte": [
+          { "testo_risposta": "Shell", "spiegazione_vera_o_falsa": "È l'interfaccia utente." },
+          { "testo_risposta": "Kernel", "spiegazione_vera_o_falsa": "Corretto." },
+          { "testo_risposta": "Bootloader", "spiegazione_vera_o_falsa": "Carica il sistema operativo all'avvio." },
+          { "testo_risposta": "File System", "spiegazione_vera_o_falsa": "Gestisce i file, ma non è il cuore." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Cos'è il deadlock in ambito sistemi operativi?",
+        "risposte": [
+          { "testo_risposta": "Un errore di memoria", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Uno stallo tra processi che si attendono a vicenda", "spiegazione_vera_o_falsa": "Corretto." },
+          { "testo_risposta": "L'arresto del sistema", "spiegazione_vera_o_falsa": "Sbagliato." },
+          { "testo_risposta": "Un virus", "spiegazione_vera_o_falsa": "Sbagliato." }
+        ],
+        "risposta_corretta": 1
+      }
+    ]
+  }
+]

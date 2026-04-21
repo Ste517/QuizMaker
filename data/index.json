@@ -1,0 +1,34 @@
+[
+  {
+    "id": "matematica",
+    "titolo": "Matematica",
+    "descrizione": "Aritmetica, algebra e calcolo",
+    "file": "data/matematica.json",
+    "argomenti": ["aritmetica", "algebra", "calcolo"],
+    "totale_domande": 9
+  },
+  {
+    "id": "storia",
+    "titolo": "Storia",
+    "descrizione": "Storia antica, medievale e moderna",
+    "file": "data/storia.json",
+    "argomenti": ["storia antica", "storia medievale", "storia moderna"],
+    "totale_domande": 9
+  },
+  {
+    "id": "informatica",
+    "titolo": "Informatica",
+    "descrizione": "Programmazione, reti e sistemi operativi",
+    "file": "data/informatica.json",
+    "argomenti": ["programmazione", "reti", "sistemi operativi"],
+    "totale_domande": 9
+  },
+  {
+    "id": "scienze",
+    "titolo": "Scienze",
+    "descrizione": "Fisica, chimica e biologia",
+    "file": "data/scienze.json",
+    "argomenti": ["fisica", "chimica", "biologia"],
+    "totale_domande": 9
+  }
+]
