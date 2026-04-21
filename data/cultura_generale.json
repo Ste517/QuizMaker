@@ -1,0 +1,462 @@
+[
+  {
+    "argomento": "musica",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Chi ha composto le 'Quattro Stagioni'?",
+        "risposte": [
+          { "testo_risposta": "Johann Sebastian Bach", "spiegazione_vera_o_falsa": "Errato, Bach è un celebre compositore tedesco barocco, ma non l'autore." },
+          { "testo_risposta": "Wolfgang Amadeus Mozart", "spiegazione_vera_o_falsa": "Errato, visse successivamente al periodo barocco." },
+          { "testo_risposta": "Antonio Vivaldi", "spiegazione_vera_o_falsa": "Corretto. È l'opera più nota del compositore veneziano." },
+          { "testo_risposta": "Ludwig van Beethoven", "spiegazione_vera_o_falsa": "Errato, celebre per le sue Sinfonie ma non per le Quattro Stagioni." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quale tra questi è lo strumento musicale ad arco più grande?",
+        "risposte": [
+          { "testo_risposta": "Violoncello", "spiegazione_vera_o_falsa": "Errato, sebbene grande, non è il più grande." },
+          { "testo_risposta": "Contrabbasso", "spiegazione_vera_o_falsa": "Corretto. È lo strumento ad arco più grande e con il suono più grave." },
+          { "testo_risposta": "Viola", "spiegazione_vera_o_falsa": "Errato, la viola ha dimensioni simili a quelle di un violino." },
+          { "testo_risposta": "Arpa", "spiegazione_vera_o_falsa": "Errato, non fa parte degli strumenti ad arco (è a corde pizzicate)." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Chi era il frontman storico della band inglese Queen?",
+        "risposte": [
+          { "testo_risposta": "Mick Jagger", "spiegazione_vera_o_falsa": "Errato, frontman dei Rolling Stones." },
+          { "testo_risposta": "Freddie Mercury", "spiegazione_vera_o_falsa": "Corretto. Insieme a Brian May, Roger Taylor e John Deacon ha fatto la storia del rock." },
+          { "testo_risposta": "David Bowie", "spiegazione_vera_o_falsa": "Errato, fu un grande cantautore solista (ha collaborato con i Queen in Under Pressure)." },
+          { "testo_risposta": "Paul McCartney", "spiegazione_vera_o_falsa": "Errato, bassista e cantante dei Beatles." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Quante sono le sinfonie scritte da Ludwig van Beethoven?",
+        "risposte": [
+          { "testo_risposta": "5", "spiegazione_vera_o_falsa": "Errato. La Quinta è molto famosa, ma non è l'ultima." },
+          { "testo_risposta": "7", "spiegazione_vera_o_falsa": "Errato. Beethoven andò oltre la settima sinfonia." },
+          { "testo_risposta": "9", "spiegazione_vera_o_falsa": "Corretto. La nona sinfonia (con l'Inno alla Gioia) è la sua ultima sinfonia completata." },
+          { "testo_risposta": "12", "spiegazione_vera_o_falsa": "Errato. Haydn e Mozart ne scrissero molte di più, ma Beethoven si fermò a 9." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è il vero nome del cantautore Bob Dylan?",
+        "risposte": [
+          { "testo_risposta": "Robert Allen Zimmerman", "spiegazione_vera_o_falsa": "Corretto. Nato nel 1941, scelse poi lo pseudonimo Bob Dylan." },
+          { "testo_risposta": "Dylan Thomas", "spiegazione_vera_o_falsa": "Errato, era un famoso poeta gallese (a cui pare si sia ispirato)." },
+          { "testo_risposta": "Robert Nesta Marley", "spiegazione_vera_o_falsa": "Errato, questo era il vero nome di Bob Marley." },
+          { "testo_risposta": "William Bailey", "spiegazione_vera_o_falsa": "Errato, questo è il vero nome di Axl Rose." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "In che genere musicale eccelleva Miles Davis?",
+        "risposte": [
+          { "testo_risposta": "Rock", "spiegazione_vera_o_falsa": "Errato. Pur influenzando il rock, il suo genere era un altro." },
+          { "testo_risposta": "Blues", "spiegazione_vera_o_falsa": "Errato, sebbene il blues sia una radice della sua musica." },
+          { "testo_risposta": "Classica", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Jazz", "spiegazione_vera_o_falsa": "Corretto. Fu un leggendario trombettista jazz." }
+        ],
+        "risposta_corretta": 3
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quanti tasti ha un pianoforte acustico standard?",
+        "risposte": [
+          { "testo_risposta": "61", "spiegazione_vera_o_falsa": "Errato, tipico di molte tastiere entry-level." },
+          { "testo_risposta": "76", "spiegazione_vera_o_falsa": "Errato, tipico di tastiere a estensione ridotta." },
+          { "testo_risposta": "88", "spiegazione_vera_o_falsa": "Corretto. 52 tasti bianchi e 36 tasti neri." },
+          { "testo_risposta": "100", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Da chi era formato il gruppo originario dei Beatles?",
+        "risposte": [
+          { "testo_risposta": "John, Paul, Mick, Keith", "spiegazione_vera_o_falsa": "Errato, mischia Beatles e Rolling Stones." },
+          { "testo_risposta": "John, Paul, George, Ringo", "spiegazione_vera_o_falsa": "Corretto. John Lennon, Paul McCartney, George Harrison, Ringo Starr." },
+          { "testo_risposta": "Freddie, Brian, Roger, John", "spiegazione_vera_o_falsa": "Errato, questi sono i Queen." },
+          { "testo_risposta": "Robert, Jimmy, John Paul, John", "spiegazione_vera_o_falsa": "Errato, questi sono i Led Zeppelin." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Quale celebre compositore scrisse le musiche per il balletto 'Lo schiaccianoci'?",
+        "risposte": [
+          { "testo_risposta": "Igor Stravinskij", "spiegazione_vera_o_falsa": "Errato, autore de 'La sagra della primavera'." },
+          { "testo_risposta": "Pyotr Ilyich Tchaikovsky", "spiegazione_vera_o_falsa": "Corretto. È uno dei suoi capolavori insieme a 'Il lago dei cigni'." },
+          { "testo_risposta": "Claude Debussy", "spiegazione_vera_o_falsa": "Errato, importante compositore impressionista." },
+          { "testo_risposta": "Giuseppe Verdi", "spiegazione_vera_o_falsa": "Errato, maestro dell'opera italiana." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Chi compose l'opera lirica 'Il Barbiere di Siviglia'?",
+        "risposte": [
+          { "testo_risposta": "Giacomo Puccini", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Gioachino Rossini", "spiegazione_vera_o_falsa": "Corretto. Debuttò nel 1816 al Teatro Argentina di Roma." },
+          { "testo_risposta": "Vincenzo Bellini", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Gaetano Donizetti", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      }
+    ]
+  },
+  {
+    "argomento": "cinema",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Chi ha diretto il celebre film 'Il Padrino' (1972)?",
+        "risposte": [
+          { "testo_risposta": "Steven Spielberg", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Martin Scorsese", "spiegazione_vera_o_falsa": "Errato, sebbene famoso per film di genere affine." },
+          { "testo_risposta": "Francis Ford Coppola", "spiegazione_vera_o_falsa": "Corretto. Tratto dal romanzo di Mario Puzo." },
+          { "testo_risposta": "Sergio Leone", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è uno dei tre film nella storia del cinema ad aver vinto 11 premi Oscar?",
+        "risposte": [
+          { "testo_risposta": "Via col vento", "spiegazione_vera_o_falsa": "Errato, ne vinse 10 (8 competitivi e 2 onorari)." },
+          { "testo_risposta": "Il Padrino - Parte II", "spiegazione_vera_o_falsa": "Errato, ne vinse 6." },
+          { "testo_risposta": "Titanic", "spiegazione_vera_o_falsa": "Corretto. Gli altri due sono Ben-Hur e Il Ritorno del Re." },
+          { "testo_risposta": "Forrest Gump", "spiegazione_vera_o_falsa": "Errato, ne vinse 6." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è storicamente considerato il primo film con dialoghi sonori sincronizzati?",
+        "risposte": [
+          { "testo_risposta": "Tempi moderni", "spiegazione_vera_o_falsa": "Errato, è un celebre film parzialmente muto di Chaplin." },
+          { "testo_risposta": "Il cantante di jazz", "spiegazione_vera_o_falsa": "Corretto. Diretto da Alan Crosland nel 1927." },
+          { "testo_risposta": "Quarto potere", "spiegazione_vera_o_falsa": "Errato, uscì nel 1941." },
+          { "testo_risposta": "Metropolis", "spiegazione_vera_o_falsa": "Errato, è un capolavoro del muto del 1927." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Come si chiama il protagonista del film 'Matrix' interpretato da Keanu Reeves?",
+        "risposte": [
+          { "testo_risposta": "Morpheus", "spiegazione_vera_o_falsa": "Errato, è il capitano della Nabucodonosor." },
+          { "testo_risposta": "Trinity", "spiegazione_vera_o_falsa": "Errato, è la co-protagonista." },
+          { "testo_risposta": "Neo", "spiegazione_vera_o_falsa": "Corretto. Il suo nome vero nel film è Thomas A. Anderson." },
+          { "testo_risposta": "Agente Smith", "spiegazione_vera_o_falsa": "Errato, è l'antagonista principale." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "In che anno è uscito nelle sale il primo film della saga di 'Star Wars' (Guerre Stellari)?",
+        "risposte": [
+          { "testo_risposta": "1973", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "1977", "spiegazione_vera_o_falsa": "Corretto. Diretto da George Lucas." },
+          { "testo_risposta": "1980", "spiegazione_vera_o_falsa": "Errato, anno di uscita de 'L'Impero colpisce ancora'." },
+          { "testo_risposta": "1983", "spiegazione_vera_o_falsa": "Errato, anno de 'Il ritorno dello Jedi'." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Chi è il regista del film cult 'Pulp Fiction'?",
+        "risposte": [
+          { "testo_risposta": "Quentin Tarantino", "spiegazione_vera_o_falsa": "Corretto. Ha vinto la Palma d'oro a Cannes per questo film nel 1994." },
+          { "testo_risposta": "Christopher Nolan", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Stanley Kubrick", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Ridley Scott", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Quale grande compositore italiano ha scritto le musiche per i film di Sergio Leone?",
+        "risposte": [
+          { "testo_risposta": "Nino Rota", "spiegazione_vera_o_falsa": "Errato, celebre collaboratore di Fellini." },
+          { "testo_risposta": "Ennio Morricone", "spiegazione_vera_o_falsa": "Corretto. Il loro sodalizio ha prodotto musiche leggendarie per il western all'italiana." },
+          { "testo_risposta": "Nicola Piovani", "spiegazione_vera_o_falsa": "Errato, vincitore dell'Oscar per La vita è bella." },
+          { "testo_risposta": "Ludovico Einaudi", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Chi vinse l'Oscar come Miglior Attore Protagonista per il film 'Il Gladiatore'?",
+        "risposte": [
+          { "testo_risposta": "Joaquin Phoenix", "spiegazione_vera_o_falsa": "Errato, era candidato come non protagonista." },
+          { "testo_risposta": "Tom Hanks", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Russell Crowe", "spiegazione_vera_o_falsa": "Corretto. Interpretò il generale Massimo Decimo Meridio." },
+          { "testo_risposta": "Mel Gibson", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quale film detiene il record di incassi globale assoluto (senza aggiustamento per inflazione) al 2024?",
+        "risposte": [
+          { "testo_risposta": "Avengers: Endgame", "spiegazione_vera_o_falsa": "Errato, attualmente è al secondo posto." },
+          { "testo_risposta": "Titanic", "spiegazione_vera_o_falsa": "Errato, sceso dal trono anni fa." },
+          { "testo_risposta": "Avatar", "spiegazione_vera_o_falsa": "Corretto. Diretto da James Cameron, detiene ancora il primato." },
+          { "testo_risposta": "Star Wars: Il risveglio della Forza", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "In quale film compare per la prima volta il personaggio di Hannibal Lecter?",
+        "risposte": [
+          { "testo_risposta": "Il silenzio degli innocenti", "spiegazione_vera_o_falsa": "Errato, è la seconda apparizione." },
+          { "testo_risposta": "Manhunter - Frammenti di un omicidio", "spiegazione_vera_o_falsa": "Corretto. Diretto da Michael Mann nel 1986." },
+          { "testo_risposta": "Red Dragon", "spiegazione_vera_o_falsa": "Errato, sebbene basato sullo stesso libro di Manhunter, è successivo." },
+          { "testo_risposta": "Hannibal", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      }
+    ]
+  },
+  {
+    "argomento": "teatro",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Chi ha scritto la celebre tragedia 'Romeo e Giulietta'?",
+        "risposte": [
+          { "testo_risposta": "Dante Alighieri", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "William Shakespeare", "spiegazione_vera_o_falsa": "Corretto. Composta presumibilmente tra il 1594 e il 1596." },
+          { "testo_risposta": "Christopher Marlowe", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Carlo Goldoni", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Che cos'è la 'quarta parete' in ambito teatrale?",
+        "risposte": [
+          { "testo_risposta": "Il fondale del palcoscenico", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Il muro immaginario che separa gli attori dal pubblico", "spiegazione_vera_o_falsa": "Corretto. Quando un attore vi si rivolge, si dice che 'rompe la quarta parete'." },
+          { "testo_risposta": "Il sipario chiuso", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La zona riservata all'orchestra", "spiegazione_vera_o_falsa": "Errato, quello è il golfo mistico o la buca dell'orchestra." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Chi è l'autore dell'opera 'Sei personaggi in cerca d'autore'?",
+        "risposte": [
+          { "testo_risposta": "Gabriele D'Annunzio", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Luigi Pirandello", "spiegazione_vera_o_falsa": "Corretto. Una pietra miliare del 'teatro nel teatro'." },
+          { "testo_risposta": "Eduardo De Filippo", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Dario Fo", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "In quale città italiana si trova il prestigioso Teatro alla Scala?",
+        "risposte": [
+          { "testo_risposta": "Roma", "spiegazione_vera_o_falsa": "Errato, a Roma si trova il Teatro dell'Opera." },
+          { "testo_risposta": "Milano", "spiegazione_vera_o_falsa": "Corretto. Fondato nel 1778, è uno dei teatri più famosi al mondo." },
+          { "testo_risposta": "Napoli", "spiegazione_vera_o_falsa": "Errato, a Napoli c'è il Teatro di San Carlo." },
+          { "testo_risposta": "Venezia", "spiegazione_vera_o_falsa": "Errato, a Venezia si trova il Teatro La Fenice." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Chi è l'autore dell'opera teatrale dell'assurdo 'Aspettando Godot'?",
+        "risposte": [
+          { "testo_risposta": "Samuel Beckett", "spiegazione_vera_o_falsa": "Corretto. Opera in due atti, emblema del teatro dell'assurdo." },
+          { "testo_risposta": "Eugène Ionesco", "spiegazione_vera_o_falsa": "Errato, sebbene Ionesco sia un altro pilastro del teatro dell'assurdo." },
+          { "testo_risposta": "Bertolt Brecht", "spiegazione_vera_o_falsa": "Errato, associato al teatro epico." },
+          { "testo_risposta": "Harold Pinter", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Dove ha avuto origine la tragedia classica teatrale?",
+        "risposte": [
+          { "testo_risposta": "Antica Roma", "spiegazione_vera_o_falsa": "Errato, qui presero ispirazione da essa in seguito." },
+          { "testo_risposta": "Antico Egitto", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Antica Grecia", "spiegazione_vera_o_falsa": "Corretto. Famosi tragediografi furono Eschilo, Sofocle ed Euripide." },
+          { "testo_risposta": "Medioevo europeo", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Chi scrisse 'Il malato immaginario'?",
+        "risposte": [
+          { "testo_risposta": "Pierre Corneille", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Jean Racine", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Molière", "spiegazione_vera_o_falsa": "Corretto. Il suo vero nome era Jean-Baptiste Poquelin." },
+          { "testo_risposta": "Voltaire", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Come si chiama lo scrittore della famosa pièce 'Il gabbiano'?",
+        "risposte": [
+          { "testo_risposta": "Fëdor Dostoevskij", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Lev Tolstoj", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Anton Čechov", "spiegazione_vera_o_falsa": "Corretto. Fu rappresentata per la prima volta nel 1896." },
+          { "testo_risposta": "Henrik Ibsen", "spiegazione_vera_o_falsa": "Errato, scrittore e drammaturgo norvegese (autore di 'Casa di bambola')." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "In che secolo visse e operò prevalentemente William Shakespeare?",
+        "risposte": [
+          { "testo_risposta": "XIV e XV", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "XVI e XVII", "spiegazione_vera_o_falsa": "Corretto. Visse dal 1564 al 1616." },
+          { "testo_risposta": "XVII e XVIII", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "XIII e XIV", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Chi è l'autore della celebre commedia 'La locandiera'?",
+        "risposte": [
+          { "testo_risposta": "Carlo Goldoni", "spiegazione_vera_o_falsa": "Corretto. Scritta nel 1752, narra le vicende di Mirandolina." },
+          { "testo_risposta": "Vittorio Alfieri", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Ludovico Ariosto", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Dante Alighieri", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "poesia",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Chi ha scritto 'L'Infinito'?",
+        "risposte": [
+          { "testo_risposta": "Alessandro Manzoni", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Giacomo Leopardi", "spiegazione_vera_o_falsa": "Corretto. È uno degli Idilli composti a Recanati." },
+          { "testo_risposta": "Giovanni Pascoli", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Eugenio Montale", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Di quanti canti è composta esattamente la Divina Commedia di Dante Alighieri?",
+        "risposte": [
+          { "testo_risposta": "33", "spiegazione_vera_o_falsa": "Errato, questi sono i canti di Purgatorio o Paradiso, ma bisogna sommarli (più l'Inferno)." },
+          { "testo_risposta": "99", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "100", "spiegazione_vera_o_falsa": "Corretto. 1 canto di proemio + 33 dell'Inferno + 33 del Purgatorio + 33 del Paradiso." },
+          { "testo_risposta": "120", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Chi è l'autore della raccolta di poesie 'Ossi di seppia'?",
+        "risposte": [
+          { "testo_risposta": "Eugenio Montale", "spiegazione_vera_o_falsa": "Corretto. Prima raccolta del poeta, pubblicata nel 1925." },
+          { "testo_risposta": "Giuseppe Ungaretti", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Umberto Saba", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Gabriele D'Annunzio", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Quale poeta italiano vinse il Premio Nobel per la Letteratura nel 1906?",
+        "risposte": [
+          { "testo_risposta": "Eugenio Montale", "spiegazione_vera_o_falsa": "Errato, lo vinse nel 1975." },
+          { "testo_risposta": "Giosuè Carducci", "spiegazione_vera_o_falsa": "Corretto. Fu il primo italiano a vincere questo premio." },
+          { "testo_risposta": "Grazia Deledda", "spiegazione_vera_o_falsa": "Errato, lo vinse nel 1926." },
+          { "testo_risposta": "Salvatore Quasimodo", "spiegazione_vera_o_falsa": "Errato, lo vinse nel 1959." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Qual è il tema principale della poesia 'X Agosto' di Giovanni Pascoli?",
+        "risposte": [
+          { "testo_risposta": "La nascita del poeta", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La fine dell'estate", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "L'assassinio del padre del poeta", "spiegazione_vera_o_falsa": "Corretto. Il componimento è dedicato alla tragica morte del padre, ucciso in un agguato il 10 agosto." },
+          { "testo_risposta": "L'amore non corrisposto", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Di chi è la celebre e brevissima poesia 'M'illumino / d'immenso' (Mattina)?",
+        "risposte": [
+          { "testo_risposta": "Giuseppe Ungaretti", "spiegazione_vera_o_falsa": "Corretto. Scritta durante la Prima Guerra Mondiale a Santa Maria la Longa." },
+          { "testo_risposta": "Eugenio Montale", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Salvatore Quasimodo", "spiegazione_vera_o_falsa": "Errato, famosa per lui è la frase 'Ed è subito sera'." },
+          { "testo_risposta": "Giacomo Leopardi", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quale poeta francese scrisse la raccolta 'I fiori del male' (Les Fleurs du mal)?",
+        "risposte": [
+          { "testo_risposta": "Arthur Rimbaud", "spiegazione_vera_o_falsa": "Errato, noto poeta maledetto ma non l'autore dell'opera." },
+          { "testo_risposta": "Paul Verlaine", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Charles Baudelaire", "spiegazione_vera_o_falsa": "Corretto. Pubblicata nel 1857, è una delle opere più influenti della poesia moderna." },
+          { "testo_risposta": "Victor Hugo", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 2
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è la metrica principale della Divina Commedia?",
+        "risposte": [
+          { "testo_risposta": "L'ottava rima", "spiegazione_vera_o_falsa": "Errato, usata perlopiù nei poemi cavallereschi (es. Orlando Furioso)." },
+          { "testo_risposta": "La terzina a rima incatenata di endecasillabi", "spiegazione_vera_o_falsa": "Corretto. Detta anche 'terzina dantesca' (ABA, BCB, CDC...)." },
+          { "testo_risposta": "L'esametro dattilico", "spiegazione_vera_o_falsa": "Errato, metrica della poesia epica greca e latina." },
+          { "testo_risposta": "Verso libero", "spiegazione_vera_o_falsa": "Errato, è un costrutto moderno." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "A quale autore sono tradizionalmente attribuiti i poemi epici classici 'Iliade' e 'Odissea'?",
+        "risposte": [
+          { "testo_risposta": "Virgilio", "spiegazione_vera_o_falsa": "Errato, Virgilio scrisse l'Eneide." },
+          { "testo_risposta": "Omero", "spiegazione_vera_o_falsa": "Corretto. Poeta greco antico di cui non si hanno certezze storiche assolute." },
+          { "testo_risposta": "Sofocle", "spiegazione_vera_o_falsa": "Errato, fu un celebre tragediografo." },
+          { "testo_risposta": "Esiodo", "spiegazione_vera_o_falsa": "Errato, autore della Teogonia." }
+        ],
+        "risposta_corretta": 1
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Quale poeta sudamericano vinse il premio Nobel nel 1971 ed è noto per la raccolta 'Venti poesie d'amore e una canzone disperata'?",
+        "risposte": [
+          { "testo_risposta": "Gabriel García Márquez", "spiegazione_vera_o_falsa": "Errato, fu un grande romanziere (Nobel 1982)." },
+          { "testo_risposta": "Pablo Neruda", "spiegazione_vera_o_falsa": "Corretto. Pseudonimo di Ricardo Eliécer Neftalí Reyes Basoalto." },
+          { "testo_risposta": "Octavio Paz", "spiegazione_vera_o_falsa": "Errato, vinse il Nobel nel 1990." },
+          { "testo_risposta": "Jorge Luis Borges", "spiegazione_vera_o_falsa": "Errato, scrittore eccelso che non vinse mai il Nobel." }
+        ],
+        "risposta_corretta": 1
+      }
+    ]
+  }
+]
