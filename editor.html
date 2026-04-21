@@ -132,6 +132,11 @@
             <div id="answersContainer" class="space-y-4">
               <!-- Rendered via JS to avoid repetition -->
             </div>
+            
+            <div class="flex gap-4 mt-2">
+              <button type="button" id="addAnswerBtn" class="text-xs font-semibold text-brand-600 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300">+ Aggiungi Risposta</button>
+              <button type="button" id="removeAnswerBtn" class="text-xs font-semibold text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">- Rimuovi Risposta</button>
+            </div>
           </div>
 
           <div class="pt-4 flex gap-3">
@@ -208,18 +213,56 @@
     const importJsonInput = document.getElementById('importJsonInput');
 
     // Initialize Answers Form
-    function renderAnswerInputs() {
-      answersContainer.innerHTML = Array.from({ length: 4 }).map((_, i) => `
+    let answerCount = 4;
+    const addAnswerBtn = document.getElementById('addAnswerBtn');
+    const removeAnswerBtn = document.getElementById('removeAnswerBtn');
+
+    function renderAnswerInputs(count) {
+      // Save existing values to not lose them during re-render
+      const savedData = [];
+      for (let i = 0; i < answersContainer.children.length; i++) {
+        const textInput = document.getElementById(`ans_${i}`);
+        const expInput = document.getElementById(`exp_${i}`);
+        const isChecked = document.querySelector(`input[name="correctAnswer"][value="${i}"]`)?.checked || false;
+        if (textInput) {
+          savedData.push({ text: textInput.value, exp: expInput.value, checked: isChecked });
+        }
+      }
+
+      answersContainer.innerHTML = Array.from({ length: count }).map((_, i) => {
+        const isChecked = savedData[i]?.checked || (i === 0 && !savedData.some(s => s.checked));
+        return `
         <div class="relative rounded-xl border border-slate-200 bg-slate-50 p-4 pl-12 dark:border-slate-700/50 dark:bg-slate-950/40">
-          <input type="radio" name="correctAnswer" value="${i}" required class="absolute left-4 top-[1.35rem] h-4 w-4 cursor-pointer text-brand-600 focus:ring-brand-600" ${i===0 ? 'checked' : ''} />
+          <input type="radio" name="correctAnswer" value="${i}" required class="absolute left-4 top-[1.35rem] h-4 w-4 cursor-pointer text-brand-600 focus:ring-brand-600" ${isChecked ? 'checked' : ''} />
           <div class="space-y-3">
             <input type="text" id="ans_${i}" required placeholder="Testo risposta ${i + 1}" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
             <input type="text" id="exp_${i}" required placeholder="Spiegazione..." class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
           </div>
         </div>
-      `).join('');
+      `}).join('');
+
+      // Restore text values
+      for (let i = 0; i < Math.min(count, savedData.length); i++) {
+        document.getElementById(`ans_${i}`).value = savedData[i].text;
+        document.getElementById(`exp_${i}`).value = savedData[i].exp;
+      }
     }
-    renderAnswerInputs();
+    
+    addAnswerBtn.addEventListener('click', () => {
+      answerCount++;
+      renderAnswerInputs(answerCount);
+    });
+
+    removeAnswerBtn.addEventListener('click', () => {
+      if (answerCount > 2) {
+        answerCount--;
+        renderAnswerInputs(answerCount);
+      } else {
+        alert('Una domanda deve avere almeno 2 risposte.');
+      }
+    });
+
+    renderAnswerInputs(answerCount);
 
     // Topics Management
     function renderTopics() {
@@ -324,12 +367,17 @@
       document.getElementById('difficultySelect').value = q.difficolta;
       document.getElementById('questionText').value = q.testo_domanda;
 
+      answerCount = q.risposte.length || 4;
+      renderAnswerInputs(answerCount);
+
       q.risposte.forEach((ans, i) => {
         document.getElementById(`ans_${i}`).value = ans.testo_risposta;
         document.getElementById(`exp_${i}`).value = ans.spiegazione_vera_o_falsa;
       });
 
-      document.querySelector(`input[name="correctAnswer"][value="${q.risposta_corretta}"]`).checked = true;
+      const radioBtn = document.querySelector(`input[name="correctAnswer"][value="${q.risposta_corretta}"]`);
+      if (radioBtn) radioBtn.checked = true;
+      
       document.getElementById('questionText').scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
@@ -338,6 +386,8 @@
       formTitle.textContent = 'Nuova Domanda';
       saveQuestionBtn.textContent = 'Aggiungi Domanda';
       cancelEditBtn.classList.add('hidden');
+      answerCount = 4;
+      renderAnswerInputs(answerCount);
       questionForm.reset();
       document.querySelector('input[name="correctAnswer"][value="0"]').checked = true;
     }
@@ -359,7 +409,7 @@
         difficolta: parseInt(document.getElementById('difficultySelect').value, 10),
         testo_domanda: document.getElementById('questionText').value.trim(),
         risposta_corretta: parseInt(document.querySelector('input[name="correctAnswer"]:checked').value, 10),
-        risposte: Array.from({ length: 4 }).map((_, i) => ({
+        risposte: Array.from({ length: answerCount }).map((_, i) => ({
           testo_risposta: document.getElementById(`ans_${i}`).value.trim(),
           spiegazione_vera_o_falsa: document.getElementById(`exp_${i}`).value.trim()
         }))
