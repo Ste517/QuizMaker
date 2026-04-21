@@ -178,9 +178,9 @@
           </div>
         </div>
 
-        <div id="summaryBox" class="hidden rounded-3xl border border-brand-200 bg-brand-50 p-5 shadow-soft dark:border-brand-900/50 dark:bg-brand-950/30">
-          <h3 class="text-lg font-semibold text-brand-900 dark:text-brand-100">Risultato</h3>
-          <p id="summaryText" class="mt-2 text-sm text-brand-900/80 dark:text-brand-100/80"></p>
+        <div id="summaryBox" class="hidden sticky top-[134px] z-10 rounded-3xl border border-brand-200 bg-brand-50 p-5 shadow-soft card-glass dark:border-brand-500 dark:bg-brand-900/95">
+          <h3 class="text-lg font-semibold text-brand-900 dark:text-white">Risultato</h3>
+          <p id="summaryText" class="mt-2 text-sm text-brand-900/80 dark:text-brand-50"></p>
         </div>
 
         <div id="emptyState" class="rounded-3xl border border-dashed border-slate-300 bg-white/80 p-10 text-center shadow-soft dark:border-slate-700 dark:bg-slate-900/70">
@@ -602,6 +602,7 @@
             <span class="rounded-full bg-brand-50 px-3 py-1 text-brand-700 dark:bg-brand-950/40 dark:text-brand-200">Difficoltà ${question.difficolta}</span>
           </div>
           <h3 class="mt-4 text-lg font-semibold leading-7">${qIndex + 1}. ${question.testo_domanda}</h3>
+          ${question.immagine_url ? `<img src="${question.immagine_url}" alt="Immagine della domanda" class="mt-4 w-full max-w-lg rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 mx-auto" />` : ''}
           <div class="mt-4 grid gap-3">
             ${question.risposte.map((answer, aIndex) => `
               <label class="answer-option flex min-h-11 cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-brand-400 dark:border-slate-700 dark:bg-slate-950" data-question="${qIndex}" data-answer="${aIndex}">

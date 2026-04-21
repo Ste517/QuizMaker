@@ -122,6 +122,11 @@
             <textarea id="questionText" required rows="3" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" placeholder="Inserisci la domanda..."></textarea>
           </div>
 
+          <div>
+            <label class="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">URL Immagine (Opzionale)</label>
+            <input type="url" id="questionImageUrl" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" placeholder="https://..." />
+          </div>
+
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <h3 class="text-sm font-semibold text-slate-800 dark:text-slate-200">Risposte e Spiegazioni</h3>
@@ -366,6 +371,7 @@
       topicSelect.value = q.argomento;
       document.getElementById('difficultySelect').value = q.difficolta;
       document.getElementById('questionText').value = q.testo_domanda;
+      document.getElementById('questionImageUrl').value = q.immagine_url || '';
 
       answerCount = q.risposte.length || 4;
       renderAnswerInputs(answerCount);
@@ -408,12 +414,15 @@
         argomento: topicSelect.value,
         difficolta: parseInt(document.getElementById('difficultySelect').value, 10),
         testo_domanda: document.getElementById('questionText').value.trim(),
+        immagine_url: document.getElementById('questionImageUrl').value.trim(),
         risposta_corretta: parseInt(document.querySelector('input[name="correctAnswer"]:checked').value, 10),
         risposte: Array.from({ length: answerCount }).map((_, i) => ({
           testo_risposta: document.getElementById(`ans_${i}`).value.trim(),
           spiegazione_vera_o_falsa: document.getElementById(`exp_${i}`).value.trim()
         }))
       };
+
+      if (!q.immagine_url) delete q.immagine_url;
 
       if (editingId) {
         const idx = questions.findIndex(x => x.id === editingId);

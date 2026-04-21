@@ -5,6 +5,7 @@
       {
         "difficolta": 1,
         "testo_domanda": "Inserisci qui il testo della tua domanda",
+        "immagine_url": "Opzionale: inserisci qui un link (https://...) a un'immagine",
         "risposte": [
           {
             "testo_risposta": "Testo della prima risposta (potrebbe essere quella corretta)",
