@@ -30,5 +30,16 @@
     "file": "data/scienze.json",
     "argomenti": ["fisica", "chimica", "biologia"],
     "totale_domande": 9
+  },
+  {
+    "id": "basididati",
+    "titolo": "Basi di dati",
+    "descrizione": "Basi di dati e Algebra relazionale",
+    "file": "data/basididati.json",
+    "argomenti": [
+      "Basi di dati",
+      "Algebra Relazionale"
+    ],
+    "totale_domande": 194
   }
 ]
