@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="it" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Interface Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              900: '#134e4a'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .card-glass { backdrop-filter: blur(12px); }
+    .answer-correct { border-color: rgb(22 163 74); background: rgb(240 253 244); }
+    .answer-wrong { border-color: rgb(220 38 38); background: rgb(254 242 242); }
+    .dark .answer-correct { background: rgba(22,163,74,0.14); }
+    .dark .answer-wrong { background: rgba(220,38,38,0.14); }
+  </style>
+</head>
+<body class="h-full bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <div class="min-h-full bg-gradient-to-br from-teal-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
+    <header class="border-b border-slate-200/80 bg-white/80 dark:border-slate-800 dark:bg-slate-950/80">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3">
+          <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-soft">
+            <svg viewBox="0 0 32 32" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M8 9.5h16M8 16h10M8 22.5h13" stroke-linecap="round"/>
+              <path d="M23.5 20.5l2.5 2.5 5-5" transform="translate(-4 -3)" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold tracking-tight">Quiz Builder</h1>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Carica JSON, filtra per argomento e difficoltà, genera un quiz casuale.</p>
+          </div>
+        </div>
+        <button id="themeToggle" class="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+          <span id="themeLabel">Tema</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[400px,minmax(0,1fr)] lg:px-8">
+      <aside class="space-y-6">
+        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <div class="mb-4 flex items-center justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-semibold">Sorgente JSON</h2>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Puoi incollare il JSON oppure caricare un file .json.</p>
+            </div>
+            <button id="loadSampleBtn" class="rounded-xl bg-slate-900 px-3 py-2 text-sm font-medium text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Esempio</button>
+          </div>
+
+          <label for="jsonFile" class="mb-2 block text-sm font-medium">File JSON</label>
+          <input id="jsonFile" type="file" accept=".json,application/json" class="mb-4 block w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-brand-600 file:px-3 file:py-2 file:text-white dark:border-slate-700 dark:bg-slate-950" />
+
+          <label for="jsonInput" class="mb-2 block text-sm font-medium">Contenuto JSON</label>
+          <textarea id="jsonInput" rows="18" class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 font-mono text-sm outline-none ring-0 transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" spellcheck="false"></textarea>
+
+          <div class="mt-4 flex flex-wrap gap-3">
+            <button id="parseBtn" class="inline-flex min-h-11 items-center justify-center rounded-2xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-700">Analizza JSON</button>
+            <button id="resetBtn" class="inline-flex min-h-11 items-center justify-center rounded-2xl border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">Reset</button>
+          </div>
+
+          <div id="parseStatus" class="mt-4 hidden rounded-2xl border px-4 py-3 text-sm"></div>
+        </section>
+
+        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <h2 class="text-lg font-semibold">Filtri quiz</h2>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Le opzioni si aggiornano dopo il parsing del JSON.</p>
+
+          <div class="mt-4 grid gap-4">
+            <div>
+              <label for="topicSelect" class="mb-2 block text-sm font-medium">Argomento</label>
+              <select id="topicSelect" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950"></select>
+            </div>
+
+            <div>
+              <label for="difficultySelect" class="mb-2 block text-sm font-medium">Difficoltà</label>
+              <select id="difficultySelect" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950">
+                <option value="all">Tutte</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="questionCount" class="mb-2 block text-sm font-medium">Numero domande</label>
+              <input id="questionCount" type="number" min="1" value="5" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950" />
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-2xl bg-slate-100 p-4 text-sm text-slate-700 dark:bg-slate-800/80 dark:text-slate-300">
+            <div class="flex items-center justify-between gap-2"><span>Argomenti disponibili</span><strong id="topicCount">0</strong></div>
+            <div class="mt-2 flex items-center justify-between gap-2"><span>Domande totali</span><strong id="questionPoolCount">0</strong></div>
+            <div class="mt-2 flex items-center justify-between gap-2"><span>Domande filtrate</span><strong id="filteredCount">0</strong></div>
+          </div>
+
+          <button id="generateBtn" class="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Genera quiz casuale</button>
+        </section>
+      </aside>
+
+      <section class="space-y-6">
+        <div class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 class="text-lg font-semibold">Quiz generato</h2>
+              <p id="quizMeta" class="mt-1 text-sm text-slate-600 dark:text-slate-400">Nessun quiz generato.</p>
+            </div>
+            <div class="flex gap-3">
+              <button id="submitBtn" class="hidden min-h-11 rounded-2xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-700">Correggi quiz</button>
+              <button id="newQuizBtn" class="hidden min-h-11 rounded-2xl border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">Rigenera</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="summaryBox" class="hidden rounded-3xl border border-brand-200 bg-brand-50 p-5 shadow-soft dark:border-brand-900/50 dark:bg-brand-950/30">
+          <h3 class="text-lg font-semibold text-brand-900 dark:text-brand-100">Risultato</h3>
+          <p id="summaryText" class="mt-2 text-sm text-brand-900/80 dark:text-brand-100/80"></p>
+        </div>
+
+        <div id="emptyState" class="rounded-3xl border border-dashed border-slate-300 bg-white/80 p-10 text-center shadow-soft dark:border-slate-700 dark:bg-slate-900/70">
+          <h3 class="text-xl font-semibold">Pronto a creare un quiz</h3>
+          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">Analizza un JSON valido, scegli argomento, difficoltà e numero di domande, poi genera il quiz. L'estrazione è casuale e senza duplicati all'interno della stessa sessione di quiz.</p>
+        </div>
+
+        <form id="quizForm" class="hidden space-y-4"></form>
+      </section>
+    </main>
+    <footer class="border-t border-slate-200 bg-white/80 py-5 text-center dark:border-slate-800 dark:bg-slate-950/80">
+      <small class="text-xs text-slate-500 dark:text-slate-400">
+        &copy; <span id="copyrightYear"></span> <a href="https://www.stefanobrogi.it">Stefano Brogi</a> &mdash; Quiz Builder.
+        Tutti i diritti riservati.
+      </small>
+    </footer>
+
+    <script>
+      document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+    </script>
+  </div>
+
+  <script>
+    const sampleData = [
+      {
+        argomento: 'matematica',
+        domande: [
+          {
+            difficolta: 2,
+            testo_domanda: 'Quanto vale 7 × 8?',
+            risposte: [
+              { testo_risposta: '54', spiegazione_vera_o_falsa: '54 è errato: 7 × 8 non fa 54.' },
+              { testo_risposta: '56', spiegazione_vera_o_falsa: 'Corretto: 7 × 8 = 56.' },
+              { testo_risposta: '64', spiegazione_vera_o_falsa: '64 è il quadrato di 8, non il prodotto tra 7 e 8.' },
+              { testo_risposta: '58', spiegazione_vera_o_falsa: '58 è errato: il risultato corretto è 56.' }
+            ],
+            risposta_corretta: 1
+          },
+          {
+            difficolta: 3,
+            testo_domanda: 'Qual è la derivata di x²?',
+            risposte: [
+              { testo_risposta: 'x', spiegazione_vera_o_falsa: 'La derivata di x² non è x ma 2x.' },
+              { testo_risposta: '2x', spiegazione_vera_o_falsa: 'Corretto: applicando la regola di derivazione si ottiene 2x.' },
+              { testo_risposta: 'x³', spiegazione_vera_o_falsa: 'La derivata riduce l\'esponente, non lo aumenta.' },
+              { testo_risposta: '2', spiegazione_vera_o_falsa: '2 sarebbe la derivata di 2x, non di x².' }
+            ],
+            risposta_corretta: 1
+          }
+        ]
+      },
+      {
+        argomento: 'storia',
+        domande: [
+          {
+            difficolta: 1,
+            testo_domanda: 'In quale città si trova il Colosseo?',
+            risposte: [
+              { testo_risposta: 'Milano', spiegazione_vera_o_falsa: 'Milano non ospita il Colosseo.' },
+              { testo_risposta: 'Roma', spiegazione_vera_o_falsa: 'Corretto: il Colosseo si trova a Roma.' },
+              { testo_risposta: 'Napoli', spiegazione_vera_o_falsa: 'Napoli non è la città corretta.' },
+              { testo_risposta: 'Torino', spiegazione_vera_o_falsa: 'Torino non ospita il Colosseo.' }
+            ],
+            risposta_corretta: 1
+          }
+        ]
+      }
+    ];
+
+    const jsonInput = document.getElementById('jsonInput');
+    const jsonFile = document.getElementById('jsonFile');
+    const parseBtn = document.getElementById('parseBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const loadSampleBtn = document.getElementById('loadSampleBtn');
+    const parseStatus = document.getElementById('parseStatus');
+    const topicSelect = document.getElementById('topicSelect');
+    const difficultySelect = document.getElementById('difficultySelect');
+    const questionCount = document.getElementById('questionCount');
+    const generateBtn = document.getElementById('generateBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const newQuizBtn = document.getElementById('newQuizBtn');
+    const quizForm = document.getElementById('quizForm');
+    const emptyState = document.getElementById('emptyState');
+    const quizMeta = document.getElementById('quizMeta');
+    const summaryBox = document.getElementById('summaryBox');
+    const summaryText = document.getElementById('summaryText');
+    const topicCount = document.getElementById('topicCount');
+    const questionPoolCount = document.getElementById('questionPoolCount');
+    const filteredCount = document.getElementById('filteredCount');
+    const themeToggle = document.getElementById('themeToggle');
+
+    let dataset = [];
+    let currentQuiz = [];
+
+    function setTheme(mode) {
+      document.documentElement.classList.toggle('dark', mode === 'dark');
+      document.getElementById('themeLabel').textContent = mode === 'dark' ? 'Tema chiaro' : 'Tema scuro';
+    }
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let theme = prefersDark ? 'dark' : 'light';
+    setTheme(theme);
+    themeToggle.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      setTheme(theme);
+    });
+
+    function showStatus(message, ok = true) {
+      parseStatus.className = `mt-4 rounded-2xl border px-4 py-3 text-sm ${ok
+        ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-200'
+        : 'border-red-200 bg-red-50 text-red-800 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-200'}`;
+      parseStatus.textContent = message;
+      parseStatus.classList.remove('hidden');
+    }
+
+    function hideStatus() {
+      parseStatus.classList.add('hidden');
+    }
+
+    function normalizeData(raw) {
+      const topics = Array.isArray(raw) ? raw : [raw];
+      if (!topics.length) throw new Error('Il JSON non contiene argomenti.');
+
+      return topics.map((topic, topicIndex) => {
+        if (typeof topic.argomento !== 'string' || !topic.argomento.trim()) {
+          throw new Error(`Argomento non valido alla posizione ${topicIndex + 1}.`);
+        }
+        if (!Array.isArray(topic.domande) || !topic.domande.length) {
+          throw new Error(`L'argomento "${topic.argomento}" non contiene domande.`);
+        }
+
+        const domande = topic.domande.map((q, questionIndex) => {
+          if (!Number.isInteger(q.difficolta) || q.difficolta < 1 || q.difficolta > 5) {
+            throw new Error(`Difficoltà non valida in "${topic.argomento}", domanda ${questionIndex + 1}.`);
+          }
+          if (typeof q.testo_domanda !== 'string' || !q.testo_domanda.trim()) {
+            throw new Error(`Testo domanda mancante in "${topic.argomento}", domanda ${questionIndex + 1}.`);
+          }
+          if (!Array.isArray(q.risposte) || q.risposte.length < 2) {
+            throw new Error(`Ogni domanda deve avere almeno 2 risposte in "${topic.argomento}".`);
+          }
+          q.risposte.forEach((a, answerIndex) => {
+            if (typeof a.testo_risposta !== 'string' || !a.testo_risposta.trim()) {
+              throw new Error(`Testo risposta mancante in "${topic.argomento}", domanda ${questionIndex + 1}, risposta ${answerIndex + 1}.`);
+            }
+            if (typeof a.spiegazione_vera_o_falsa !== 'string') {
+              throw new Error(`Spiegazione mancante in "${topic.argomento}", domanda ${questionIndex + 1}, risposta ${answerIndex + 1}.`);
+            }
+          });
+          if (!Number.isInteger(q.risposta_corretta) || q.risposta_corretta < 0 || q.risposta_corretta >= q.risposte.length) {
+            throw new Error(`Indice risposta corretta non valido in "${topic.argomento}", domanda ${questionIndex + 1}.`);
+          }
+          return q;
+        });
+
+        return { argomento: topic.argomento.trim(), domande };
+      });
+    }
+
+    function flattenQuestions() {
+      return dataset.flatMap(topic => topic.domande.map(question => ({ ...question, argomento: topic.argomento })));
+    }
+
+    function getFilteredQuestions() {
+      const selectedTopic = topicSelect.value;
+      const selectedDifficulty = difficultySelect.value;
+      return flattenQuestions().filter(question => {
+        const topicOk = selectedTopic === 'all' || question.argomento === selectedTopic;
+        const difficultyOk = selectedDifficulty === 'all' || String(question.difficolta) === selectedDifficulty;
+        return topicOk && difficultyOk;
+      });
+    }
+
+    function updateCounters() {
+      topicCount.textContent = String(dataset.length);
+      questionPoolCount.textContent = String(flattenQuestions().length);
+      filteredCount.textContent = String(getFilteredQuestions().length);
+    }
+
+    function populateTopics() {
+      topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
+      dataset.forEach(topic => {
+        const option = document.createElement('option');
+        option.value = topic.argomento;
+        option.textContent = topic.argomento;
+        topicSelect.appendChild(option);
+      });
+      updateCounters();
+    }
+
+    function shuffle(array) {
+      const clone = [...array];
+      for (let i = clone.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [clone[i], clone[j]] = [clone[j], clone[i]];
+      }
+      return clone;
+    }
+
+    function renderQuiz() {
+      if (!currentQuiz.length) {
+        quizForm.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        submitBtn.classList.add('hidden');
+        newQuizBtn.classList.add('hidden');
+        summaryBox.classList.add('hidden');
+        quizMeta.textContent = 'Nessun quiz generato.';
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      quizForm.classList.remove('hidden');
+      submitBtn.classList.remove('hidden');
+      newQuizBtn.classList.remove('hidden');
+      summaryBox.classList.add('hidden');
+      quizMeta.textContent = `${currentQuiz.length} domanda/e estratte casualmente.`;
+
+      quizForm.innerHTML = currentQuiz.map((question, qIndex) => `
+        <article class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900/80">
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+            <span class="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800">${question.argomento}</span>
+            <span class="rounded-full bg-brand-50 px-3 py-1 text-brand-700 dark:bg-brand-950/40 dark:text-brand-200">Difficoltà ${question.difficolta}</span>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold leading-7">${qIndex + 1}. ${question.testo_domanda}</h3>
+          <div class="mt-4 grid gap-3">
+            ${question.risposte.map((answer, aIndex) => `
+              <label class="answer-option flex min-h-11 cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-brand-400 dark:border-slate-700 dark:bg-slate-950" data-question="${qIndex}" data-answer="${aIndex}">
+                <input type="radio" name="question-${qIndex}" value="${aIndex}" class="mt-1 h-4 w-4 border-slate-300 text-brand-600 focus:ring-brand-500" />
+                <span>
+                  <span class="block text-sm font-medium">${answer.testo_risposta}</span>
+                  <span class="mt-2 hidden text-sm text-slate-600 dark:text-slate-300" data-explanation></span>
+                </span>
+              </label>
+            `).join('')}
+          </div>
+          <div class="mt-4 hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200" data-question-feedback></div>
+        </article>
+      `).join('');
+    }
+
+    function parseJsonFromInput() {
+      const content = jsonInput.value.trim();
+      if (!content) {
+        showStatus('Inserisci o carica un JSON prima di analizzarlo.', false);
+        return;
+      }
+
+      try {
+        const raw = JSON.parse(content);
+        dataset = normalizeData(raw);
+        populateTopics();
+        currentQuiz = [];
+        renderQuiz();
+        showStatus(`JSON valido: ${dataset.length} argomento/i e ${flattenQuestions().length} domanda/e disponibili.`);
+      } catch (error) {
+        dataset = [];
+        currentQuiz = [];
+        populateTopics();
+        renderQuiz();
+        showStatus(error.message || 'JSON non valido.', false);
+      }
+    }
+
+    function generateQuiz() {
+      if (!dataset.length) {
+        showStatus('Analizza prima un JSON valido.', false);
+        return;
+      }
+      const filtered = getFilteredQuestions();
+      updateCounters();
+      if (!filtered.length) {
+        showStatus('Nessuna domanda disponibile con i filtri selezionati.', false);
+        return;
+      }
+
+      const requested = Number(questionCount.value);
+      if (!Number.isInteger(requested) || requested < 1) {
+        showStatus('Il numero di domande deve essere almeno 1.', false);
+        return;
+      }
+
+      const amount = Math.min(requested, filtered.length);
+      currentQuiz = shuffle(filtered).slice(0, amount);
+      renderQuiz();
+      showStatus(`Quiz generato con ${amount} domanda/e casuali su ${filtered.length} disponibili.`);
+    }
+
+    function gradeQuiz() {
+      if (!currentQuiz.length) return;
+
+      const formData = new FormData(quizForm);
+      let correct = 0;
+
+      currentQuiz.forEach((question, qIndex) => {
+        const selected = formData.get(`question-${qIndex}`);
+        const selectedIndex = selected === null ? null : Number(selected);
+        const feedback = quizForm.querySelector(`[data-question-feedback]:nth-of-type(${qIndex + 1})`);
+        const labels = [...quizForm.querySelectorAll(`[data-question="${qIndex}"]`)];
+        const questionCard = labels[0]?.closest('article');
+        const cardFeedback = questionCard.querySelector('[data-question-feedback]');
+
+        labels.forEach((label, answerIndex) => {
+          const explanation = label.querySelector('[data-explanation]');
+          explanation.classList.remove('hidden');
+          explanation.textContent = question.risposte[answerIndex].spiegazione_vera_o_falsa;
+          label.classList.remove('answer-correct', 'answer-wrong');
+          if (answerIndex === question.risposta_corretta) label.classList.add('answer-correct');
+          if (selectedIndex === answerIndex && answerIndex !== question.risposta_corretta) label.classList.add('answer-wrong');
+        });
+
+        const answered = selectedIndex !== null;
+        const isCorrect = answered && selectedIndex === question.risposta_corretta;
+        if (isCorrect) correct += 1;
+
+        const correctAnswer = question.risposte[question.risposta_corretta].testo_risposta;
+        cardFeedback.classList.remove('hidden');
+        cardFeedback.innerHTML = answered
+          ? (isCorrect
+              ? `<strong>Corretto.</strong> Hai selezionato la risposta giusta: <strong>${correctAnswer}</strong>.`
+              : `<strong>Errato.</strong> La risposta corretta è <strong>${correctAnswer}</strong>.`)
+          : `<strong>Non risposto.</strong> La risposta corretta è <strong>${correctAnswer}</strong>.`;
+      });
+
+      summaryBox.classList.remove('hidden');
+      summaryText.textContent = `Punteggio: ${correct}/${currentQuiz.length} (${Math.round((correct / currentQuiz.length) * 100)}%).`;
+      summaryBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    jsonFile.addEventListener('change', async (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      jsonInput.value = await file.text();
+      hideStatus();
+    });
+
+    parseBtn.addEventListener('click', parseJsonFromInput);
+    loadSampleBtn.addEventListener('click', () => {
+      jsonInput.value = JSON.stringify(sampleData, null, 2);
+      hideStatus();
+    });
+    resetBtn.addEventListener('click', () => {
+      dataset = [];
+      currentQuiz = [];
+      jsonInput.value = '';
+      jsonFile.value = '';
+      topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
+      questionCount.value = 5;
+      difficultySelect.value = 'all';
+      updateCounters();
+      renderQuiz();
+      hideStatus();
+    });
+
+    topicSelect.addEventListener('change', updateCounters);
+    difficultySelect.addEventListener('change', updateCounters);
+    generateBtn.addEventListener('click', generateQuiz);
+    submitBtn.addEventListener('click', gradeQuiz);
+    newQuizBtn.addEventListener('click', generateQuiz);
+
+    jsonInput.value = JSON.stringify(sampleData, null, 2);
+    topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
+    updateCounters();
+    renderQuiz();
+  </script>
+</body>
+</html>
