@@ -1,0 +1,30 @@
+[
+  {
+    "argomento": "Nome del tuo argomento",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Inserisci qui il testo della tua domanda",
+        "risposte": [
+          {
+            "testo_risposta": "Testo della prima risposta (potrebbe essere quella corretta)",
+            "spiegazione_vera_o_falsa": "Spiegazione del perché questa risposta è corretta o errata."
+          },
+          {
+            "testo_risposta": "Testo della seconda risposta",
+            "spiegazione_vera_o_falsa": "Spiegazione del perché questa risposta è corretta o errata."
+          },
+          {
+            "testo_risposta": "Testo della terza risposta",
+            "spiegazione_vera_o_falsa": "Spiegazione del perché questa risposta è corretta o errata."
+          },
+          {
+            "testo_risposta": "Testo della quarta risposta",
+            "spiegazione_vera_o_falsa": "Spiegazione del perché questa risposta è corretta o errata."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  }
+]

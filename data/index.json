@@ -3,7 +3,8 @@
     "id": "basididati",
     "titolo": "Basi di dati",
     "descrizione": "Basi di dati e Algebra relazionale",
-    "file": "data/basididati.json",
+    "file": "data/ai_generated/basididati.json",
+    "categoria": "ai_generated",
     "argomenti": [
       "Basi di dati",
       "Algebra Relazionale"
@@ -14,7 +15,8 @@
     "id": "cultura_generale",
     "titolo": "Cultura Generale",
     "descrizione": "Musica, cinema, teatro, poesia",
-    "file": "data/cultura_generale.json",
+    "file": "data/ai_generated/cultura_generale.json",
+    "categoria": "ai_generated",
     "argomenti": [
       "musica",
       "cinema",
