@@ -83,6 +83,19 @@
         </section>
 
         <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-semibold">JSON recenti</h2>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Memorizza gli ultimi JSON caricati o analizzati.</p>
+            </div>
+            <button id="clearRecentJsonBtn" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">Svuota</button>
+          </div>
+          <div id="recentJsonList" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+            <p>Nessun JSON recente salvato.</p>
+          </div>
+        </section>
+
+        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
           <h2 class="text-lg font-semibold">Filtri quiz</h2>
           <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Le opzioni si aggiornano dopo il parsing del JSON.</p>
 
@@ -117,6 +130,19 @@
           </div>
 
           <button id="generateBtn" class="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Genera quiz casuale</button>
+        </section>
+
+        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-semibold">Storico quiz</h2>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Ultimi risultati salvati nel browser.</p>
+            </div>
+            <button id="clearHistoryBtn" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">Svuota</button>
+          </div>
+          <div id="historyList" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
+            <p>Nessun quiz completato finora.</p>
+          </div>
         </section>
       </aside>
 
@@ -160,6 +186,14 @@
   </div>
 
   <script>
+    const STORAGE_KEYS = {
+      theme: 'quizmaker-theme',
+      history: 'quizmaker-history',
+      recentJson: 'quizmaker-recent-json'
+    };
+    const MAX_HISTORY_ITEMS = 10;
+    const MAX_RECENT_JSON = 3;
+
     const sampleData = [
       {
         argomento: 'matematica',
@@ -227,17 +261,137 @@
     const questionPoolCount = document.getElementById('questionPoolCount');
     const filteredCount = document.getElementById('filteredCount');
     const themeToggle = document.getElementById('themeToggle');
+    const historyList = document.getElementById('historyList');
+    const recentJsonList = document.getElementById('recentJsonList');
+    const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+    const clearRecentJsonBtn = document.getElementById('clearRecentJsonBtn');
 
     let dataset = [];
     let currentQuiz = [];
+    let currentQuizContext = null;
+
+    function safeRead(key, fallback) {
+      try {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function safeWrite(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch {
+        // ignore storage errors
+      }
+    }
+
+    function formatDateTime(value) {
+      return new Date(value).toLocaleString('it-IT', {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      });
+    }
+
+    function summarizeJson(rawText) {
+      try {
+        const parsed = JSON.parse(rawText);
+        const normalized = normalizeData(parsed);
+        const topics = normalized.map(item => item.argomento);
+        const questionTotal = normalized.reduce((sum, item) => sum + item.domande.length, 0);
+        return {
+          topics,
+          questionTotal,
+          label: topics.length ? `${topics.slice(0, 2).join(', ')}${topics.length > 2 ? '…' : ''}` : 'JSON recente'
+        };
+      } catch {
+        return {
+          topics: [],
+          questionTotal: 0,
+          label: 'JSON recente'
+        };
+      }
+    }
+
+    function saveRecentJson(rawText, source = 'manuale') {
+      const trimmed = rawText.trim();
+      if (!trimmed) return;
+      const summary = summarizeJson(trimmed);
+      const items = safeRead(STORAGE_KEYS.recentJson, []).filter(item => item.rawText !== trimmed);
+      items.unshift({
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        savedAt: new Date().toISOString(),
+        source,
+        rawText: trimmed,
+        summary
+      });
+      safeWrite(STORAGE_KEYS.recentJson, items.slice(0, MAX_RECENT_JSON));
+      renderRecentJson();
+    }
+
+    function renderRecentJson() {
+      const items = safeRead(STORAGE_KEYS.recentJson, []);
+      if (!items.length) {
+        recentJsonList.innerHTML = '<p>Nessun JSON recente salvato.</p>';
+        return;
+      }
+
+      recentJsonList.innerHTML = items.map(item => `
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950/70">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="font-medium text-slate-800 dark:text-slate-100">${item.summary.label}</p>
+              <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">${item.summary.questionTotal} domande · ${item.source} · ${formatDateTime(item.savedAt)}</p>
+            </div>
+            <button type="button" data-load-json="${item.id}" class="rounded-xl bg-brand-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-brand-700">Carica</button>
+          </div>
+        </div>
+      `).join('');
+
+      recentJsonList.querySelectorAll('[data-load-json]').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = items.find(entry => entry.id === button.dataset.loadJson);
+          if (!item) return;
+          jsonInput.value = item.rawText;
+          showStatus('JSON recente caricato nell\'editor. Premi “Analizza JSON” per applicarlo.');
+        });
+      });
+    }
+
+    function saveQuizResult(result) {
+      const items = safeRead(STORAGE_KEYS.history, []);
+      items.unshift(result);
+      safeWrite(STORAGE_KEYS.history, items.slice(0, MAX_HISTORY_ITEMS));
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const items = safeRead(STORAGE_KEYS.history, []);
+      if (!items.length) {
+        historyList.innerHTML = '<p>Nessun quiz completato finora.</p>';
+        return;
+      }
+
+      historyList.innerHTML = items.map(item => `
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950/70">
+          <div class="flex items-center justify-between gap-3">
+            <p class="font-medium text-slate-800 dark:text-slate-100">${item.correct}/${item.total} · ${item.percentage}%</p>
+            <span class="text-xs text-slate-500 dark:text-slate-400">${formatDateTime(item.completedAt)}</span>
+          </div>
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">Argomento: ${item.topicLabel} · Difficoltà: ${item.difficultyLabel} · Domande: ${item.total}</p>
+        </div>
+      `).join('');
+    }
 
     function setTheme(mode) {
       document.documentElement.classList.toggle('dark', mode === 'dark');
       document.getElementById('themeLabel').textContent = mode === 'dark' ? 'Tema chiaro' : 'Tema scuro';
+      safeWrite(STORAGE_KEYS.theme, mode);
     }
 
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let theme = prefersDark ? 'dark' : 'light';
+    let theme = safeRead(STORAGE_KEYS.theme, prefersDark ? 'dark' : 'light');
     setTheme(theme);
     themeToggle.addEventListener('click', () => {
       theme = theme === 'dark' ? 'light' : 'dark';
@@ -389,11 +543,14 @@
         dataset = normalizeData(raw);
         populateTopics();
         currentQuiz = [];
+        currentQuizContext = null;
         renderQuiz();
+        saveRecentJson(content, 'editor');
         showStatus(`JSON valido: ${dataset.length} argomento/i e ${flattenQuestions().length} domanda/e disponibili.`);
       } catch (error) {
         dataset = [];
         currentQuiz = [];
+        currentQuizContext = null;
         populateTopics();
         renderQuiz();
         showStatus(error.message || 'JSON non valido.', false);
@@ -420,6 +577,11 @@
 
       const amount = Math.min(requested, filtered.length);
       currentQuiz = shuffle(filtered).slice(0, amount);
+      currentQuizContext = {
+        topicLabel: topicSelect.value === 'all' ? 'Tutti gli argomenti' : topicSelect.value,
+        difficultyLabel: difficultySelect.value === 'all' ? 'Tutte' : difficultySelect.value,
+        generatedAt: new Date().toISOString()
+      };
       renderQuiz();
       showStatus(`Quiz generato con ${amount} domanda/e casuali su ${filtered.length} disponibili.`);
     }
@@ -433,7 +595,6 @@
       currentQuiz.forEach((question, qIndex) => {
         const selected = formData.get(`question-${qIndex}`);
         const selectedIndex = selected === null ? null : Number(selected);
-        const feedback = quizForm.querySelector(`[data-question-feedback]:nth-of-type(${qIndex + 1})`);
         const labels = [...quizForm.querySelectorAll(`[data-question="${qIndex}"]`)];
         const questionCard = labels[0]?.closest('article');
         const cardFeedback = questionCard.querySelector('[data-question-feedback]');
@@ -460,26 +621,40 @@
           : `<strong>Non risposto.</strong> La risposta corretta è <strong>${correctAnswer}</strong>.`;
       });
 
+      const percentage = Math.round((correct / currentQuiz.length) * 100);
       summaryBox.classList.remove('hidden');
-      summaryText.textContent = `Punteggio: ${correct}/${currentQuiz.length} (${Math.round((correct / currentQuiz.length) * 100)}%).`;
+      summaryText.textContent = `Punteggio: ${correct}/${currentQuiz.length} (${percentage}%).`;
       summaryBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      saveQuizResult({
+        completedAt: new Date().toISOString(),
+        total: currentQuiz.length,
+        correct,
+        percentage,
+        topicLabel: currentQuizContext?.topicLabel || 'Tutti gli argomenti',
+        difficultyLabel: currentQuizContext?.difficultyLabel || 'Tutte'
+      });
     }
 
     jsonFile.addEventListener('change', async (event) => {
       const file = event.target.files?.[0];
       if (!file) return;
-      jsonInput.value = await file.text();
+      const text = await file.text();
+      jsonInput.value = text;
+      saveRecentJson(text, file.name || 'file');
       hideStatus();
     });
 
     parseBtn.addEventListener('click', parseJsonFromInput);
     loadSampleBtn.addEventListener('click', () => {
       jsonInput.value = JSON.stringify(sampleData, null, 2);
+      saveRecentJson(jsonInput.value, 'esempio');
       hideStatus();
     });
     resetBtn.addEventListener('click', () => {
       dataset = [];
       currentQuiz = [];
+      currentQuizContext = null;
       jsonInput.value = '';
       jsonFile.value = '';
       topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
@@ -490,6 +665,18 @@
       hideStatus();
     });
 
+    clearHistoryBtn.addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEYS.history);
+      renderHistory();
+      showStatus('Storico quiz svuotato.');
+    });
+
+    clearRecentJsonBtn.addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEYS.recentJson);
+      renderRecentJson();
+      showStatus('Elenco JSON recenti svuotato.');
+    });
+
     topicSelect.addEventListener('change', updateCounters);
     difficultySelect.addEventListener('change', updateCounters);
     generateBtn.addEventListener('click', generateQuiz);
@@ -498,6 +685,8 @@
 
     jsonInput.value = JSON.stringify(sampleData, null, 2);
     topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
+    renderRecentJson();
+    renderHistory();
     updateCounters();
     renderQuiz();
   </script>
