@@ -121,6 +121,7 @@ const closeCatalogBtn = document.getElementById('closeCatalogBtn');
 const openCatalogBtn = document.getElementById('openCatalogBtn');
 const catalogSearchInput = document.getElementById('catalogSearchInput');
 const catalogGrid = document.getElementById('catalogGrid');
+const datasetsList = document.getElementById('datasetsList');
 
 let dataset = [];
 let currentQuiz = [];
@@ -198,16 +199,24 @@ function saveRecentJson(rawText, source = 'manuale') {
 }
 
 async function fetchDatasets() {
-  if (!datasetsList) return;
   try {
     const response = await fetch('data/index.json');
     if (!response.ok) throw new Error('Network response was not ok');
     const datasets = await response.json();
     allAvailableDatasets = datasets;
-    renderDatasets(datasets);
+    
+    // Only render to sidebar list if the element exists
+    if (datasetsList) {
+      renderDatasets(datasets);
+    }
   } catch (error) {
-    datasetsList.innerHTML = '<p class="text-xs italic">Dataset non disponibili in locale (richiede server).</p>';
-    if (catalogGrid) catalogGrid.innerHTML = '<p class="col-span-full text-center py-10 opacity-50">Impossibile caricare il catalogo.</p>';
+    console.error('Error fetching datasets:', error);
+    if (datasetsList) {
+      datasetsList.innerHTML = '<p class="text-xs italic">Dataset non disponibili in locale (richiede server).</p>';
+    }
+    if (catalogGrid) {
+      catalogGrid.innerHTML = '<p class="col-span-full text-center py-10 opacity-50">Impossibile caricare il catalogo.</p>';
+    }
   }
 }
 
