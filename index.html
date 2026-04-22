@@ -192,6 +192,43 @@
         </section>
 
         <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <h2 class="text-lg font-semibold">Filtri quiz</h2>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Le opzioni si aggiornano dopo il parsing del JSON.</p>
+
+          <div class="mt-4 grid gap-4">
+            <div>
+              <label for="topicSelect" class="mb-2 block text-sm font-medium">Argomento</label>
+              <select id="topicSelect" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950"></select>
+            </div>
+
+            <div>
+              <label for="difficultySelect" class="mb-2 block text-sm font-medium">Difficoltà</label>
+              <select id="difficultySelect" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950">
+                <option value="all">Tutte</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="questionCount" class="mb-2 block text-sm font-medium">Numero domande</label>
+              <input id="questionCount" type="number" min="1" value="5" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950" />
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-2xl bg-slate-100 p-4 text-sm text-slate-700 dark:bg-slate-800/80 dark:text-slate-300">
+            <div class="flex items-center justify-between gap-2"><span>Argomenti disponibili</span><strong id="topicCount">0</strong></div>
+            <div class="mt-2 flex items-center justify-between gap-2"><span>Domande totali</span><strong id="questionPoolCount">0</strong></div>
+            <div class="mt-2 flex items-center justify-between gap-2"><span>Domande filtrate</span><strong id="filteredCount">0</strong></div>
+          </div>
+
+          <button id="generateBtn" class="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Genera quiz casuale</button>
+        </section>
+
+        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
           <div class="mb-4 flex items-center justify-between gap-3">
             <div>
               <h2 class="text-lg font-semibold">Sorgente JSON</h2>
@@ -235,43 +272,6 @@
           <div id="recentJsonList" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
             <p>Nessun JSON recente salvato.</p>
           </div>
-        </section>
-
-        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
-          <h2 class="text-lg font-semibold">Filtri quiz</h2>
-          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Le opzioni si aggiornano dopo il parsing del JSON.</p>
-
-          <div class="mt-4 grid gap-4">
-            <div>
-              <label for="topicSelect" class="mb-2 block text-sm font-medium">Argomento</label>
-              <select id="topicSelect" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950"></select>
-            </div>
-
-            <div>
-              <label for="difficultySelect" class="mb-2 block text-sm font-medium">Difficoltà</label>
-              <select id="difficultySelect" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950">
-                <option value="all">Tutte</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="questionCount" class="mb-2 block text-sm font-medium">Numero domande</label>
-              <input id="questionCount" type="number" min="1" value="5" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950" />
-            </div>
-          </div>
-
-          <div class="mt-5 rounded-2xl bg-slate-100 p-4 text-sm text-slate-700 dark:bg-slate-800/80 dark:text-slate-300">
-            <div class="flex items-center justify-between gap-2"><span>Argomenti disponibili</span><strong id="topicCount">0</strong></div>
-            <div class="mt-2 flex items-center justify-between gap-2"><span>Domande totali</span><strong id="questionPoolCount">0</strong></div>
-            <div class="mt-2 flex items-center justify-between gap-2"><span>Domande filtrate</span><strong id="filteredCount">0</strong></div>
-          </div>
-
-          <button id="generateBtn" class="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Genera quiz casuale</button>
         </section>
 
         <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">

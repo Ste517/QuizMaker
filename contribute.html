@@ -145,6 +145,7 @@
   <script>
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
+    const THEME_KEY = 'quizmaker-theme';
 
     function applyTheme(isDark) {
       if (isDark) {
@@ -154,14 +155,13 @@
       }
     }
 
-    const savedTheme = localStorage.getItem('quizmaker-theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let isDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    let isDark = savedTheme === 'dark' || !savedTheme; // Default to dark
     applyTheme(isDark);
 
     themeToggle.addEventListener('click', () => {
-      isDark = !isDark;
-      localStorage.setItem('quizmaker-theme', isDark ? 'dark' : 'light');
+      isDark = !html.classList.contains('dark');
+      localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
       applyTheme(isDark);
     });
 

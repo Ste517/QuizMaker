@@ -3,26 +3,21 @@ const themeToggle = document.getElementById('themeToggle');
 const themeLabel = document.getElementById('themeLabel');
 const html = document.documentElement;
 
+const THEME_KEY = 'quizmaker-theme';
 function applyTheme(isDark) {
-  if (isDark) {
-    html.classList.add('dark');
-    if(themeLabel) themeLabel.textContent = 'Chiaro';
-  } else {
-    html.classList.remove('dark');
-    if(themeLabel) themeLabel.textContent = 'Scuro';
-  }
+  html.classList.toggle('dark', isDark);
+  if(themeLabel) themeLabel.textContent = isDark ? 'Chiaro' : 'Scuro';
 }
 
-const savedTheme = localStorage.getItem('theme');
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-let isDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+const savedTheme = localStorage.getItem(THEME_KEY);
+let isDark = savedTheme === 'dark' || !savedTheme; // Default to dark
 applyTheme(isDark);
 
 if(themeToggle) {
     themeToggle.addEventListener('click', () => {
-    isDark = !isDark;
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    applyTheme(isDark);
+      isDark = !html.classList.contains('dark');
+      localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+      applyTheme(isDark);
     });
 }
 

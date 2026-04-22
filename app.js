@@ -303,13 +303,12 @@ function setTheme(mode) {
   safeWrite(STORAGE_KEYS.theme, mode);
 }
 
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-let theme = safeRead(STORAGE_KEYS.theme, prefersDark ? 'dark' : 'light');
+const theme = safeRead(STORAGE_KEYS.theme, 'dark');
 setTheme(theme);
 if(themeToggle) {
     themeToggle.addEventListener('click', () => {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(theme);
+    const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(newTheme);
     });
 }
 
