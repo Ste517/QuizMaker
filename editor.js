@@ -190,8 +190,8 @@ function renderQuestionsList() {
               </div>
             </div>
             <div class="mt-2 flex justify-end gap-2">
-              <button type="button" onclick="loadQuestionForEdit('${q.id}')" class="text-xs font-medium text-slate-600 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400">Modifica</button>
-              <button type="button" onclick="deleteQuestion('${q.id}')" class="text-xs font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">Elimina</button>
+              <button type="button" onclick="loadQuestionForEdit('${q.id}')" class="btn-glass btn-glass-neutral px-2 py-1 rounded-md text-[10px] font-bold">Modifica</button>
+              <button type="button" onclick="deleteQuestion('${q.id}')" class="btn-glass px-2 py-1 rounded-md text-[10px] font-bold bg-red-500/10 text-red-600 dark:bg-red-500/20 dark:text-red-400">Elimina</button>
             </div>
           </div>
         `).join('')}

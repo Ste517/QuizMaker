@@ -158,57 +158,61 @@
       opacity: 0;
     }
 
-    /* Liquid Glass Button Style - Background Adaptive */
-    .btn-glass-liquid {
+    /* Universal Liquid Glass Style */
+    .btn-glass {
       position: relative;
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      color: #1e293b; /* slate-800 */
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
-    .dark .btn-glass-liquid {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-      color: #f8fafc; /* slate-50 */
-    }
-    .btn-glass-liquid:hover {
-      background: rgba(255, 255, 255, 0.6);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12);
-      border-color: rgba(255, 255, 255, 0.8);
-    }
-    .dark .btn-glass-liquid:hover {
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-    .btn-glass-liquid::before {
+    .btn-glass::before {
       content: '';
       position: absolute;
       top: -50%;
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-      transform: translate(-10%, -10%);
-      transition: transform 0.5s ease;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 65%);
+      transform: translate(-15%, -15%);
+      transition: transform 0.6s ease;
       pointer-events: none;
     }
-    .btn-glass-liquid:hover::before {
-      transform: translate(10%, 10%);
+    .btn-glass:hover::before {
+      transform: translate(15%, 15%);
     }
-    .btn-glass-liquid:hover {
+    .btn-glass:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px 0 rgba(20, 184, 166, 0.45);
-      border-color: rgba(255, 255, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-    .btn-glass-liquid:active {
+    .btn-glass:active {
       transform: translateY(0);
+    }
+
+    /* Neutral Glass Button - Enhanced Contrast */
+    .btn-glass-neutral {
+      background: rgba(255, 255, 255, 0.6);
+      color: #1e293b;
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+    .dark .btn-glass-neutral {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .btn-glass-neutral:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    .dark .btn-glass-neutral:hover {
+      background: rgba(255, 255, 255, 0.18);
     }
   </style>
   <link rel="stylesheet" href="markdown.css">
@@ -261,7 +265,7 @@
             <h2 class="text-lg font-semibold">Dataset predefiniti</h2>
             <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Esplora la nostra collezione di quiz pronti all'uso.</p>
           </div>
-          <button id="openCatalogBtn" class="btn-glass-liquid w-full rounded-2xl h-14 text-sm font-bold flex items-center justify-center gap-3 group">
+          <button id="openCatalogBtn" class="btn-glass btn-glass-neutral w-full rounded-2xl h-14 text-sm font-bold group">
             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-800/10 dark:bg-white/10 text-slate-700 dark:text-slate-200 transition-transform group-hover:scale-110">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
             </div>
@@ -303,7 +307,7 @@
             <div class="mt-2 flex items-center justify-between gap-2"><span>Domande filtrate</span><strong id="filteredCount">0</strong></div>
           </div>
 
-          <button id="generateBtn" class="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Genera quiz casuale</button>
+          <button id="generateBtn" class="btn-glass mt-5 min-h-12 w-full rounded-2xl bg-slate-900/90 px-4 py-3 text-sm font-bold text-white dark:bg-white/10 dark:text-white">Genera quiz casuale</button>
         </section>
 
         <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
@@ -326,11 +330,11 @@
           <textarea id="jsonInput" rows="12" class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 font-mono text-sm outline-none ring-0 transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" spellcheck="false" placeholder="Incolla qui il JSON..."></textarea>
 
           <div class="mt-4 flex flex-wrap gap-3">
-            <button id="parseBtn" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-700">
+            <button id="parseBtn" class="btn-glass min-h-11 rounded-2xl bg-brand-600/90 px-5 py-3 text-sm font-bold text-white dark:bg-brand-500/20 dark:text-brand-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
               Analizza JSON
             </button>
-            <button id="resetBtn" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">
+            <button id="resetBtn" class="btn-glass btn-glass-neutral min-h-11 rounded-2xl px-5 py-3 text-sm font-bold">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
               Reset
             </button>
@@ -345,7 +349,7 @@
               <h2 class="text-lg font-semibold">JSON recenti</h2>
               <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Memorizza gli ultimi JSON caricati o analizzati.</p>
             </div>
-            <button id="clearRecentJsonBtn" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">Svuota</button>
+            <button id="clearRecentJsonBtn" class="btn-glass btn-glass-neutral rounded-xl px-3 py-2 text-[10px] font-bold">Svuota</button>
           </div>
           <div id="recentJsonList" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
             <p>Nessun JSON recente salvato.</p>
@@ -358,7 +362,7 @@
               <h2 class="text-lg font-semibold">Storico quiz</h2>
               <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Ultimi risultati salvati nel browser.</p>
             </div>
-            <button id="clearHistoryBtn" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:border-slate-400 dark:border-slate-700 dark:text-slate-200">Svuota</button>
+            <button id="clearHistoryBtn" class="btn-glass btn-glass-neutral rounded-xl px-3 py-2 text-[10px] font-bold">Svuota</button>
           </div>
           <div id="historyList" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
             <p>Nessun quiz completato finora.</p>
@@ -465,7 +469,7 @@
           <div class="text-5xl font-black text-brand-500"><span id="summaryPercentage"></span>%</div>
         </div>
 
-        <button id="playAgainBtn" class="btn-3d action-btn-primary w-full h-14 rounded-2xl font-bold text-lg uppercase tracking-wider flex items-center justify-center transition-all">
+        <button id="playAgainBtn" class="btn-glass action-btn-primary w-full h-14 rounded-2xl font-bold text-lg uppercase tracking-wider">
           Gioca ancora
         </button>
       </div>

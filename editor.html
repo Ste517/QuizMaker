@@ -31,6 +31,63 @@
   </script>
   <style>
     .card-glass { backdrop-filter: blur(12px); }
+
+    /* Universal Liquid Glass Style */
+    .btn-glass {
+      position: relative;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .btn-glass::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 65%);
+      transform: translate(-15%, -15%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+    .btn-glass:hover::before {
+      transform: translate(15%, 15%);
+    }
+    .btn-glass:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-glass:active {
+      transform: translateY(0);
+    }
+
+    /* Neutral Glass Button - Enhanced Contrast */
+    .btn-glass-neutral {
+      background: rgba(255, 255, 255, 0.6);
+      color: #1e293b;
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+    .dark .btn-glass-neutral {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .btn-glass-neutral:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    .dark .btn-glass-neutral:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
   </style>
   <link rel="stylesheet" href="markdown.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -77,14 +134,14 @@
         <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
           <h2 class="text-lg font-semibold mb-4">Gestione Dataset</h2>
           <div class="space-y-3">
-            <button id="exportJsonBtn" class="w-full rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700 flex items-center justify-center gap-2">
+            <button id="exportJsonBtn" class="btn-glass w-full rounded-xl bg-brand-600/90 px-4 py-2.5 text-sm font-bold text-white dark:bg-brand-500/20 dark:text-brand-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               Esporta come JSON
             </button>
             <div class="relative group" id="dropzoneEditor">
               <input type="file" id="importJsonInput" accept=".json" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
-              <button id="dropzoneEditorBtn" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition group-hover:bg-slate-50 group-hover:border-brand-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:group-hover:bg-slate-800 flex items-center justify-center gap-2">
-                <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+              <button id="dropzoneEditorBtn" class="btn-glass btn-glass-neutral w-full rounded-xl px-4 py-2.5 text-sm font-bold">
+                <svg class="w-5 h-5 opacity-70 transition-colors group-hover:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                 Carica JSON esistente
               </button>
             </div>
@@ -95,7 +152,7 @@
           <h2 class="text-lg font-semibold mb-4">Argomenti</h2>
           <div class="flex gap-2 mb-4">
             <input type="text" id="newTopicInput" placeholder="Nuovo argomento..." class="flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" />
-            <button id="addTopicBtn" class="rounded-xl bg-slate-900 px-3 py-2 text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">+</button>
+            <button id="addTopicBtn" class="btn-glass btn-glass-neutral h-10 w-10 rounded-xl text-xl font-bold">+</button>
           </div>
           <div id="topicsList" class="flex flex-wrap gap-2 text-sm">
             <p class="text-slate-500 text-xs italic w-full">Nessun argomento aggiunto.</p>
@@ -162,8 +219,8 @@
           </div>
 
           <div class="pt-4 flex gap-3">
-            <button type="submit" id="saveQuestionBtn" class="flex-1 rounded-xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-brand-700">Aggiungi Domanda</button>
-            <button type="button" id="cancelEditBtn" class="hidden rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">Annulla</button>
+            <button type="submit" id="saveQuestionBtn" class="btn-glass flex-1 rounded-xl bg-brand-600/90 px-4 py-3 text-sm font-bold text-white dark:bg-brand-500/20 dark:text-brand-400">Aggiungi Domanda</button>
+            <button type="button" id="cancelEditBtn" class="btn-glass btn-glass-neutral hidden rounded-xl px-4 py-3 text-sm font-bold">Annulla</button>
           </div>
         </form>
       </section>
