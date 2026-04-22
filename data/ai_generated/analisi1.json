@@ -1,0 +1,2232 @@
+[
+  {
+    "argomento": "Limiti",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Qual è il limite di 1/x per x che tende a +infinito?",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. 1 diviso un numero infinitamente grande tende a 0." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. 1/x decresce all'aumentare di x." },
+          { "testo_risposta": "+infinito", "spiegazione_vera_o_falsa": "Errato. Questo accade per x che tende a 0 da destra." },
+          { "testo_risposta": "-infinito", "spiegazione_vera_o_falsa": "Errato. La funzione è positiva per x positivi." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Quanto vale il limite per x -> 0 di sin(x)/x?",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. È un limite notevole fondamentale." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Sebbene sin(0)=0 e x=0, il rapporto tende a 1." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il limite è finito." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Il limite esiste ed è finito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Il limite per x -> +infinito di x^2 / x^3 è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. Il denominatore ha grado maggiore." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. I gradi sono diversi." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il numeratore cresce più lentamente." },
+          { "testo_risposta": "2/3", "spiegazione_vera_o_falsa": "Errato. Questo varrebbe se i gradi fossero uguali." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quanto vale il limite per x -> 0 di (1 - cos(x)) / x^2?",
+        "risposte": [
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Corretto. È un limite notevole derivato dallo sviluppo di Taylor." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Il numeratore va a zero come x^2/2." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Manca il fattore 1/2." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il limite è finito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il limite per x -> 0 di ln(1+x)/x è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Limite notevole legato alla derivata del logaritmo in 1." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. ln(1+x) è asintotico a x per x che tende a 0." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. e compare nel limite di (1+1/x)^x." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. È una forma indeterminata 0/0 che risolve a 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Per x -> +infinito, la funzione f(x) = e^x / x^100 tende a:",
+        "risposte": [
+          { "testo_risposta": "+infinito", "spiegazione_vera_o_falsa": "Corretto. L'esponenziale prevale su qualsiasi potenza di x." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Succederebbe se x fosse al denominatore con grado maggiore." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Gli ordini di infinito sono diversi." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. Il rapporto diverge." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è il limite per x -> 0+ di x * ln(x)?",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. La potenza x 'vince' sul logaritmo ln(x)." },
+          { "testo_risposta": "-infinito", "spiegazione_vera_o_falsa": "Errato. Sebbene ln(x) tenda a -infinito, il prodotto tende a 0." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Non è un limite notevole che da 1." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Il limite esiste ed è 0." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per x -> 0 di (e^x - 1) / x è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Rappresenta la derivata di e^x calcolata in x=0." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. e^x è circa 1+x per x piccolo." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. e è il valore della funzione in 1, non il limite." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. È una forma 0/0 che tende a 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Usando de l'Hôpital, il limite per x -> 0 di sin(5x) / sin(2x) è:",
+        "risposte": [
+          { "testo_risposta": "5/2", "spiegazione_vera_o_falsa": "Corretto. Derivando sopra e sotto si ottiene 5cos(5x)/2cos(2x), che per x=0 fa 5/2." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. I coefficienti degli argomenti contano." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Entrambi tendono a 0 con la stessa velocità." },
+          { "testo_risposta": "2/5", "spiegazione_vera_o_falsa": "Errato. Hai invertito i coefficienti." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per x -> +infinito di (1 + 1/x)^x è:",
+        "risposte": [
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Corretto. È la definizione stessa del numero di Nepero." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. È una forma indeterminata 1^infinito che tende a e." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La crescita è limitata." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. La base è maggiore di 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si intende per 'o-piccolo' di x^2 per x -> 0?",
+        "risposte": [
+          { "testo_risposta": "Una funzione che tende a 0 più velocemente di x^2", "spiegazione_vera_o_falsa": "Corretto. f(x) = o(x^2) se lim f(x)/x^2 = 0." },
+          { "testo_risposta": "Una funzione che tende a 0 come x^2", "spiegazione_vera_o_falsa": "Errato. Quello sarebbe un O-grande o asintotico." },
+          { "testo_risposta": "Una funzione che è sempre minore di x^2", "spiegazione_vera_o_falsa": "Errato. Riguarda il comportamento al limite, non una disuguaglianza puntuale ovunque." },
+          { "testo_risposta": "Una costante piccola", "spiegazione_vera_o_falsa": "Errato. È un concetto asintotico per funzioni." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il limite per x -> 0 di (tan(x) - x) / x^3 è:",
+        "risposte": [
+          { "testo_risposta": "1/3", "spiegazione_vera_o_falsa": "Corretto. Dallo sviluppo di Taylor di tan(x) = x + x^3/3 + o(x^3)." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Il termine x^3 non si cancella." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Lo sviluppo della tangente ha 1/3 come coefficiente del terzo ordine." },
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Errato. 1/2 appare nello sviluppo del coseno." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Qual è il limite per x -> 0 di x^x?",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Si scrive come e^(x ln x). Poiché x ln x -> 0, il limite è e^0 = 1." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Nonostante la base vada a 0, l'esponente influisce rendendo il limite 1." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La funzione è limitata vicino a 0." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Il limite esiste (da destra)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il limite per x -> +infinito di x * (pi/2 - arctan(x)) è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Usando l'identità pi/2 - arctan(x) = arctan(1/x) e sapendo che arctan(1/x) ~ 1/x." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. È una forma inf * 0 che tende a 1." },
+          { "testo_risposta": "pi/2", "spiegazione_vera_o_falsa": "Errato. pi/2 è il limite di arctan(x)." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La decrescita di pi/2-arctan(x) compensa la crescita di x." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Qual è lo sviluppo di Taylor al second'ordine di f(x) = sqrt(1+x) intorno a x=0?",
+        "risposte": [
+          { "testo_risposta": "1 + x/2 - x^2/8 + o(x^2)", "spiegazione_vera_o_falsa": "Corretto. Applicando la formula per (1+x)^alpha con alpha=1/2." },
+          { "testo_risposta": "1 + x/2 + x^2/8 + o(x^2)", "spiegazione_vera_o_falsa": "Errato. Il segno del secondo termine è negativo." },
+          { "testo_risposta": "1 - x/2 + x^2/4 + o(x^2)", "spiegazione_vera_o_falsa": "Errato. Coefficienti errati." },
+          { "testo_risposta": "1 + x + x^2 + o(x^2)", "spiegazione_vera_o_falsa": "Errato. Questo è lo sviluppo di 1/(1-x)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Se lim f(x) = 2 e lim g(x) = 3 per x -> c, quanto vale lim (f(x) + g(x))?",
+        "risposte": [
+          { "testo_risposta": "5", "spiegazione_vera_o_falsa": "Corretto. Il limite della somma è la somma dei limiti." },
+          { "testo_risposta": "6", "spiegazione_vera_o_falsa": "Errato. Questo varrebbe per il prodotto." },
+          { "testo_risposta": "2/3", "spiegazione_vera_o_falsa": "Errato. Questo varrebbe per il rapporto." },
+          { "testo_risposta": "Non si può dire", "spiegazione_vera_o_falsa": "Errato. I limiti finiti si sommano linearmente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Il limite per x -> 2 di (x^2 - 4) / (x - 2) è:",
+        "risposte": [
+          { "testo_risposta": "4", "spiegazione_vera_o_falsa": "Corretto. Scomponendo (x-2)(x+2) e semplificando x-2, resta x+2, che per x=2 fa 4." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. È una forma 0/0 risolvibile." },
+          { "testo_risposta": "2", "spiegazione_vera_o_falsa": "Errato. Calcolo errato della semplificazione." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La discontinuità è eliminabile." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Cosa significa che f(x) è continua in x_0?",
+        "risposte": [
+          { "testo_risposta": "Il limite per x -> x_0 di f(x) è uguale a f(x_0)", "spiegazione_vera_o_falsa": "Corretto. Definizione di continuità." },
+          { "testo_risposta": "La funzione è derivabile in x_0", "spiegazione_vera_o_falsa": "Errato. La derivabilità implica continuità, ma non viceversa." },
+          { "testo_risposta": "La funzione è definita in x_0", "spiegazione_vera_o_falsa": "Errato. Essere definita è necessario ma non sufficiente." },
+          { "testo_risposta": "Il limite destro è uguale al limite sinistro", "spiegazione_vera_o_falsa": "Errato. Necessario per l'esistenza del limite, ma deve anche coincidere col valore della funzione." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Una funzione f ha un asintoto orizzontale y=L se:",
+        "risposte": [
+          { "testo_risposta": "Il limite per x -> infinito di f(x) è L", "spiegazione_vera_o_falsa": "Corretto. Definizione di asintoto orizzontale." },
+          { "testo_risposta": "f(L) = 0", "spiegazione_vera_o_falsa": "Errato. Questo riguarda gli zeri." },
+          { "testo_risposta": "La derivata in L è nulla", "spiegazione_vera_o_falsa": "Errato. Riguarda i punti critici." },
+          { "testo_risposta": "Il limite per x -> L di f(x) è infinito", "spiegazione_vera_o_falsa": "Errato. Questo definisce un asintoto verticale x=L." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il limite per x -> 0 di sin(3x) / x è:",
+        "risposte": [
+          { "testo_risposta": "3", "spiegazione_vera_o_falsa": "Corretto. Moltiplicando e dividendo per 3 si riconduce al limite notevole." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Bisogna considerare il coefficiente 3." },
+          { "testo_risposta": "1/3", "spiegazione_vera_o_falsa": "Errato. Il 3 è al numeratore nell'argomento." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Forma 0/0 che tende a 3." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Quale delle seguenti funzioni è un infinito di ordine superiore a x^2 per x -> +infinito?",
+        "risposte": [
+          { "testo_risposta": "x^2 ln(x)", "spiegazione_vera_o_falsa": "Corretto. Il logaritmo aggiunge un fattore che diverge, rendendolo di ordine superiore." },
+          { "testo_risposta": "x^2 / ln(x)", "spiegazione_vera_o_falsa": "Errato. È di ordine inferiore a x^2." },
+          { "testo_risposta": "100 x^2", "spiegazione_vera_o_falsa": "Errato. Ha lo stesso ordine." },
+          { "testo_risposta": "x sin(x)", "spiegazione_vera_o_falsa": "Errato. Addirittura non è un infinito perché oscilla." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per x -> 0 di [ln(1+x^2)] / [1 - cos(x)] è:",
+        "risposte": [
+          { "testo_risposta": "2", "spiegazione_vera_o_falsa": "Corretto. ln(1+x^2) ~ x^2 e 1-cos(x) ~ x^2/2. Il rapporto tende a 1/(1/2) = 2." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Bisogna considerare il fattore 1/2 del coseno." },
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Errato. Il 1/2 è al denominatore." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Entrambi vanno a zero come x^2." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Una funzione ha una discontinuità di salto (prima specie) in x_0 se:",
+        "risposte": [
+          { "testo_risposta": "Esistono finiti i limiti destro e sinistro ma sono diversi", "spiegazione_vera_o_falsa": "Corretto. Definizione di salto." },
+          { "testo_risposta": "Uno dei due limiti è infinito", "spiegazione_vera_o_falsa": "Errato. Questa è di seconda specie." },
+          { "testo_risposta": "Il limite esiste ma è diverso da f(x_0)", "spiegazione_vera_o_falsa": "Errato. Questa è eliminabile (terza specie)." },
+          { "testo_risposta": "La funzione non è definita in x_0", "spiegazione_vera_o_falsa": "Errato. Non basta a definire il tipo di discontinuità." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per x -> +infinito di sqrt(x^2 + x) - x è:",
+        "risposte": [
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Corretto. Razionalizzando: x / (sqrt(x^2+x) + x) -> x / (x + x) = 1/2." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. La differenza non si annulla del tutto." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La crescita è bilanciata." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Hai dimenticato il fattore 2 al denominatore." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Per quali valori di alpha il limite per x -> 0 di sin(x^2) / x^alpha è finito e diverso da 0?",
+        "risposte": [
+          { "testo_risposta": "alpha = 2", "spiegazione_vera_o_falsa": "Corretto. sin(x^2) è asintotico a x^2, quindi serve alpha=2." },
+          { "testo_risposta": "alpha = 1", "spiegazione_vera_o_falsa": "Errato. Il limite sarebbe 0." },
+          { "testo_risposta": "alpha = 3", "spiegazione_vera_o_falsa": "Errato. Il limite sarebbe infinito." },
+          { "testo_risposta": "Ogni alpha positivo", "spiegazione_vera_o_falsa": "Errato. Il valore del limite dipende strettamente da alpha." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il limite per x -> 0 di (cos x - e^(-x^2/2)) / x^4 è:",
+        "risposte": [
+          { "testo_risposta": "-1/12", "spiegazione_vera_o_falsa": "Corretto. Usando gli sviluppi: cos x = 1 - x^2/2 + x^4/24; e^(-x^2/2) = 1 - x^2/2 + x^4/8. La differenza è (1/24 - 1/8)x^4 = -1/12 x^4." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. I termini del quart'ordine sono diversi." },
+          { "testo_risposta": "1/24", "spiegazione_vera_o_falsa": "Errato. Bisogna sottrarre il termine dell'esponenziale." },
+          { "testo_risposta": "1/12", "spiegazione_vera_o_falsa": "Errato. Errore di segno." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il teorema della permanenza del segno afferma che:",
+        "risposte": [
+          { "testo_risposta": "Se il limite in c è positivo, f è positiva in un intorno di c", "spiegazione_vera_o_falsa": "Corretto. Il segno del limite si 'trasmette' alla funzione localmente." },
+          { "testo_risposta": "Se f è positiva, il suo limite è positivo", "spiegazione_vera_o_falsa": "Errato. Potrebbe essere nullo (es. f(x)=x^2)." },
+          { "testo_risposta": "La derivata ha lo stesso segno della funzione", "spiegazione_vera_o_falsa": "Errato. Non c'è legame diretto tra segno di f e f'." },
+          { "testo_risposta": "Il limite di una funzione positiva è sempre infinito", "spiegazione_vera_o_falsa": "Errato. Può essere qualsiasi valore non negativo." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Il limite per x -> 0 di [sin(x) - arctan(x)] / [x^2 ln(1+x)] è:",
+        "risposte": [
+          { "testo_risposta": "1/6", "spiegazione_vera_o_falsa": "Corretto. sin(x) = x - x^3/6 + ..., arctan(x) = x - x^3/3 + ... Numeratore ~ x^3/6. Denominatore ~ x^2 * x = x^3. Rapporto -> 1/6." },
+          { "testo_risposta": "-1/6", "spiegazione_vera_o_falsa": "Errato. arctan cresce più lentamente di sin vicino a 0 (per il termine x^3)." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Gli ordini di infinitesimo coincidono." },
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Errato. Derivante da errori negli sviluppi." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Qual è la condizione necessaria e sufficiente affinché f ammetta asintoto obliquo y = mx + q per x -> +inf?",
+        "risposte": [
+          { "testo_risposta": "Esistono finiti m = lim f(x)/x (m != 0) e q = lim (f(x) - mx)", "spiegazione_vera_o_falsa": "Corretto. Definizione operativa di asintoto obliquo." },
+          { "testo_risposta": "lim f(x) = infinito", "spiegazione_vera_o_falsa": "Errato. Condizione necessaria ma non sufficiente." },
+          { "testo_risposta": "f'(x) tende a m", "spiegazione_vera_o_falsa": "Errato. È necessaria ma non garantisce l'esistenza di q (es. ln x)." },
+          { "testo_risposta": "f è un polinomio di grado 2", "spiegazione_vera_o_falsa": "Errato. Un polinomio di grado 2 ha una parabola come asintoto curvilineo, non una retta." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Il limite per x -> 0 di cos(x) è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. La funzione coseno è continua e cos(0)=1." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. cos(0) non è 0." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Esiste ed è un valore fondamentale." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il coseno è limitato tra -1 e 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il limite per x -> +infinito di (x + sin x) / x è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. sin(x)/x tende a 0 per il teorema del confronto (carabinieri)." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Sebbene sin(x) oscilli, il termine x al denominatore lo 'schiaccia'." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. x/x fa 1." },
+          { "testo_risposta": "2", "spiegazione_vera_o_falsa": "Errato. sin(x) non tende a x all'infinito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Una funzione f definita in [a,b] ha un massimo assoluto se:",
+        "risposte": [
+          { "testo_risposta": "f è continua (Teorema di Weierstrass)", "spiegazione_vera_o_falsa": "Corretto. Su un intervallo chiuso e limitato, la continuità garantisce l'esistenza di massimo e minimo." },
+          { "testo_risposta": "f è derivabile", "spiegazione_vera_o_falsa": "Errato. Non è necessario, basta la continuità." },
+          { "testo_risposta": "f è monotona", "spiegazione_vera_o_falsa": "Errato. La monotonia garantisce che i massimi siano agli estremi, ma non l'esistenza se non è continua." },
+          { "testo_risposta": "f(a) = f(b)", "spiegazione_vera_o_falsa": "Errato. Questo è legato al teorema di Rolle per la derivata." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per x -> 0 di [log_2(1+x)] / x è:",
+        "risposte": [
+          { "testo_risposta": "1 / ln 2", "spiegazione_vera_o_falsa": "Corretto. Per il cambio di base ln(1+x)/(x ln 2), che tende a 1/ln 2." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Vale solo per il logaritmo naturale (base e)." },
+          { "testo_risposta": "ln 2", "spiegazione_vera_o_falsa": "Errato. Hai invertito il fattore di conversione." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Forma 0/0." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Successioni",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Una successione a_n converge a L se:",
+        "risposte": [
+          { "testo_risposta": "Per ogni epsilon > 0, definitivamente |a_n - L| < epsilon", "spiegazione_vera_o_falsa": "Corretto. Definizione formale di limite per successioni." },
+          { "testo_risposta": "a_n è sempre minore di L", "spiegazione_vera_o_falsa": "Errato. Può oscillare attorno a L." },
+          { "testo_risposta": "a_n cresce sempre", "spiegazione_vera_o_falsa": "Errato. Questa è la monotonia." },
+          { "testo_risposta": "L è il primo termine della successione", "spiegazione_vera_o_falsa": "Errato. Il limite riguarda il comportamento all'infinito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Il limite della successione a_n = (-1)^n è:",
+        "risposte": [
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Corretto. La successione oscilla tra -1 e 1 senza stabilizzarsi." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. I termini non tendono a zero." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Solo i termini pari valgono 1." },
+          { "testo_risposta": "±1", "spiegazione_vera_o_falsa": "Errato. Il limite, se esiste, deve essere unico." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "La successione a_n = 1/n è:",
+        "risposte": [
+          { "testo_risposta": "Decrescente e convergente a 0", "spiegazione_vera_o_falsa": "Corretto. Ogni termine è minore del precedente e tende a 0." },
+          { "testo_risposta": "Crescente", "spiegazione_vera_o_falsa": "Errato. I termini diventano sempre più piccoli." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. Tende a un valore finito." },
+          { "testo_risposta": "Oscillante", "spiegazione_vera_o_falsa": "Errato. Ha un andamento regolare." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Una successione monotona e limitata è sempre:",
+        "risposte": [
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Corretto. È un teorema fondamentale delle successioni reali." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. Essendo limitata non può divergere." },
+          { "testo_risposta": "Nulla", "spiegazione_vera_o_falsa": "Errato. Può convergere a qualsiasi valore reale." },
+          { "testo_risposta": "Costante", "spiegazione_vera_o_falsa": "Errato. Può variare, purché mantenga il verso di monotonia." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il limite per n -> infinito di (n^2 + 1) / (2n^2 - n) è:",
+        "risposte": [
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Corretto. Rapporto tra i coefficienti dei termini di grado massimo." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Il coefficiente al denominatore è 2." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. I gradi sono uguali." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La crescita è bilanciata dallo stesso grado." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La successione a_n = q^n converge a 0 se:",
+        "risposte": [
+          { "testo_risposta": "|q| < 1", "spiegazione_vera_o_falsa": "Corretto. È il comportamento della progressione geometrica." },
+          { "testo_risposta": "q > 1", "spiegazione_vera_o_falsa": "Errato. In questo caso diverge a +infinito." },
+          { "testo_risposta": "q = 1", "spiegazione_vera_o_falsa": "Errato. Converge a 1." },
+          { "testo_risposta": "q = -1", "spiegazione_vera_o_falsa": "Errato. Oscilla tra -1 e 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è il limite per n -> infinito di n! / n^n?",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. n^n è un infinito di ordine superiore rispetto al fattoriale." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. n^n cresce molto più velocemente." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il numeratore è più piccolo." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. e appare in limiti simili legati a Stirling, ma non qui." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il Teorema di Bolzano-Weierstrass afferma che:",
+        "risposte": [
+          { "testo_risposta": "Ogni successione limitata ammette una sottosuccessione convergente", "spiegazione_vera_o_falsa": "Corretto. Risultato cruciale per la compattezza." },
+          { "testo_risposta": "Ogni successione converge", "spiegazione_vera_o_falsa": "Errato. Esistono successioni divergenti o oscillanti." },
+          { "testo_risposta": "Le successioni monotone sono limitate", "spiegazione_vera_o_falsa": "Errato. Possono divergere (es. a_n = n)." },
+          { "testo_risposta": "Ogni successione ha limite unico", "spiegazione_vera_o_falsa": "Errato. È una proprietà del limite, non il contenuto del teorema." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per n -> infinito di (1 + 2/n)^n è:",
+        "risposte": [
+          { "testo_risposta": "e^2", "spiegazione_vera_o_falsa": "Corretto. Generalizzazione del limite di Nepero: (1+k/n)^n -> e^k." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. Il numeratore 2 influenza l'esponente del risultato." },
+          { "testo_risposta": "2e", "spiegazione_vera_o_falsa": "Errato. Il 2 finisce all'esponente." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Forma 1^infinito che diverge da 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si può dire di una successione a_n tale che a_n -> +infinito?",
+        "risposte": [
+          { "testo_risposta": "È definitivamente positiva e non limitata superiormente", "spiegazione_vera_o_falsa": "Corretto. Per definizione di divergenza positiva." },
+          { "testo_risposta": "È sempre crescente", "spiegazione_vera_o_falsa": "Errato. Può divergere pur avendo dei piccoli cali locali." },
+          { "testo_risposta": "È una progressione aritmetica", "spiegazione_vera_o_falsa": "Errato. Molti tipi di successioni divergono." },
+          { "testo_risposta": "È limitata inferiormente", "spiegazione_vera_o_falsa": "Corretto. (Nota: tecnicamente vero, ma la risposta più specifica è la prima). Se tende a +inf, è definitivamente > M per ogni M." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il limite per n -> infinito della radice n-esima di n è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Si scrive come e^(ln(n)/n), e ln(n)/n -> 0." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. La base cresce, rendendo il limite 1." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La radice n-esima 'schiaccia' la crescita di n." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. e non è il risultato di questo limite." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Cosa afferma il criterio del rapporto per le successioni?",
+        "risposte": [
+          { "testo_risposta": "Se lim a_{n+1}/a_n = L < 1, allora a_n -> 0", "spiegazione_vera_o_falsa": "Corretto. Utilissimo per successioni con fattoriali o esponenziali." },
+          { "testo_risposta": "Se lim a_{n+1}/a_n = 1, la successione converge", "spiegazione_vera_o_falsa": "Errato. Il caso L=1 è dubio (es. 1/n e 1 sono diverse)." },
+          { "testo_risposta": "Il limite è sempre L", "spiegazione_vera_o_falsa": "Errato. L è il limite del rapporto, non della successione." },
+          { "testo_risposta": "La successione è decrescente se L < 1", "spiegazione_vera_o_falsa": "Errato. È definitivamente decrescente, ma il risultato principale riguarda il limite." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il limite per n -> infinito di [n!^(1/n)] / n è:",
+        "risposte": [
+          { "testo_risposta": "1/e", "spiegazione_vera_o_falsa": "Corretto. Deriva direttamente dalla formula di Stirling o dal criterio radice/rapporto." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Stirling mostra che n! ~ (n/e)^n sqrt(2pi n)." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. È il reciproco di e." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Entrambi crescono con la stessa velocità (ordine n)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Quale di queste successioni è definita per ricorrenza?",
+        "risposte": [
+          { "testo_risposta": "a_0 = 1, a_{n+1} = sqrt(2 + a_n)", "spiegazione_vera_o_falsa": "Corretto. Ogni termine dipende dal precedente." },
+          { "testo_risposta": "a_n = 1/n", "spiegazione_vera_o_falsa": "Errato. È definita in forma esplicita." },
+          { "testo_risposta": "a_n = sin(n)", "spiegazione_vera_o_falsa": "Errato. Definizione esplicita." },
+          { "testo_risposta": "a_n = n^2 + n", "spiegazione_vera_o_falsa": "Errato. Definizione esplicita." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Il limite per n -> infinito di sum_{k=1}^n (1/k) - ln(n) è:",
+        "risposte": [
+          { "testo_risposta": "La costante di Eulero-Mascheroni (gamma)", "spiegazione_vera_o_falsa": "Corretto. Valore circa 0.577, limite della differenza tra serie armonica e logaritmo." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Sebbene crescano in modo simile, la differenza non scompare." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Il limite è una costante specifica irrazionale." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La differenza è limitata." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Data la successione a_n definita da a_1=1 e a_{n+1}=a_n + 1/a_n, il suo comportamento per n -> inf è:",
+        "risposte": [
+          { "testo_risposta": "Diverge a +infinito", "spiegazione_vera_o_falsa": "Corretto. Se convergesse a L, L = L + 1/L -> 1/L = 0 (impossibile)." },
+          { "testo_risposta": "Converge a 1", "spiegazione_vera_o_falsa": "Errato. La successione è crescente." },
+          { "testo_risposta": "Converge a 2", "spiegazione_vera_o_falsa": "Errato. Non ha limite finito." },
+          { "testo_risposta": "Oscilla", "spiegazione_vera_o_falsa": "Errato. È monotona crescente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Cosa si intende per 'termine generale' di una successione?",
+        "risposte": [
+          { "testo_risposta": "L'espressione a_n che permette di calcolare ogni termine", "spiegazione_vera_o_falsa": "Corretto. È la legge che definisce la successione." },
+          { "testo_risposta": "Il valore del limite", "spiegazione_vera_o_falsa": "Errato. Il limite è il comportamento finale." },
+          { "testo_risposta": "La somma dei primi n termini", "spiegazione_vera_o_falsa": "Errato. Quella è la somma parziale." },
+          { "testo_risposta": "Il primo elemento a_1", "spiegazione_vera_o_falsa": "Errato. È solo uno dei termini." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il limite per n -> infinito di sin(n) / n è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. sin(n) è limitata tra -1 e 1, mentre n diverge." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Questo varrebbe per x -> 0, non per n -> inf." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Sebbene sin(n) non abbia limite, il rapporto con n lo ha." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il numeratore è piccolo rispetto al denominatore." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Una successione a_n è limitata se:",
+        "risposte": [
+          { "testo_risposta": "Esiste M tale che |a_n| <= M per ogni n", "spiegazione_vera_o_falsa": "Corretto. Tutti i termini sono compresi in un intervallo finito." },
+          { "testo_risposta": "Converge a 0", "spiegazione_vera_o_falsa": "Errato. Può convergere a 100 ed essere limitata, o oscillare tra -1 e 1." },
+          { "testo_risposta": "È decrescente", "spiegazione_vera_o_falsa": "Errato. Può decrescere all'infinito negativo (es. -n)." },
+          { "testo_risposta": "Ha solo termini positivi", "spiegazione_vera_o_falsa": "Errato. Può essere positiva ma non limitata (es. n)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per n -> infinito di (n + ln n) / (n - sqrt(n)) è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. n è l'infinito dominante sia sopra che sotto." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. I termini dominanti hanno lo stesso grado." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. ln(n) e sqrt(n) sono trascurabili rispetto a n." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. Nessuna struttura di limite di Nepero." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se a_n -> A e b_n -> B, allora a_n * b_n tende a:",
+        "risposte": [
+          { "testo_risposta": "A * B", "spiegazione_vera_o_falsa": "Corretto. Proprietà algebrica dei limiti." },
+          { "testo_risposta": "A + B", "spiegazione_vera_o_falsa": "Errato. Questa è la somma." },
+          { "testo_risposta": "Max(A, B)", "spiegazione_vera_o_falsa": "Errato. Non è una proprietà dei limiti." },
+          { "testo_risposta": "A^B", "spiegazione_vera_o_falsa": "Errato. Questo vale per l'esponenziazione." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per n -> infinito di 3^n / n! è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. Il fattoriale cresce più velocemente di qualsiasi esponenziale." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. 3^n è 'vinto' da n!." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Stirling o criterio del rapporto confermano 0." },
+          { "testo_risposta": "3", "spiegazione_vera_o_falsa": "Errato. Il 3 non influisce sul comportamento asintotico finale." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La successione a_n = cos(n pi) è:",
+        "risposte": [
+          { "testo_risposta": "Identica a (-1)^n", "spiegazione_vera_o_falsa": "Corretto. Per n intero, cos(n pi) vale 1 se n è pari e -1 se n è dispari." },
+          { "testo_risposta": "Sempre 0", "spiegazione_vera_o_falsa": "Errato. Vale 0 solo per multipli dispari di pi/2." },
+          { "testo_risposta": "Convergente a 1", "spiegazione_vera_o_falsa": "Errato. Oscilla." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. È limitata ma non ha limite." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il limite per n -> infinito di (1 - 1/n^2)^n è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Si scrive come [(1 - 1/n^2)^(n^2)]^(1/n) -> (1/e)^0 = 1." },
+          { "testo_risposta": "1/e", "spiegazione_vera_o_falsa": "Errato. Questo accadrebbe se l'esponente fosse n^2." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. La base è minore di 1." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. La base tende a 1 troppo velocemente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Una successione di Cauchy è:",
+        "risposte": [
+          { "testo_risposta": "Una successione i cui termini diventano arbitrariamente vicini tra loro", "spiegazione_vera_o_falsa": "Corretto. In R, essere di Cauchy equivale a convergere." },
+          { "testo_risposta": "Una successione che tende a infinito", "spiegazione_vera_o_falsa": "Errato. Quelle non sono di Cauchy." },
+          { "testo_risposta": "Una successione con termini tutti uguali", "spiegazione_vera_o_falsa": "Errato. Questa è costante (ed è anche di Cauchy, ma non è la definizione)." },
+          { "testo_risposta": "Una successione non limitata", "spiegazione_vera_o_falsa": "Errato. Le successioni di Cauchy sono sempre limitate." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Il limite per n -> infinito di sqrt[n](n^10 + 2^n) è:",
+        "risposte": [
+          { "testo_risposta": "2", "spiegazione_vera_o_falsa": "Corretto. 2^n domina n^10. sqrt[n](2^n) = 2, e il termine n^10 influisce come (1 + n^10/2^n)^(1/n) -> 1." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Il termine esponenziale prevale." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La radice n-esima bilancia l'esponente n." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. Risultato non corretto per questa forma." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa si può dire dei 'limiti notevoli' delle successioni rispetto a quelli delle funzioni?",
+        "risposte": [
+          { "testo_risposta": "Sono gli stessi applicando il teorema di collegamento", "spiegazione_vera_o_falsa": "Corretto. Se lim_{x->inf} f(x) = L, allora lim_{n->inf} f(n) = L." },
+          { "testo_risposta": "Sono completamente diversi", "spiegazione_vera_o_falsa": "Errato. Molte regole coincidono." },
+          { "testo_risposta": "Valgono solo se la successione è monotona", "spiegazione_vera_o_falsa": "Errato. Valgono in generale." },
+          { "testo_risposta": "Non esistono limiti notevoli per successioni", "spiegazione_vera_o_falsa": "Errato. Esempio: Nepero." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Il limite di n / (n + 1) è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. Dividendo per n si ottiene 1 / (1 + 1/n) -> 1." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Numeratore e denominatore crescono allo stesso modo." },
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Errato. Vale per n=1, ma non è il limite." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il rapporto è sempre minore di 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La successione a_n = n^2 + (-1)^n n è:",
+        "risposte": [
+          { "testo_risposta": "Divergente a +infinito", "spiegazione_vera_o_falsa": "Corretto. n^2 domina il termine oscillante n." },
+          { "testo_risposta": "Oscillante", "spiegazione_vera_o_falsa": "Errato. Le oscillazioni sono piccole rispetto alla crescita di n^2." },
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Errato. n^2 tende a infinito." },
+          { "testo_risposta": "Limitata", "spiegazione_vera_o_falsa": "Errato. Cresce senza limiti." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Se a_n -> 0, cosa si può dire di sin(a_n)?",
+        "risposte": [
+          { "testo_risposta": "Tende a 0", "spiegazione_vera_o_falsa": "Corretto. Per la continuità del seno in 0." },
+          { "testo_risposta": "Tende a 1", "spiegazione_vera_o_falsa": "Errato. sin(0) = 0." },
+          { "testo_risposta": "Oscilla", "spiegazione_vera_o_falsa": "Errato. La base a_n sta scomparendo." },
+          { "testo_risposta": "Tende ad a_n", "spiegazione_vera_o_falsa": "Corretto. (Nota: tecnicamente vero come asintotico, ma il limite è 0)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il limite per n -> infinito di ln(n!) / n^2 è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. ln(n!) è circa n ln n (Stirling), che è trascurabile rispetto a n^2." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Il denominatore cresce molto più velocemente." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il logaritmo del fattoriale cresce meno di n^2." },
+          { "testo_risposta": "ln 2", "spiegazione_vera_o_falsa": "Errato. Risultato privo di fondamento per questo limite." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è il limite di (n^3 + e^n) / (n! + 1)?",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. n! domina sia e^n che n^3." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Gli ordini di infinito sono diversi." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Il denominatore prevale." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. e^n non è sufficiente a bilanciare n!." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se a_n è una sottosuccessione di b_n e b_n -> L, allora:",
+        "risposte": [
+          { "testo_risposta": "a_n -> L", "spiegazione_vera_o_falsa": "Corretto. Ogni sottosuccessione eredita il limite della successione madre." },
+          { "testo_risposta": "a_n non ha limite", "spiegazione_vera_o_falsa": "Errato. Deve convergere allo stesso valore." },
+          { "testo_risposta": "a_n -> L/2", "spiegazione_vera_o_falsa": "Errato. Non c'è dimezzamento." },
+          { "testo_risposta": "Non si può dire nulla", "spiegazione_vera_o_falsa": "Errato. È una proprietà fondamentale della convergenza." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Serie",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Cosa si intende per 'serie' di termine generale a_n?",
+        "risposte": [
+          { "testo_risposta": "La somma infinita degli elementi a_n", "spiegazione_vera_o_falsa": "Corretto. Definita come il limite delle somme parziali." },
+          { "testo_risposta": "Il limite di a_n", "spiegazione_vera_o_falsa": "Errato. Quello è il limite della successione." },
+          { "testo_risposta": "Il prodotto degli a_n", "spiegazione_vera_o_falsa": "Errato. Quella è una produttoria." },
+          { "testo_risposta": "Una successione che oscilla", "spiegazione_vera_o_falsa": "Errato. Una serie può convergere, divergere o essere indeterminata." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "La condizione necessaria affinché una serie sum a_n converga è che:",
+        "risposte": [
+          { "testo_risposta": "a_n tenda a 0", "spiegazione_vera_o_falsa": "Corretto. Se il termine non scompare, la somma non può stabilizzarsi." },
+          { "testo_risposta": "a_n tenda a 1", "spiegazione_vera_o_falsa": "Errato. In tal caso la serie diverrebbe a infinito." },
+          { "testo_risposta": "a_n sia sempre positivo", "spiegazione_vera_o_falsa": "Errato. Esistono serie a segni alterni convergenti." },
+          { "testo_risposta": "a_n sia decrescente", "spiegazione_vera_o_falsa": "Errato. Utile per Leibniz, ma non necessaria in generale." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "La serie geometrica sum q^n converge se e solo se:",
+        "risposte": [
+          { "testo_risposta": "|q| < 1", "spiegazione_vera_o_falsa": "Corretto. In tal caso la somma è 1/(1-q) se parte da n=0." },
+          { "testo_risposta": "q <= 1", "spiegazione_vera_o_falsa": "Errato. Se q=1 la serie diverge (1+1+1...)." },
+          { "testo_risposta": "q > 0", "spiegazione_vera_o_falsa": "Errato. Il segno non basta, serve la limitatezza in modulo." },
+          { "testo_risposta": "q = 0", "spiegazione_vera_o_falsa": "Errato. Converge per un intero intervallo di valori." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La serie armonica sum (1/n) è:",
+        "risposte": [
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Corretto. Nonostante il termine generale tenda a 0, la somma cresce all'infinito." },
+          { "testo_risposta": "Convergente a 1", "spiegazione_vera_o_falsa": "Errato. Tende a infinito." },
+          { "testo_risposta": "Convergente a pi^2/6", "spiegazione_vera_o_falsa": "Errato. Quella è la serie dei reciproci dei quadrati sum(1/n^2)." },
+          { "testo_risposta": "Indeterminata", "spiegazione_vera_o_falsa": "Errato. Ha un andamento regolare verso l'infinito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Cosa afferma il criterio del confronto?",
+        "risposte": [
+          { "testo_risposta": "Se 0 <= a_n <= b_n e sum b_n converge, allora sum a_n converge", "spiegazione_vera_o_falsa": "Corretto. Una serie 'piccola' sotto una convergente deve convergere." },
+          { "testo_risposta": "Se sum a_n diverge, allora sum b_n converge", "spiegazione_vera_o_falsa": "Errato. La divergenza di una 'piccola' implica la divergenza della 'grande'." },
+          { "testo_risposta": "Le serie devono avere lo stesso limite", "spiegazione_vera_o_falsa": "Errato. Riguarda solo il carattere della serie (convergenza/divergenza)." },
+          { "testo_risposta": "Le serie devono essere a segni alterni", "spiegazione_vera_o_falsa": "Errato. Si applica tipicamente a serie a termini non negativi." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La serie sum (-1)^n / n è:",
+        "risposte": [
+          { "testo_risposta": "Convergente per il criterio di Leibniz", "spiegazione_vera_o_falsa": "Corretto. 1/n è decrescente e infinitesima." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. La somma a segni alterni compensa la crescita." },
+          { "testo_risposta": "Assolutamente convergente", "spiegazione_vera_o_falsa": "Errato. In modulo è la serie armonica, che diverge." },
+          { "testo_risposta": "Nulla", "spiegazione_vera_o_falsa": "Errato. La somma vale ln(2)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Una serie sum a_n converge assolutamente se:",
+        "risposte": [
+          { "testo_risposta": "La serie dei moduli sum |a_n| converge", "spiegazione_vera_o_falsa": "Corretto. L'assoluta convergenza implica la convergenza semplice." },
+          { "testo_risposta": "I termini a_n sono tutti positivi", "spiegazione_vera_o_falsa": "Errato. In tal caso convergenza semplice e assoluta coincidono, ma non è la definizione." },
+          { "testo_risposta": "La somma è un numero intero", "spiegazione_vera_o_falsa": "Errato. Irrilevante." },
+          { "testo_risposta": "Il limite di a_n è 0", "spiegazione_vera_o_falsa": "Errato. Condizione necessaria ma non sufficiente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il criterio della radice per le serie sum a_n afferma che:",
+        "risposte": [
+          { "testo_risposta": "Se lim sqrt[n](|a_n|) = L < 1, la serie converge assolutamente", "spiegazione_vera_o_falsa": "Corretto. Analogo al criterio del rapporto." },
+          { "testo_risposta": "Se L = 1, la serie diverge", "spiegazione_vera_o_falsa": "Errato. Il caso L=1 è inconcludente." },
+          { "testo_risposta": "La radice deve essere intera", "spiegazione_vera_o_falsa": "Errato. È un limite all'infinito." },
+          { "testo_risposta": "La serie converge a L", "spiegazione_vera_o_falsa": "Errato. L indica solo il comportamento dei termini, non la somma." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La serie sum (1 / n^p) converge se e solo se:",
+        "risposte": [
+          { "testo_risposta": "p > 1", "spiegazione_vera_o_falsa": "Corretto. È la serie armonica generalizzata." },
+          { "testo_risposta": "p >= 1", "spiegazione_vera_o_falsa": "Errato. Per p=1 è l'armonica divergente." },
+          { "testo_risposta": "p > 0", "spiegazione_vera_o_falsa": "Errato. Serve una decrescita più rapida di 1/n." },
+          { "testo_risposta": "p è un numero naturale", "spiegazione_vera_o_falsa": "Errato. p può essere qualsiasi numero reale." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si può dire di una serie a termini positivi che non converge?",
+        "risposte": [
+          { "testo_risposta": "Diverge a +infinito", "spiegazione_vera_o_falsa": "Corretto. Poiché le somme parziali sono crescenti, o convergono o divergono a +inf." },
+          { "testo_risposta": "Oscilla", "spiegazione_vera_o_falsa": "Errato. Servirebbero termini negativi per oscillare." },
+          { "testo_risposta": "Tende a un valore negativo", "spiegazione_vera_o_falsa": "Errato. I termini sono positivi." },
+          { "testo_risposta": "Non si può dire nulla", "spiegazione_vera_o_falsa": "Errato. Il comportamento è forzatamente divergenza positiva." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il criterio dell'integrale afferma che sum f(n) ha lo stesso carattere di:",
+        "risposte": [
+          { "testo_risposta": "Integrale tra 1 e +infinito di f(x) dx", "spiegazione_vera_o_falsa": "Corretto. Valido se f è positiva e decrescente." },
+          { "testo_risposta": "Derivata di f(n)", "spiegazione_vera_o_falsa": "Errato. Nessun legame diretto col carattere della serie." },
+          { "testo_risposta": "f(0)", "spiegazione_vera_o_falsa": "Errato. Irrilevante." },
+          { "testo_risposta": "Limite di f(x)", "spiegazione_vera_o_falsa": "Errato. Il limite deve essere 0, ma non basta." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La serie sum (n^2 / 2^n) è:",
+        "risposte": [
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Corretto. L'esponenziale 2^n domina la potenza n^2 (criterio del rapporto dà 1/2)." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. L'esponenziale al denominatore garantisce convergenza." },
+          { "testo_risposta": "Armonica", "spiegazione_vera_o_falsa": "Errato. Le serie armoniche hanno potenze di n al denominatore." },
+          { "testo_risposta": "Indeterminata", "spiegazione_vera_o_falsa": "Errato. È a termini positivi." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Qual è il raggio di convergenza della serie di potenze sum x^n / n! ?",
+        "risposte": [
+          { "testo_risposta": "Infinito", "spiegazione_vera_o_falsa": "Corretto. È lo sviluppo di e^x, valido per ogni x reale." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Quello vale per la serie geometrica sum x^n." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Convergerebbe solo in x=0." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato. Risultato non corretto." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Una serie di potenze sum c_n (x - a)^n converge sempre:",
+        "risposte": [
+          { "testo_risposta": "Nel punto x = a", "spiegazione_vera_o_falsa": "Corretto. Per x=a tutti i termini tranne il primo sono nulli." },
+          { "testo_risposta": "Per ogni x reale", "spiegazione_vera_o_falsa": "Errato. Dipende dal raggio di convergenza." },
+          { "testo_risposta": "In un intervallo centrato in 0", "spiegazione_vera_o_falsa": "Errato. Il centro è 'a'." },
+          { "testo_risposta": "Se c_n tende a 0", "spiegazione_vera_o_falsa": "Errato. Non è sufficiente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa accade se in una serie condizionatamente convergente (ma non assolutamente) si riordinano i termini?",
+        "risposte": [
+          { "testo_risposta": "Si può ottenere qualsiasi somma reale (Teorema di Riemann)", "spiegazione_vera_o_falsa": "Corretto. Proprietà sorprendente delle serie non assolutamente convergenti." },
+          { "testo_risposta": "La somma rimane invariata", "spiegazione_vera_o_falsa": "Errato. Vale solo per serie assolutamente convergenti." },
+          { "testo_risposta": "La serie diventa divergente", "spiegazione_vera_o_falsa": "Corretto. (Nota: tecnicamente vero che si può far divergere, ma la prima è più completa)." },
+          { "testo_risposta": "I termini diventano tutti positivi", "spiegazione_vera_o_falsa": "Errato. Il riordinamento cambia solo l'ordine, non il segno." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "La serie sum [1 / (n ln n)] per n da 2 a +inf è:",
+        "risposte": [
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Corretto. Per il criterio dell'integrale: integrale di 1/(x ln x) è ln(ln x), che diverge." },
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Errato. Il logaritmo non è sufficiente a garantire convergenza." },
+          { "testo_risposta": "Armonica generalizzata con p=2", "spiegazione_vera_o_falsa": "Errato. Manca il quadrato di n." },
+          { "testo_risposta": "Indeterminata", "spiegazione_vera_o_falsa": "Errato. Termini positivi." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Somma parziale n-esima di una serie è:",
+        "risposte": [
+          { "testo_risposta": "La somma dei primi n termini", "spiegazione_vera_o_falsa": "Corretto. S_n = a_1 + ... + a_n." },
+          { "testo_risposta": "Il limite della serie", "spiegazione_vera_o_falsa": "Errato. Quello è il limite di S_n per n -> inf." },
+          { "testo_risposta": "Il termine a_n", "spiegazione_vera_o_falsa": "Errato. È solo l'ultimo addendo." },
+          { "testo_risposta": "L'errore di approssimazione", "spiegazione_vera_o_falsa": "Errato. Quello è il resto R_n." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La serie telescopica sum [1/n - 1/(n+1)] converge a:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. I termini intermedi si cancellano e resta 1 - 1/(n+1), che tende a 1." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Il primo termine 1 non viene cancellato." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Converge." },
+          { "testo_risposta": "Non si può calcolare", "spiegazione_vera_o_falsa": "Errato. È uno dei pochi casi in cui la somma è esatta." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Se sum a_n converge e sum b_n converge, allora sum (a_n + b_n):",
+        "risposte": [
+          { "testo_risposta": "Converge alla somma dei limiti", "spiegazione_vera_o_falsa": "Corretto. La linearità vale anche per le serie." },
+          { "testo_risposta": "Diverge", "spiegazione_vera_o_falsa": "Errato. Somma di convergenti è convergente." },
+          { "testo_risposta": "Tende al prodotto dei limiti", "spiegazione_vera_o_falsa": "Errato. Quello varrebbe per il prodotto di Cauchy (con cautela)." },
+          { "testo_risposta": "Oscilla", "spiegazione_vera_o_falsa": "Errato. Comportamento regolare." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il criterio del confronto asintotico afferma che se a_n ~ b_n:",
+        "risposte": [
+          { "testo_risposta": "Le due serie hanno lo stesso carattere", "spiegazione_vera_o_falsa": "Corretto. Utilissimo per ricondursi a serie armoniche." },
+          { "testo_risposta": "Hanno la stessa somma", "spiegazione_vera_o_falsa": "Errato. Il carattere è lo stesso, il valore della somma no." },
+          { "testo_risposta": "Divergono entrambe", "spiegazione_vera_o_falsa": "Errato. Possono convergere entrambe." },
+          { "testo_risposta": "Una deve essere alternata", "spiegazione_vera_o_falsa": "Errato. Si usa per serie a termini definitivi costanti in segno." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La serie sum (sin n / n^2) è:",
+        "risposte": [
+          { "testo_risposta": "Assolutamente convergente", "spiegazione_vera_o_falsa": "Corretto. |sin n / n^2| <= 1/n^2, che converge." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. Il denominatore n^2 garantisce convergenza." },
+          { "testo_risposta": "Indeterminata", "spiegazione_vera_o_falsa": "Errato. Sebbene sin n oscilli, la convergenza assoluta la stabilizza." },
+          { "testo_risposta": "Armonica", "spiegazione_vera_o_falsa": "Errato. Ha un termine oscillante al numeratore." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è il limite di x_n se sum x_n converge?",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. Condizione necessaria di convergenza." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. La somma diverrebbe infinita." },
+          { "testo_risposta": "L != 0", "spiegazione_vera_o_falsa": "Errato. La serie diverrebbe." },
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Errato. Deve esistere e valere 0." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Per quali x converge la serie sum (x^n / n) ?",
+        "risposte": [
+          { "testo_risposta": "[-1, 1)", "spiegazione_vera_o_falsa": "Corretto. Raggio 1. In x=1 è l'armonica (diverge), in x=-1 è l'armonica alternata (converge)." },
+          { "testo_risposta": "(-1, 1)", "spiegazione_vera_o_falsa": "Errato. Include anche l'estremo -1." },
+          { "testo_risposta": "[-1, 1]", "spiegazione_vera_o_falsa": "Errato. Esclude 1." },
+          { "testo_risposta": "Ogni x reale", "spiegazione_vera_o_falsa": "Errato. Il raggio è finito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Cosa si intende per 'Resto n-esimo' R_n di una serie?",
+        "risposte": [
+          { "testo_risposta": "La somma dei termini dal (n+1)-esimo in poi", "spiegazione_vera_o_falsa": "Corretto. R_n = S - S_n." },
+          { "testo_risposta": "L'ultimo termine calcolato", "spiegazione_vera_o_falsa": "Errato. Quello è a_n." },
+          { "testo_risposta": "Il valore del limite", "spiegazione_vera_o_falsa": "Errato. R_n tende a 0 se la serie converge." },
+          { "testo_risposta": "Un numero che diverge", "spiegazione_vera_o_falsa": "Errato. Se la serie converge, il resto svanisce." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La serie sum (n! / n^n) è:",
+        "risposte": [
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Corretto. Criterio del rapporto dà 1/e < 1." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. n^n cresce molto più di n!." },
+          { "testo_risposta": "Indeterminata", "spiegazione_vera_o_falsa": "Errato. Termini positivi." },
+          { "testo_risposta": "Geometrica", "spiegazione_vera_o_falsa": "Errato. I termini non sono potenze costanti." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "La serie sum [(-1)^n * sin(1/n)] è:",
+        "risposte": [
+          { "testo_risposta": "Convergente ma non assolutamente", "spiegazione_vera_o_falsa": "Corretto. Converge per Leibniz, ma in modulo è asintotica a 1/n (armonica) che diverge." },
+          { "testo_risposta": "Assolutamente convergente", "spiegazione_vera_o_falsa": "Errato. sin(1/n) ~ 1/n." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. I segni alterni permettono convergenza semplice." },
+          { "testo_risposta": "Indeterminata", "spiegazione_vera_o_falsa": "Errato. Leibniz garantisce convergenza." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Qual è lo sviluppo in serie di Taylor di ln(1+x) intorno a x=0?",
+        "risposte": [
+          { "testo_risposta": "sum_{n=1}^inf (-1)^{n+1} x^n / n", "spiegazione_vera_o_falsa": "Corretto. x - x^2/2 + x^3/3 - ..." },
+          { "testo_risposta": "sum x^n / n!", "spiegazione_vera_o_falsa": "Errato. Questo è e^x." },
+          { "testo_risposta": "sum x^n", "spiegazione_vera_o_falsa": "Errato. Questa è 1/(1-x)." },
+          { "testo_risposta": "sum (-1)^n x^{2n}/(2n)!", "spiegazione_vera_o_falsa": "Errato. Questo è cos(x)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "In una serie sum a_n, se a_n = 2 per ogni n, la serie:",
+        "risposte": [
+          { "testo_risposta": "Diverge a +infinito", "spiegazione_vera_o_falsa": "Corretto. 2+2+2... cresce senza sosta." },
+          { "testo_risposta": "Converge a 2", "spiegazione_vera_o_falsa": "Errato. Quello è il limite della successione." },
+          { "testo_risposta": "Converge a 0", "spiegazione_vera_o_falsa": "Errato. I termini sono costanti positivi." },
+          { "testo_risposta": "È indeterminata", "spiegazione_vera_o_falsa": "Errato. Ha un comportamento divergente chiaro." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La somma della serie 1 + 1/2 + 1/4 + 1/8 + ... è:",
+        "risposte": [
+          { "testo_risposta": "2", "spiegazione_vera_o_falsa": "Corretto. Serie geometrica con q=1/2: 1/(1-1/2) = 2." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Il primo termine è già 1, e gli altri sono positivi." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Converge poiché |q|<1." },
+          { "testo_risposta": "1.5", "spiegazione_vera_o_falsa": "Errato. Calcolo parziale." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Se lim a_n != 0, la serie sum a_n:",
+        "risposte": [
+          { "testo_risposta": "Certamente non converge", "spiegazione_vera_o_falsa": "Corretto. Viola la condizione necessaria." },
+          { "testo_risposta": "Certamente diverge", "spiegazione_vera_o_falsa": "Errato. Potrebbe oscillare (es. a_n = (-1)^n)." },
+          { "testo_risposta": "Converge a lim a_n", "spiegazione_vera_o_falsa": "Errato. Confusione tra serie e successione." },
+          { "testo_risposta": "È nulla", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La serie sum (1 / sqrt(n)) è:",
+        "risposte": [
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Corretto. Armonica generalizzata con p=1/2 <= 1." },
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Errato. Decresce troppo lentamente." },
+          { "testo_risposta": "Oscillante", "spiegazione_vera_o_falsa": "Errato. Termini positivi." },
+          { "testo_risposta": "Assolutamente convergente", "spiegazione_vera_o_falsa": "Errato. Diverge sia in modulo che semplicemente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si deduce se lim |a_{n+1}/a_n| = 1?",
+        "risposte": [
+          { "testo_risposta": "Il criterio del rapporto non dà informazioni", "spiegazione_vera_o_falsa": "Corretto. Bisogna usare altri criteri (es. confronto)." },
+          { "testo_risposta": "La serie converge", "spiegazione_vera_o_falsa": "Errato. Non è garantito (es. 1/n e 1/n^2 hanno entrambi limite 1)." },
+          { "testo_risposta": "La serie diverge", "spiegazione_vera_o_falsa": "Errato. Non è garantito." },
+          { "testo_risposta": "La serie è geometrica", "spiegazione_vera_o_falsa": "Errato. Non necessariamente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il carattere della serie sum (n + 1) / (n^3 - 2) è:",
+        "risposte": [
+          { "testo_risposta": "Convergente", "spiegazione_vera_o_falsa": "Corretto. Asintotica a n/n^3 = 1/n^2, che converge." },
+          { "testo_risposta": "Divergente", "spiegazione_vera_o_falsa": "Errato. Il grado del denominatore supera quello del numeratore di 2 unità." },
+          { "testo_risposta": "Indeterminato", "spiegazione_vera_o_falsa": "Errato. Termini positivi definitivamente." },
+          { "testo_risposta": "Nulla", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Derivate",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "La derivata di f(x) = x^n è:",
+        "risposte": [
+          { "testo_risposta": "n * x^(n-1)", "spiegazione_vera_o_falsa": "Corretto. Regola fondamentale di derivazione delle potenze." },
+          { "testo_risposta": "x^(n+1) / (n+1)", "spiegazione_vera_o_falsa": "Errato. Questa è la primitiva (integrale)." },
+          { "testo_risposta": "n * x^n", "spiegazione_vera_o_falsa": "Errato. L'esponente deve diminuire." },
+          { "testo_risposta": "ln(x)", "spiegazione_vera_o_falsa": "Errato. Il logaritmo è legato alla primitiva di 1/x." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Quanto vale la derivata di sin(x)?",
+        "risposte": [
+          { "testo_risposta": "cos(x)", "spiegazione_vera_o_falsa": "Corretto. Derivata fondamentale." },
+          { "testo_risposta": "-cos(x)", "spiegazione_vera_o_falsa": "Errato. Questo vale per l'integrale del seno o la derivata del coseno." },
+          { "testo_risposta": "sin(x)", "spiegazione_vera_o_falsa": "Errato. Solo e^x ha se stessa come derivata (tra le funzioni base)." },
+          { "testo_risposta": "sec^2(x)", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata di tan(x)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "La derivata di una costante C è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. La pendenza di una retta orizzontale è nulla." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Vale per f(x)=x." },
+          { "testo_risposta": "C", "spiegazione_vera_o_falsa": "Errato. La funzione non varia." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. La variazione è nulla, non infinita." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Cosa rappresenta geometricamente la derivata f'(x_0)?",
+        "risposte": [
+          { "testo_risposta": "Il coefficiente angolare della retta tangente in x_0", "spiegazione_vera_o_falsa": "Corretto. Interpretazione geometrica della derivata." },
+          { "testo_risposta": "L'area sotto la curva", "spiegazione_vera_o_falsa": "Errato. Quello è l'integrale." },
+          { "testo_risposta": "La lunghezza della curva", "spiegazione_vera_o_falsa": "Errato. Concetto diverso legato a un integrale di sqrt(1+f'^2)." },
+          { "testo_risposta": "Il valore massimo della funzione", "spiegazione_vera_o_falsa": "Errato. Nel massimo la derivata è nulla, ma non coincide con esso." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La derivata del prodotto f(x)g(x) è:",
+        "risposte": [
+          { "testo_risposta": "f'(x)g(x) + f(x)g'(x)", "spiegazione_vera_o_falsa": "Corretto. Regola di Leibniz." },
+          { "testo_risposta": "f'(x)g'(x)", "spiegazione_vera_o_falsa": "Errato. Errore comune dei principianti." },
+          { "testo_risposta": "f'(x) + g'(x)", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata della somma." },
+          { "testo_risposta": "f(x)g(x) / 2", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La derivata di e^(2x) è:",
+        "risposte": [
+          { "testo_risposta": "2 * e^(2x)", "spiegazione_vera_o_falsa": "Corretto. Regola della catena: derivata dell'esponente (2) per la funzione stessa." },
+          { "testo_risposta": "e^(2x)", "spiegazione_vera_o_falsa": "Errato. Manca la derivata dell'argomento." },
+          { "testo_risposta": "2x * e^(2x-1)", "spiegazione_vera_o_falsa": "Errato. Hai applicato erroneamente la regola delle potenze." },
+          { "testo_risposta": "1/2 * e^(2x)", "spiegazione_vera_o_falsa": "Errato. Hai integrato invece di derivare." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è la derivata di ln(x)?",
+        "risposte": [
+          { "testo_risposta": "1/x", "spiegazione_vera_o_falsa": "Corretto. Derivata fondamentale del logaritmo naturale." },
+          { "testo_risposta": "e^x", "spiegazione_vera_o_falsa": "Errato. Questa è la funzione inversa." },
+          { "testo_risposta": "1 / ln(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "-1/x^2", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata di 1/x." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La derivata di f(g(x)) (regola della catena) è:",
+        "risposte": [
+          { "testo_risposta": "f'(g(x)) * g'(x)", "spiegazione_vera_o_falsa": "Corretto. Moltiplicazione per la derivata interna." },
+          { "testo_risposta": "f'(g'(x))", "spiegazione_vera_o_falsa": "Errato. Non si derivano entrambi gli argomenti all'interno." },
+          { "testo_risposta": "f'(x)g'(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "g'(f(x)) * f'(x)", "spiegazione_vera_o_falsa": "Errato. Ordine invertito delle funzioni." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il teorema di Rolle afferma che se f è continua in [a,b], derivabile in (a,b) e f(a)=f(b), allora:",
+        "risposte": [
+          { "testo_risposta": "Esiste c in (a,b) tale che f'(c) = 0", "spiegazione_vera_o_falsa": "Corretto. Esiste almeno un punto a tangente orizzontale." },
+          { "testo_risposta": "f è costante", "spiegazione_vera_o_falsa": "Errato. Può salire e scendere." },
+          { "testo_risposta": "f'(a) = f'(b)", "spiegazione_vera_o_falsa": "Errato. Non richiesto." },
+          { "testo_risposta": "Esiste c tale che f(c) = 0", "spiegazione_vera_o_falsa": "Errato. Questo è il teorema degli zeri." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è la derivata di tan(x)?",
+        "risposte": [
+          { "testo_risposta": "1 + tan^2(x) o 1/cos^2(x)", "spiegazione_vera_o_falsa": "Corretto. Entrambe le forme sono equivalenti." },
+          { "testo_risposta": "sec(x)", "spiegazione_vera_o_falsa": "Errato. sec^2(x) sarebbe corretto." },
+          { "testo_risposta": "-sin(x)/cos^2(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "cot(x)", "spiegazione_vera_o_falsa": "Errato. cot è l'inversa reciproca." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se f''(x) > 0 in un intervallo, la funzione è:",
+        "risposte": [
+          { "testo_risposta": "Convessa (concavità verso l'alto)", "spiegazione_vera_o_falsa": "Corretto. La pendenza della tangente aumenta." },
+          { "testo_risposta": "Concava (concavità verso il basso)", "spiegazione_vera_o_falsa": "Errato. Richiederebbe f'' < 0." },
+          { "testo_risposta": "Crescente", "spiegazione_vera_o_falsa": "Errato. La crescenza dipende da f'." },
+          { "testo_risposta": "Costante", "spiegazione_vera_o_falsa": "Errato. Richiederebbe f' = 0." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La derivata di arctan(x) è:",
+        "risposte": [
+          { "testo_risposta": "1 / (1 + x^2)", "spiegazione_vera_o_falsa": "Corretto. Derivata fondamentale utilissima per gli integrali." },
+          { "testo_risposta": "1 / sqrt(1 - x^2)", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata di arcsin(x)." },
+          { "testo_risposta": "-1 / (1 + x^2)", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata di arccot(x)." },
+          { "testo_risposta": "tan(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Cosa afferma il Teorema di Lagrange (valor medio)?",
+        "risposte": [
+          { "testo_risposta": "Esiste c tale che f'(c) = [f(b) - f(a)] / (b - a)", "spiegazione_vera_o_falsa": "Corretto. La tangente in c è parallela alla corda tra gli estremi." },
+          { "testo_risposta": "f'(c) è sempre positivo", "spiegazione_vera_o_falsa": "Errato. Dipende dalla pendenza media." },
+          { "testo_risposta": "f è derivabile ovunque", "spiegazione_vera_o_falsa": "Errato. È un'ipotesi del teorema, non la tesi." },
+          { "testo_risposta": "Il massimo è sempre in c", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La derivata di f(x) = x^x è:",
+        "risposte": [
+          { "testo_risposta": "x^x * (ln(x) + 1)", "spiegazione_vera_o_falsa": "Corretto. Si deriva e^(x ln x)." },
+          { "testo_risposta": "x * x^(x-1)", "spiegazione_vera_o_falsa": "Errato. Non è una potenza con esponente costante." },
+          { "testo_risposta": "x^x * ln(x)", "spiegazione_vera_o_falsa": "Errato. Manca il termine derivante dalla base variabile." },
+          { "testo_risposta": "e^x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Qual è la derivata della funzione inversa (f^-1)'(y_0)?",
+        "risposte": [
+          { "testo_risposta": "1 / f'(x_0) dove y_0 = f(x_0)", "spiegazione_vera_o_falsa": "Corretto. Regola della derivata dell'inversa." },
+          { "testo_risposta": "f'(1/y_0)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "-f'(x_0) / f(x_0)^2", "spiegazione_vera_o_falsa": "Errato. Questa sarebbe la derivata di 1/f(x)." },
+          { "testo_risposta": "sqrt(f'(x_0))", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa indica un punto di flesso?",
+        "risposte": [
+          { "testo_risposta": "Un punto in cui cambia la concavità", "spiegazione_vera_o_falsa": "Corretto. f'' si annulla o non esiste e cambia segno." },
+          { "testo_risposta": "Un punto di massimo locale", "spiegazione_vera_o_falsa": "Errato. Lì f'' < 0." },
+          { "testo_risposta": "Un punto in cui f' = 0", "spiegazione_vera_o_falsa": "Errato. Può essere stazionario o no (es. x^3 in 0)." },
+          { "testo_risposta": "Un punto di discontinuità", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "La derivata di cos(x) è:",
+        "risposte": [
+          { "testo_risposta": "-sin(x)", "spiegazione_vera_o_falsa": "Corretto. Attenzione al segno meno." },
+          { "testo_risposta": "sin(x)", "spiegazione_vera_o_falsa": "Errato. Segno errato." },
+          { "testo_risposta": "-cos(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Il coseno non è costante." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Se f(x) = 3x^2, quanto vale f'(1)?",
+        "risposte": [
+          { "testo_risposta": "6", "spiegazione_vera_o_falsa": "Corretto. f'(x) = 6x, quindi f'(1) = 6." },
+          { "testo_risposta": "3", "spiegazione_vera_o_falsa": "Errato. Hai dimenticato di moltiplicare per l'esponente." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La derivata di sqrt(x) è:",
+        "risposte": [
+          { "testo_risposta": "1 / (2 * sqrt(x))", "spiegazione_vera_o_falsa": "Corretto. Applicando x^(1/2) -> (1/2)x^(-1/2)." },
+          { "testo_risposta": "2 * sqrt(x)", "spiegazione_vera_o_falsa": "Errato. Hai moltiplicato invece di dividere." },
+          { "testo_risposta": "1 / sqrt(x)", "spiegazione_vera_o_falsa": "Errato. Manca il fattore 1/2." },
+          { "testo_risposta": "x / 2", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Un punto x_0 è stazionario per f se:",
+        "risposte": [
+          { "testo_risposta": "f'(x_0) = 0", "spiegazione_vera_o_falsa": "Corretto. La retta tangente è orizzontale." },
+          { "testo_risposta": "f(x_0) = 0", "spiegazione_vera_o_falsa": "Errato. Questo è uno zero della funzione." },
+          { "testo_risposta": "f''(x_0) = 0", "spiegazione_vera_o_falsa": "Errato. Questo riguarda i flessi." },
+          { "testo_risposta": "f è continua in x_0", "spiegazione_vera_o_falsa": "Errato. Non basta." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La derivata di 1/x è:",
+        "risposte": [
+          { "testo_risposta": "-1/x^2", "spiegazione_vera_o_falsa": "Corretto. x^-1 -> -1 * x^-2." },
+          { "testo_risposta": "ln(x)", "spiegazione_vera_o_falsa": "Errato. Questa è la primitiva." },
+          { "testo_risposta": "1/x^2", "spiegazione_vera_o_falsa": "Errato. Segno mancante." },
+          { "testo_risposta": "-1/x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La derivata del quoziente f(x)/g(x) è:",
+        "risposte": [
+          { "testo_risposta": "[f'(x)g(x) - f(x)g'(x)] / g(x)^2", "spiegazione_vera_o_falsa": "Corretto. Regola fondamentale del quoziente." },
+          { "testo_risposta": "f'(x) / g'(x)", "spiegazione_vera_o_falsa": "Errato. Errore gravissimo (regola di de l'Hôpital si usa per i limiti, non per derivare quozienti)." },
+          { "testo_risposta": "[f'(x)g(x) + f(x)g'(x)] / g(x)^2", "spiegazione_vera_o_falsa": "Errato. Segno errato al numeratore." },
+          { "testo_risposta": "f'(x)g(x) - f(x)g'(x)", "spiegazione_vera_o_falsa": "Errato. Manca il denominatore." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se f è derivabile in x_0, allora f è necessariamente:",
+        "risposte": [
+          { "testo_risposta": "Continua in x_0", "spiegazione_vera_o_falsa": "Corretto. La derivabilità implica la continuità." },
+          { "testo_risposta": "Monotona", "spiegazione_vera_o_falsa": "Errato. Può oscillare." },
+          { "testo_risposta": "Positiva", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Derivabile due volte", "spiegazione_vera_o_falsa": "Errato. Non è garantito." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La derivata di log_a(x) è:",
+        "risposte": [
+          { "testo_risposta": "1 / (x * ln(a))", "spiegazione_vera_o_falsa": "Corretto. Cambio di base in ln(x)/ln(a)." },
+          { "testo_risposta": "1 / x", "spiegazione_vera_o_falsa": "Errato. Vale solo per la base e." },
+          { "testo_risposta": "ln(a) / x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "a^x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Per f(x) = |x|, la derivata in x=0:",
+        "risposte": [
+          { "testo_risposta": "Non esiste", "spiegazione_vera_o_falsa": "Corretto. C'è un punto angoloso (limiti destro e sinistro della derivata sono diversi)." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Sebbene sia un minimo, la funzione non è 'liscia' lì." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Solo da destra." },
+          { "testo_risposta": "-1", "spiegazione_vera_o_falsa": "Errato. Solo da sinistra." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Qual è la derivata di a^x?",
+        "risposte": [
+          { "testo_risposta": "a^x * ln(a)", "spiegazione_vera_o_falsa": "Corretto. Per a=e si ottiene e^x poichè ln(e)=1." },
+          { "testo_risposta": "x * a^(x-1)", "spiegazione_vera_o_falsa": "Errato. Confusione con la derivata di una potenza x^n." },
+          { "testo_risposta": "a^x", "spiegazione_vera_o_falsa": "Errato. Manca il fattore logaritmico." },
+          { "testo_risposta": "1 / (a^x ln a)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La derivata di arcsin(x) è:",
+        "risposte": [
+          { "testo_risposta": "1 / sqrt(1 - x^2)", "spiegazione_vera_o_falsa": "Corretto. Definita per x in (-1, 1)." },
+          { "testo_risposta": "1 / (1 + x^2)", "spiegazione_vera_o_falsa": "Errato. Questa è arctan(x)." },
+          { "testo_risposta": "-1 / sqrt(1 - x^2)", "spiegazione_vera_o_falsa": "Errato. Questa è arccos(x)." },
+          { "testo_risposta": "cos(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se f'(x_0) = 0 e f''(x_0) < 0, allora x_0 è:",
+        "risposte": [
+          { "testo_risposta": "Un punto di massimo locale", "spiegazione_vera_o_falsa": "Corretto. Criterio della derivata seconda per i massimi." },
+          { "testo_risposta": "Un punto di minimo locale", "spiegazione_vera_o_falsa": "Errato. Richiederebbe f'' > 0." },
+          { "testo_risposta": "Un punto di flesso", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Un asintoto", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "La derivata di f(x) = sinh(x) è:",
+        "risposte": [
+          { "testo_risposta": "cosh(x)", "spiegazione_vera_o_falsa": "Corretto. Nelle funzioni iperboliche non c'è il cambio di segno come nelle circolari." },
+          { "testo_risposta": "-cosh(x)", "spiegazione_vera_o_falsa": "Errato. Vale per le circolari (derivata del coseno)." },
+          { "testo_risposta": "tanh(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "sech^2(x)", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata di tanh(x)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Usando la derivata, l'approssimazione lineare di f(x) vicino a x_0 è:",
+        "risposte": [
+          { "testo_risposta": "L(x) = f(x_0) + f'(x_0)(x - x_0)", "spiegazione_vera_o_falsa": "Corretto. È l'equazione della retta tangente, usata come approssimazione locale." },
+          { "testo_risposta": "L(x) = f'(x_0)x", "spiegazione_vera_o_falsa": "Errato. Manca l'ordinata all'origine." },
+          { "testo_risposta": "L(x) = f(x_0) + f'(x_0)x^2", "spiegazione_vera_o_falsa": "Errato. Questa sarebbe quadratica." },
+          { "testo_risposta": "L(x) = f'(x_0) + f(x_0)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La derivata di 5x^3 - 4x + 2 è:",
+        "risposte": [
+          { "testo_risposta": "15x^2 - 4", "spiegazione_vera_o_falsa": "Corretto. Derivazione termine a termine." },
+          { "testo_risposta": "15x^2 - 4x", "spiegazione_vera_o_falsa": "Errato. La derivata di 4x è 4." },
+          { "testo_risposta": "5x^2 - 4", "spiegazione_vera_o_falsa": "Errato. 3 * 5 = 15." },
+          { "testo_risposta": "15x^3 - 4", "spiegazione_vera_o_falsa": "Errato. L'esponente deve scalare." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se f è una funzione dispari e derivabile, la sua derivata f' è:",
+        "risposte": [
+          { "testo_risposta": "Una funzione pari", "spiegazione_vera_o_falsa": "Corretto. Proprietà di simmetria delle derivate." },
+          { "testo_risposta": "Una funzione dispari", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Sempre positiva", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Nulla", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La derivata di f(x) = ln(|sin x|) è:",
+        "risposte": [
+          { "testo_risposta": "cot(x)", "spiegazione_vera_o_falsa": "Corretto. cos(x)/sin(x) = cot(x)." },
+          { "testo_risposta": "tan(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "1/sin(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "-cot(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "In un punto di cuspide:",
+        "risposte": [
+          { "testo_risposta": "I limiti destro e sinistro della derivata sono infiniti di segno opposto", "spiegazione_vera_o_falsa": "Corretto. Esempio f(x) = sqrt(|x|)." },
+          { "testo_risposta": "La derivata è 0", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La funzione non è continua", "spiegazione_vera_o_falsa": "Errato. È continua ma non derivabile." },
+          { "testo_risposta": "La derivata è finita", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Integrali",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "L'integrale indefinito di f(x) rappresenta:",
+        "risposte": [
+          { "testo_risposta": "L'insieme di tutte le primitive di f(x)", "spiegazione_vera_o_falsa": "Corretto. Indicate come F(x) + C." },
+          { "testo_risposta": "L'area sotto la curva tra due punti", "spiegazione_vera_o_falsa": "Errato. Quello è l'integrale definito." },
+          { "testo_risposta": "La derivata di f(x)", "spiegazione_vera_o_falsa": "Errato. L'integrazione è l'operazione inversa." },
+          { "testo_risposta": "Il valore medio della funzione", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Quanto vale l'integrale di x^n dx (per n != -1)?",
+        "risposte": [
+          { "testo_risposta": "[x^(n+1) / (n+1)] + C", "spiegazione_vera_o_falsa": "Corretto. Regola fondamentale di integrazione delle potenze." },
+          { "testo_risposta": "n * x^(n-1)", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata." },
+          { "testo_risposta": "x^n / n", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "ln(x)", "spiegazione_vera_o_falsa": "Errato. Vale solo per n=-1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "L'integrale di sin(x) dx è:",
+        "risposte": [
+          { "testo_risposta": "-cos(x) + C", "spiegazione_vera_o_falsa": "Corretto. Poiché la derivata di cos(x) è -sin(x)." },
+          { "testo_risposta": "cos(x) + C", "spiegazione_vera_o_falsa": "Errato. Attenzione al segno." },
+          { "testo_risposta": "sin(x) + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "sec^2(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il Teorema Fondamentale del Calcolo Integrale afferma che:",
+        "risposte": [
+          { "testo_risposta": "L'integrale definito tra a e b è F(b) - F(a)", "spiegazione_vera_o_falsa": "Corretto. Collega integrali definiti e primitive." },
+          { "testo_risposta": "Ogni funzione è integrabile", "spiegazione_vera_o_falsa": "Errato. Servono condizioni come la continuità o monotonia." },
+          { "testo_risposta": "L'integrale è sempre positivo", "spiegazione_vera_o_falsa": "Errato. Può essere negativo se la funzione sta sotto l'asse x." },
+          { "testo_risposta": "La derivata di un integrale è sempre 0", "spiegazione_vera_o_falsa": "Errato. La derivata della funzione integrale è la funzione integranda stessa." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è l'integrale di 1/x dx?",
+        "risposte": [
+          { "testo_risposta": "ln(|x|) + C", "spiegazione_vera_o_falsa": "Corretto. Necessario il valore assoluto per estendere il dominio." },
+          { "testo_risposta": "x^0 / 0", "spiegazione_vera_o_falsa": "Errato. La regola delle potenze fallisce per n=-1." },
+          { "testo_risposta": "-1/x^2", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata." },
+          { "testo_risposta": "e^x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'integrale di e^x dx è:",
+        "risposte": [
+          { "testo_risposta": "e^x + C", "spiegazione_vera_o_falsa": "Corretto. L'esponenziale è l'unica funzione che rimane invariata (a meno della costante)." },
+          { "testo_risposta": "e^(x+1) / (x+1)", "spiegazione_vera_o_falsa": "Errato. Non è una potenza." },
+          { "testo_risposta": "xe^x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "ln(e^x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La formula di integrazione per parti è:",
+        "risposte": [
+          { "testo_risposta": "int f g' = fg - int f' g", "spiegazione_vera_o_falsa": "Corretto. Deriva dalla regola di derivazione del prodotto." },
+          { "testo_risposta": "int f g = int f * int g", "spiegazione_vera_o_falsa": "Errato. Non esiste una regola così semplice per il prodotto." },
+          { "testo_risposta": "int f g' = f'g + fg'", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata del prodotto." },
+          { "testo_risposta": "int f/g = (int f) / (int g)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'integrale di 1 / (1 + x^2) dx è:",
+        "risposte": [
+          { "testo_risposta": "arctan(x) + C", "spiegazione_vera_o_falsa": "Corretto. Primitiva fondamentale legata alla funzione arcotangente." },
+          { "testo_risposta": "ln(1 + x^2)", "spiegazione_vera_o_falsa": "Errato. Manca la derivata del numeratore (2x)." },
+          { "testo_risposta": "arcsin(x)", "spiegazione_vera_o_falsa": "Errato. Richiederebbe radice quadrata e segno meno." },
+          { "testo_risposta": "tan(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si intende per integrale improprio?",
+        "risposte": [
+          { "testo_risposta": "Un integrale su un intervallo illimitato o con funzione non limitata", "spiegazione_vera_o_falsa": "Corretto. Richiede il calcolo di un limite." },
+          { "testo_risposta": "Un integrale che non si può calcolare", "spiegazione_vera_o_falsa": "Errato. Molti sono perfettamente calcolabili." },
+          { "testo_risposta": "Un integrale con risultato negativo", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La derivata di una funzione complessa", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'integrale di cos(x) dx tra 0 e pi è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. sin(pi) - sin(0) = 0 - 0 = 0. Le aree positiva e negativa si cancellano." },
+          { "testo_risposta": "2", "spiegazione_vera_o_falsa": "Errato. Questo varrebbe per il seno tra 0 e pi." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "-1", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale di ln(x) dx è:",
+        "risposte": [
+          { "testo_risposta": "x ln(x) - x + C", "spiegazione_vera_o_falsa": "Corretto. Si calcola per parti ponendo g'=1 e f=ln(x)." },
+          { "testo_risposta": "1/x + C", "spiegazione_vera_o_falsa": "Errato. Questa è la derivata." },
+          { "testo_risposta": "x ln(x) + C", "spiegazione_vera_o_falsa": "Errato. Manca il termine -x." },
+          { "testo_risposta": "ln(x)^2 / 2", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Per calcolare l'integrale di una funzione razionale P(x)/Q(x), se il grado di P >= Q:",
+        "risposte": [
+          { "testo_risposta": "Si effettua prima la divisione tra polinomi", "spiegazione_vera_o_falsa": "Corretto. Per ottenere un polinomio più una frazione propria." },
+          { "testo_risposta": "Si usa sempre l'arcotangente", "spiegazione_vera_o_falsa": "Errato. Dipende dal denominatore." },
+          { "testo_risposta": "L'integrale è sempre un logaritmo", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Non è integrabile", "spiegazione_vera_o_falsa": "Errato. Tutte le funzioni razionali hanno primitive elementari." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale di 1 / sqrt(1 - x^2) dx è:",
+        "risposte": [
+          { "testo_risposta": "arcsin(x) + C", "spiegazione_vera_o_falsa": "Corretto. Primitiva legata alla funzione arcoseno." },
+          { "testo_risposta": "arccos(x) + C", "spiegazione_vera_o_falsa": "Errato. Servirebbe un segno meno." },
+          { "testo_risposta": "arctan(x)", "spiegazione_vera_o_falsa": "Errato. Manca la radice al denominatore per l'arcotangente." },
+          { "testo_risposta": "sqrt(1-x^2)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il criterio del confronto per integrali impropri afferma che se f(x) ~ 1/x^p per x -> +inf:",
+        "risposte": [
+          { "testo_risposta": "L'integrale converge se p > 1", "spiegazione_vera_o_falsa": "Corretto. Analogo alla serie armonica generalizzata." },
+          { "testo_risposta": "L'integrale converge se p >= 1", "spiegazione_vera_o_falsa": "Errato. Per p=1 diverge (logaritmo)." },
+          { "testo_risposta": "L'integrale converge sempre", "spiegazione_vera_o_falsa": "Errato. Dipende dalla velocità di decrescita." },
+          { "testo_risposta": "L'integrale diverge se p > 1", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "L'integrale definito di e^(-x^2) tra -infinito e +infinito (integrale di Gauss) vale:",
+        "risposte": [
+          { "testo_risposta": "sqrt(pi)", "spiegazione_vera_o_falsa": "Corretto. Risultato fondamentale in statistica e analisi." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato. Quello è l'integrale della normale standardizzata (con opportuni fattori)." },
+          { "testo_risposta": "pi", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato. Converge molto rapidamente." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Quale sostituzione è tipica per integrali contenenti sqrt(a^2 - x^2)?",
+        "risposte": [
+          { "testo_risposta": "x = a * sin(t)", "spiegazione_vera_o_falsa": "Corretto. Sfrutta l'identità 1 - sin^2 = cos^2 per eliminare la radice." },
+          { "testo_risposta": "x = a * tan(t)", "spiegazione_vera_o_falsa": "Errato. Si usa per a^2 + x^2." },
+          { "testo_risposta": "t = x^2", "spiegazione_vera_o_falsa": "Errato. Non semplifica la radice." },
+          { "testo_risposta": "x = e^t", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "L'integrale di una somma di funzioni è:",
+        "risposte": [
+          { "testo_risposta": "La somma degli integrali", "spiegazione_vera_o_falsa": "Corretto. Proprietà di linearità dell'integrale." },
+          { "testo_risposta": "Il prodotto degli integrali", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La derivata della somma", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Sempre zero", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'integrale di cos(x) dx è:",
+        "risposte": [
+          { "testo_risposta": "sin(x) + C", "spiegazione_vera_o_falsa": "Corretto. La derivata di sin(x) è cos(x)." },
+          { "testo_risposta": "-sin(x) + C", "spiegazione_vera_o_falsa": "Errato. Segno errato." },
+          { "testo_risposta": "cos(x) + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "tan(x) + C", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il valore di un integrale definito tra 'a' e 'a' (estremi uguali) è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. L'area di un segmento di ampiezza nulla è zero." },
+          { "testo_risposta": "f(a)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Per calcolare int x * e^x dx si usa:",
+        "risposte": [
+          { "testo_risposta": "Integrazione per parti", "spiegazione_vera_o_falsa": "Corretto. Derivando x e integrando e^x." },
+          { "testo_risposta": "Sostituzione t = e^x", "spiegazione_vera_o_falsa": "Errato. Complicherebbe il termine x." },
+          { "testo_risposta": "Scomposizione in fratti semplici", "spiegazione_vera_o_falsa": "Errato. Non è una funzione razionale." },
+          { "testo_risposta": "Formula di Taylor", "spiegazione_vera_o_falsa": "Errato. Inutile per primitive elementari." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'integrale di 1 / (2x + 1) dx è:",
+        "risposte": [
+          { "testo_risposta": "1/2 * ln(|2x + 1|) + C", "spiegazione_vera_o_falsa": "Corretto. Bisogna compensare la derivata interna del denominatore." },
+          { "testo_risposta": "ln(|2x + 1|) + C", "spiegazione_vera_o_falsa": "Errato. Manca il fattore 1/2." },
+          { "testo_risposta": "2 * ln(|2x + 1|) + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "-1/(2x+1)^2", "spiegazione_vera_o_falsa": "Errato. Questa è legata alla derivata." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se f(x) è una funzione dispari, l'integrale tra -a e a di f(x) dx è:",
+        "risposte": [
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Corretto. Le aree si cancellano per simmetria rispetto all'origine." },
+          { "testo_risposta": "2 * integrale tra 0 e a", "spiegazione_vera_o_falsa": "Errato. Vale per le funzioni pari." },
+          { "testo_risposta": "f(a) - f(-a)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "infinito", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale di sin^2(x) dx si risolve usando:",
+        "risposte": [
+          { "testo_risposta": "La formula di bisezione cos(2x) = 1 - 2sin^2(x)", "spiegazione_vera_o_falsa": "Corretto. Permette di linearizzare l'integrale." },
+          { "testo_risposta": "La sostituzione sin(x) = t", "spiegazione_vera_o_falsa": "Errato. Manca il coseno per il differenziale." },
+          { "testo_risposta": "Integrazione immediata", "spiegazione_vera_o_falsa": "Errato. Non è una primitiva base." },
+          { "testo_risposta": "Teorema dei residui", "spiegazione_vera_o_falsa": "Errato. Eccessivo e fuori contesto per Analisi 1." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Qual è l'area della regione racchiusa tra y=x^2 e l'asse x da x=0 a x=1?",
+        "risposte": [
+          { "testo_risposta": "1/3", "spiegazione_vera_o_falsa": "Corretto. Integrale di x^2 tra 0 e 1 è [x^3/3] = 1/3." },
+          { "testo_risposta": "1/2", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "2/3", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale improprio di 1/x tra 0 e 1:",
+        "risposte": [
+          { "testo_risposta": "Diverge a +infinito", "spiegazione_vera_o_falsa": "Corretto. Il logaritmo tende a -infinito in 0, quindi l'area diverge." },
+          { "testo_risposta": "Converge a 1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Converge a 0", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Vale pi/2", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa afferma il Teorema della Media Integrale?",
+        "risposte": [
+          { "testo_risposta": "Esiste c in [a,b] tale che f(c) = (1 / (b-a)) * int_a^b f(x) dx", "spiegazione_vera_o_falsa": "Corretto. Garantisce che una funzione continua assuma il suo valore medio." },
+          { "testo_risposta": "La media degli integrali è l'integrale della media", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "f(c) è sempre (f(a)+f(b))/2", "spiegazione_vera_o_falsa": "Errato. Solo per funzioni lineari." },
+          { "testo_risposta": "L'integrale è la media pesata della derivata", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "L'integrale di 1 / (x^2 + 2x + 2) dx è:",
+        "risposte": [
+          { "testo_risposta": "arctan(x + 1) + C", "spiegazione_vera_o_falsa": "Corretto. Completando il quadrato: (x+1)^2 + 1." },
+          { "testo_risposta": "ln(x^2 + 2x + 2)", "spiegazione_vera_o_falsa": "Errato. Il discriminante è negativo, non ci sono radici reali." },
+          { "testo_risposta": "arctan(x)", "spiegazione_vera_o_falsa": "Errato. Manca la traslazione." },
+          { "testo_risposta": "1 / (x+1)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "L'integrale di 0 dx è:",
+        "risposte": [
+          { "testo_risposta": "Una costante C", "spiegazione_vera_o_falsa": "Corretto. La derivata di una costante è zero." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato. Manca la costante arbitraria." },
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'integrale di 2x dx è:",
+        "risposte": [
+          { "testo_risposta": "x^2 + C", "spiegazione_vera_o_falsa": "Corretto. Derivando x^2 si ottiene 2x." },
+          { "testo_risposta": "2 + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "x^2 / 2 + C", "spiegazione_vera_o_falsa": "Errato. Il 2 si cancella." },
+          { "testo_risposta": "x + C", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è la primitiva di 1 / cos^2(x)?",
+        "risposte": [
+          { "testo_risposta": "tan(x) + C", "spiegazione_vera_o_falsa": "Corretto. Derivata fondamentale della tangente." },
+          { "testo_risposta": "sin(x) / cos(x)", "spiegazione_vera_o_falsa": "Corretto. (Nota: è la tangente, ma scritta diversamente)." },
+          { "testo_risposta": "sec(x)", "spiegazione_vera_o_falsa": "Errato. sec^2(x) è la funzione stessa." },
+          { "testo_risposta": "-cot(x)", "spiegazione_vera_o_falsa": "Errato. Quella è la primitiva di 1/sin^2(x)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'integrale di x^2 * e^(x^3) dx è:",
+        "risposte": [
+          { "testo_risposta": "1/3 * e^(x^3) + C", "spiegazione_vera_o_falsa": "Corretto. Sostituzione t = x^3, dt = 3x^2 dx." },
+          { "testo_risposta": "e^(x^3) + C", "spiegazione_vera_o_falsa": "Errato. Manca il fattore 1/3." },
+          { "testo_risposta": "3 * e^(x^3) + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "x^3 * e^(x^3)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Cosa si ottiene integrando per parti log(x) con g'=1?",
+        "risposte": [
+          { "testo_risposta": "x log(x) - x", "spiegazione_vera_o_falsa": "Corretto. Procedura standard per il logaritmo." },
+          { "testo_risposta": "log(x)^2 / 2", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "1/x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "x log(x) + x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale tra 1 e e di 1/x dx è:",
+        "risposte": [
+          { "testo_risposta": "1", "spiegazione_vera_o_falsa": "Corretto. ln(e) - ln(1) = 1 - 0 = 1." },
+          { "testo_risposta": "e", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "0", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "ln(2)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Equazioni Differenziali",
+    "domande": [
+      {
+        "difficolta": 1,
+        "testo_domanda": "Cos'è un'equazione differenziale?",
+        "risposte": [
+          { "testo_risposta": "Un'equazione che lega una funzione alle sue derivate", "spiegazione_vera_o_falsa": "Corretto. La soluzione è una funzione, non un numero." },
+          { "testo_risposta": "Un'equazione con solo numeri interi", "spiegazione_vera_o_falsa": "Errato. Quella è un'equazione diofantea." },
+          { "testo_risposta": "Un'equazione algebrica di secondo grado", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Un sistema di rette", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "L'ordine di un'equazione differenziale è:",
+        "risposte": [
+          { "testo_risposta": "Il grado massimo della derivata presente", "spiegazione_vera_o_falsa": "Corretto. Es. y'' + y = 0 è di secondo ordine." },
+          { "testo_risposta": "Il numero di soluzioni", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Il coefficiente della y", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Sempre 1", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La soluzione generale di y' = y è:",
+        "risposte": [
+          { "testo_risposta": "y(t) = C * e^t", "spiegazione_vera_o_falsa": "Corretto. La funzione la cui derivata è se stessa è l'esponenziale." },
+          { "testo_risposta": "y(t) = t + C", "spiegazione_vera_o_falsa": "Errato. La derivata sarebbe 1." },
+          { "testo_risposta": "y(t) = C * t^2", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y(t) = sin(t)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Un Problema di Cauchy consiste in:",
+        "risposte": [
+          { "testo_risposta": "Un'equazione differenziale con condizioni iniziali", "spiegazione_vera_o_falsa": "Corretto. Serve a identificare una soluzione particolare univoca." },
+          { "testo_risposta": "Un'equazione senza soluzioni", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Il calcolo di un integrale definito", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Uno studio di funzione", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'equazione y' = f(x)g(y) si dice:",
+        "risposte": [
+          { "testo_risposta": "A variabili separabili", "spiegazione_vera_o_falsa": "Corretto. Si può scrivere dy/g(y) = f(x)dx." },
+          { "testo_risposta": "Lineare del primo ordine", "spiegazione_vera_o_falsa": "Errato (può non esserlo se g(y) non è lineare)." },
+          { "testo_risposta": "Omogenea", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Esatta", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La soluzione generale di un'equazione lineare omogenea y'' + ay' + by = 0 si trova:",
+        "risposte": [
+          { "testo_risposta": "Risolvendo l'equazione caratteristica r^2 + ar + b = 0", "spiegazione_vera_o_falsa": "Corretto. Le radici determinano gli esponenti delle soluzioni." },
+          { "testo_risposta": "Integrando due volte", "spiegazione_vera_o_falsa": "Errato. Vale solo se a=b=0." },
+          { "testo_risposta": "Usando la formula di Taylor", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Per tentativi", "spiegazione_vera_o_falsa": "Errato. Esiste un metodo sistematico." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se l'equazione caratteristica ha due radici reali distinte r1, r2, la soluzione è:",
+        "risposte": [
+          { "testo_risposta": "y = C1 e^(r1 t) + C2 e^(r2 t)", "spiegazione_vera_o_falsa": "Corretto. Combinazione lineare di due soluzioni indipendenti." },
+          { "testo_risposta": "y = C1 e^(r1 t) * C2 e^(r2 t)", "spiegazione_vera_o_falsa": "Errato. Serve la somma, non il prodotto." },
+          { "testo_risposta": "y = e^(r1+r2)t", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = C1 r1 t + C2 r2 t", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si intende per equazione differenziale lineare?",
+        "risposte": [
+          { "testo_risposta": "L'incognita y e le sue derivate compaiono solo con grado 1", "spiegazione_vera_o_falsa": "Corretto. Non ci sono termini come y^2 o sin(y)." },
+          { "testo_risposta": "L'equazione rappresenta una retta", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La soluzione è una retta", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "I coefficienti sono tutti uguali a 1", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Per risolvere y' + a(x)y = b(x) (lineare primo ordine), si usa:",
+        "risposte": [
+          { "testo_risposta": "Il fattore integrante e^int a(x)dx", "spiegazione_vera_o_falsa": "Corretto. Trasforma il membro sinistro nella derivata di un prodotto." },
+          { "testo_risposta": "La separazione delle variabili", "spiegazione_vera_o_falsa": "Errato. b(x) impedisce la separazione diretta se non è zero." },
+          { "testo_risposta": "Il metodo di Newton", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Solo l'integrazione di b(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se l'equazione caratteristica ha radici complesse alpha ± i*beta, la soluzione coinvolge:",
+        "risposte": [
+          { "testo_risposta": "e^(alpha t) * [C1 cos(beta t) + C2 sin(beta t)]", "spiegazione_vera_o_falsa": "Corretto. Sfrutta la formula di Eulero per tornare ai reali." },
+          { "testo_risposta": "Solo esponenziali complessi", "spiegazione_vera_o_falsa": "Errato (tecnicamente corretto ma meno utile in ambito reale)." },
+          { "testo_risposta": "Solo coseni", "spiegazione_vera_o_falsa": "Errato. Manca la parte smorzata o amplificata dall'esponenziale." },
+          { "testo_risposta": "Polinomi", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il metodo della variazione delle costanti serve a:",
+        "risposte": [
+          { "testo_risposta": "Trovare una soluzione particolare di un'equazione non omogenea", "spiegazione_vera_o_falsa": "Corretto. Si ipotizzano le costanti come funzioni del tempo." },
+          { "testo_risposta": "Risolvere l'omogenea associata", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Cambiare le condizioni iniziali", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Dimostrare l'esistenza del limite", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La soluzione di y'' + y = 0 è:",
+        "risposte": [
+          { "testo_risposta": "y = C1 cos(t) + C2 sin(t)", "spiegazione_vera_o_falsa": "Corretto. Equazione dell'oscillatore armonico." },
+          { "testo_risposta": "y = C1 e^t + C2 e^-t", "spiegazione_vera_o_falsa": "Errato. Questa risolverebbe y'' - y = 0." },
+          { "testo_risposta": "y = t^2 + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = C", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa afferma il Teorema di Esistenza e Unicità di Picard-Lindelöf?",
+        "risposte": [
+          { "testo_risposta": "Se f(t,y) è Lipschitziana in y, il problema di Cauchy ha un'unica soluzione locale", "spiegazione_vera_o_falsa": "Corretto. Condizione fondamentale per la buona positura del problema." },
+          { "testo_risposta": "Tutte le equazioni hanno soluzioni globali", "spiegazione_vera_o_falsa": "Errato. La soluzione può 'esplodere' in tempo finito." },
+          { "testo_risposta": "La soluzione è sempre derivabile infinite volte", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Esiste sempre una soluzione intera", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Un'equazione di Bernoulli è della forma:",
+        "risposte": [
+          { "testo_risposta": "y' + p(x)y = q(x)y^n", "spiegazione_vera_o_falsa": "Corretto. Si riconduce a una lineare con la sostituzione z = y^(1-n)." },
+          { "testo_risposta": "y'' + p(x)y' + q(x)y = 0", "spiegazione_vera_o_falsa": "Errato. Questa è una lineare del secondo ordine." },
+          { "testo_risposta": "(y')^2 + y = x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = x y' + f(y')", "spiegazione_vera_o_falsa": "Errato. Questa è l'equazione di Clairaut." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "In un'equazione y'' + ay' + by = f(t), se f(t) è in risonanza con l'omogenea:",
+        "risposte": [
+          { "testo_risposta": "La soluzione particolare contiene un fattore t", "spiegazione_vera_o_falsa": "Corretto. L'ampiezza cresce nel tempo." },
+          { "testo_risposta": "Non esiste soluzione", "spiegazione_vera_o_falsa": "Errato. Esiste ma ha forma diversa." },
+          { "testo_risposta": "La soluzione tende a zero", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "I coefficienti diventano nulli", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Quale tra queste è un'equazione differenziale del primo ordine?",
+        "risposte": [
+          { "testo_risposta": "y' + 2y = x", "spiegazione_vera_o_falsa": "Corretto. Compare solo la derivata prima." },
+          { "testo_risposta": "y'' - y = 0", "spiegazione_vera_o_falsa": "Errato. È del secondo ordine." },
+          { "testo_risposta": "y^2 + x^2 = 1", "spiegazione_vera_o_falsa": "Errato. È un'equazione algebrica." },
+          { "testo_risposta": "int y dx = x", "spiegazione_vera_o_falsa": "Errato. È un'equazione integrale." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Se y' = 0, allora y(x) è:",
+        "risposte": [
+          { "testo_risposta": "Una costante", "spiegazione_vera_o_falsa": "Corretto. Solo le costanti hanno derivata nulla ovunque." },
+          { "testo_risposta": "La funzione x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "L'esponenziale", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Inesistente", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La soluzione di y' = 2x è:",
+        "risposte": [
+          { "testo_risposta": "y = x^2 + C", "spiegazione_vera_o_falsa": "Corretto. Integrazione diretta di 2x." },
+          { "testo_risposta": "y = 2 + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = e^(2x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = x^2 / 2", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Un'equazione differenziale omogenea del tipo y'' + ay' + by = 0 ha sempre come soluzione:",
+        "risposte": [
+          { "testo_risposta": "La funzione nulla y(x) = 0", "spiegazione_vera_o_falsa": "Corretto. È la soluzione banale." },
+          { "testo_risposta": "La funzione y(x) = x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Solo esponenziali negativi", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Soluzioni non limitate", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il Wronskiano di due soluzioni y1, y2 serve a verificare:",
+        "risposte": [
+          { "testo_risposta": "L'indipendenza lineare delle soluzioni", "spiegazione_vera_o_falsa": "Corretto. Se diverso da zero, formano una base dello spazio delle soluzioni." },
+          { "testo_risposta": "Se la funzione è continua", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Il valore del limite", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La stabilità del sistema", "spiegazione_vera_o_falsa": "Errato (sebbene legato)." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'equazione y' = k y (k costante) modella:",
+        "risposte": [
+          { "testo_risposta": "La crescita o il decadimento esponenziale", "spiegazione_vera_o_falsa": "Corretto. Es. crescita batterica o decadimento radioattivo." },
+          { "testo_risposta": "Il moto di un pendolo", "spiegazione_vera_o_falsa": "Errato. Richiede il secondo ordine." },
+          { "testo_risposta": "La caduta dei gravi", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Un'onda sonora", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se l'equazione caratteristica ha una radice reale r con molteplicità 2, la soluzione è:",
+        "risposte": [
+          { "testo_risposta": "y = (C1 + C2 t) e^(r t)", "spiegazione_vera_o_falsa": "Corretto. Il fattore 't' garantisce l'indipendenza della seconda soluzione." },
+          { "testo_risposta": "y = C1 e^(rt) + C2 e^(rt)", "spiegazione_vera_o_falsa": "Errato. Non sarebbero linearmente indipendenti." },
+          { "testo_risposta": "y = C1 e^(rt) + C2 e^(-rt)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = C1 e^(r^2 t)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Qual è la forma della soluzione particolare per y'' + y = t^2?",
+        "risposte": [
+          { "testo_risposta": "y_p = At^2 + Bt + C", "spiegazione_vera_o_falsa": "Corretto. Metodo dei coefficienti indeterminati per polinomi." },
+          { "testo_risposta": "y_p = A e^t", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y_p = A sin(t)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y_p = At^3", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "In un'equazione a variabili separabili dy/dx = h(x)g(y), le soluzioni costanti si trovano:",
+        "risposte": [
+          { "testo_risposta": "Risolvendo g(y) = 0", "spiegazione_vera_o_falsa": "Corretto. Annullano la derivata e soddisfano l'equazione." },
+          { "testo_risposta": "Risolvendo h(x) = 0", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Ponendo x = 0", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Integrando g(y)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "L'equazione di Eulero x^2 y'' + ax y' + by = 0 si risolve con la sostituzione:",
+        "risposte": [
+          { "testo_risposta": "x = e^t (o y = x^r)", "spiegazione_vera_o_falsa": "Corretto. La trasforma in un'equazione a coefficienti costanti." },
+          { "testo_risposta": "y = e^x", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "x = sin(t)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "t = 1/x", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa si intende per 'soluzione massimale'?",
+        "risposte": [
+          { "testo_risposta": "La soluzione definita sull'intervallo più ampio possibile", "spiegazione_vera_o_falsa": "Corretto. Non può essere ulteriormente estesa come soluzione dell'equazione." },
+          { "testo_risposta": "La soluzione con valore massimo", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "La soluzione della non omogenea", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Una soluzione con costanti infinite", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'equazione y' = cos(x) ha come soluzione:",
+        "risposte": [
+          { "testo_risposta": "y = sin(x) + C", "spiegazione_vera_o_falsa": "Corretto. Integrazione immediata." },
+          { "testo_risposta": "y = -sin(x) + C", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = cos(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = e^cos(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "In y' = 3y, se y(0) = 5, la soluzione particolare è:",
+        "risposte": [
+          { "testo_risposta": "y = 5 e^(3x)", "spiegazione_vera_o_falsa": "Corretto. C=5 e k=3." },
+          { "testo_risposta": "y = 3 e^(5x)", "spiegazione_vera_o_falsa": "Errato. Invertiti i parametri." },
+          { "testo_risposta": "y = 5x + 3", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y = e^(15x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'equazione y'' - 4y = 0 ha equazione caratteristica:",
+        "risposte": [
+          { "testo_risposta": "r^2 - 4 = 0", "spiegazione_vera_o_falsa": "Corretto. Da cui r = ±2." },
+          { "testo_risposta": "r - 4 = 0", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "r^2 + 4 = 0", "spiegazione_vera_o_falsa": "Errato. Segno errato." },
+          { "testo_risposta": "4r^2 = 0", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se il termine noto f(t) è un polinomio di grado n, la soluzione particolare è un polinomio di grado:",
+        "risposte": [
+          { "testo_risposta": "Almeno n (può essere superiore se c'è risonanza con lo zero)", "spiegazione_vera_o_falsa": "Corretto. Solitamente n, ma aumenta se 0 è radice del polinomio caratteristico." },
+          { "testo_risposta": "Sempre n", "spiegazione_vera_o_falsa": "Errato. La risonanza lo aumenta." },
+          { "testo_risposta": "n - 1", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Sempre 1", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Qual è la forma della soluzione per y' + y = sin(x)?",
+        "risposte": [
+          { "testo_risposta": "y_p = A sin(x) + B cos(x)", "spiegazione_vera_o_falsa": "Corretto. Entrambe le funzioni trigonometriche sono necessarie." },
+          { "testo_risposta": "y_p = A sin(x)", "spiegazione_vera_o_falsa": "Errato. Manca il coseno per bilanciare la derivata." },
+          { "testo_risposta": "y_p = e^-x sin(x)", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "y_p = x sin(x)", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'equazione y' = y/x è a variabili separabili?",
+        "risposte": [
+          { "testo_risposta": "Sì, si scrive dy/y = dx/x", "spiegazione_vera_o_falsa": "Corretto. Da cui ln|y| = ln|x| + C, ovvero y = Kx." },
+          { "testo_risposta": "No", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Solo se x è positivo", "spiegazione_vera_o_falsa": "Errato. La separabilità è una proprietà formale." },
+          { "testo_risposta": "Solo se y è costante", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il grafico delle soluzioni di y' = k y sono:",
+        "risposte": [
+          { "testo_risposta": "Curve esponenziali", "spiegazione_vera_o_falsa": "Corretto. Crescita o decadimento a seconda del segno di k." },
+          { "testo_risposta": "Rette", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Circonferenze", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Parabole", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "In un problema di Cauchy per un'equazione del secondo ordine, quante condizioni servono?",
+        "risposte": [
+          { "testo_risposta": "Due (solitamente y(t0) e y'(t0))", "spiegazione_vera_o_falsa": "Corretto. Una per ogni costante di integrazione." },
+          { "testo_risposta": "Una", "spiegazione_vera_o_falsa": "Errato. Non basterebbe a determinare C1 e C2." },
+          { "testo_risposta": "Tre", "spiegazione_vera_o_falsa": "Errato." },
+          { "testo_risposta": "Nessuna", "spiegazione_vera_o_falsa": "Errato." }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  }
+]

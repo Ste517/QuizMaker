@@ -24,5 +24,21 @@
       "poesia"
     ],
     "totale_domande": 40
+  },
+  {
+    "id": "analisi1",
+    "titolo": "Analisi Matematica 1",
+    "descrizione": "Limiti, successioni, serie, derivate, integrali e equazioni differenziali",
+    "file": "data/ai_generated/analisi1.json",
+    "categoria": "ai_generated",
+    "argomenti": [
+      "Limiti",
+      "Successioni",
+      "Serie",
+      "Derivate",
+      "Integrali",
+      "Equazioni Differenziali"
+    ],
+    "totale_domande": 200
   }
 ]
