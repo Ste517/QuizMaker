@@ -139,7 +139,30 @@
       border-color: #1e293b;
       color: #475569;
     }
+
+    /* Modal Styles */
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+    }
+    .modal-content {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .modal-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .modal-hidden .modal-content {
+      transform: scale(0.95);
+      opacity: 0;
+    }
   </style>
+  <link rel="stylesheet" href="markdown.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@5.1.2/lib/index.umd.js"></script>
 </head>
 <body class="h-full bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
   <div id="appContainer" class="min-h-full bg-gradient-to-br from-teal-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
@@ -191,6 +214,10 @@
           <div id="datasetsList" class="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-400">
             <p>Caricamento in corso...</p>
           </div>
+          <button id="openCatalogBtn" class="mt-4 w-full rounded-xl border border-brand-200 bg-brand-50/50 py-2.5 text-xs font-bold text-brand-700 transition hover:bg-brand-100 dark:border-brand-900/30 dark:bg-brand-900/20 dark:text-brand-400 dark:hover:bg-brand-900/40 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            Sfoglia Catalogo Completo
+          </button>
         </section>
 
         <section id="quizFiltersSection" class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
@@ -350,7 +377,7 @@
                <span id="quizTimerText" class="font-bold">00:00</span>
             </div>
           </div>
-          <h2 id="quizQuestionText" class="text-2xl sm:text-3xl font-bold leading-tight text-slate-800 dark:text-white mb-8"></h2>
+          <div id="quizQuestionText" class="markdown-content text-2xl sm:text-3xl font-bold leading-tight text-slate-800 dark:text-white mb-8"></div>
           
           <div id="quizAnswersArea" class="grid gap-3 sm:gap-4 content-start">
             <!-- Risposte iniettate via JS -->
@@ -365,7 +392,7 @@
             <div id="quizFeedbackIcon" class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full mt-1"></div>
             <div>
               <h4 id="quizFeedbackTitle" class="font-bold text-xl sm:text-2xl mb-1"></h4>
-              <p id="quizFeedbackText" class="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed"></p>
+              <div id="quizFeedbackText" class="markdown-content text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed"></div>
             </div>
           </div>
           <button id="quizActionBtn" class="btn-3d w-full h-14 rounded-2xl font-bold text-lg uppercase tracking-wider transition-all duration-200 disabled:opacity-100 flex items-center justify-center">
@@ -406,5 +433,40 @@
       }
     </script>
     <script src="app.js"></script>
+
+    <!-- MODALE CATALOGO DATASET -->
+    <div id="catalogModal" class="modal-hidden fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
+      <div id="catalogModalOverlay" class="modal-overlay absolute inset-0"></div>
+      <div class="modal-content relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+        <!-- Header Modale -->
+        <header class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white shadow-soft">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold">Catalogo Dataset</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Esplora e carica dataset pronti all'uso.</p>
+            </div>
+          </div>
+          <button id="closeCatalogBtn" class="p-2 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="px-6 py-4 bg-slate-50 dark:bg-slate-950/50 border-b border-slate-100 dark:border-slate-800">
+          <div class="relative">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="catalogSearchInput" placeholder="Cerca per titolo, descrizione o argomento..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-700 outline-none focus:border-brand-500 transition-colors text-sm" />
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div id="catalogGrid" class="flex-1 overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Caricamento in corso... -->
+        </div>
+      </div>
+    </div>
 </body>
 </html>

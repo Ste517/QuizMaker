@@ -1,3 +1,18 @@
+// Initialize Marked with KaTeX extension
+try {
+  if (typeof markedKatex !== 'undefined') {
+    const extension = typeof markedKatex === 'function' ? markedKatex : markedKatex.default;
+    if (typeof extension === 'function') {
+      marked.use(extension({
+        throwOnError: false,
+        nonStandard: true
+      }));
+    }
+  }
+} catch (e) {
+  console.warn("KaTeX extension initialization failed:", e);
+}
+
 // Theme Logic
 const themeToggle = document.getElementById('themeToggle');
 const themeLabel = document.getElementById('themeLabel');
@@ -168,7 +183,7 @@ function renderQuestionsList() {
         ${qs.map(q => `
           <div class="rounded-xl border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-950/50">
             <div class="flex items-start justify-between gap-2">
-              <p class="text-sm font-medium line-clamp-2">${q.testo_domanda}</p>
+              <div class="markdown-content text-sm font-medium line-clamp-2">${marked.parse(q.testo_domanda)}</div>
               <div class="flex flex-col items-end gap-1">
                 <span class="shrink-0 text-[10px] font-bold text-brand-600 dark:text-brand-400">Diff. ${q.difficolta}</span>
                 ${q.tempo ? `<span class="shrink-0 text-[10px] font-bold text-amber-600 dark:text-amber-400">⏱ ${q.tempo}s</span>` : ''}
@@ -325,13 +340,18 @@ async function handleImportFile(file) {
       importedTopics.add(item.argomento);
       
       item.domande.forEach(d => {
+        // Fix backslashes
+        const text = (d.testo_domanda || '').replace(/\u0008/g, '\\b');
         const q = {
           id: crypto.randomUUID(),
           argomento: item.argomento,
           difficolta: d.difficolta || 1,
-          testo_domanda: d.testo_domanda || '',
+          testo_domanda: text,
           risposta_corretta: d.risposta_corretta || 0,
-          risposte: d.risposte || []
+          risposte: (d.risposte || []).map(r => ({
+            testo_risposta: (r.testo_risposta || '').replace(/\u0008/g, '\\b'),
+            spiegazione_vera_o_falsa: (r.spiegazione_vera_o_falsa || '').replace(/\u0008/g, '\\b')
+          }))
         };
         if(d.tempo) q.tempo = d.tempo;
         if(d.immagine_url) q.immagine_url = d.immagine_url;
