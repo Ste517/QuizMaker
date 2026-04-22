@@ -10,7 +10,8 @@ function applyTheme(isDark) {
 }
 
 const savedTheme = localStorage.getItem(THEME_KEY);
-let isDark = savedTheme === 'dark' || !savedTheme; // Default to dark
+const normalizedTheme = savedTheme ? savedTheme.replace(/"/g, '') : 'dark';
+let isDark = normalizedTheme === 'dark';
 applyTheme(isDark);
 
 if(themeToggle) {

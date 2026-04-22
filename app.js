@@ -299,13 +299,16 @@ function renderHistory() {
 }
 
 function setTheme(mode) {
-  document.documentElement.classList.toggle('dark', mode === 'dark');
-  if(document.getElementById('themeLabel')) document.getElementById('themeLabel').textContent = mode === 'dark' ? 'Tema chiaro' : 'Tema scuro';
-  safeWrite(STORAGE_KEYS.theme, mode);
+  const isDark = mode === 'dark';
+  document.documentElement.classList.toggle('dark', isDark);
+  if(document.getElementById('themeLabel')) document.getElementById('themeLabel').textContent = isDark ? 'Tema chiaro' : 'Tema scuro';
+  localStorage.setItem(STORAGE_KEYS.theme, mode);
 }
 
-const theme = safeRead(STORAGE_KEYS.theme, 'dark');
-setTheme(theme);
+const savedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+const normalizedTheme = savedTheme ? savedTheme.replace(/"/g, '') : 'dark';
+setTheme(normalizedTheme);
+
 if(themeToggle) {
     themeToggle.addEventListener('click', () => {
     const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
