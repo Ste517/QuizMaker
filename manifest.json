@@ -1,0 +1,17 @@
+{
+  "name": "QuizMaker",
+  "short_name": "QuizMaker",
+  "description": "Crea e svolgi quiz personalizzati con timer e drag & drop.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0c87eb",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/5692/5692030.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

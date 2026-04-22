@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz Interface Tailwind</title>
+  <title>QuizBuilder - Allena la tua mente</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0c87eb">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -319,7 +321,6 @@
       const yearSpan = document.getElementById('copyrightYear');
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     </script>
-  </div>
 
 
     <!-- VISTA QUIZ (Duolingo Style) -->
@@ -394,6 +395,16 @@
       </div>
     </div>
 
-  <script src="app.js"></script>
+    <script>
+      // Registrazione Service Worker per PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker registrato!', reg))
+            .catch(err => console.log('Errore SW:', err));
+        });
+      }
+    </script>
+    <script src="app.js"></script>
 </body>
 </html>
