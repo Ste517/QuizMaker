@@ -24,7 +24,8 @@
             "spiegazione_vera_o_falsa": "Spiegazione del perché questa risposta è corretta o errata."
           }
         ],
-        "risposta_corretta": 0
+        "risposta_corretta": 0,
+        "tempo": "Tempo in secondi per rispondere, scritto come intero, se l'attributo è assente la domanda ha tempo illimitato"
       }
     ]
   }
