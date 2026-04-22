@@ -134,6 +134,7 @@ let currentQuestionIndex = 0;
 let selectedAnswerIndex = null;
 let isChecking = false;
 let correctAnswersCount = 0;
+let currentCategoryFilter = 'all';
 
 // Timer State
 let timerInterval = null;
@@ -239,26 +240,37 @@ function renderCatalogGrid(datasets) {
     return;
   }
 
-  catalogGrid.innerHTML = datasets.map(ds => `
+  catalogGrid.innerHTML = datasets.map(ds => {
+    const isAi = ds.categoria === 'ai_generated';
+    const categoryLabel = isAi ? 'IA' : 'User';
+    const categoryClass = isAi 
+      ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300' 
+      : 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300';
+
+    return `
     <div class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-brand-500 hover:shadow-md dark:border-slate-800 dark:bg-slate-950/50 dark:hover:border-brand-400">
       <div class="flex items-start justify-between gap-4">
         <div class="flex-1">
-          <div class="flex items-center gap-2 mb-1">
+          <div class="flex items-center justify-between mb-1">
             <h3 class="font-bold text-slate-800 dark:text-slate-100">${ds.titolo}</h3>
-            <span class="rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">${ds.totale_domande} dom.</span>
+            <span class="rounded-full ${categoryClass} px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">${categoryLabel}</span>
           </div>
-          <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">${ds.descrizione}</p>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-[11px] font-bold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20 px-2 py-0.5 rounded-lg">${ds.totale_domande} dom.</span>
+            <p class="text-[10px] text-slate-400 dark:text-slate-500 line-clamp-1">${ds.file.split('/').pop()}</p>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3 h-8">${ds.descrizione}</p>
           <div class="flex flex-wrap gap-1.5 mb-4">
             ${(ds.argomenti || []).slice(0, 3).map(arg => `<span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-medium opacity-80">${arg}</span>`).join('')}
             ${ds.argomenti && ds.argomenti.length > 3 ? `<span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-medium opacity-80">+${ds.argomenti.length - 3}</span>` : ''}
           </div>
         </div>
       </div>
-      <button type="button" data-fetch-dataset="${ds.file}" class="w-full rounded-xl bg-slate-900 py-2.5 text-sm font-bold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 active:scale-95">
+      <button type="button" data-fetch-dataset="${ds.file}" class="btn-glass w-full rounded-xl bg-slate-900 py-2.5 text-sm font-bold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 active:scale-95">
         Carica Dataset
       </button>
     </div>
-  `).join('');
+  `;}).join('');
 
   catalogGrid.querySelectorAll('[data-fetch-dataset]').forEach(button => {
     button.addEventListener('click', () => {
@@ -849,17 +861,33 @@ generateBtn.addEventListener('click', generateQuiz);
 if (openCatalogBtn) openCatalogBtn.addEventListener('click', () => toggleCatalogModal(true));
 if (closeCatalogBtn) closeCatalogBtn.addEventListener('click', () => toggleCatalogModal(false));
 if (catalogModalOverlay) catalogModalOverlay.addEventListener('click', () => toggleCatalogModal(false));
-if (catalogSearchInput) {
-  catalogSearchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    const filtered = allAvailableDatasets.filter(ds => 
+function applyCatalogFilters() {
+  const query = catalogSearchInput.value.toLowerCase().trim();
+  const filtered = allAvailableDatasets.filter(ds => {
+    const matchesQuery = !query || 
       ds.titolo.toLowerCase().includes(query) || 
       ds.descrizione.toLowerCase().includes(query) ||
-      (ds.argomenti && ds.argomenti.some(a => a.toLowerCase().includes(query)))
-    );
-    renderCatalogGrid(filtered);
+      (ds.argomenti && ds.argomenti.some(a => a.toLowerCase().includes(query)));
+    
+    const matchesCategory = currentCategoryFilter === 'all' || ds.categoria === currentCategoryFilter;
+    
+    return matchesQuery && matchesCategory;
   });
+  renderCatalogGrid(filtered);
 }
+
+if (catalogSearchInput) {
+  catalogSearchInput.addEventListener('input', applyCatalogFilters);
+}
+
+document.querySelectorAll('[data-category-filter]').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('[data-category-filter]').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCategoryFilter = tab.dataset.categoryFilter;
+    applyCatalogFilters();
+  });
+});
 
 quitQuizBtn.addEventListener('click', () => {
   if(confirm('Vuoi davvero uscire dal quiz? I progressi andranno persi.')) {
