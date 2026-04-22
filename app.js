@@ -88,8 +88,6 @@ const historyList = document.getElementById('historyList');
 const recentJsonList = document.getElementById('recentJsonList');
 const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 const clearRecentJsonBtn = document.getElementById('clearRecentJsonBtn');
-const refreshDatasetsBtn = document.getElementById('refreshDatasetsBtn');
-const datasetsList = document.getElementById('datasetsList');
 const dropzoneApp = document.getElementById('dropzoneApp');
 
 // DOM Elements - Views
@@ -833,10 +831,6 @@ clearRecentJsonBtn.addEventListener('click', () => {
   renderRecentJson();
   showStatus('Elenco JSON recenti svuotato.');
 });
-
-if (refreshDatasetsBtn) {
-  refreshDatasetsBtn.addEventListener('click', fetchDatasets);
-}
 
 topicSelect.addEventListener('change', updateCounters);
 difficultySelect.addEventListener('change', updateCounters);
