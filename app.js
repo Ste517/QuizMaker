@@ -235,7 +235,8 @@ function renderDatasets(datasets) {
         const data = await response.text();
         jsonInput.value = data;
         parseJsonFromInput();
-        jsonInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        const filtersSection = document.getElementById('quizFiltersSection');
+        if (filtersSection) filtersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } catch (err) {
         showStatus('Errore nel caricamento del dataset.', false);
       }
