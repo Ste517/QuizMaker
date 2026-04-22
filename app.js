@@ -881,7 +881,9 @@ if (catalogSearchInput) {
 }
 
 document.querySelectorAll('[data-category-filter]').forEach(tab => {
-  tab.addEventListener('click', () => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     document.querySelectorAll('[data-category-filter]').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     currentCategoryFilter = tab.dataset.categoryFilter;

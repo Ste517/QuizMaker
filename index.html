@@ -219,6 +219,10 @@
     .category-tab {
       background: rgba(255, 255, 255, 0.5);
       color: #64748b;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
     }
     .dark .category-tab {
       background: rgba(255, 255, 255, 0.05);
@@ -239,6 +243,13 @@
     
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Fix for mobile touch targets */
+    .category-tab {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
   </style>
   <link rel="stylesheet" href="markdown.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -531,15 +542,15 @@
         </header>
 
         <!-- Category Filters -->
-        <div class="px-6 pt-4 bg-slate-50 dark:bg-slate-950/50 flex gap-2 overflow-x-auto no-scrollbar">
-          <button data-category-filter="all" class="category-tab active px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap border-2 border-transparent">
+        <div class="px-6 pt-4 pb-2 bg-slate-50 dark:bg-slate-950/50 flex gap-2 overflow-x-auto no-scrollbar snap-x scroll-px-6">
+          <button data-category-filter="all" class="category-tab active px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap border-2 border-transparent snap-start shadow-sm">
             Tutti
           </button>
-          <button data-category-filter="ai_generated" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap border-2 border-transparent flex items-center gap-1.5">
+          <button data-category-filter="ai_generated" class="category-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap border-2 border-transparent flex items-center gap-1.5 snap-start shadow-sm">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             Generati da IA
           </button>
-          <button data-category-filter="user_made" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap border-2 border-transparent flex items-center gap-1.5">
+          <button data-category-filter="user_made" class="category-tab px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap border-2 border-transparent flex items-center gap-1.5 snap-start shadow-sm">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
             Creati da Utenti
           </button>
