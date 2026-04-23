@@ -41,6 +41,12 @@ if(themeToggle) {
 let topics = [];
 let questions = [];
 let editingId = null;
+let datasetAuthor = '';
+let datasetAuthorUrl = '';
+
+// DOM Elements
+const datasetAuthorInput = document.getElementById('datasetAuthor');
+const datasetAuthorUrlInput = document.getElementById('datasetAuthorUrl');
 
 // DOM Elements
 const topicsListEl = document.getElementById('topicsList');
@@ -305,10 +311,26 @@ exportJsonBtn.addEventListener('click', () => {
     grouped[q.argomento].push(exportQ);
   });
 
-  const finalDataset = Object.entries(grouped).map(([argomento, domande]) => ({
+  const finalArgomenti = Object.entries(grouped).map(([argomento, domande]) => ({
     argomento,
     domande
   }));
+
+  const author = datasetAuthorInput.value.trim();
+  const authorUrl = datasetAuthorUrlInput.value.trim();
+
+  let finalDataset;
+  if (author || authorUrl) {
+    finalDataset = {
+      autore: author,
+      url_autore: authorUrl,
+      argomenti: finalArgomenti
+    };
+    if (!authorUrl) delete finalDataset.url_autore;
+    if (!author) delete finalDataset.autore;
+  } else {
+    finalDataset = finalArgomenti;
+  }
 
   const dataStr = JSON.stringify(finalDataset, null, 2);
   const blob = new Blob([dataStr], { type: "application/json" });
@@ -329,15 +351,26 @@ async function handleImportFile(file) {
     const text = await file.text();
     const data = JSON.parse(text);
 
-    // Basic validation
-    if (!Array.isArray(data)) throw new Error('Root must be array');
+    // Metadata handling
+    let importedArgomenti = [];
+    if (Array.isArray(data)) {
+      importedArgomenti = data;
+      datasetAuthorInput.value = '';
+      datasetAuthorUrlInput.value = '';
+    } else if (data && Array.isArray(data.argomenti)) {
+      importedArgomenti = data.argomenti;
+      datasetAuthorInput.value = data.autore || '';
+      datasetAuthorUrlInput.value = data.url_autore || '';
+    } else if (data) {
+      importedArgomenti = [data];
+    }
 
     let importedQuestions = [];
-    let importedTopics = new Set(topics);
+    let importedTopicsSet = new Set(topics);
 
-    data.forEach(item => {
+    importedArgomenti.forEach(item => {
       if (!item.argomento || !Array.isArray(item.domande)) return;
-      importedTopics.add(item.argomento);
+      importedTopicsSet.add(item.argomento);
       
       item.domande.forEach(d => {
         // Fix backslashes

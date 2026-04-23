@@ -29,6 +29,14 @@
       }
     };
   </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82QYRCWRBM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-82QYRCWRBM');
+  </script>
   <style>
     .card-glass { backdrop-filter: blur(12px); }
 
@@ -131,6 +139,20 @@
       
       <!-- Left Sidebar: Topics & Actions -->
       <aside class="space-y-6">
+        <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
+          <h2 class="text-lg font-semibold mb-4">Metadati Dataset</h2>
+          <div class="space-y-4">
+            <div>
+              <label class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Autore</label>
+              <input type="text" id="datasetAuthor" placeholder="Tuo nome o modello IA..." class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" />
+            </div>
+            <div>
+              <label class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">URL Autore (Opzionale)</label>
+              <input type="url" id="datasetAuthorUrl" placeholder="https://github.com/..." class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950" />
+            </div>
+          </div>
+        </section>
+
         <section class="rounded-3xl border border-white/70 bg-white/85 p-5 shadow-soft card-glass dark:border-slate-800 dark:bg-slate-900/80">
           <h2 class="text-lg font-semibold mb-4">Gestione Dataset</h2>
           <div class="space-y-3">
