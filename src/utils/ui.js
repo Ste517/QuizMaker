@@ -49,3 +49,16 @@ export function setView(view) {
   
   window.scrollTo(0, 0);
 }
+
+export function toggleReportModal(show) {
+  const reportModal = document.getElementById('reportModal');
+  if (!reportModal) return;
+
+  if (show) {
+    reportModal.classList.remove('modal-hidden');
+    document.body.style.overflow = 'hidden';
+  } else {
+    reportModal.classList.add('modal-hidden');
+    document.body.style.overflow = '';
+  }
+}

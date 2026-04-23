@@ -19,13 +19,22 @@ def validate_dataset(file_path):
         print(f"Error reading file: {e}")
         return False
         
-    if not isinstance(data, list):
-        print("Error: Root element must be a list of topics.")
+    topics = []
+    if isinstance(data, list):
+        topics = data
+    elif isinstance(data, dict):
+        if 'argomenti' in data and isinstance(data['argomenti'], list):
+            topics = data['argomenti']
+        else:
+            topics = [data]
+    
+    if not topics:
+        print("Error: Dataset must be a list of topics or an object containing an 'argomenti' list.")
         return False
         
     errors = []
     
-    for t_idx, topic in enumerate(data):
+    for t_idx, topic in enumerate(topics):
         topic_name = topic.get('argomento', f'Topic {t_idx + 1}')
         
         if 'argomento' not in topic:

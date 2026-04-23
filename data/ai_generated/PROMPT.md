@@ -22,33 +22,38 @@ Il dataset deve essere in formato **JSON** e seguire rigorosamente la struttura 
 6. **LaTeX:** Se l'argomento è scientifico, usa sempre il formato `$formula$` per le espressioni matematiche.
 7. **Timer:** Opzionalmente, aggiungi un campo `"tempo"` in secondi per le domande più complesse.
 
+8. **Attribuzione:** Aggiungi un campo `"autore"` alla radice del JSON indicando il tuo nome e il modello utilizzato (es: "Generato da Gemini 1.5 Pro").
+
 ### Struttura JSON richiesta:
 ```json
-[
-  {
-    "argomento": "Titolo Micro-Argomento",
-    "domande": [
-      {
-        "difficolta": 3,
-        "tempo": 30,
-        "testo_domanda": "Testo della domanda con eventuale **Markdown** o $formula$?",
-        "risposte": [
-          {
-            "testo_risposta": "Opzione Corretta",
-            "spiegazione_vera_o_falsa": "Ottimo! Spiegazione del perché è corretta."
-          },
-          {
-            "testo_risposta": "Opzione Errata",
-            "spiegazione_vera_o_falsa": "Non proprio. Spiegazione del perché questa opzione è sbagliata e suggerimento per quella corretta."
-          },
-          { "testo_risposta": "...", "spiegazione_vera_o_falsa": "..." },
-          { "testo_risposta": "...", "spiegazione_vera_o_falsa": "..." }
-        ],
-        "risposta_corretta": 0
-      }
-    ]
-  }
-]
+{
+  "autore": "Generato da [NOME MODELLO]",
+  "argomenti": [
+    {
+      "argomento": "Titolo Micro-Argomento",
+      "domande": [
+        {
+          "difficolta": 3,
+          "tempo": 30,
+          "testo_domanda": "Testo della domanda con eventuale **Markdown** o $formula$?",
+          "risposte": [
+            {
+              "testo_risposta": "Opzione Corretta",
+              "spiegazione_vera_o_falsa": "Ottimo! Spiegazione del perché è corretta."
+            },
+            {
+              "testo_risposta": "Opzione Errata",
+              "spiegazione_vera_o_falsa": "Non proprio. Spiegazione del perché questa opzione è sbagliata e suggerimento per quella corretta."
+            },
+            { "testo_risposta": "...", "spiegazione_vera_o_falsa": "..." },
+            { "testo_risposta": "...", "spiegazione_vera_o_falsa": "..." }
+          ],
+          "risposta_corretta": 0
+        }
+      ]
+    }
+  ]
+}
 ```
 
 **Note importanti:**

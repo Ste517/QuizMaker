@@ -1,6 +1,6 @@
 export async function fetchDatasets(catalogGrid, datasetsList, onRenderCatalogGrid, onRenderDatasets) {
   try {
-    const response = await fetch('data/index.json');
+    const response = await fetch('data/index.json?t=' + Date.now());
     if (!response.ok) throw new Error('Network response was not ok');
     const datasets = await response.json();
     
@@ -54,6 +54,7 @@ export function renderCatalogGrid(datasets, catalogGrid, onLoadDatasetFile, onTo
             <h3 class="font-bold text-slate-800 dark:text-slate-100">${ds.titolo}</h3>
             <span class="rounded-full ${categoryClass} px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">${categoryLabel}</span>
           </div>
+          ${ds.autore ? `<p class="text-[10px] text-slate-500 dark:text-slate-400 mb-1">Di ${ds.url_autore ? `<a href="${ds.url_autore}" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline">${ds.autore}</a>` : ds.autore}</p>` : ''}
           <div class="flex items-center gap-2 mb-3">
             <span class="text-[11px] font-bold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20 px-2 py-0.5 rounded-lg">${ds.totale_domande} dom.</span>
             <p class="text-[10px] text-slate-400 dark:text-slate-500 line-clamp-1">${ds.file.split('/').pop()}</p>
@@ -111,6 +112,7 @@ export function renderDatasets(datasets, datasetsList, onLoadDatasetFile) {
             <p class="font-medium text-slate-800 dark:text-slate-100">${ds.titolo}</p>
             <span class="rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">${ds.totale_domande}</span>
           </div>
+          ${ds.autore ? `<p class="text-[9px] text-slate-400 dark:text-slate-500">Autore: ${ds.autore}</p>` : ''}
           <p class="mt-1 text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1">${ds.descrizione}</p>
         </div>
         <button type="button" data-fetch-dataset="${ds.file}" class="shrink-0 rounded-xl bg-slate-900 px-3 py-1.5 text-[10px] font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Carica</button>

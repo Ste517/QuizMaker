@@ -1,5 +1,5 @@
 import { STORAGE_KEYS, MAX_RECENT_JSON, safeRead, saveRecentJson, saveQuizResult } from './src/utils/storage.js';
-import { setTheme, showStatus, hideStatus, setView, formatDateTime } from './src/utils/ui.js';
+import { setTheme, showStatus, hideStatus, setView, formatDateTime, toggleReportModal } from './src/utils/ui.js';
 import { startTimer, stopTimer } from './src/quiz/timer.js';
 import { normalizeData, shuffle, flattenQuestions, getFilteredQuestions, summarizeJson } from './src/quiz/engine.js';
 import { fetchDatasets, toggleCatalogModal, renderCatalogGrid, loadDatasetFile, renderDatasets } from './src/catalog/service.js';
@@ -37,6 +37,7 @@ const historyList = document.getElementById('historyList');
 const recentJsonList = document.getElementById('recentJsonList');
 const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 const clearRecentJsonBtn = document.getElementById('clearRecentJsonBtn');
+const dropzoneApp = document.getElementById('dropzoneApp');
 
 // DOM Elements - Quiz UI
 const quizProgressBar = document.getElementById('quizProgressBar');
@@ -51,6 +52,14 @@ const quizFeedbackText = document.getElementById('quizFeedbackText');
 const quizActionBtn = document.getElementById('quizActionBtn');
 const quizTimerBadge = document.getElementById('quizTimerBadge');
 const quizTimerText = document.getElementById('quizTimerText');
+const quitQuizBtn = document.getElementById('quitQuizBtn');
+const openReportBtn = document.getElementById('openReportBtn');
+
+// DOM Elements - Report Modal
+const reportModalOverlay = document.getElementById('reportModalOverlay');
+const closeReportBtn = document.getElementById('closeReportBtn');
+const copyReportBtn = document.getElementById('copyReportBtn');
+const reportTextarea = document.getElementById('reportTextarea');
 
 // DOM Elements - Summary UI
 const summaryPercentage = document.getElementById('summaryPercentage');
@@ -71,6 +80,7 @@ const datasetsList = document.getElementById('datasetsList');
 let dataset = [];
 let currentQuiz = [];
 let currentQuizContext = null;
+let currentDatasetInfo = null;
 let allAvailableDatasets = [];
 let quizState = 'idle'; 
 let currentQuestionIndex = 0;
@@ -91,17 +101,6 @@ const sampleData = [
           { testo_risposta: '56', spiegazione_vera_o_falsa: 'Corretto: 7 × 8 = 56.' },
           { testo_risposta: '64', spiegazione_vera_o_falsa: '64 è il quadrato di 8, non il prodotto tra 7 e 8.' },
           { testo_risposta: '58', spiegazione_vera_o_falsa: '58 è errato: il risultato corretto è 56.' }
-        ],
-        risposta_corretta: 1
-      },
-      {
-        difficolta: 3,
-        testo_domanda: 'Qual è la derivata di $x^2$?',
-        risposte: [
-          { testo_risposta: '$x$', spiegazione_vera_o_falsa: 'La derivata di $x^2$ non è $x$ ma $2x$.' },
-          { testo_risposta: '$2x$', spiegazione_vera_o_falsa: 'Corretto: applicando la regola di derivazione si ottiene $2x$.' },
-          { testo_risposta: '$x^3$', spiegazione_vera_o_falsa: 'La derivata riduce l\'esponente, non lo aumenta.' },
-          { testo_risposta: '$2$', spiegazione_vera_o_falsa: '2 sarebbe la derivata di $2x$, non di $x^2$.' }
         ],
         risposta_corretta: 1
       }
@@ -133,6 +132,7 @@ function toggleCatalog(show) {
 }
 
 function loadDatasetFileFromCatalog(file) {
+  currentDatasetInfo = allAvailableDatasets.find(ds => ds.file === file);
   loadDatasetFile(file, jsonInput, parseJsonFromInput, showStatus);
 }
 
@@ -416,6 +416,29 @@ function finishQuiz() {
   }, 400);
 }
 
+// --- Reporting Logic ---
+
+function openReport() {
+  const q = currentQuiz[currentQuestionIndex];
+  const datasetTitle = currentDatasetInfo ? currentDatasetInfo.titolo : 'Dataset Manuale';
+  const datasetFile = currentDatasetInfo ? currentDatasetInfo.file : 'N/A';
+  
+  const reportTemplate = `### Segnalazione Domanda
+**Dataset:** ${datasetTitle}
+**File:** ${datasetFile}
+**Argomento:** ${q.argomento}
+**Testo Domanda:** ${q.testo_domanda}
+
+**Problema riscontrato:**
+[Descrivi qui l'errore o il problema]
+
+---
+*Segnalazione generata automaticamente da QuizMaker*`;
+
+  reportTextarea.value = reportTemplate;
+  toggleReportModal(true);
+}
+
 // --- Event Handlers ---
 
 function handleActionClick() {
@@ -432,6 +455,7 @@ async function handleFile(file) {
   try {
     const text = await file.text();
     jsonInput.value = text;
+    currentDatasetInfo = null; // Reset dataset info for manual files
     saveRecentJson(text, file.name || 'file', summarizeJson);
     renderRecentJson();
     hideStatus();
@@ -449,12 +473,14 @@ resetBtn.addEventListener('click', () => {
   jsonInput.value = '';
   dataset = [];
   currentQuiz = [];
+  currentDatasetInfo = null;
   populateTopics();
   hideStatus();
 });
 
 loadSampleBtn.addEventListener('click', () => {
   jsonInput.value = JSON.stringify(sampleData, null, 2);
+  currentDatasetInfo = null;
   parseJsonFromInput();
 });
 
@@ -533,6 +559,20 @@ quitQuizBtn.addEventListener('click', () => {
 });
 
 playAgainBtn.addEventListener('click', () => setView('config'));
+
+openReportBtn.addEventListener('click', openReport);
+closeReportBtn.addEventListener('click', () => toggleReportModal(false));
+reportModalOverlay.addEventListener('click', () => toggleReportModal(false));
+
+copyReportBtn.addEventListener('click', () => {
+  reportTextarea.select();
+  document.execCommand('copy');
+  const originalIcon = copyReportBtn.innerHTML;
+  copyReportBtn.innerHTML = '<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+  setTimeout(() => {
+    copyReportBtn.innerHTML = originalIcon;
+  }, 2000);
+});
 
 // Start initialization
 init();

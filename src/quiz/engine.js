@@ -1,5 +1,13 @@
 export function normalizeData(raw) {
-  const topics = Array.isArray(raw) ? raw : [raw];
+  let topics = [];
+  if (Array.isArray(raw)) {
+    topics = raw;
+  } else if (raw && Array.isArray(raw.argomenti)) {
+    topics = raw.argomenti;
+  } else if (raw) {
+    topics = [raw];
+  }
+  
   if (!topics.length) throw new Error('Il JSON non contiene argomenti.');
 
   return topics.map((topic, topicIndex) => {
