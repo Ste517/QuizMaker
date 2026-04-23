@@ -127,7 +127,7 @@ async function init() {
 // --- Wrapper Functions for Modules ---
 
 function toggleCatalog(show) {
-  toggleCatalogModal(show, catalogModal, catalogSearchInput, allAvailableDatasets, 
+  toggleCatalogModal(show, catalogModal, allAvailableDatasets, 
     (ds) => renderCatalogGrid(ds, catalogGrid, loadDatasetFileFromCatalog, toggleCatalog));
 }
 

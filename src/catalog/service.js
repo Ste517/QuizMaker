@@ -20,11 +20,10 @@ export async function fetchDatasets(catalogGrid, datasetsList, onRenderCatalogGr
   }
 }
 
-export function toggleCatalogModal(show, catalogModal, catalogSearchInput, allAvailableDatasets, onRenderCatalogGrid) {
+export function toggleCatalogModal(show, catalogModal, allAvailableDatasets, onRenderCatalogGrid) {
   if (show) {
     catalogModal.classList.remove('modal-hidden');
     document.body.style.overflow = 'hidden';
-    catalogSearchInput.focus();
     onRenderCatalogGrid(allAvailableDatasets);
   } else {
     catalogModal.classList.add('modal-hidden');
