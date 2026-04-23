@@ -1,7 +1,12 @@
+import { STORAGE_KEYS, MAX_RECENT_JSON, safeRead, saveRecentJson, saveQuizResult } from './src/utils/storage.js';
+import { setTheme, showStatus, hideStatus, setView, formatDateTime } from './src/utils/ui.js';
+import { startTimer, stopTimer } from './src/quiz/timer.js';
+import { normalizeData, shuffle, flattenQuestions, getFilteredQuestions, summarizeJson } from './src/quiz/engine.js';
+import { fetchDatasets, toggleCatalogModal, renderCatalogGrid, loadDatasetFile, renderDatasets } from './src/catalog/service.js';
+
 // Initialize Marked with KaTeX extension
 try {
   if (typeof markedKatex !== 'undefined') {
-    // The UMD bundle might expose it differently depending on the version
     const extension = typeof markedKatex === 'function' ? markedKatex : markedKatex.default;
     if (typeof extension === 'function') {
       marked.use(extension({
@@ -14,13 +19,64 @@ try {
   console.warn("KaTeX extension initialization failed:", e);
 }
 
-const STORAGE_KEYS = {
-  theme: 'quizmaker-theme',
-  history: 'quizmaker-history',
-  recentJson: 'quizmaker-recent-json'
-};
-const MAX_HISTORY_ITEMS = 10;
-const MAX_RECENT_JSON = 3;
+// DOM Elements - Config
+const jsonInput = document.getElementById('jsonInput');
+const jsonFile = document.getElementById('jsonFile');
+const parseBtn = document.getElementById('parseBtn');
+const resetBtn = document.getElementById('resetBtn');
+const loadSampleBtn = document.getElementById('loadSampleBtn');
+const topicSelect = document.getElementById('topicSelect');
+const difficultySelect = document.getElementById('difficultySelect');
+const questionCount = document.getElementById('questionCount');
+const generateBtn = document.getElementById('generateBtn');
+const topicCount = document.getElementById('topicCount');
+const questionPoolCount = document.getElementById('questionPoolCount');
+const filteredCount = document.getElementById('filteredCount');
+const themeToggle = document.getElementById('themeToggle');
+const historyList = document.getElementById('historyList');
+const recentJsonList = document.getElementById('recentJsonList');
+const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+const clearRecentJsonBtn = document.getElementById('clearRecentJsonBtn');
+
+// DOM Elements - Quiz UI
+const quizProgressBar = document.getElementById('quizProgressBar');
+const quizQuestionTagText = document.getElementById('quizQuestionTagText');
+const quizQuestionText = document.getElementById('quizQuestionText');
+const quizAnswersArea = document.getElementById('quizAnswersArea');
+const quizFooter = document.getElementById('quizFooter');
+const quizFeedbackContent = document.getElementById('quizFeedbackContent');
+const quizFeedbackIcon = document.getElementById('quizFeedbackIcon');
+const quizFeedbackTitle = document.getElementById('quizFeedbackTitle');
+const quizFeedbackText = document.getElementById('quizFeedbackText');
+const quizActionBtn = document.getElementById('quizActionBtn');
+const quizTimerBadge = document.getElementById('quizTimerBadge');
+const quizTimerText = document.getElementById('quizTimerText');
+
+// DOM Elements - Summary UI
+const summaryPercentage = document.getElementById('summaryPercentage');
+const summaryCorrectCount = document.getElementById('summaryCorrectCount');
+const summaryTotalCount = document.getElementById('summaryTotalCount');
+const playAgainBtn = document.getElementById('playAgainBtn');
+
+// DOM Elements - Catalog Modal
+const catalogModal = document.getElementById('catalogModal');
+const catalogModalOverlay = document.getElementById('catalogModalOverlay');
+const closeCatalogBtn = document.getElementById('closeCatalogBtn');
+const openCatalogBtn = document.getElementById('openCatalogBtn');
+const catalogSearchInput = document.getElementById('catalogSearchInput');
+const catalogGrid = document.getElementById('catalogGrid');
+const datasetsList = document.getElementById('datasetsList');
+
+// App State
+let dataset = [];
+let currentQuiz = [];
+let currentQuizContext = null;
+let allAvailableDatasets = [];
+let quizState = 'idle'; 
+let currentQuestionIndex = 0;
+let selectedAnswerIndex = null;
+let isChecking = false;
+let correctAnswersCount = 0;
 
 const sampleData = [
   {
@@ -50,279 +106,76 @@ const sampleData = [
         risposta_corretta: 1
       }
     ]
-  },
-  {
-    argomento: 'storia',
-    domande: [
-      {
-        difficolta: 1,
-        testo_domanda: 'In quale città si trova il Colosseo?',
-        risposte: [
-          { testo_risposta: 'Milano', spiegazione_vera_o_falsa: 'Milano non ospita il Colosseo.' },
-          { testo_risposta: 'Roma', spiegazione_vera_o_falsa: 'Corretto: il Colosseo si trova a Roma.' },
-          { testo_risposta: 'Napoli', spiegazione_vera_o_falsa: 'Napoli non è la città corretta.' },
-          { testo_risposta: 'Torino', spiegazione_vera_o_falsa: 'Torino non ospita il Colosseo.' }
-        ],
-        risposta_corretta: 1
-      }
-    ]
   }
 ];
 
-// DOM Elements - Config
-const jsonInput = document.getElementById('jsonInput');
-const jsonFile = document.getElementById('jsonFile');
-const parseBtn = document.getElementById('parseBtn');
-const resetBtn = document.getElementById('resetBtn');
-const loadSampleBtn = document.getElementById('loadSampleBtn');
-const parseStatus = document.getElementById('parseStatus');
-const topicSelect = document.getElementById('topicSelect');
-const difficultySelect = document.getElementById('difficultySelect');
-const questionCount = document.getElementById('questionCount');
-const generateBtn = document.getElementById('generateBtn');
-const topicCount = document.getElementById('topicCount');
-const questionPoolCount = document.getElementById('questionPoolCount');
-const filteredCount = document.getElementById('filteredCount');
-const themeToggle = document.getElementById('themeToggle');
-const historyList = document.getElementById('historyList');
-const recentJsonList = document.getElementById('recentJsonList');
-const clearHistoryBtn = document.getElementById('clearHistoryBtn');
-const clearRecentJsonBtn = document.getElementById('clearRecentJsonBtn');
-const dropzoneApp = document.getElementById('dropzoneApp');
+// --- Initialization ---
 
-// DOM Elements - Views
-const configView = document.getElementById('configView');
-const quizView = document.getElementById('quizView');
-const summaryView = document.getElementById('summaryView');
+async function init() {
+  const savedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+  const normalizedTheme = savedTheme ? savedTheme.replace(/"/g, '') : 'dark';
+  setTheme(normalizedTheme, STORAGE_KEYS);
 
-// DOM Elements - Quiz UI
-const quitQuizBtn = document.getElementById('quitQuizBtn');
-const quizProgressBar = document.getElementById('quizProgressBar');
-const quizQuestionTagText = document.getElementById('quizQuestionTagText');
-const quizQuestionText = document.getElementById('quizQuestionText');
-const quizAnswersArea = document.getElementById('quizAnswersArea');
-const quizFooter = document.getElementById('quizFooter');
-const quizFeedbackContent = document.getElementById('quizFeedbackContent');
-const quizFeedbackIcon = document.getElementById('quizFeedbackIcon');
-const quizFeedbackTitle = document.getElementById('quizFeedbackTitle');
-const quizFeedbackText = document.getElementById('quizFeedbackText');
-const quizActionBtn = document.getElementById('quizActionBtn');
-const quizTimerBadge = document.getElementById('quizTimerBadge');
-const quizTimerText = document.getElementById('quizTimerText');
-
-// DOM Elements - Summary UI
-const summaryPercentage = document.getElementById('summaryPercentage');
-const playAgainBtn = document.getElementById('playAgainBtn');
-
-// DOM Elements - Catalog Modal
-const catalogModal = document.getElementById('catalogModal');
-const catalogModalOverlay = document.getElementById('catalogModalOverlay');
-const closeCatalogBtn = document.getElementById('closeCatalogBtn');
-const openCatalogBtn = document.getElementById('openCatalogBtn');
-const catalogSearchInput = document.getElementById('catalogSearchInput');
-const catalogGrid = document.getElementById('catalogGrid');
-const datasetsList = document.getElementById('datasetsList');
-
-let dataset = [];
-let currentQuiz = [];
-let currentQuizContext = null;
-let allAvailableDatasets = []; // Store fetched datasets for filtering
-
-// Gamification State
-let quizState = 'idle'; 
-let currentQuestionIndex = 0;
-let selectedAnswerIndex = null;
-let isChecking = false;
-let correctAnswersCount = 0;
-let currentCategoryFilter = 'all';
-
-// Timer State
-let timerInterval = null;
-let timeLeft = 0;
-
-function safeRead(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function safeWrite(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-  }
-}
-
-function formatDateTime(value) {
-  return new Date(value).toLocaleString('it-IT', {
-    dateStyle: 'short',
-    timeStyle: 'short'
-  });
-}
-
-function summarizeJson(rawText) {
-  try {
-    const parsed = JSON.parse(rawText);
-    const normalized = normalizeData(parsed);
-    const topics = normalized.map(item => item.argomento);
-    const questionTotal = normalized.reduce((sum, item) => sum + item.domande.length, 0);
-    return {
-      topics,
-      questionTotal,
-      label: topics.length ? `${topics.slice(0, 2).join(', ')}${topics.length > 2 ? '…' : ''}` : 'JSON recente'
-    };
-  } catch {
-    return {
-      topics: [],
-      questionTotal: 0,
-      label: 'JSON recente'
-    };
-  }
-}
-
-function saveRecentJson(rawText, source = 'manuale') {
-  const trimmed = rawText.trim();
-  if (!trimmed) return;
-  const summary = summarizeJson(trimmed);
-  const items = safeRead(STORAGE_KEYS.recentJson, []).filter(item => item.rawText !== trimmed);
-  items.unshift({
-    id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
-    savedAt: new Date().toISOString(),
-    source,
-    rawText: trimmed,
-    summary
-  });
-  safeWrite(STORAGE_KEYS.recentJson, items.slice(0, MAX_RECENT_JSON));
+  renderHistory();
   renderRecentJson();
+  
+  allAvailableDatasets = await fetchDatasets(catalogGrid, datasetsList, 
+    (ds) => renderCatalogGrid(ds, catalogGrid, loadDatasetFileFromCatalog, toggleCatalog),
+    (ds) => renderDatasets(ds, datasetsList, loadDatasetFileFromCatalog)
+  );
 }
 
-async function fetchDatasets() {
+// --- Wrapper Functions for Modules ---
+
+function toggleCatalog(show) {
+  toggleCatalogModal(show, catalogModal, catalogSearchInput, allAvailableDatasets, 
+    (ds) => renderCatalogGrid(ds, catalogGrid, loadDatasetFileFromCatalog, toggleCatalog));
+}
+
+function loadDatasetFileFromCatalog(file) {
+  loadDatasetFile(file, jsonInput, parseJsonFromInput, showStatus);
+}
+
+function parseJsonFromInput() {
+  const content = jsonInput.value.trim();
+  if (!content) {
+    showStatus('Inserisci o carica un JSON prima di analizzarlo.', false);
+    return;
+  }
+
   try {
-    const response = await fetch('data/index.json');
-    if (!response.ok) throw new Error('Network response was not ok');
-    const datasets = await response.json();
-    allAvailableDatasets = datasets;
-    
-    // Only render to sidebar list if the element exists
-    if (datasetsList) {
-      renderDatasets(datasets);
-    }
+    const raw = JSON.parse(content);
+    dataset = normalizeData(raw);
+    populateTopics();
+    currentQuiz = [];
+    currentQuizContext = null;
+    saveRecentJson(content, 'editor', summarizeJson);
+    renderRecentJson();
+    showStatus(`JSON valido: ${dataset.length} argomento/i e ${flattenQuestions(dataset).length} domanda/e disponibili.`);
   } catch (error) {
-    console.error('Error fetching datasets:', error);
-    if (datasetsList) {
-      datasetsList.innerHTML = '<p class="text-xs italic">Dataset non disponibili in locale (richiede server).</p>';
-    }
-    if (catalogGrid) {
-      catalogGrid.innerHTML = '<p class="col-span-full text-center py-10 opacity-50">Impossibile caricare il catalogo.</p>';
-    }
+    dataset = [];
+    currentQuiz = [];
+    currentQuizContext = null;
+    populateTopics();
+    showStatus(error.message || 'JSON non valido.', false);
   }
 }
 
-function toggleCatalogModal(show) {
-  if (show) {
-    catalogModal.classList.remove('modal-hidden');
-    document.body.style.overflow = 'hidden';
-    catalogSearchInput.focus();
-    renderCatalogGrid(allAvailableDatasets);
-  } else {
-    catalogModal.classList.add('modal-hidden');
-    document.body.style.overflow = '';
-  }
-}
-
-function renderCatalogGrid(datasets) {
-  if (!catalogGrid) return;
-  if (!datasets || !datasets.length) {
-    catalogGrid.innerHTML = '<p class="col-span-full text-center py-10 opacity-50">Nessun dataset trovato.</p>';
-    return;
-  }
-
-  catalogGrid.innerHTML = datasets.map(ds => {
-    const isAi = ds.categoria === 'ai_generated';
-    const categoryLabel = isAi ? 'IA' : 'User';
-    const categoryClass = isAi 
-      ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300' 
-      : 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300';
-
-    return `
-    <div class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-brand-500 hover:shadow-md dark:border-slate-800 dark:bg-slate-950/50 dark:hover:border-brand-400">
-      <div class="flex items-start justify-between gap-4">
-        <div class="flex-1">
-          <div class="flex items-center justify-between mb-1">
-            <h3 class="font-bold text-slate-800 dark:text-slate-100">${ds.titolo}</h3>
-            <span class="rounded-full ${categoryClass} px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">${categoryLabel}</span>
-          </div>
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-[11px] font-bold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20 px-2 py-0.5 rounded-lg">${ds.totale_domande} dom.</span>
-            <p class="text-[10px] text-slate-400 dark:text-slate-500 line-clamp-1">${ds.file.split('/').pop()}</p>
-          </div>
-          <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3 h-8">${ds.descrizione}</p>
-          <div class="flex flex-wrap gap-1.5 mb-4">
-            ${(ds.argomenti || []).slice(0, 3).map(arg => `<span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-medium opacity-80">${arg}</span>`).join('')}
-            ${ds.argomenti && ds.argomenti.length > 3 ? `<span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-medium opacity-80">+${ds.argomenti.length - 3}</span>` : ''}
-          </div>
-        </div>
-      </div>
-      <button type="button" data-fetch-dataset="${ds.file}" class="btn-glass w-full rounded-xl bg-slate-900 py-2.5 text-sm font-bold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 active:scale-95">
-        Carica Dataset
-      </button>
-    </div>
-  `;}).join('');
-
-  catalogGrid.querySelectorAll('[data-fetch-dataset]').forEach(button => {
-    button.addEventListener('click', () => {
-      loadDatasetFile(button.dataset.fetchDataset);
-      toggleCatalogModal(false);
-    });
+function populateTopics() {
+  topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
+  dataset.forEach(topic => {
+    const option = document.createElement('option');
+    option.value = topic.argomento;
+    option.textContent = topic.argomento;
+    topicSelect.appendChild(option);
   });
+  updateCounters();
 }
 
-async function loadDatasetFile(file) {
-  try {
-    const response = await fetch(file);
-    if (!response.ok) throw new Error('File non trovato');
-    const data = await response.text();
-    jsonInput.value = data;
-    parseJsonFromInput();
-    const filtersSection = document.getElementById('quizFiltersSection');
-    if (filtersSection) filtersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } catch (err) {
-    showStatus('Errore nel caricamento del dataset.', false);
-  }
-}
-
-function renderDatasets(datasets) {
-  if (!datasetsList) return;
-  
-  // Show only a few featured/recent ones in the sidebar
-  const featured = datasets.slice(0, 3);
-  
-  if (!featured.length) {
-    datasetsList.innerHTML = '<p>Nessun dataset trovato.</p>';
-    return;
-  }
-
-  datasetsList.innerHTML = featured.map(ds => `
-    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 mb-3 dark:border-slate-700 dark:bg-slate-950/70">
-      <div class="flex items-start justify-between gap-3">
-        <div>
-          <div class="flex items-center gap-2">
-            <p class="font-medium text-slate-800 dark:text-slate-100">${ds.titolo}</p>
-            <span class="rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">${ds.totale_domande}</span>
-          </div>
-          <p class="mt-1 text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1">${ds.descrizione}</p>
-        </div>
-        <button type="button" data-fetch-dataset="${ds.file}" class="shrink-0 rounded-xl bg-slate-900 px-3 py-1.5 text-[10px] font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">Carica</button>
-      </div>
-    </div>
-  `).join('');
-
-  datasetsList.querySelectorAll('[data-fetch-dataset]').forEach(button => {
-    button.addEventListener('click', () => loadDatasetFile(button.dataset.fetchDataset));
-  });
+function updateCounters() {
+  topicCount.textContent = String(dataset.length);
+  questionPoolCount.textContent = String(flattenQuestions(dataset).length);
+  filteredCount.textContent = String(getFilteredQuestions(dataset, topicSelect.value, difficultySelect.value).length);
 }
 
 function renderRecentJson() {
@@ -354,13 +207,6 @@ function renderRecentJson() {
   });
 }
 
-function saveQuizResult(result) {
-  const items = safeRead(STORAGE_KEYS.history, []);
-  items.unshift(result);
-  safeWrite(STORAGE_KEYS.history, items.slice(0, MAX_HISTORY_ITEMS));
-  renderHistory();
-}
-
 function renderHistory() {
   const items = safeRead(STORAGE_KEYS.history, []);
   if (!items.length) {
@@ -379,163 +225,14 @@ function renderHistory() {
   `).join('');
 }
 
-function setTheme(mode) {
-  const isDark = mode === 'dark';
-  document.documentElement.classList.toggle('dark', isDark);
-  if(document.getElementById('themeLabel')) document.getElementById('themeLabel').textContent = isDark ? 'Tema chiaro' : 'Tema scuro';
-  localStorage.setItem(STORAGE_KEYS.theme, mode);
-}
-
-const savedTheme = localStorage.getItem(STORAGE_KEYS.theme);
-const normalizedTheme = savedTheme ? savedTheme.replace(/"/g, '') : 'dark';
-setTheme(normalizedTheme);
-
-if(themeToggle) {
-    themeToggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-    setTheme(newTheme);
-    });
-}
-
-function showStatus(message, ok = true) {
-  parseStatus.className = `mt-4 rounded-2xl border px-4 py-3 text-sm flex items-center gap-2 ${ok
-    ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-200'
-    : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/30 dark:text-rose-200'}`;
-  
-  parseStatus.innerHTML = ok 
-    ? `<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span>${message}</span>`
-    : `<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span>${message}</span>`;
-  
-  parseStatus.classList.remove('hidden');
-}
-
-function hideStatus() {
-  parseStatus.classList.add('hidden');
-}
-
-function normalizeData(raw) {
-  const topics = Array.isArray(raw) ? raw : [raw];
-  if (!topics.length) throw new Error('Il JSON non contiene argomenti.');
-
-  return topics.map((topic, topicIndex) => {
-    if (typeof topic.argomento !== 'string' || !topic.argomento.trim()) {
-      throw new Error(`Argomento non valido alla posizione ${topicIndex + 1}.`);
-    }
-    if (!Array.isArray(topic.domande) || !topic.domande.length) {
-      throw new Error(`L\'argomento "${topic.argomento}" non contiene domande.`);
-    }
-
-    const domande = topic.domande.map((q, questionIndex) => {
-      // Fix common backslash issues in strings coming from JSON
-      // Specifically \b (backspace) which often happens with \bowtie
-      if (typeof q.testo_domanda === 'string') {
-        q.testo_domanda = q.testo_domanda.replace(/\u0008/g, '\\b');
-      }
-
-      if (!Number.isInteger(q.difficolta) || q.difficolta < 1 || q.difficolta > 5) {
-        throw new Error(`Difficoltà non valida in "${topic.argomento}", domanda ${questionIndex + 1}.`);
-      }
-      if (typeof q.testo_domanda !== 'string' || !q.testo_domanda.trim()) {
-        throw new Error(`Testo domanda mancante in "${topic.argomento}", domanda ${questionIndex + 1}.`);
-      }
-      if (!Array.isArray(q.risposte) || q.risposte.length < 2) {
-        throw new Error(`Ogni domanda deve avere almeno 2 risposte in "${topic.argomento}".`);
-      }
-      q.risposte.forEach((a, answerIndex) => {
-        if (typeof a.testo_risposta === 'string') {
-          a.testo_risposta = a.testo_risposta.replace(/\u0008/g, '\\b');
-        }
-        if (typeof a.spiegazione_vera_o_falsa === 'string') {
-          a.spiegazione_vera_o_falsa = a.spiegazione_vera_o_falsa.replace(/\u0008/g, '\\b');
-        }
-
-        if (typeof a.testo_risposta !== 'string' || !a.testo_risposta.trim()) {
-          throw new Error(`Testo risposta mancante in "${topic.argomento}", domanda ${questionIndex + 1}, risposta ${answerIndex + 1}.`);
-        }
-        if (typeof a.spiegazione_vera_o_falsa !== 'string') {
-          throw new Error(`Spiegazione mancante in "${topic.argomento}", domanda ${questionIndex + 1}, risposta ${answerIndex + 1}.`);
-        }
-      });
-      if (!Number.isInteger(q.risposta_corretta) || q.risposta_corretta < 0 || q.risposta_corretta >= q.risposte.length) {
-        throw new Error(`Indice risposta corretta non valido in "${topic.argomento}", domanda ${questionIndex + 1}.`);
-      }
-      return q;
-    });
-
-    return { argomento: topic.argomento.trim(), domande };
-  });
-}
-
-function flattenQuestions() {
-  return dataset.flatMap(topic => topic.domande.map(question => ({ ...question, argomento: topic.argomento })));
-}
-
-function getFilteredQuestions() {
-  const selectedTopic = topicSelect.value;
-  const selectedDifficulty = difficultySelect.value;
-  return flattenQuestions().filter(question => {
-    const topicOk = selectedTopic === 'all' || question.argomento === selectedTopic;
-    const difficultyOk = selectedDifficulty === 'all' || String(question.difficolta) === selectedDifficulty;
-    return topicOk && difficultyOk;
-  });
-}
-
-function updateCounters() {
-  topicCount.textContent = String(dataset.length);
-  questionPoolCount.textContent = String(flattenQuestions().length);
-  filteredCount.textContent = String(getFilteredQuestions().length);
-}
-
-function populateTopics() {
-  topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
-  dataset.forEach(topic => {
-    const option = document.createElement('option');
-    option.value = topic.argomento;
-    option.textContent = topic.argomento;
-    topicSelect.appendChild(option);
-  });
-  updateCounters();
-}
-
-function shuffle(array) {
-  const clone = [...array];
-  for (let i = clone.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [clone[i], clone[j]] = [clone[j], clone[i]];
-  }
-  return clone;
-}
-
-function parseJsonFromInput() {
-  const content = jsonInput.value.trim();
-  if (!content) {
-    showStatus('Inserisci o carica un JSON prima di analizzarlo.', false);
-    return;
-  }
-
-  try {
-    const raw = JSON.parse(content);
-    dataset = normalizeData(raw);
-    populateTopics();
-    currentQuiz = [];
-    currentQuizContext = null;
-    saveRecentJson(content, 'editor');
-    showStatus(`JSON valido: ${dataset.length} argomento/i e ${flattenQuestions().length} domanda/e disponibili.`);
-  } catch (error) {
-    dataset = [];
-    currentQuiz = [];
-    currentQuizContext = null;
-    populateTopics();
-    showStatus(error.message || 'JSON non valido.', false);
-  }
-}
+// --- Quiz Logic ---
 
 function generateQuiz() {
   if (!dataset.length) {
     showStatus('Analizza prima un JSON valido.', false);
     return;
   }
-  const filtered = getFilteredQuestions();
+  const filtered = getFilteredQuestions(dataset, topicSelect.value, difficultySelect.value);
   updateCounters();
   if (!filtered.length) {
     showStatus('Nessuna domanda disponibile con i filtri selezionati.', false);
@@ -559,58 +256,6 @@ function generateQuiz() {
   startQuiz();
 }
 
-// --- GAMIFICATION & TIMER LOGIC ---
-function startTimer(seconds) {
-  quizTimerBadge.classList.remove('hidden');
-  timeLeft = seconds;
-  updateTimerText();
-
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    updateTimerText();
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      handleTimeUp();
-    }
-  }, 1000);
-}
-
-function stopTimer() {
-  if (timerInterval) clearInterval(timerInterval);
-  quizTimerBadge.classList.add('hidden');
-}
-
-function updateTimerText() {
-  const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-  const s = (timeLeft % 60).toString().padStart(2, '0');
-  quizTimerText.textContent = `${m}:${s}`;
-  
-  if (timeLeft <= 5 && timeLeft > 0) {
-    quizTimerBadge.classList.remove('bg-amber-100', 'text-amber-700', 'dark:bg-amber-900/40', 'dark:text-amber-400');
-    quizTimerBadge.classList.add('bg-rose-100', 'text-rose-700', 'dark:bg-rose-900/40', 'dark:text-rose-400', 'animate-pulse');
-  } else if (timeLeft > 5) {
-    quizTimerBadge.classList.remove('bg-rose-100', 'text-rose-700', 'dark:bg-rose-900/40', 'dark:text-rose-400', 'animate-pulse');
-    quizTimerBadge.classList.add('bg-amber-100', 'text-amber-700', 'dark:bg-amber-900/40', 'dark:text-amber-400');
-  }
-}
-
-function handleTimeUp() {
-  if (isChecking) return;
-  // If the user didn't select anything, answer is forced wrong
-  // If the user selected something, we evaluate what they selected
-  checkAnswer(true);
-}
-
-function setView(view) {
-  configView.classList.toggle('hidden', view !== 'config');
-  quizView.classList.toggle('hidden', view !== 'quiz');
-  summaryView.classList.toggle('hidden', view !== 'summary');
-  if (view === 'config') configView.classList.add('block');
-  else configView.classList.remove('block');
-  
-  window.scrollTo(0, 0);
-}
-
 function startQuiz() {
   if (!currentQuiz.length) return;
   quizState = 'playing';
@@ -621,7 +266,7 @@ function startQuiz() {
 }
 
 function renderCurrentQuestion() {
-  stopTimer();
+  stopTimer(quizTimerBadge);
   selectedAnswerIndex = null;
   isChecking = false;
   
@@ -631,9 +276,8 @@ function renderCurrentQuestion() {
   
   quizQuestionTagText.textContent = `${q.argomento} • Difficoltà ${q.difficolta}`;
   
-  // Timer setup
   if (q.tempo && q.tempo > 0) {
-    startTimer(q.tempo);
+    startTimer(q.tempo, { quizTimerBadge, quizTimerText }, () => checkAnswer(true));
   }
   
   let imageHtml = '';
@@ -686,21 +330,10 @@ function selectAnswer(index) {
   quizActionBtn.className = 'btn-3d w-full h-14 sm:h-16 rounded-2xl font-bold text-lg uppercase tracking-wider transition-all duration-200 flex items-center justify-center action-btn-primary';
 }
 
-function handleActionClick() {
-  if (quizActionBtn.disabled && !isChecking) return;
-  if (!isChecking) {
-    checkAnswer(false);
-  } else {
-    nextQuestion();
-  }
-}
-
-quizActionBtn.addEventListener('click', handleActionClick);
-
 function checkAnswer(timeout = false) {
   if (isChecking) return;
   isChecking = true;
-  stopTimer();
+  stopTimer(quizTimerBadge);
 
   const q = currentQuiz[currentQuestionIndex];
   let isCorrect = false;
@@ -779,16 +412,28 @@ function finishQuiz() {
       topicLabel: currentQuizContext?.topicLabel || 'Tutti gli argomenti',
       difficultyLabel: currentQuizContext?.difficultyLabel || 'Tutte'
     });
+    renderHistory();
   }, 400);
 }
 
-// --- EVENT LISTENERS ---
+// --- Event Handlers ---
+
+function handleActionClick() {
+  if (quizActionBtn.disabled && !isChecking) return;
+  if (!isChecking) {
+    checkAnswer(false);
+  } else {
+    nextQuestion();
+  }
+}
+
 async function handleFile(file) {
   if (!file) return;
   try {
     const text = await file.text();
     jsonInput.value = text;
-    saveRecentJson(text, file.name || 'file');
+    saveRecentJson(text, file.name || 'file', summarizeJson);
+    renderRecentJson();
     hideStatus();
     parseJsonFromInput();
   } catch (e) {
@@ -796,118 +441,98 @@ async function handleFile(file) {
   }
 }
 
-jsonFile.addEventListener('change', (event) => {
-  handleFile(event.target.files?.[0]);
-});
-
-// Drag & Drop
-if(dropzoneApp) {
-  dropzoneApp.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropzoneApp.classList.add('border-brand-500', 'bg-brand-50', 'dark:border-brand-400', 'dark:bg-brand-900/20');
-  });
-  dropzoneApp.addEventListener('dragleave', (e) => {
-    e.preventDefault();
-    dropzoneApp.classList.remove('border-brand-500', 'bg-brand-50', 'dark:border-brand-400', 'dark:bg-brand-900/20');
-  });
-  dropzoneApp.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dropzoneApp.classList.remove('border-brand-500', 'bg-brand-50', 'dark:border-brand-400', 'dark:bg-brand-900/20');
-    const file = e.dataTransfer.files?.[0];
-    if(file && file.name.endsWith('.json')) {
-      handleFile(file);
-    } else {
-      showStatus("Trascina un file .json valido.", false);
-    }
-  });
-}
+// --- Event Listeners ---
 
 parseBtn.addEventListener('click', parseJsonFromInput);
-loadSampleBtn.addEventListener('click', () => {
-  jsonInput.value = JSON.stringify(sampleData, null, 2);
-  saveRecentJson(jsonInput.value, 'esempio');
-  hideStatus();
-});
+
 resetBtn.addEventListener('click', () => {
+  jsonInput.value = '';
   dataset = [];
   currentQuiz = [];
-  currentQuizContext = null;
-  jsonInput.value = '';
-  jsonFile.value = '';
-  topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
-  questionCount.value = 5;
-  difficultySelect.value = 'all';
-  updateCounters();
+  populateTopics();
   hideStatus();
+});
+
+loadSampleBtn.addEventListener('click', () => {
+  jsonInput.value = JSON.stringify(sampleData, null, 2);
+  parseJsonFromInput();
+});
+
+generateBtn.addEventListener('click', generateQuiz);
+
+topicSelect.addEventListener('change', updateCounters);
+difficultySelect.addEventListener('change', updateCounters);
+
+themeToggle.addEventListener('click', () => {
+  const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+  setTheme(newTheme, STORAGE_KEYS);
 });
 
 clearHistoryBtn.addEventListener('click', () => {
   localStorage.removeItem(STORAGE_KEYS.history);
   renderHistory();
-  showStatus('Storico quiz svuotato.');
 });
 
 clearRecentJsonBtn.addEventListener('click', () => {
   localStorage.removeItem(STORAGE_KEYS.recentJson);
   renderRecentJson();
-  showStatus('Elenco JSON recenti svuotato.');
 });
 
-topicSelect.addEventListener('change', updateCounters);
-difficultySelect.addEventListener('change', updateCounters);
-generateBtn.addEventListener('click', generateQuiz);
+jsonFile.addEventListener('change', (event) => {
+  handleFile(event.target.files?.[0]);
+});
 
-// Catalog Modal Listeners
-if (openCatalogBtn) openCatalogBtn.addEventListener('click', () => toggleCatalogModal(true));
-if (closeCatalogBtn) closeCatalogBtn.addEventListener('click', () => toggleCatalogModal(false));
-if (catalogModalOverlay) catalogModalOverlay.addEventListener('click', () => toggleCatalogModal(false));
-function applyCatalogFilters() {
-  const query = catalogSearchInput.value.toLowerCase().trim();
-  const filtered = allAvailableDatasets.filter(ds => {
-    const matchesQuery = !query || 
-      ds.titolo.toLowerCase().includes(query) || 
-      ds.descrizione.toLowerCase().includes(query) ||
-      (ds.argomenti && ds.argomenti.some(a => a.toLowerCase().includes(query)));
-    
-    const matchesCategory = currentCategoryFilter === 'all' || ds.categoria === currentCategoryFilter;
-    
-    return matchesQuery && matchesCategory;
-  });
-  renderCatalogGrid(filtered);
-}
+dropzoneApp.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropzoneApp.classList.add('border-brand-500', 'bg-brand-50', 'dark:bg-brand-900/20');
+});
 
-if (catalogSearchInput) {
-  catalogSearchInput.addEventListener('input', applyCatalogFilters);
-}
+dropzoneApp.addEventListener('dragleave', () => {
+  dropzoneApp.classList.remove('border-brand-500', 'bg-brand-50', 'dark:bg-brand-900/20');
+});
+
+dropzoneApp.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropzoneApp.classList.remove('border-brand-500', 'bg-brand-50', 'dark:bg-brand-900/20');
+  handleFile(e.dataTransfer.files?.[0]);
+});
+
+openCatalogBtn.addEventListener('click', () => toggleCatalog(true));
+closeCatalogBtn.addEventListener('click', () => toggleCatalog(false));
+catalogModalOverlay.addEventListener('click', () => toggleCatalog(false));
+
+catalogSearchInput.addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase();
+  const filtered = allAvailableDatasets.filter(ds => 
+    ds.titolo.toLowerCase().includes(query) || 
+    ds.descrizione.toLowerCase().includes(query) ||
+    (ds.argomenti || []).some(a => a.toLowerCase().includes(query))
+  );
+  renderCatalogGrid(filtered, catalogGrid, loadDatasetFileFromCatalog, toggleCatalog);
+});
 
 document.querySelectorAll('[data-category-filter]').forEach(tab => {
-  tab.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  tab.addEventListener('click', () => {
     document.querySelectorAll('[data-category-filter]').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    currentCategoryFilter = tab.dataset.categoryFilter;
-    applyCatalogFilters();
+    const filter = tab.dataset.categoryFilter;
+    const filtered = filter === 'all' 
+      ? allAvailableDatasets 
+      : allAvailableDatasets.filter(ds => ds.categoria === filter);
+    renderCatalogGrid(filtered, catalogGrid, loadDatasetFileFromCatalog, toggleCatalog);
   });
 });
 
+quizActionBtn.addEventListener('click', handleActionClick);
+
 quitQuizBtn.addEventListener('click', () => {
-  if(confirm('Vuoi davvero uscire dal quiz? I progressi andranno persi.')) {
-    stopTimer();
+  if (confirm('Sei sicuro di voler abbandonare il quiz?')) {
+    stopTimer(quizTimerBadge);
     setView('config');
-    quizState = 'idle';
   }
 });
 
-playAgainBtn.addEventListener('click', () => {
-  setView('config');
-  quizState = 'idle';
-});
+playAgainBtn.addEventListener('click', () => setView('config'));
 
-// --- INITIALIZATION ---
-jsonInput.value = JSON.stringify(sampleData, null, 2);
-topicSelect.innerHTML = '<option value="all">Tutti gli argomenti</option>';
-renderRecentJson();
-renderHistory();
-updateCounters();
-fetchDatasets();
+// Start initialization
+init();
