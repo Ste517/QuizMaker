@@ -2,7 +2,7 @@
   "name": "QuizMaker",
   "short_name": "QuizMaker",
   "description": "Crea e svolgi quiz personalizzati con timer e drag & drop.",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#0c87eb",
