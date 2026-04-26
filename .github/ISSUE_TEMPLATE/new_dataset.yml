@@ -1,0 +1,52 @@
+name: "📚 Proposta Nuovo Dataset"
+description: "Suggerisci o invia un nuovo set di quiz per la community."
+title: "[DATASET]: "
+labels: ["dataset"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per voler contribuire con un nuovo dataset!
+  - type: input
+    id: title
+    attributes:
+      label: Titolo del Dataset
+      placeholder: Es. Analisi Matematica 1, Capitali del Mondo...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      description: Seleziona la categoria più appropriata.
+      options:
+        - Università
+        - Cultura Generale
+        - Scuola Guida
+        - Lingue Straniere
+        - Altro
+    validations:
+      required: true
+  - type: textarea
+    id: content-desc
+    attributes:
+      label: Descrizione dei Contenuti
+      description: Di cosa tratta il quiz? Quante domande contiene?
+    validations:
+      required: true
+  - type: checkboxes
+    id: state
+    attributes:
+      label: Stato del Dataset
+      options:
+        - label: Ho già creato il file JSON usando l'Editor.
+        - label: Ho solo un'idea e mi serve aiuto per realizzarlo.
+        - label: Ho una fonte di dati (es. un PDF o un sito) che vorrei convertire.
+  - type: textarea
+    id: links
+    attributes:
+      label: Link o Allegati
+      description: Carica qui il file JSON o fornisci un link alla fonte.
+    validations:
+      required: false
