@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="800" viewBox="0 -100 800 700"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><defs>
+    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#146B58;stop-opacity:1"></stop>
+      <stop offset="50%" style="stop-color:#218B75;stop-opacity:1"></stop>
+      <stop offset="100%" style="stop-color:#6A3093;stop-opacity:1"></stop>
+    </linearGradient>
+  </defs><g>
+    <path d="M 180,100 
+             A 60,60 0 0 0 120,160 
+             L 120,320 
+             A 60,60 0 0 0 180,380 
+             L 360,380 
+             C 380,380 390,400 400,400 
+             C 410,400 420,380 440,380 
+             L 620,380 
+             A 60,60 0 0 0 680,320 
+             L 680,160 
+             A 60,60 0 0 0 620,100 
+             L 550,100 
+             M 430,100 
+             L 185,100" fill="none" stroke="url(#mainGrad)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"></path>
+  
+    <path d="M 200,200 
+             L 300,300 
+             L 530,60" fill="none" stroke="url(#mainGrad)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"></path>
+  
+    <path d="M 520,200 
+             C 520,120 630,120 630,190 
+             C 630,230 570,240 570,290" fill="none" stroke="url(#mainGrad)" stroke-width="24" stroke-linecap="round"></path>
+    
+    <circle cx="570" cy="330" r="12" fill="url(#mainGrad)"></circle>
+  </g></svg>

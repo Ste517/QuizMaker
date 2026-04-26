@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quizmaker-v3';
+const CACHE_NAME = 'quizmaker-v4';
 const ASSETS = [
   '/',
   '/index.html',
