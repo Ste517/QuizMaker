@@ -40,12 +40,22 @@ export function setView(view) {
 
   if (!configView || !quizView || !summaryView) return;
 
-  configView.classList.toggle('hidden', view !== 'config');
-  quizView.classList.toggle('hidden', view !== 'quiz');
-  summaryView.classList.toggle('hidden', view !== 'summary');
-  
-  if (view === 'config') configView.classList.add('block');
-  else configView.classList.remove('block');
+  // Reset all views first
+  [configView, quizView, summaryView].forEach(v => {
+    v.classList.add('hidden');
+    v.classList.remove('flex', 'block');
+  });
+
+  if (view === 'config') {
+    configView.classList.remove('hidden');
+    configView.classList.add('block');
+  } else if (view === 'quiz') {
+    quizView.classList.remove('hidden');
+    quizView.classList.add('flex');
+  } else if (view === 'summary') {
+    summaryView.classList.remove('hidden');
+    summaryView.classList.add('flex');
+  }
   
   window.scrollTo(0, 0);
 }

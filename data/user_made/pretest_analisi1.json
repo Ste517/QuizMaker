@@ -1,0 +1,34 @@
+[
+  {
+    "argomento": "Appello 1 2026",
+    "domande": [
+      {
+        "difficolta": 3,
+        "testo_domanda": "La retta tangente al grafico di $y(x)=e^{(\\sin x)}-e$ nel punto $x_0=0$ è",
+        "risposta_corretta": 0,
+        "risposte": [
+          {
+            "testo_risposta": "$1-e+x$",
+            "spiegazione_vera_o_falsa": "$y'(x)=\\cos x \\cdot e^{\\sin x}$ che in $x_0$ vale 1, e $y(x_0)$ facendo la sostituzione vale $1-e$"
+          },
+          {
+            "testo_risposta": "$x$",
+            "spiegazione_vera_o_falsa": "Errato"
+          },
+          {
+            "testo_risposta": "$1-x$",
+            "spiegazione_vera_o_falsa": "Errato"
+          },
+          {
+            "testo_risposta": "$e^{x+e^x}x$",
+            "spiegazione_vera_o_falsa": "Errato"
+          },
+          {
+            "testo_risposta": "Nessuna delle altre",
+            "spiegazione_vera_o_falsa": "Errato"
+          }
+        ]
+      }
+    ]
+  }
+]

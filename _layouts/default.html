@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="it" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} | QuizMaker</title>
+  <link rel="manifest" href="{{ '/assets/manifest.json' | relative_url }}">
+  <meta name="theme-color" content="#0c87eb">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82QYRCWRBM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-82QYRCWRBM');
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              900: '#134e4a'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    .card-glass { backdrop-filter: blur(12px); }
+    
+    /* 3D Button Effects */
+    .btn-3d {
+      border-width: 2px;
+      border-bottom-width: 4px;
+      transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.1s;
+    }
+    .btn-3d:active {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+      margin-bottom: 2px;
+    }
+
+    /* Universal Liquid Glass Style */
+    .btn-glass {
+      position: relative;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .btn-glass::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 65%);
+      transform: translate(-15%, -15%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+    .btn-glass:hover::before {
+      transform: translate(15%, 15%);
+    }
+    .btn-glass:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-glass:active {
+      transform: translateY(0);
+    }
+
+    /* Neutral Glass Button - Enhanced Contrast */
+    .btn-glass-neutral {
+      background: rgba(255, 255, 255, 0.6);
+      color: #1e293b;
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+    .dark .btn-glass-neutral {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .btn-glass-neutral:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    .dark .btn-glass-neutral:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+    /* Modal Styles */
+    .modal-hidden { 
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .modal-overlay { 
+      background-color: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .modal-content {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(0.95) translateY(20px);
+    }
+    div:not(.modal-hidden) > .modal-content {
+      transform: scale(1) translateY(0);
+    }
+    
+    /* Category Tabs */
+    .category-tab {
+      background: white;
+      color: #64748b;
+      border-color: rgba(226, 232, 240, 0.8);
+    }
+    .dark .category-tab {
+      background: rgba(30, 41, 59, 0.5);
+      color: #94a3b8;
+      border-color: rgba(51, 65, 85, 0.5);
+    }
+    .category-tab.active {
+      background: #0f172a;
+      color: white;
+      border-color: #0f172a;
+    }
+    .dark .category-tab.active {
+      background: white;
+      color: #0f172a;
+      border-color: white;
+    }
+
+    /* Action Buttons (Functional Colors) */
+    .action-btn-disabled {
+      background: #f1f5f9;
+      color: #94a3b8;
+      border-color: #e2e8f0;
+      border-bottom-color: #cbd5e1;
+      cursor: not-allowed;
+    }
+    .action-btn-primary {
+      background: #0f172a;
+      color: white;
+      border-color: #1e293b;
+      border-bottom-color: #000;
+    }
+    .dark .action-btn-primary {
+      background: white;
+      color: #0f172a;
+      border-color: #e2e8f0;
+      border-bottom-color: #cbd5e1;
+    }
+    .action-btn-correct {
+      background: #10b981;
+      color: white;
+      border-color: #059669;
+      border-bottom-color: #047857;
+    }
+    .action-btn-wrong {
+      background: #f43f5e;
+      color: white;
+      border-color: #e11d48;
+      border-bottom-color: #be123c;
+    }
+
+    /* Answer Cards */
+    .answer-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-bottom-width: 5px;
+      border-radius: 1.25rem;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .answer-card {
+      background: #0f172a;
+      border-color: #1e293b;
+      border-bottom-color: #020617;
+    }
+    .answer-card:hover:not(.locked) {
+      border-color: #14b8a6;
+      transform: translateY(-2px);
+    }
+    .answer-card:active:not(.locked) {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+    }
+    .answer-card.selected {
+      border-color: #14b8a6;
+      background: #f0fdfa;
+      border-bottom-color: #0d9488;
+    }
+    .dark .answer-card.selected {
+      background: rgba(20, 184, 166, 0.1);
+      border-color: #14b8a6;
+      border-bottom-color: #0d9488;
+    }
+    .answer-card.correct {
+      border-color: #10b981 !important;
+      background: #f0fdfa !important;
+      border-bottom-color: #059669 !important;
+    }
+    .dark .answer-card.correct {
+      background: rgba(16, 185, 129, 0.1) !important;
+      border-color: #10b981 !important;
+      border-bottom-color: #059669 !important;
+    }
+    .answer-card.wrong {
+      border-color: #f43f5e !important;
+      background: #fff1f2 !important;
+      border-bottom-color: #e11d48 !important;
+    }
+    .dark .answer-card.wrong {
+      background: rgba(244, 63, 94, 0.1) !important;
+      border-color: #f43f5e !important;
+      border-bottom-color: #e11d48 !important;
+    }
+    .answer-card.locked {
+      cursor: default;
+    }
+
+    /* Scrollbar Hide */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  
+  {% if page.extra_css %}
+    {% for css in page.extra_css %}
+      <link rel="stylesheet" href="{{ css | relative_url }}">
+    {% endfor %}
+  {% endif %}
+  
+  {% if page.katex %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked-katex-extension@5.1.2/lib/index.umd.js"></script>
+  {% endif %}
+</head>
+<body class="h-full bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+  
+  {{ content }}
+
+  <footer class="mt-20 border-t border-slate-200 bg-white/50 py-8 text-center backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/50">
+    <div class="mx-auto max-w-7xl px-4">
+      <p class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-300">
+        QuizMaker &bull; Open Source Education Project
+      </p>
+      <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+        &copy; <span id="copyrightYear"></span> 
+        <a href="https://www.stefanobrogi.it" target="_blank" class="font-medium text-brand-600 hover:underline transition-colors">Stefano Brogi</a>. 
+        Tutti i diritti riservati.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const yearSpan = document.getElementById('copyrightYear');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    // Theme Logic (shared across pages)
+    const savedTheme = localStorage.getItem('quizmaker-theme');
+    const normalizedTheme = savedTheme ? savedTheme.replace(/"/g, '') : 'dark';
+    document.documentElement.classList.toggle('dark', normalizedTheme === 'dark');
+  </script>
+
+  {% if page.extra_js %}
+    {% for js in page.extra_js %}
+      <script type="{{ js.type | default: 'text/javascript' }}" src="{{ js.src | relative_url }}"></script>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>

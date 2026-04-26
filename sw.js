@@ -1,13 +1,23 @@
-const CACHE_NAME = 'quizmaker-v1';
+const CACHE_NAME = 'quizmaker-v3';
 const ASSETS = [
-  'index.html',
-  'editor.html',
-  'contribute.html',
-  'app.js',
-  'editor.js',
-  'manifest.json',
+  '/',
+  '/index.html',
+  '/about/',
+  '/editor/',
+  '/contribute/',
+  '/changelog/',
+  '/assets/js/app.js',
+  '/assets/js/editor.js',
+  '/assets/css/markdown.css',
+  '/data/index.json',
+  '/data/contributors.json',
+  '/data/changelog.json',
+  '/assets/manifest.json',
   'https://cdn.tailwindcss.com',
-  'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap'
+  'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css',
+  'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+  'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js',
+  'https://cdn.jsdelivr.net/npm/marked-katex-extension@5.1.2/lib/index.umd.js'
 ];
 
 // Installazione: cache delle risorse statiche

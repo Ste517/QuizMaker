@@ -40,5 +40,18 @@
       "Equazioni Differenziali"
     ],
     "totale_domande": 200
+  },
+  {
+    "id": "pretest_analisi1",
+    "titolo": "Pretest Analisi Matematica 1",
+    "autore": "Stefano Brogi",
+    "url_autore": "https://stefanobrogi.it",
+    "descrizione": "Pretest di Analisi Matematica 1",
+    "file": "data/user_made/pretest_analisi1.json",
+    "categoria": "user_made",
+    "argomenti": [
+      "Appello 1 2026"
+    ],
+    "totale_domande": 1
   }
 ]

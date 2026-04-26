@@ -1,8 +1,8 @@
-import { STORAGE_KEYS, MAX_RECENT_JSON, safeRead, saveRecentJson, saveQuizResult } from './src/utils/storage.js';
-import { setTheme, showStatus, hideStatus, setView, formatDateTime, toggleReportModal } from './src/utils/ui.js';
-import { startTimer, stopTimer } from './src/quiz/timer.js';
-import { normalizeData, shuffle, flattenQuestions, getFilteredQuestions, summarizeJson } from './src/quiz/engine.js';
-import { fetchDatasets, toggleCatalogModal, renderCatalogGrid, loadDatasetFile, renderDatasets } from './src/catalog/service.js';
+import { STORAGE_KEYS, MAX_RECENT_JSON, safeRead, saveRecentJson, saveQuizResult } from '../src/utils/storage.js';
+import { setTheme, showStatus, hideStatus, setView, formatDateTime, toggleReportModal } from '../src/utils/ui.js';
+import { startTimer, stopTimer } from '../src/quiz/timer.js';
+import { normalizeData, shuffle, flattenQuestions, getFilteredQuestions, summarizeJson } from '../src/quiz/engine.js';
+import { fetchDatasets, toggleCatalogModal, renderCatalogGrid, loadDatasetFile, renderDatasets } from '../src/catalog/service.js';
 
 // Initialize Marked with KaTeX extension
 try {
@@ -11,7 +11,8 @@ try {
     if (typeof extension === 'function') {
       marked.use(extension({
         throwOnError: false,
-        nonStandard: true
+        nonStandard: true,
+        displayMode: false
       }));
     }
   }
@@ -60,6 +61,12 @@ const reportModalOverlay = document.getElementById('reportModalOverlay');
 const closeReportBtn = document.getElementById('closeReportBtn');
 const copyReportBtn = document.getElementById('copyReportBtn');
 const reportTextarea = document.getElementById('reportTextarea');
+
+// DOM Elements - Quit Modal
+const quitModal = document.getElementById('quitModal');
+const quitModalOverlay = document.getElementById('quitModalOverlay');
+const confirmQuitBtn = document.getElementById('confirmQuitBtn');
+const cancelQuitBtn = document.getElementById('cancelQuitBtn');
 
 // DOM Elements - Summary UI
 const summaryPercentage = document.getElementById('summaryPercentage');
@@ -551,11 +558,24 @@ document.querySelectorAll('[data-category-filter]').forEach(tab => {
 
 quizActionBtn.addEventListener('click', handleActionClick);
 
-quitQuizBtn.addEventListener('click', () => {
-  if (confirm('Sei sicuro di voler abbandonare il quiz?')) {
-    stopTimer(quizTimerBadge);
-    setView('config');
+function toggleQuitModal(show) {
+  if (show) {
+    quitModal.classList.remove('modal-hidden');
+    document.body.style.overflow = 'hidden';
+  } else {
+    quitModal.classList.add('modal-hidden');
+    document.body.style.overflow = '';
   }
+}
+
+quitQuizBtn.addEventListener('click', () => toggleQuitModal(true));
+cancelQuitBtn.addEventListener('click', () => toggleQuitModal(false));
+quitModalOverlay.addEventListener('click', () => toggleQuitModal(false));
+
+confirmQuitBtn.addEventListener('click', () => {
+  toggleQuitModal(false);
+  stopTimer(quizTimerBadge);
+  setView('config');
 });
 
 playAgainBtn.addEventListener('click', () => setView('config'));
