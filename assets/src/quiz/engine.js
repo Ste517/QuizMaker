@@ -38,13 +38,12 @@ export function normalizeData(raw) {
         }
         if (typeof a.spiegazione_vera_o_falsa === 'string') {
           a.spiegazione_vera_o_falsa = a.spiegazione_vera_o_falsa.replace(/\u0008/g, '\\b');
+        } else {
+          a.spiegazione_vera_o_falsa = '';
         }
 
         if (typeof a.testo_risposta !== 'string' || !a.testo_risposta.trim()) {
           throw new Error(`Testo risposta mancante in "${topic.argomento}", domanda ${questionIndex + 1}, risposta ${answerIndex + 1}.`);
-        }
-        if (typeof a.spiegazione_vera_o_falsa !== 'string') {
-          throw new Error(`Spiegazione mancante in "${topic.argomento}", domanda ${questionIndex + 1}, risposta ${answerIndex + 1}.`);
         }
       });
       if (!Number.isInteger(q.risposta_corretta) || q.risposta_corretta < 0 || q.risposta_corretta >= q.risposte.length) {

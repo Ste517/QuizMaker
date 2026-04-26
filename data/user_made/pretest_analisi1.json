@@ -1,34 +1,550 @@
-[
-  {
-    "argomento": "Appello 1 2026",
-    "domande": [
-      {
-        "difficolta": 3,
-        "testo_domanda": "La retta tangente al grafico di $y(x)=e^{(\\sin x)}-e$ nel punto $x_0=0$ è",
-        "risposta_corretta": 0,
-        "risposte": [
-          {
-            "testo_risposta": "$1-e+x$",
-            "spiegazione_vera_o_falsa": "$y'(x)=\\cos x \\cdot e^{\\sin x}$ che in $x_0$ vale 1, e $y(x_0)$ facendo la sostituzione vale $1-e$"
-          },
-          {
-            "testo_risposta": "$x$",
-            "spiegazione_vera_o_falsa": "Errato"
-          },
-          {
-            "testo_risposta": "$1-x$",
-            "spiegazione_vera_o_falsa": "Errato"
-          },
-          {
-            "testo_risposta": "$e^{x+e^x}x$",
-            "spiegazione_vera_o_falsa": "Errato"
-          },
-          {
-            "testo_risposta": "Nessuna delle altre",
-            "spiegazione_vera_o_falsa": "Errato"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "argomenti": [
+    {
+      "argomento": "Appello 1 2026 - Primo turno",
+      "domande": [
+        {
+          "difficolta": 2,
+          "testo_domanda": "La retta tangente al grafico di $y(x)=e^{(\\sin x)}-e$ nel punto $x_{0}=0$ è",
+          "risposte": [
+            {
+              "testo_risposta": "$1-e+x$",
+              "spiegazione_vera_o_falsa": "Ottimo! Il punto di tangenza ha ordinata $y(0) = e^{\\sin(0)} - e = 1 - e$. La derivata è $y'(x) = e^{\\sin x} \\cos x$. Valutata in $x_0=0$, si ottiene il coefficiente angolare $m = y'(0) = 1$. La retta è $y = y(0) + m(x-0) = 1 - e + x$."
+            },
+            {
+              "testo_risposta": "$1-x$",
+              "spiegazione_vera_o_falsa": "Non corretto. Hai calcolato male il coefficiente angolare o l'ordinata del punto iniziale. Ricorda la formula $y = y(x_0) + y'(x_0)(x - x_0)$."
+            },
+            {
+              "testo_risposta": "$e^{x+e^{x}}x$",
+              "spiegazione_vera_o_falsa": "Errato. Questa non ha la forma di una retta tangente lineare $y=mx+q$."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Sbagliato. La risposta corretta è tra le opzioni."
+            }
+          ],
+          "risposta_corretta": 0
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "Il minimo e il massimo della funzione $f(x)=x^5-x^3$ per $x \\in [0,2]$ sono",
+          "risposte": [
+            {
+              "testo_risposta": "$min=0$, $max=24$",
+              "spiegazione_vera_o_falsa": "Non proprio. Il massimo è effettivamente $f(2)=24$, ma il minimo non è 0. La derivata prima si annulla in $x=\\sqrt{3/5}$ dove la funzione assume un valore negativo."
+            },
+            {
+              "testo_risposta": "entrambi non esistono",
+              "spiegazione_vera_o_falsa": "Sbagliato. Per il Teorema di Weierstrass, una funzione continua in un intervallo chiuso e limitato ammette sempre massimo e minimo assoluti."
+            },
+            {
+              "testo_risposta": "$min=-\\sqrt{3/5}$, $max=\\sqrt{3/5}$",
+              "spiegazione_vera_o_falsa": "Attenzione! Questi sono i punti di minimo/massimo locale (le $x$), non i valori assunti dalla funzione (le $y$)."
+            },
+            {
+              "testo_risposta": "$min=0$, $max=N.E.$",
+              "spiegazione_vera_o_falsa": "Errato. Sia il massimo che il minimo esistono (Teorema di Weierstrass)."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Esatto! Il massimo è $f(2)=24$, mentre il minimo si ha nel punto critico $x=\\sqrt{3/5}$ ed è uguale a $f(\\sqrt{3/5})$, che è un valore negativo. Nessuna delle opzioni numeriche fornisce questa combinazione esatta."
+            }
+          ],
+          "risposta_corretta": 4
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "Inf, min, sup e max dell'insieme $A=\\{y=\\frac{\\arctan(x)}{|\\arctan(x)|} \\text{ con } x \\in \\mathbb{R}\\setminus\\{0\\}\\}$ valgono",
+          "risposte": [
+            {
+              "testo_risposta": "$\\{-\\pi/2, N.E., \\pi/2, 1\\}$",
+              "spiegazione_vera_o_falsa": "Non corretto. L'argomento della funzione è il rapporto tra una quantità e il suo valore assoluto, che può valere solo $1$ o $-1$."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Errato. La soluzione corretta è presente tra le opzioni."
+            },
+            {
+              "testo_risposta": "$\\{-1, N.E., 1, N.E.\\}$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Dato che l'insieme $A$ è composto dai soli due punti $\\{-1, 1\\}$, sia il minimo che il massimo esistono e coincidono rispettivamente con inf e sup."
+            },
+            {
+              "testo_risposta": "$\\{-\\infty, N.E., +\\infty, N.E.\\}$",
+              "spiegazione_vera_o_falsa": "Non ci siamo. La funzione arcotangente è limitata, e il suo rapporto col modulo restituisce un insieme finito."
+            },
+            {
+              "testo_risposta": "$\\{-1, -1, 1, 1\\}$",
+              "spiegazione_vera_o_falsa": "Corretto! Per $x>0$, $\\arctan(x)>0$ e la frazione vale $1$. Per $x<0$, $\\arctan(x)<0$ e la frazione vale $-1$. L'insieme immagine è semplicemente $A = \\{-1, 1\\}$. Pertanto, inf=min=-1 e sup=max=1."
+            }
+          ],
+          "risposta_corretta": 4
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "La funzione $f(x): [0,2\\pi] \\rightarrow \\mathbb{R}$ definita da $f(x)=x|\\sin(x)|$ è",
+          "risposte": [
+            {
+              "testo_risposta": "non continua in $x=\\pi$",
+              "spiegazione_vera_o_falsa": "Falso. La funzione modulo è continua, così come lo sono i polinomi e le funzioni trigonometriche, quindi la loro composizione e moltiplicazione produce una funzione ovunque continua."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Corretto! La funzione è continua ovunque ma non è derivabile in $x=\\pi$ (punto angoloso). Inoltre non è iniettiva ($f(0)=f(\\pi)=0$) e non è surgettiva su tutto $\\mathbb{R}$ (è limitata e sempre $\\ge 0$). Quindi nessuna delle altre affermazioni è vera."
+            },
+            {
+              "testo_risposta": "derivabile",
+              "spiegazione_vera_o_falsa": "Errato. A causa del valore assoluto, in $x=\\pi$ (dove il seno cambia segno) abbiamo un punto angoloso. Le derivate destra e sinistra in $\\pi$ sono diverse."
+            },
+            {
+              "testo_risposta": "surgettiva",
+              "spiegazione_vera_o_falsa": "Sbagliato. L'immagine della funzione è un intervallo limitato di valori non negativi, non coincide con tutto l'insieme di arrivo $\\mathbb{R}$."
+            },
+            {
+              "testo_risposta": "iniettiva",
+              "spiegazione_vera_o_falsa": "Inesatto. Assume lo stesso valore, ad esempio $0$, per $x=0$, $x=\\pi$ e $x=2\\pi$."
+            }
+          ],
+          "risposta_corretta": 1
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "Il limite $\\lim_{x \\rightarrow 0^-} \\frac{\\log(x^2)}{\\log|x|}$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "2",
+              "spiegazione_vera_o_falsa": "Perfetto! Usa le proprietà dei logaritmi: $\\log(x^2) = \\log(|x|^2) = 2\\log|x|$. Il limite diventa quindi $\\lim_{x \\rightarrow 0^-} \\frac{2\\log|x|}{\\log|x|} = 2$."
+            },
+            {
+              "testo_risposta": "4",
+              "spiegazione_vera_o_falsa": "Sbagliato. Hai applicato scorrettamente le proprietà dei logaritmi."
+            },
+            {
+              "testo_risposta": "-3",
+              "spiegazione_vera_o_falsa": "Errato. Attento al comportamento dei logaritmi."
+            },
+            {
+              "testo_risposta": "N.E. (Non Esiste)",
+              "spiegazione_vera_o_falsa": "Falso. Semplificando la funzione si evince chiaramente l'esistenza del limite."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Sbagliato. La risposta corretta è tra le opzioni fornite."
+            }
+          ],
+          "risposta_corretta": 0
+        },
+        {
+          "difficolta": 4,
+          "testo_domanda": "Il raggio di convergenza della serie di potenze $\\sum_{n=100}^{+\\infty}\\frac{(4n^4)^{n/2}}{(3n)^n}(x+1)^n$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "$R=+\\infty$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Ciò vorrebbe dire che la radice n-esima del termine generale tende a 0, ma qui diverge."
+            },
+            {
+              "testo_risposta": "$R=0$",
+              "spiegazione_vera_o_falsa": "Bravissimo! Calcoliamo il coefficiente $a_n = \\frac{(4n^4)^{n/2}}{(3n)^n} = \\frac{2^n n^{2n}}{3^n n^n} = (\\frac{2}{3})^n n^n$. Applicando il criterio della radice asintotica, $\\sqrt[n]{|a_n|} = \\frac{2}{3}n$, che per $n \\to +\\infty$ tende a $+\\infty$. Il raggio è $R = \\frac{1}{+\\infty} = 0$."
+            },
+            {
+              "testo_risposta": "$R=4/3$",
+              "spiegazione_vera_o_falsa": "Non corretto. Probabilmente hai confuso i termini nella semplificazione degli esponenti."
+            },
+            {
+              "testo_risposta": "$R=3/2$",
+              "spiegazione_vera_o_falsa": "Errato. Riguarda il criterio della radice e l'espansione degli esponenti sulle potenze di $n$."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Falso. La risposta $R=0$ è elencata tra le opzioni."
+            }
+          ],
+          "risposta_corretta": 1
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "L'integrale $\\int_{e}^{e^2} \\frac{1}{2x\\sqrt{\\log(x)}} dx$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Sbagliato. Il risultato esatto è tra le alternative."
+            },
+            {
+              "testo_risposta": "1",
+              "spiegazione_vera_o_falsa": "Errato. Ricontrolla gli estremi di integrazione dopo la sostituzione."
+            },
+            {
+              "testo_risposta": "$2^{1/2}-1$",
+              "spiegazione_vera_o_falsa": "Esatto! Esegui la sostituzione $u = \\log(x)$, da cui $du = \\frac{1}{x} dx$. Gli estremi diventano $\\log(e)=1$ e $\\log(e^2)=2$. L'integrale si trasforma in $\\int_1^2 \\frac{1}{2\\sqrt{u}} du = [\\sqrt{u}]_1^2 = \\sqrt{2} - 1$, ovvero $2^{1/2}-1$."
+            },
+            {
+              "testo_risposta": "$\\log(1/2)$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Hai applicato male le regole di integrazione per le potenze negative."
+            },
+            {
+              "testo_risposta": "$-\\infty$",
+              "spiegazione_vera_o_falsa": "Non ci siamo. L'integrale non è improprio in quegli estremi, la funzione è continua nell'intervallo chiuso."
+            }
+          ],
+          "risposta_corretta": 2
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "L'integrale $\\int_0^{\\pi/2} \\cos(nx) dx$, con $n \\in \\mathbb{N}$, vale",
+          "risposte": [
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Falso. L'opzione corretta è presente."
+            },
+            {
+              "testo_risposta": "$\\pi/(2n)$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Questo risultato non deriva dall'integrazione della funzione coseno."
+            },
+            {
+              "testo_risposta": "$\\cos(n\\pi/2)/n-1$",
+              "spiegazione_vera_o_falsa": "Errato. Ricorda che la primitiva del coseno è il seno."
+            },
+            {
+              "testo_risposta": "0",
+              "spiegazione_vera_o_falsa": "Falso. Valutalo prestando attenzione agli estremi di integrazione."
+            },
+            {
+              "testo_risposta": "$\\sin(n\\pi/2)/n$",
+              "spiegazione_vera_o_falsa": "Corretto! La primitiva di $\\cos(nx)$ è $\\frac{\\sin(nx)}{n}$. Calcolando negli estremi si ha $\\left[\\frac{\\sin(nx)}{n}\\right]_0^{\\pi/2} = \\frac{\\sin(n\\pi/2)}{n} - \\frac{\\sin(0)}{n} = \\frac{\\sin(n\\pi/2)}{n}$."
+            }
+          ],
+          "risposta_corretta": 4
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "Il numero di soluzioni di $\\bar{z}z = 2|z|$ con parte immaginaria non nulla è",
+          "risposte": [
+            {
+              "testo_risposta": "infinito",
+              "spiegazione_vera_o_falsa": "Ottimo lavoro! Ricordando che $\\bar{z}z = |z|^2$, l'equazione diventa $|z|^2 = 2|z|$, da cui $|z|(|z|-2)=0$. Le soluzioni sono $z=0$ (che però ha parte immaginaria nulla) e tutti i $z$ tali che $|z|=2$. Quest'ultima è una circonferenza di raggio 2. Tolti i punti sull'asse reale (2 e -2), restano infiniti punti con parte immaginaria non nulla."
+            },
+            {
+              "testo_risposta": "3",
+              "spiegazione_vera_o_falsa": "Sbagliato. Questo non è un semplice polinomio con 3 radici nel piano di Argand-Gauss."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Errato. La risposta giusta è presente (infinito)."
+            },
+            {
+              "testo_risposta": "2",
+              "spiegazione_vera_o_falsa": "Non corretto. Ci sono molte più soluzioni di così sulla circonferenza del modulo."
+            },
+            {
+              "testo_risposta": "1",
+              "spiegazione_vera_o_falsa": "Inesatto. L'equazione rappresenta un luogo geometrico di infiniti punti."
+            }
+          ],
+          "risposta_corretta": 0
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "Il numero complesso $e^{(\\pi(\\sin(\\pi/2) + i\\cos(3\\pi/2)))}$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "$e^{\\pi}$",
+              "spiegazione_vera_o_falsa": "Esatto! Sostituendo i valori delle funzioni trigonometriche, abbiamo $\\sin(\\pi/2) = 1$ e $\\cos(3\\pi/2) = 0$. Dunque l'esponente diventa $\\pi(1 + i \\cdot 0) = \\pi$. Il risultato è $e^{\\pi}$, che è un numero reale puro."
+            },
+            {
+              "testo_risposta": "$e^{\\pi}(\\sin(1)+i\\cos(1))$",
+              "spiegazione_vera_o_falsa": "Errato. Ricontrolla i valori notevoli di seno e coseno in $\\pi/2$ e $3\\pi/2$."
+            },
+            {
+              "testo_risposta": "N.A. (Nessuna delle Altre)",
+              "spiegazione_vera_o_falsa": "Sbagliato. L'opzione corretta è presente."
+            },
+            {
+              "testo_risposta": "$1+i$",
+              "spiegazione_vera_o_falsa": "Falso. Hai interpretato male l'esponenziale complesso."
+            },
+            {
+              "testo_risposta": "$ie^{\\pi/2}$",
+              "spiegazione_vera_o_falsa": "Non corretto. L'argomento dell'esponenziale si riduce a un semplice valore reale, non immaginario."
+            }
+          ],
+          "risposta_corretta": 0
+        }
+      ]
+    },
+    {
+      "argomento": "Appello 1 2026 - Secondo turno",
+      "domande": [
+        {
+          "difficolta": 3,
+          "testo_domanda": "Il numero complesso $e^{(\\pi e^{3\\pi i})}$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "$e^{\\pi}(\\sin(1)+i\\cos(1))$",
+              "spiegazione_vera_o_falsa": "Non corretto. Probabilmente hai calcolato male il termine $e^{3\\pi i}$ all'esponente."
+            },
+            {
+              "testo_risposta": "N.E.",
+              "spiegazione_vera_o_falsa": "Sbagliato. L'esponenziale di un numero complesso esiste sempre."
+            },
+            {
+              "testo_risposta": "$i$",
+              "spiegazione_vera_o_falsa": "Falso. La formula di Eulero non restituisce questa forma per il valore dato."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Errato. La risposta corretta è tra quelle elencate."
+            },
+            {
+              "testo_risposta": "$e^{-\\pi}$",
+              "spiegazione_vera_o_falsa": "Ottimo! Usando la formula di Eulero, sappiamo che $e^{i\\theta} = \\cos(\\theta) + i\\sin(\\theta)$. Quindi $e^{3\\pi i} = \\cos(3\\pi) + i\\sin(3\\pi) = -1 + 0 = -1$. Sostituendo nell'esponente principale otteniamo $e^{(\\pi \\cdot -1)} = e^{-\\pi}$."
+            }
+          ],
+          "risposta_corretta": 4
+        },
+        {
+          "difficolta": 4,
+          "testo_domanda": "Il numero di soluzioni di $z\\overline{z^{2}}=|z|$, con parte immaginaria non nulla è",
+          "risposte": [
+            {
+              "testo_risposta": "1",
+              "spiegazione_vera_o_falsa": "Errato. Nessuna delle soluzioni ha parte immaginaria diversa da zero."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Sbagliato. L'opzione corretta è presente."
+            },
+            {
+              "testo_risposta": "Nessuna",
+              "spiegazione_vera_o_falsa": "Esatto! Semplificando l'equazione: $z\\overline{z^{2}} = z\\overline{z}^2 = (z\\overline{z})\\overline{z} = |z|^2\\overline{z}$. Quindi $|z|^2\\overline{z} = |z|$. Se $z=0$, la parte immaginaria è nulla. Se $z \\neq 0$, dividiamo per $|z|$ ottenendo $|z|\\overline{z}=1$, cioè $\\overline{z} = 1/|z|$. Poiché $1/|z|$ è un numero reale, $\\overline{z}$ (e quindi $z$) è reale. Dunque **nessuna** soluzione ha parte immaginaria non nulla."
+            },
+            {
+              "testo_risposta": "2",
+              "spiegazione_vera_o_falsa": "Non corretto. L'equazione ammette solo soluzioni puramente reali."
+            },
+            {
+              "testo_risposta": "3",
+              "spiegazione_vera_o_falsa": "Falso. Ripassa le proprietà del coniugato e del modulo di un numero complesso."
+            }
+          ],
+          "risposta_corretta": 2
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "Il minimo e il massimo della funzione $f(x)=x^{4}-2x^{2}$ su $[-2,2]$ sono",
+          "risposte": [
+            {
+              "testo_risposta": "$\\min=-2, \\max=N.E.$",
+              "spiegazione_vera_o_falsa": "Errato. Per il teorema di Weierstrass, in un intervallo chiuso e limitato il massimo deve esistere."
+            },
+            {
+              "testo_risposta": "$\\min=-2, \\max=2$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Hai calcolato in modo errato le coordinate $y$ dei punti critici."
+            },
+            {
+              "testo_risposta": "$\\min=-1, \\max=8$",
+              "spiegazione_vera_o_falsa": "Perfetto! La derivata è $f'(x)=4x^3-4x=4x(x^2-1)$, che si annulla in $x=0, x=1, x=-1$. Valutando la funzione in questi punti critici otteniamo $f(0)=0$, $f(1)=-1$, $f(-1)=-1$. Valutandola agli estremi dell'intervallo otteniamo $f(2)=16-8=8$ e $f(-2)=8$. Pertanto, il minimo assoluto è $-1$ e il massimo assoluto è $8$."
+            },
+            {
+              "testo_risposta": "entrambi non esistono",
+              "spiegazione_vera_o_falsa": "Falso. Esistono entrambi grazie al **Teorema di Weierstrass**."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Non corretto. I valori corretti sono esplicitamente elencati nelle opzioni."
+            }
+          ],
+          "risposta_corretta": 2
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "Inf, min, sup e max dell'insieme $A=\\{y=\\frac{\\sin(x)}{|\\sin(x)|} : x\\in\\mathbb{R}, x\\ne k\\pi \\text{ per } k\\in\\mathbb{Z}\\}$ valgono",
+          "risposte": [
+            {
+              "testo_risposta": "$\\{-1, N.E., 1, N.E.\\}$",
+              "spiegazione_vera_o_falsa": "Errato. Dal momento che l'insieme immagine $A$ è costituito solo da punti isolati e finiti, minimo e massimo esistono e coincidono con inf e sup."
+            },
+            {
+              "testo_risposta": "$\\{-\\infty,N.E.,+\\infty,N.E.\\}$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Il rapporto tra una quantità e il suo valore assoluto non può divergere."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Falso. La terna corretta è presente nelle alternative."
+            },
+            {
+              "testo_risposta": "$\\{0, N.E., 1, 1\\}$",
+              "spiegazione_vera_o_falsa": "Non corretto. L'argomento del modulo non può assumere il valore 0 nel dominio indicato."
+            },
+            {
+              "testo_risposta": "$\\{-1,-1,1,1\\}$",
+              "spiegazione_vera_o_falsa": "Corretto! La frazione vale $1$ per i valori di $x$ in cui $\\sin(x)>0$ e $-1$ per i valori in cui $\\sin(x)<0$. Quindi l'insieme $A$ è composto dai soli due elementi $\\{-1, 1\\}$. Essendo un insieme finito, inf e min coincidono a $-1$, così come sup e max coincidono a $1$."
+            }
+          ],
+          "risposta_corretta": 4
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "La retta tangente al grafico di $y(x)=e^{(\\cos x)}+e$ nel punto $x_{0}=0$ è",
+          "risposte": [
+            {
+              "testo_risposta": "$e^{e^{x}}x$",
+              "spiegazione_vera_o_falsa": "Errato. Non è affatto l'equazione lineare di una retta tangente."
+            },
+            {
+              "testo_risposta": "$1+x$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Hai calcolato male l'ordinata del punto $y(0)$ e la derivata prima."
+            },
+            {
+              "testo_risposta": "$2e$",
+              "spiegazione_vera_o_falsa": "Perfetto! Calcoliamo l'ordinata: $y(0) = e^{\\cos(0)} + e = e^1 + e = 2e$. Calcoliamo la **derivata**: $y'(x) = e^{\\cos(x)}(-\\sin(x))$. Valutandola in $0$, abbiamo $y'(0) = 0$. La retta tangente è $y = y(0) + y'(0)(x-0) \\implies y = 2e + 0 \\cdot x = 2e$."
+            },
+            {
+              "testo_risposta": "x",
+              "spiegazione_vera_o_falsa": "Sbagliato."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Non corretto. Il risultato giusto è elencato."
+            }
+          ],
+          "risposta_corretta": 2
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "La funzione $f(x) = ]0,1] \\rightarrow \\mathbb{R}$ definita da $f(x)=x \\log(x^{2})$ è",
+          "risposte": [
+            {
+              "testo_risposta": "convessa",
+              "spiegazione_vera_o_falsa": "Esatto! Riscriviamo la funzione come $f(x) = 2x\\log(x)$ (valido per $x>0$). La derivata prima è $f'(x) = 2\\log(x) + 2$. La **derivata seconda** è $f''(x) = 2/x$. Poiché nel dominio $x \\in ]0,1]$ si ha sempre $f''(x) > 0$, la funzione è strettamente convessa."
+            },
+            {
+              "testo_risposta": "iniettiva",
+              "spiegazione_vera_o_falsa": "Errato. Poiché $f'(x)$ si annulla e cambia segno nel dominio, la funzione non è monotona, quindi non può essere iniettiva."
+            },
+            {
+              "testo_risposta": "surgettiva",
+              "spiegazione_vera_o_falsa": "Sbagliato. L'immagine della funzione è limitata inferiormente e superiormente in quell'intervallo, quindi non copre tutto $\\mathbb{R}$."
+            },
+            {
+              "testo_risposta": "positiva",
+              "spiegazione_vera_o_falsa": "Falso. In $]0,1]$ il termine $\\log(x^2)$ è negativo o nullo, quindi la funzione assume valori negativi."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Non corretto. L'opzione 'convessa' descrive esattamente la proprietà della funzione."
+            }
+          ],
+          "risposta_corretta": 0
+        },
+        {
+          "difficolta": 4,
+          "testo_domanda": "Il raggio di convergenza della serie di potenze $\\sum_{n=100}^{+\\infty}\\frac{(4n)^{n}}{(3n)^{n/2}}(x+\\log(\\pi))^{n}$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Falso. La risposta è presente nelle altre alternative."
+            },
+            {
+              "testo_risposta": "$R=0$",
+              "spiegazione_vera_o_falsa": "Ottimo! Riscriviamo il coefficiente $a_n = \\frac{4^n n^n}{3^{n/2} n^{n/2}} = (\\frac{4}{\\sqrt{3}})^n n^{n/2}$. Applicando il **criterio della radice n-esima**, valutiamo il limite di $\\sqrt[n]{|a_n|} = \\frac{4}{\\sqrt{3}}n^{1/2}$. Per $n \\rightarrow +\\infty$, questo limite tende a $+\\infty$. Di conseguenza, il raggio $R = 1/L = 1/+\\infty = 0$."
+            },
+            {
+              "testo_risposta": "$R=+\\infty$",
+              "spiegazione_vera_o_falsa": "Errato. Se il raggio fosse infinito, il termine generale della radice n-esima dovrebbe tendere a 0."
+            },
+            {
+              "testo_risposta": "$R=3/2$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Hai confuso la semplificazione delle potenze di $n$."
+            },
+            {
+              "testo_risposta": "$R=\\sqrt{3}/4$",
+              "spiegazione_vera_o_falsa": "Non corretto. Questa è l'inversa della costante estrapolata, ma hai ignorato il termine $n^{1/2}$ che causa la divergenza del limite."
+            }
+          ],
+          "risposta_corretta": 1
+        },
+        {
+          "difficolta": 1,
+          "testo_domanda": "Il limite $\\lim_{x\\rightarrow-\\infty}\\frac{\\log(x^{4})}{\\log|x|}$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "-2",
+              "spiegazione_vera_o_falsa": "Sbagliato. Verifica l'applicazione delle proprietà dei logaritmi."
+            },
+            {
+              "testo_risposta": "1",
+              "spiegazione_vera_o_falsa": "Errato. Non è un limite che dà forma indeterminata se applichi le giuste regole algebriche prima."
+            },
+            {
+              "testo_risposta": "4",
+              "spiegazione_vera_o_falsa": "Corretto! Per le proprietà dei logaritmi, possiamo scrivere $\\log(x^4) = \\log(|x|^4) = 4\\log|x|$. Sostituendo nel limite otteniamo $\\lim_{x\\rightarrow-\\infty} \\frac{4\\log|x|}{\\log|x|}$, che semplificando fornisce esattamente $4$."
+            },
+            {
+              "testo_risposta": "N.E.",
+              "spiegazione_vera_o_falsa": "Falso. Il limite si calcola e dà un valore finito."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Non corretto. Il valore 4 è presente nelle opzioni."
+            }
+          ],
+          "risposta_corretta": 2
+        },
+        {
+          "difficolta": 2,
+          "testo_domanda": "L'integrale $\\int_{0}^{m\\pi}\\sin(x)dx$ con $m\\in\\mathbb{N}$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "$1-\\cos(m\\pi)$",
+              "spiegazione_vera_o_falsa": "Ottimo lavoro! La primitiva del seno è $-\\cos(x)$. Valutandola agli estremi si ottiene: $[-\\cos(x)]_0^{m\\pi} = -\\cos(m\\pi) - (-\\cos(0)) = -\\cos(m\\pi) + 1 = 1 - \\cos(m\\pi)$."
+            },
+            {
+              "testo_risposta": "$1/2$",
+              "spiegazione_vera_o_falsa": "Errato. Ricontrolla i calcoli della primitiva e la sua valutazione."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Sbagliato. La forma corretta dell'integrale definito è elencata."
+            },
+            {
+              "testo_risposta": "0",
+              "spiegazione_vera_o_falsa": "Falso. Dipende dalla parità del parametro $m$. L'integrale non è identicamente nullo per ogni $m$."
+            },
+            {
+              "testo_risposta": "$\\pi$",
+              "spiegazione_vera_o_falsa": "Non corretto. Le aree dei lobi della funzione seno non producono multipli di $\\pi$."
+            }
+          ],
+          "risposta_corretta": 0
+        },
+        {
+          "difficolta": 3,
+          "testo_domanda": "L'integrale $\\int_{e}^{e^{2}}\\frac{1}{x(\\log(x))^{2}}dx$ vale",
+          "risposte": [
+            {
+              "testo_risposta": "$\\log(1/2)$",
+              "spiegazione_vera_o_falsa": "Sbagliato. Hai probabilmente integrato la funzione sbagliata, confondendo la primitiva di $u^{-2}$ con quella di $u^{-1}$."
+            },
+            {
+              "testo_risposta": "$+\\infty$",
+              "spiegazione_vera_o_falsa": "Falso. La funzione non ha asintoti verticali in tale intervallo chiuso e l'integrale converge a un valore finito."
+            },
+            {
+              "testo_risposta": "$1/2$",
+              "spiegazione_vera_o_falsa": "Perfetto! Usa la **sostituzione** $u = \\log(x)$, che implica $du = 1/x \\, dx$. Gli estremi di integrazione diventano $u(e) = 1$ e $u(e^2) = 2$. L'integrale diventa $\\int_1^2 u^{-2} du$. La primitiva è $-1/u$. Valutandola tra $1$ e $2$ otteniamo $[-1/2] - [-1/1] = -1/2 + 1 = 1/2$."
+            },
+            {
+              "testo_risposta": "N.A.",
+              "spiegazione_vera_o_falsa": "Errato. Il risultato è presente nelle altre risposte."
+            },
+            {
+              "testo_risposta": "0",
+              "spiegazione_vera_o_falsa": "Non corretto. Essendo l'integranda strettamente positiva nell'intervallo, anche l'integrale deve esserlo."
+            }
+          ],
+          "risposta_corretta": 2
+        }
+      ]
+    }
+  ]
+}

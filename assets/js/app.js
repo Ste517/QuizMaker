@@ -307,7 +307,7 @@ function renderCurrentQuestion() {
         <div class="markdown-content flex-1 font-semibold text-slate-700 dark:text-slate-200 text-base sm:text-lg">${marked.parse(a.testo_risposta)}</div>
       </div>
       <div class="explanation-area hidden w-full pl-12 text-sm text-slate-600 dark:text-slate-400 opacity-90 markdown-content">
-        ${marked.parse(a.spiegazione_vera_o_falsa || '')}
+        ${a.spiegazione_vera_o_falsa ? marked.parse(a.spiegazione_vera_o_falsa) : ''}
       </div>
     </button>
   `).join('');
@@ -359,10 +359,12 @@ function checkAnswer(timeout = false) {
     const answer = q._currentAnswersMap[i];
     if (answer.originalIndex === q.risposta_corretta) {
       btn.classList.add('correct');
-      btn.querySelector('.explanation-area').classList.remove('hidden');
+      const expArea = btn.querySelector('.explanation-area');
+      if (expArea && expArea.textContent.trim().length > 0) expArea.classList.remove('hidden');
     } else if (i === selectedAnswerIndex) {
       btn.classList.add('wrong');
-      btn.querySelector('.explanation-area').classList.remove('hidden');
+      const expArea = btn.querySelector('.explanation-area');
+      if (expArea && expArea.textContent.trim().length > 0) expArea.classList.remove('hidden');
     } else {
       btn.style.opacity = '0.5';
     }

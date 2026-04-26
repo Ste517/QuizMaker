@@ -42,16 +42,15 @@
     "totale_domande": 200
   },
   {
-    "id": "pretest_analisi1",
+    "id": "pretest_an1_ifor-l",
     "titolo": "Pretest Analisi Matematica 1",
-    "autore": "Stefano Brogi",
-    "url_autore": "https://stefanobrogi.it",
-    "descrizione": "Pretest di Analisi Matematica 1",
+    "descrizione": "Pretest di Analisi Matematica 1 - Ingegneria Informatica",
     "file": "data/user_made/pretest_analisi1.json",
     "categoria": "user_made",
     "argomenti": [
-      "Appello 1 2026"
+      "Appello 1 2026 - Primo turno",
+      "Appello 1 2026 - Secondo turno"
     ],
-    "totale_domande": 1
+    "totale_domande": 20
   }
 ]

@@ -102,7 +102,7 @@ function renderAnswerInputs(count) {
       <input type="radio" name="correctAnswer" value="${i}" required class="absolute left-4 top-[1.35rem] h-4 w-4 cursor-pointer text-brand-600 focus:ring-brand-600" ${isChecked ? 'checked' : ''} />
       <div class="space-y-3">
         <input type="text" id="ans_${i}" required placeholder="Testo risposta ${i + 1}" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
-        <input type="text" id="exp_${i}" required placeholder="Spiegazione..." class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
+        <input type="text" id="exp_${i}" placeholder="Spiegazione (opzionale)..." class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
       </div>
     </div>
   `}).join('');
@@ -372,11 +372,11 @@ copyCatalogSnippetBtn.addEventListener('click', () => {
   }
 
   const snippet = {
-    id: "nuovo_quiz_" + Date.now(),
-    titolo: "Nuovo Quiz",
+    id: "nuovo_dataset_" + Date.now(),
+    titolo: "Nuovo Dataset",
     autore: datasetAuthorInput.value.trim() || "Anonimo",
     url_autore: datasetAuthorUrlInput.value.trim() || "",
-    descrizione: "Descrizione del quiz...",
+    descrizione: "Descrizione del dataset...",
     file: "data/user_made/il_tuo_file.json",
     categoria: "user_made",
     argomenti: Array.from(new Set(questions.map(q => q.argomento))),

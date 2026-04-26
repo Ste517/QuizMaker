@@ -1,32 +1,10 @@
 [
   {
-    "version": "1.2.0",
-    "date": "2026-04-24",
-    "title": "Modernizzazione Jekyll",
-    "changes": [
-      "Migrazione alla struttura basata su Jekyll per una migliore gestione delle pagine",
-      "Centralizzazione di testata, footer e risorse comuni nei layout",
-      "Miglioramento dei percorsi degli asset (CSS/JS)",
-      "Aggiunta del sistema di Changelog dinamico"
-    ]
-  },
-  {
-    "version": "1.1.0",
-    "date": "2026-04-23",
-    "title": "Professionalizzazione & GDPR",
-    "changes": [
-      "Aggiunta pagina About con informazioni sul progetto e IA",
-      "Integrazione Google Analytics 4",
-      "Conformità GDPR (salvataggio locale dei dati)",
-      "Attribuzione esplicita allo sviluppo assistito da IA"
-    ]
-  },
-  {
     "version": "1.0.0",
-    "date": "2026-04-22",
+    "date": "2026-04-23",
     "title": "Lancio QuizMaker",
     "changes": [
-      "Interfaccia stile Duolingo con feedback immediato",
+      "Interfaccia con feedback immediato",
       "Supporto per Markdown e LaTeX nelle domande",
       "Catalogo dataset predefiniti",
       "Supporto PWA per utilizzo offline",
