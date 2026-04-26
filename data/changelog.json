@@ -1,0 +1,14 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-04-23",
+    "title": "Lancio QuizMaker",
+    "changes": [
+      "Interfaccia con feedback immediato",
+      "Supporto per Markdown e LaTeX nelle domande",
+      "Catalogo dataset predefiniti",
+      "Supporto PWA per utilizzo offline",
+      "Editor visuale integrato per la creazione di nuovi quiz"
+    ]
+  }
+]

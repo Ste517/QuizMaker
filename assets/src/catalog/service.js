@@ -1,6 +1,6 @@
 export async function fetchDatasets(catalogGrid, datasetsList, onRenderCatalogGrid, onRenderDatasets) {
   try {
-    const response = await fetch('data/index.json?t=' + Date.now());
+    const response = await fetch('/data/index.json?t=' + Date.now());
     if (!response.ok) throw new Error('Network response was not ok');
     const datasets = await response.json();
     

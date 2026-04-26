@@ -1,0 +1,50 @@
+name: "🐛 Segnalazione Bug"
+description: "Segnala un errore o un problema tecnico."
+title: "[BUG]: "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per voler segnalare un bug! Più informazioni fornisci, più facile sarà per noi risolverlo.
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrizione del Bug
+      description: Una descrizione chiara e concisa di cosa sia il bug.
+      placeholder: Es. Il tasto 'Inizia Quiz' non risponde al click...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Per Riprodurre
+      description: Passaggi per riprodurre il comportamento.
+      placeholder: |
+        1. Vai su '...'
+        2. Clicca su '....'
+        3. Vedi l'errore
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Atteso
+      description: Cosa ti aspettavi che accadesse?
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Ambiente
+      description: OS e Browser utilizzati (es. Windows 11, Chrome 120).
+    validations:
+      required: false
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Informazioni Aggiuntive
+      description: Qualsiasi altro contesto o screenshot (trascina le immagini qui).
+    validations:
+      required: false

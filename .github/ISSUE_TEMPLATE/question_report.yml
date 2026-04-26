@@ -1,0 +1,38 @@
+name: "❓ Segnalazione Errore Domanda"
+description: "Segnala un errore in una specifica domanda."
+title: "[DOMANDA]: "
+labels: ["question-error"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hai trovato un errore in una domanda? Segnalalo qui sotto.
+  - type: input
+    id: dataset-info
+    attributes:
+      label: Dataset / File
+      description: Il nome del dataset o del file .json.
+    validations:
+      required: true
+  - type: textarea
+    id: question-text
+    attributes:
+      label: Testo della Domanda
+      description: Incolla qui il testo della domanda incriminata.
+    validations:
+      required: true
+  - type: textarea
+    id: error-details
+    attributes:
+      label: Dettagli dell'Errore
+      description: Cosa c'è di sbagliato? (es. risposta corretta errata, refuso, ecc.)
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggerimento per la correzione
+      description: Come dovrebbe essere la domanda corretta?
+    validations:
+      required: false

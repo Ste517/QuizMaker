@@ -1,8 +1,8 @@
-import { STORAGE_KEYS, MAX_RECENT_JSON, safeRead, saveRecentJson, saveQuizResult } from './src/utils/storage.js';
-import { setTheme, showStatus, hideStatus, setView, formatDateTime, toggleReportModal } from './src/utils/ui.js';
-import { startTimer, stopTimer } from './src/quiz/timer.js';
-import { normalizeData, shuffle, flattenQuestions, getFilteredQuestions, summarizeJson } from './src/quiz/engine.js';
-import { fetchDatasets, toggleCatalogModal, renderCatalogGrid, loadDatasetFile, renderDatasets } from './src/catalog/service.js';
+import { STORAGE_KEYS, MAX_RECENT_JSON, safeRead, saveRecentJson, saveQuizResult } from '../src/utils/storage.js';
+import { setTheme, showStatus, hideStatus, setView, formatDateTime, toggleReportModal } from '../src/utils/ui.js';
+import { startTimer, stopTimer } from '../src/quiz/timer.js';
+import { normalizeData, shuffle, flattenQuestions, getFilteredQuestions, summarizeJson } from '../src/quiz/engine.js';
+import { fetchDatasets, toggleCatalogModal, renderCatalogGrid, loadDatasetFile, renderDatasets } from '../src/catalog/service.js';
 
 // Initialize Marked with KaTeX extension
 try {
@@ -11,7 +11,8 @@ try {
     if (typeof extension === 'function') {
       marked.use(extension({
         throwOnError: false,
-        nonStandard: true
+        nonStandard: true,
+        displayMode: false
       }));
     }
   }
@@ -60,6 +61,13 @@ const reportModalOverlay = document.getElementById('reportModalOverlay');
 const closeReportBtn = document.getElementById('closeReportBtn');
 const copyReportBtn = document.getElementById('copyReportBtn');
 const reportTextarea = document.getElementById('reportTextarea');
+const submitReportGithubBtn = document.getElementById('submitReportGithubBtn');
+
+// DOM Elements - Quit Modal
+const quitModal = document.getElementById('quitModal');
+const quitModalOverlay = document.getElementById('quitModalOverlay');
+const confirmQuitBtn = document.getElementById('confirmQuitBtn');
+const cancelQuitBtn = document.getElementById('cancelQuitBtn');
 
 // DOM Elements - Summary UI
 const summaryPercentage = document.getElementById('summaryPercentage');
@@ -300,7 +308,7 @@ function renderCurrentQuestion() {
         <div class="markdown-content flex-1 font-semibold text-slate-700 dark:text-slate-200 text-base sm:text-lg">${marked.parse(a.testo_risposta)}</div>
       </div>
       <div class="explanation-area hidden w-full pl-12 text-sm text-slate-600 dark:text-slate-400 opacity-90 markdown-content">
-        ${marked.parse(a.spiegazione_vera_o_falsa || '')}
+        ${a.spiegazione_vera_o_falsa ? marked.parse(a.spiegazione_vera_o_falsa) : ''}
       </div>
     </button>
   `).join('');
@@ -352,10 +360,12 @@ function checkAnswer(timeout = false) {
     const answer = q._currentAnswersMap[i];
     if (answer.originalIndex === q.risposta_corretta) {
       btn.classList.add('correct');
-      btn.querySelector('.explanation-area').classList.remove('hidden');
+      const expArea = btn.querySelector('.explanation-area');
+      if (expArea && expArea.textContent.trim().length > 0) expArea.classList.remove('hidden');
     } else if (i === selectedAnswerIndex) {
       btn.classList.add('wrong');
-      btn.querySelector('.explanation-area').classList.remove('hidden');
+      const expArea = btn.querySelector('.explanation-area');
+      if (expArea && expArea.textContent.trim().length > 0) expArea.classList.remove('hidden');
     } else {
       btn.style.opacity = '0.5';
     }
@@ -436,6 +446,17 @@ function openReport() {
 *Segnalazione generata automaticamente da QuizMaker*`;
 
   reportTextarea.value = reportTemplate;
+
+  // Costruisci URL per GitHub Issue Form
+  const githubBaseUrl = 'https://github.com/Ste517/QuizMaker/issues/new';
+  const params = new URLSearchParams({
+    template: 'question_report.yml',
+    'dataset-info': `${datasetTitle} (${datasetFile})`,
+    'question-text': q.testo_domanda,
+    'error-details': '[Descrivi qui l\'errore]'
+  });
+
+  submitReportGithubBtn.href = `${githubBaseUrl}?${params.toString()}`;
   toggleReportModal(true);
 }
 
@@ -551,11 +572,24 @@ document.querySelectorAll('[data-category-filter]').forEach(tab => {
 
 quizActionBtn.addEventListener('click', handleActionClick);
 
-quitQuizBtn.addEventListener('click', () => {
-  if (confirm('Sei sicuro di voler abbandonare il quiz?')) {
-    stopTimer(quizTimerBadge);
-    setView('config');
+function toggleQuitModal(show) {
+  if (show) {
+    quitModal.classList.remove('modal-hidden');
+    document.body.style.overflow = 'hidden';
+  } else {
+    quitModal.classList.add('modal-hidden');
+    document.body.style.overflow = '';
   }
+}
+
+quitQuizBtn.addEventListener('click', () => toggleQuitModal(true));
+cancelQuitBtn.addEventListener('click', () => toggleQuitModal(false));
+quitModalOverlay.addEventListener('click', () => toggleQuitModal(false));
+
+confirmQuitBtn.addEventListener('click', () => {
+  toggleQuitModal(false);
+  stopTimer(quizTimerBadge);
+  setView('config');
 });
 
 playAgainBtn.addEventListener('click', () => setView('config'));

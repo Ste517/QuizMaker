@@ -1,0 +1,27 @@
+title: QuizMaker
+email: contact@stefanobrogi.it
+description: >-
+  QuizMaker è un'applicazione web client-side progettata per offrire un'esperienza di quiz interattiva, mobile-first e ADHD-friendly.
+baseurl: ""
+url: "https://quizmaker.stefanobrogi.it"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+sass:
+  quiet_deps: true
+  style: compressed
+
+# Exclude from processing
+exclude:
+  - .jekyll-cache
+  - .git
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - README.md
+  - LICENSE

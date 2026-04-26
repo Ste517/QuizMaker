@@ -1,0 +1,188 @@
+---
+layout: default
+title: Editor Quiz
+permalink: /editor/
+katex: true
+extra_js:
+  - src: /assets/js/editor.js
+    type: module
+---
+
+<div class="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+  <!-- Top Bar -->
+  <header class="h-16 shrink-0 border-b border-slate-200/80 bg-white/80 dark:border-slate-800 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-between px-6 z-10">
+    <div class="flex items-center gap-3">
+      <a href="{{ '/' | relative_url }}" class="btn-3d px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-xs font-bold flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+        <span class="hidden sm:inline">Torna al Quiz</span>
+      </a>
+      <div class="h-6 w-px bg-slate-200 dark:bg-slate-800 mx-1"></div>
+      <div>
+        <h1 class="text-sm font-bold">Quiz Editor</h1>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="copyCatalogSnippetBtn" class="btn-glass px-4 py-2 rounded-xl text-xs font-bold border-slate-200 dark:border-slate-800 flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 012-2h2a2 2 0 012 2m-3 9l1.293 1.293L17 11" /></svg>
+        <span class="hidden sm:inline">Copia per Catalogo</span>
+      </button>
+      <button id="exportJsonBtn" class="btn-glass action-btn-primary px-6 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+        Esporta
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex overflow-hidden">
+    <!-- Sidebar: Question List & Stats -->
+    <aside class="w-80 border-r border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 flex flex-col">
+      <div class="p-4 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xs font-black uppercase tracking-widest text-slate-400">Domande</h2>
+          <span id="questionCountBadge" class="px-2 py-0.5 rounded-full bg-brand-100 text-brand-600 dark:bg-brand-900/40 dark:text-brand-400 text-[10px] font-bold">0 dom.</span>
+        </div>
+        <button id="clearFormBtn" class="w-full py-3 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm transition-all active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
+          Nuova Domanda
+        </button>
+      </div>
+
+      <div id="questionsList" class="flex-1 overflow-y-auto p-4 space-y-4">
+        <!-- List Items grouped by topic -->
+      </div>
+
+      <div class="p-4 bg-slate-100/50 dark:bg-slate-950/50 border-t border-slate-200 dark:border-slate-800">
+        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">Importa Dataset</label>
+        <div id="dropzoneEditor" class="relative group h-20 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-brand-500 transition-colors flex flex-col items-center justify-center p-4">
+          <input type="file" id="importJsonInput" accept=".json" class="absolute inset-0 opacity-0 cursor-pointer z-10" />
+          <svg class="w-6 h-6 text-slate-400 group-hover:text-brand-500 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+          <span class="text-[10px] text-slate-500">Trascina JSON qui</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Editor Surface -->
+    <form id="questionForm" class="flex-1 overflow-y-auto bg-white/30 dark:bg-slate-950/30 p-8 sm:p-12 space-y-12">
+      <!-- Section: Dataset Metadata -->
+      <section class="card-glass border border-white/20 dark:border-slate-800 rounded-3xl p-8 shadow-xl">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+          <span class="text-brand-500">📄</span> Metadati Dataset
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label for="datasetAuthor" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Autore Dataset</label>
+            <input type="text" id="datasetAuthor" class="w-full h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium" placeholder="Nome o Nickname" />
+          </div>
+          <div class="space-y-2">
+            <label for="datasetAuthorUrl" class="text-[10px] font-black uppercase tracking-widest text-slate-400">URL Autore / Sorgente</label>
+            <input type="url" id="datasetAuthorUrl" class="w-full h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium" placeholder="https://..." />
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Topics Management -->
+      <section class="card-glass border border-white/20 dark:border-slate-800 rounded-3xl p-8 shadow-xl">
+        <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+          <span class="text-amber-500">🏷️</span> Gestione Argomenti
+        </h2>
+        <div class="flex gap-3 mb-6">
+          <input type="text" id="newTopicInput" class="flex-1 h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium" placeholder="Nuovo argomento..." />
+          <button type="button" id="addTopicBtn" class="px-6 rounded-2xl bg-slate-900 text-white font-bold text-sm dark:bg-white dark:text-slate-900 hover:opacity-90 transition-opacity">Aggiungi</button>
+        </div>
+        <div id="topicsList" class="flex flex-wrap gap-2">
+          <!-- Topics will be injected here -->
+        </div>
+      </section>
+
+      <!-- Section: Question Editor -->
+      <section class="card-glass border border-white/20 dark:border-slate-800 rounded-3xl p-8 shadow-xl">
+        <div class="flex items-center justify-between mb-8">
+          <h2 id="formTitle" class="text-xl font-bold flex items-center gap-2">
+            <span class="text-emerald-500">❓</span> Nuova Domanda
+          </h2>
+          <button type="button" id="cancelEditBtn" class="hidden text-xs font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200">Annulla Modifiche</button>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Row 1: Topic & Difficulty -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="space-y-2">
+              <label for="topicSelect" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Argomento</label>
+              <select id="topicSelect" required class="w-full h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium"></select>
+            </div>
+            <div class="space-y-2">
+              <label for="difficultySelect" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Difficoltà</label>
+              <select id="difficultySelect" class="w-full h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium">
+                <option value="1">Livello 1 (Base)</option>
+                <option value="2">Livello 2</option>
+                <option value="3">Livello 3 (Medio)</option>
+                <option value="4">Livello 4</option>
+                <option value="5">Livello 5 (Esperto)</option>
+              </select>
+            </div>
+            <div class="space-y-2">
+              <label for="questionTime" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Timer (sec)</label>
+              <input type="number" id="questionTime" placeholder="Nessuno" class="w-full h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium" />
+            </div>
+          </div>
+
+          <!-- Question Body -->
+          <div class="space-y-2">
+            <label for="questionText" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Testo Domanda (Markdown/LaTeX)</label>
+            <textarea id="questionText" required rows="4" class="w-full p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-lg font-bold resize-none" placeholder="Qual è la capitale di..."></textarea>
+          </div>
+
+          <div class="space-y-2">
+            <label for="questionImageUrl" class="text-[10px] font-black uppercase tracking-widest text-slate-400">URL Immagine (Opzionale)</label>
+            <input type="url" id="questionImageUrl" class="w-full h-12 px-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:border-brand-500 transition-colors text-sm font-medium" placeholder="https://..." />
+          </div>
+
+          <!-- Answers -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Opzioni Risposta</label>
+              <div class="flex gap-2">
+                <button type="button" id="removeAnswerBtn" class="p-2 rounded-xl text-slate-400 hover:text-rose-500 transition-colors">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                </button>
+                <button type="button" id="addAnswerBtn" class="p-2 rounded-xl text-slate-400 hover:text-brand-500 transition-colors">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                </button>
+              </div>
+            </div>
+            <div id="answersContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- JS-Injected answer inputs -->
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-8 flex flex-col sm:flex-row gap-4">
+            <button type="submit" id="saveQuestionBtn" class="flex-1 h-14 rounded-2xl bg-brand-600 text-white font-bold text-lg shadow-lg shadow-brand-500/20 active:scale-95 transition-all">Aggiungi Domanda</button>
+          </div>
+        </div>
+      </section>
+    </form>
+  </main>
+  <!-- MODALE SNIPPET CATALOGO -->
+  <div id="snippetModal" class="modal-hidden fixed inset-0 z-[80] flex items-center justify-center p-4">
+    <div id="snippetModalOverlay" class="modal-overlay absolute inset-0"></div>
+    <div class="modal-content relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col max-h-[80vh]">
+      <header class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <h3 class="text-xl font-bold">Snippet per index.json</h3>
+        <button id="closeSnippetBtn" type="button" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </header>
+      <div class="p-6 overflow-y-auto">
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Copia questo oggetto e incollalo nell'array principale del file <code>data/index.json</code>.</p>
+        <div class="relative group">
+          <textarea id="snippetTextarea" readonly rows="12" class="w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 font-mono text-xs dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 outline-none"></textarea>
+          <button id="copySnippetTextBtn" type="button" class="absolute top-3 right-3 p-2 rounded-lg bg-white shadow-sm border border-slate-200 text-slate-600 hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-700 transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 012-2h2a2 2 0 012 2m-3 9l1.293 1.293L17 11" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

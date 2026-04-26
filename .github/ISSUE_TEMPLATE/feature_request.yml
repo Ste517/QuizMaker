@@ -1,0 +1,39 @@
+name: "💡 Proposta Funzionalità"
+description: "Suggerisci un'idea per QuizMaker."
+title: "[FEATURE]: "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hai un'idea per migliorare QuizMaker? Condividila con noi!
+  - type: textarea
+    id: problem
+    attributes:
+      label: La tua proposta è legata a un problema?
+      description: Una descrizione chiara e concisa di quale sia il problema.
+      placeholder: Es. Faccio fatica a...
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Descrizione della Soluzione
+      description: Una descrizione chiara e concisa di ciò che vuoi che accada.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Considerate
+      description: Eventuali soluzioni alternative o funzionalità che hai considerato.
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Contesto Aggiuntivo
+      description: Qualsiasi altro contesto o screenshot.
+    validations:
+      required: false

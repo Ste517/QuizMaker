@@ -5,7 +5,8 @@ try {
     if (typeof extension === 'function') {
       marked.use(extension({
         throwOnError: false,
-        nonStandard: true
+        nonStandard: true,
+        displayMode: false
       }));
     }
   }
@@ -47,6 +48,14 @@ let datasetAuthorUrl = '';
 // DOM Elements
 const datasetAuthorInput = document.getElementById('datasetAuthor');
 const datasetAuthorUrlInput = document.getElementById('datasetAuthorUrl');
+
+// DOM Elements - Snippet Modal
+const copyCatalogSnippetBtn = document.getElementById('copyCatalogSnippetBtn');
+const snippetModal = document.getElementById('snippetModal');
+const snippetModalOverlay = document.getElementById('snippetModalOverlay');
+const closeSnippetBtn = document.getElementById('closeSnippetBtn');
+const snippetTextarea = document.getElementById('snippetTextarea');
+const copySnippetTextBtn = document.getElementById('copySnippetTextBtn');
 
 // DOM Elements
 const topicsListEl = document.getElementById('topicsList');
@@ -93,7 +102,7 @@ function renderAnswerInputs(count) {
       <input type="radio" name="correctAnswer" value="${i}" required class="absolute left-4 top-[1.35rem] h-4 w-4 cursor-pointer text-brand-600 focus:ring-brand-600" ${isChecked ? 'checked' : ''} />
       <div class="space-y-3">
         <input type="text" id="ans_${i}" required placeholder="Testo risposta ${i + 1}" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
-        <input type="text" id="exp_${i}" required placeholder="Spiegazione..." class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
+        <input type="text" id="exp_${i}" placeholder="Spiegazione (opzionale)..." class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 dark:border-slate-600 dark:bg-slate-900" />
       </div>
     </div>
   `}).join('');
@@ -345,6 +354,54 @@ exportJsonBtn.addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 
+// Catalog Snippet Generation
+function toggleSnippetModal(show) {
+  if (show) {
+    snippetModal.classList.remove('modal-hidden');
+    document.body.style.overflow = 'hidden';
+  } else {
+    snippetModal.classList.add('modal-hidden');
+    document.body.style.overflow = '';
+  }
+}
+
+copyCatalogSnippetBtn.addEventListener('click', () => {
+  if (questions.length === 0) {
+    alert('Aggiungi almeno una domanda per generare lo snippet.');
+    return;
+  }
+
+  const snippet = {
+    id: "nuovo_dataset_" + Date.now(),
+    titolo: "Nuovo Dataset",
+    autore: datasetAuthorInput.value.trim() || "Anonimo",
+    url_autore: datasetAuthorUrlInput.value.trim() || "",
+    descrizione: "Descrizione del dataset...",
+    file: "data/user_made/il_tuo_file.json",
+    categoria: "user_made",
+    argomenti: Array.from(new Set(questions.map(q => q.argomento))),
+    totale_domande: questions.length
+  };
+
+  if (!snippet.url_autore) delete snippet.url_autore;
+
+  snippetTextarea.value = JSON.stringify(snippet, null, 2);
+  toggleSnippetModal(true);
+});
+
+closeSnippetBtn.addEventListener('click', () => toggleSnippetModal(false));
+snippetModalOverlay.addEventListener('click', () => toggleSnippetModal(false));
+
+copySnippetTextBtn.addEventListener('click', () => {
+  snippetTextarea.select();
+  document.execCommand('copy');
+  const originalIcon = copySnippetTextBtn.innerHTML;
+  copySnippetTextBtn.innerHTML = '<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>';
+  setTimeout(() => {
+    copySnippetTextBtn.innerHTML = originalIcon;
+  }, 2000);
+});
+
 async function handleImportFile(file) {
   if (!file) return;
   try {
@@ -379,11 +436,11 @@ async function handleImportFile(file) {
           id: crypto.randomUUID(),
           argomento: item.argomento,
           difficolta: d.difficolta || 1,
-          testo_domanda: text,
+          testo_domanda: (d.testo_domanda || '').replace(/\\\\/g, '\\'),
           risposta_corretta: d.risposta_corretta || 0,
           risposte: (d.risposte || []).map(r => ({
-            testo_risposta: (r.testo_risposta || '').replace(/\u0008/g, '\\b'),
-            spiegazione_vera_o_falsa: (r.spiegazione_vera_o_falsa || '').replace(/\u0008/g, '\\b')
+            testo_risposta: (r.testo_risposta || '').replace(/\\\\/g, '\\'),
+            spiegazione_vera_o_falsa: (r.spiegazione_vera_o_falsa || '').replace(/\\\\/g, '\\')
           }))
         };
         if(d.tempo) q.tempo = d.tempo;
@@ -392,7 +449,7 @@ async function handleImportFile(file) {
       });
     });
 
-    topics = Array.from(importedTopics);
+    topics = Array.from(importedTopicsSet);
     questions = importedQuestions;
     
     renderTopics();
