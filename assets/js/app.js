@@ -61,6 +61,7 @@ const reportModalOverlay = document.getElementById('reportModalOverlay');
 const closeReportBtn = document.getElementById('closeReportBtn');
 const copyReportBtn = document.getElementById('copyReportBtn');
 const reportTextarea = document.getElementById('reportTextarea');
+const submitReportGithubBtn = document.getElementById('submitReportGithubBtn');
 
 // DOM Elements - Quit Modal
 const quitModal = document.getElementById('quitModal');
@@ -445,6 +446,17 @@ function openReport() {
 *Segnalazione generata automaticamente da QuizMaker*`;
 
   reportTextarea.value = reportTemplate;
+
+  // Costruisci URL per GitHub Issue Form
+  const githubBaseUrl = 'https://github.com/Ste517/QuizMaker/issues/new';
+  const params = new URLSearchParams({
+    template: 'question_report.yml',
+    'dataset-info': `${datasetTitle} (${datasetFile})`,
+    'question-text': q.testo_domanda,
+    'error-details': '[Descrivi qui l\'errore]'
+  });
+
+  submitReportGithubBtn.href = `${githubBaseUrl}?${params.toString()}`;
   toggleReportModal(true);
 }
 
