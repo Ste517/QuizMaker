@@ -18,10 +18,14 @@ sass:
 # Exclude from processing
 exclude:
   - .jekyll-cache
-  - .git
+  - .git/
+  - .github/
   - vendor/
   - Gemfile
   - Gemfile.lock
   - scripts/
   - README.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - SECURITY.md
   - LICENSE
