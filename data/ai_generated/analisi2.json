@@ -1,0 +1,2337 @@
+[
+  {
+    "argomento": "Limiti e Continuità in più variabili",
+    "domande": [
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quanto vale il limite $\\lim_{(x,y) \\to (0,0)} \\frac{x^2 y}{x^2 + y^2}$?",
+        "risposte": [
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Corretto. Passando in coordinate polari, si ottiene $r \\cos^2 \\theta \\sin \\theta$, che tende a 0."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. Il numeratore ha grado superiore al denominatore."
+          },
+          {
+            "testo_risposta": "Non esiste",
+            "spiegazione_vera_o_falsa": "Errato. Il limite esiste ed è uniforme rispetto all'angolo."
+          },
+          {
+            "testo_risposta": "infinito",
+            "spiegazione_vera_o_falsa": "Errato. La funzione è limitata vicino all'origine."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Si consideri $f(x,y) = \\frac{xy}{x^2+y^2}$ per $(x,y) \\neq (0,0)$. Qual è il comportamento del limite nell'origine?",
+        "risposte": [
+          {
+            "testo_risposta": "Il limite non esiste",
+            "spiegazione_vera_o_falsa": "Corretto. Lungo le rette $y=mx$ il limite dipende dal coefficiente angolare m."
+          },
+          {
+            "testo_risposta": "Il limite è 0",
+            "spiegazione_vera_o_falsa": "Errato. Lungo la bisettrice $y=x$ il valore è 1/2."
+          },
+          {
+            "testo_risposta": "Il limite è 1/2",
+            "spiegazione_vera_o_falsa": "Errato. Questo vale solo su alcune direzioni."
+          },
+          {
+            "testo_risposta": "Il limite è infinito",
+            "spiegazione_vera_o_falsa": "Errato. La funzione è limitata in modulo da 1/2."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Per quali valori di $\\alpha > 0$ il limite $\\lim_{(x,y) \\to (0,0)} \\frac{|x|^\\alpha}{x^2 + y^2}$ è nullo?",
+        "risposte": [
+          {
+            "testo_risposta": "$\\alpha > 2$",
+            "spiegazione_vera_o_falsa": "Corretto. Il grado del numeratore deve superare quello del denominatore (2)."
+          },
+          {
+            "testo_risposta": "$\\alpha = 2$",
+            "spiegazione_vera_o_falsa": "Errato. In questo caso il limite non esiste (dipende dalla direzione)."
+          },
+          {
+            "testo_risposta": "$\\alpha < 2$",
+            "spiegazione_vera_o_falsa": "Errato. Il limite sarebbe infinito o non esistente."
+          },
+          {
+            "testo_risposta": "Ogni $\\alpha > 0$",
+            "spiegazione_vera_o_falsa": "Errato. Serve un grado sufficientemente alto."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si può dire della continuità di $f(x,y) = \\frac{x^2 y^2}{x^4 + y^4}$ nell'origine (ponendo $f(0,0)=0$)?",
+        "risposte": [
+          {
+            "testo_risposta": "Non è continua",
+            "spiegazione_vera_o_falsa": "Corretto. Lungo $y=x$ il limite è 1/2, diverso dal valore $f(0,0)=0$."
+          },
+          {
+            "testo_risposta": "È continua",
+            "spiegazione_vera_o_falsa": "Errato. Esistono direzioni lungo le quali il limite non è 0."
+          },
+          {
+            "testo_risposta": "È continua ma non derivabile",
+            "spiegazione_vera_o_falsa": "Errato. Non è nemmeno continua."
+          },
+          {
+            "testo_risposta": "È differenziabile",
+            "spiegazione_vera_o_falsa": "Errato. La differenziabilità implica la continuità."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "Il dominio della funzione $f(x,y) = \\ln(x^2 + y^2 - 1)$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "L'esterno del cerchio unitario (esclusa la circonferenza)",
+            "spiegazione_vera_o_falsa": "Corretto. L'argomento del logaritmo deve essere strettamente positivo."
+          },
+          {
+            "testo_risposta": "Tutto il piano $\\mathbb{R}^2$",
+            "spiegazione_vera_o_falsa": "Errato. Il logaritmo non è definito per valori non positivi."
+          },
+          {
+            "testo_risposta": "L'interno del cerchio unitario",
+            "spiegazione_vera_o_falsa": "Errato. All'interno $x^2+y^2-1 < 0$."
+          },
+          {
+            "testo_risposta": "Il piano senza l'origine",
+            "spiegazione_vera_o_falsa": "Errato. Serve una condizione sulla distanza dall'origine."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il limite $\\lim_{(x,y) \\to (0,0)} (x^2 + y^2) \\ln(x^2 + y^2)$ vale:",
+        "risposte": [
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Corretto. Posto $t = x^2+y^2$, il limite $\\lim_{t \\to 0} t \\ln t = 0$."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. È un limite notevole che tende a 0."
+          },
+          {
+            "testo_risposta": "infinito",
+            "spiegazione_vera_o_falsa": "Errato. La crescita lineare di t 'vince' sulla divergenza logaritmica."
+          },
+          {
+            "testo_risposta": "Non esiste",
+            "spiegazione_vera_o_falsa": "Errato. Il limite è radiale e ben definito."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è il limite $\\lim_{(x,y) \\to (0,0)} \\frac{1 - \\cos(xy)}{x^2 y^2}$?",
+        "risposte": [
+          {
+            "testo_risposta": "1/2",
+            "spiegazione_vera_o_falsa": "Corretto. Posto $t = xy$, si usa il limite notevole $(1-\\cos t)/t^2 \\to 1/2$."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. Numeratore e denominatore sono dello stesso ordine."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. Manca il fattore 1/2 tipico dello sviluppo del coseno."
+          },
+          {
+            "testo_risposta": "Non esiste",
+            "spiegazione_vera_o_falsa": "Errato. Il limite è regolare ovunque $xy \\neq 0$ e si estende per continuità."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Si consideri $f(x,y) = x \\sin(1/y)$ per $y \\neq 0$ e $f(x,0)=0$. f è continua in (0,0)?",
+        "risposte": [
+          {
+            "testo_risposta": "Sì",
+            "spiegazione_vera_o_falsa": "Corretto. $|f(x,y)| \\leq |x|$, che tende a 0 per $(x,y) \\to (0,0)$."
+          },
+          {
+            "testo_risposta": "No, perché $1/y$ non è definito",
+            "spiegazione_vera_o_falsa": "Errato. L'oscillazione è limitata e 'schiacciata' da x."
+          },
+          {
+            "testo_risposta": "No, perché il limite dipende dalla direzione",
+            "spiegazione_vera_o_falsa": "Errato. La stima $|f| \\leq |x|$ garantisce l'uniformità."
+          },
+          {
+            "testo_risposta": "Sì, ed è anche differenziabile",
+            "spiegazione_vera_o_falsa": "Errato. Non è differenziabile poiché le derivate parziali non si comportano bene."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Quale tra queste è la definizione corretta di continuità in $x_0$ per $f: \\mathbb{R}^n \\to \\mathbb{R}$?",
+        "risposte": [
+          {
+            "testo_risposta": "$\\forall \\epsilon > 0 \\, \\exists \\delta > 0 : \\|x - x_0\\| < \\delta \\implies |f(x) - f(x_0)| < \\epsilon$",
+            "spiegazione_vera_o_falsa": "Corretto. È la classica definizione epsilon-delta in spazi metrici."
+          },
+          {
+            "testo_risposta": "Esistono tutte le derivate parziali",
+            "spiegazione_vera_o_falsa": "Errato. L'esistenza delle derivate parziali non implica nemmeno la continuità."
+          },
+          {
+            "testo_risposta": "La funzione è limitata in un intorno di $x_0$",
+            "spiegazione_vera_o_falsa": "Errato. Essere limitata è necessario ma non sufficiente."
+          },
+          {
+            "testo_risposta": "Il limite lungo ogni retta è lo stesso",
+            "spiegazione_vera_o_falsa": "Errato. Condizione necessaria ma non sufficiente per il limite globale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 1,
+        "testo_domanda": "La funzione $f(x,y) = e^{x+y}$ è continua su tutto $\\mathbb{R}^2$?",
+        "risposte": [
+          {
+            "testo_risposta": "Sì, è composizione di funzioni continue",
+            "spiegazione_vera_o_falsa": "Corretto. Somma ed esponenziale sono funzioni elementari continue."
+          },
+          {
+            "testo_risposta": "No, solo dove $x+y > 0$",
+            "spiegazione_vera_o_falsa": "Errato. L'esponenziale è definito su tutto R."
+          },
+          {
+            "testo_risposta": "No, perché cresce troppo velocemente",
+            "spiegazione_vera_o_falsa": "Errato. La rapidità di crescita non inficia la continuità."
+          },
+          {
+            "testo_risposta": "Solo nell'origine",
+            "spiegazione_vera_o_falsa": "Errato. È continua ovunque."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Calcolo Differenziale e Differenziabilità",
+    "domande": [
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è il gradiente di $f(x,y) = x^2 y + \\sin(xy)$ nel punto (1,0)?",
+        "risposte": [
+          {
+            "testo_risposta": "(0, 2)",
+            "spiegazione_vera_o_falsa": "Corretto. $f_x = 2xy + y \\cos(xy) \\to 0$; $f_y = x^2 + x \\cos(xy) \\to 1+1 = 2$."
+          },
+          {
+            "testo_risposta": "(1, 2)",
+            "spiegazione_vera_o_falsa": "Errato. Controlla la derivata rispetto a x."
+          },
+          {
+            "testo_risposta": "(0, 1)",
+            "spiegazione_vera_o_falsa": "Errato. Hai dimenticato il termine $x^2$ nella derivata rispetto a y."
+          },
+          {
+            "testo_risposta": "(2, 1)",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo delle derivate errato."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa significa che una funzione f è differenziabile in $x_0$?",
+        "risposte": [
+          {
+            "testo_risposta": "Esiste un'applicazione lineare L tale che $f(x_0+h) = f(x_0) + L(h) + o(\\|h\\|)$",
+            "spiegazione_vera_o_falsa": "Corretto. È la definizione di differenziale secondo Fréchet."
+          },
+          {
+            "testo_risposta": "Esistono le derivate parziali",
+            "spiegazione_vera_o_falsa": "Errato. Condizione necessaria ma non sufficiente."
+          },
+          {
+            "testo_risposta": "La funzione è continua",
+            "spiegazione_vera_o_falsa": "Errato. Condizione necessaria ma non sufficiente."
+          },
+          {
+            "testo_risposta": "Le derivate parziali sono nulle",
+            "spiegazione_vera_o_falsa": "Errato. Questo riguarda i punti critici."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il piano tangente alla superficie $z = x^2 + y^2$ nel punto (1, 1, 2) è:",
+        "risposte": [
+          {
+            "testo_risposta": "$z = 2x + 2y - 2$",
+            "spiegazione_vera_o_falsa": "Corretto. $f_x(1,1)=2, f_y(1,1)=2$. Piano: $z = 2 + 2(x-1) + 2(y-1) = 2x+2y-2$."
+          },
+          {
+            "testo_risposta": "$z = x + y$",
+            "spiegazione_vera_o_falsa": "Errato. I coefficienti sono le derivate parziali."
+          },
+          {
+            "testo_risposta": "$z = 2x + 2y$",
+            "spiegazione_vera_o_falsa": "Errato. Manca il termine noto corretto."
+          },
+          {
+            "testo_risposta": "$x + y + z = 4$",
+            "spiegazione_vera_o_falsa": "Errato. Equazione non corrispondente al piano tangente."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se una funzione ha derivate parziali continue in un intorno di $x_0$, allora:",
+        "risposte": [
+          {
+            "testo_risposta": "È differenziabile in $x_0$ (Teorema del Differenziale Totale)",
+            "spiegazione_vera_o_falsa": "Corretto. La continuità delle derivate parziali è condizione sufficiente per la differenziabilità."
+          },
+          {
+            "testo_risposta": "È solo continua",
+            "spiegazione_vera_o_falsa": "Errato. È molto più che continua: è differenziabile."
+          },
+          {
+            "testo_risposta": "È costante",
+            "spiegazione_vera_o_falsa": "Errato. Non implica che le derivate siano nulle."
+          },
+          {
+            "testo_risposta": "Non è necessariamente differenziabile",
+            "spiegazione_vera_o_falsa": "Errato. Il teorema garantisce la differenziabilità."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La derivata direzionale di $f(x,y)$ lungo il versore $\\mathbf{v}$ è data da:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\nabla f \\cdot \\mathbf{v}$ (se f è differenziabile)",
+            "spiegazione_vera_o_falsa": "Corretto. È la formula del gradiente per le derivate direzionali."
+          },
+          {
+            "testo_risposta": "$\\nabla f + \\mathbf{v}$",
+            "spiegazione_vera_o_falsa": "Errato. È un prodotto scalare, non una somma vettoriale."
+          },
+          {
+            "testo_risposta": "Solo $f_x v_x$",
+            "spiegazione_vera_o_falsa": "Errato. Bisogna sommare i contributi di tutte le variabili."
+          },
+          {
+            "testo_risposta": "La norma di $\\nabla f$",
+            "spiegazione_vera_o_falsa": "Errato. Quello è il valore massimo della derivata direzionale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "In quale direzione la funzione f cresce più rapidamente?",
+        "risposte": [
+          {
+            "testo_risposta": "Nella direzione del gradiente $\\nabla f$",
+            "spiegazione_vera_o_falsa": "Corretto. Il gradiente punta verso la massima pendenza."
+          },
+          {
+            "testo_risposta": "Lungo l'asse x",
+            "spiegazione_vera_o_falsa": "Errato. Dipende dalla funzione specifica."
+          },
+          {
+            "testo_risposta": "In direzione opposta al gradiente",
+            "spiegazione_vera_o_falsa": "Errato. Lì decresce più rapidamente."
+          },
+          {
+            "testo_risposta": "Lungo le curve di livello",
+            "spiegazione_vera_o_falsa": "Errato. Lungo le curve di livello la funzione è costante."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il Teorema di Schwarz afferma che:",
+        "risposte": [
+          {
+            "testo_risposta": "Se le derivate seconde miste sono continue, allora sono uguali",
+            "spiegazione_vera_o_falsa": "Corretto. $f_{xy} = f_{yx}$ sotto ipotesi di continuità."
+          },
+          {
+            "testo_risposta": "Il gradiente è perpendicolare alle curve di livello",
+            "spiegazione_vera_o_falsa": "Errato. Questa è un'altra proprietà importante ma non è il teorema di Schwarz."
+          },
+          {
+            "testo_risposta": "Ogni funzione continua è derivabile",
+            "spiegazione_vera_o_falsa": "Errato. Falso in generale."
+          },
+          {
+            "testo_risposta": "La divergenza del rotore è nulla",
+            "spiegazione_vera_o_falsa": "Errato. Proprietà dei campi vettoriali correlata ma distinta."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è la matrice Hessiana di $f(x,y) = x^2 + 3xy + 2y^2$?",
+        "risposte": [
+          {
+            "testo_risposta": "[[2, 3], [3, 4]]",
+            "spiegazione_vera_o_falsa": "Corretto. $f_{xx}=2, f_{yy}=4, f_{xy}=3$."
+          },
+          {
+            "testo_risposta": "[[2, 0], [0, 4]]",
+            "spiegazione_vera_o_falsa": "Errato. Hai ignorato il termine misto 3xy."
+          },
+          {
+            "testo_risposta": "[[2, 3], [3, 2]]",
+            "spiegazione_vera_o_falsa": "Errato. La derivata $f_{yy}$ di $2y^2$ è 4."
+          },
+          {
+            "testo_risposta": "[[1, 3], [3, 2]]",
+            "spiegazione_vera_o_falsa": "Errato. Coefficienti delle derivate seconde errati."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Data $f(x,y) = e^{xy}$, quanto vale $f_{xy}$?",
+        "risposte": [
+          {
+            "testo_risposta": "$(1 + xy) e^{xy}$",
+            "spiegazione_vera_o_falsa": "Corretto. $f_x = y e^{xy}$, derivando rispetto a y: $1 \\cdot e^{xy} + y \\cdot x e^{xy} = (1+xy)e^{xy}$."
+          },
+          {
+            "testo_risposta": "$e^{xy}$",
+            "spiegazione_vera_o_falsa": "Errato. Bisogna usare la regola del prodotto."
+          },
+          {
+            "testo_risposta": "$xy e^{xy}$",
+            "spiegazione_vera_o_falsa": "Errato. Manca il termine derivante dalla derivata della y esterna."
+          },
+          {
+            "testo_risposta": "$x^2 e^{xy}$",
+            "spiegazione_vera_o_falsa": "Errato. Quella sarebbe $f_{yy}$."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se il differenziale di f in $x_0$ è nullo, allora:",
+        "risposte": [
+          {
+            "testo_risposta": "$x_0$ è un punto critico (stazionario)",
+            "spiegazione_vera_o_falsa": "Corretto. Gradiente nullo implica punto critico."
+          },
+          {
+            "testo_risposta": "$x_0$ è un massimo assoluto",
+            "spiegazione_vera_o_falsa": "Errato. Potrebbe essere un minimo o un punto di sella."
+          },
+          {
+            "testo_risposta": "La funzione è costante ovunque",
+            "spiegazione_vera_o_falsa": "Errato. Solo la derivata è nulla in quel punto specifico."
+          },
+          {
+            "testo_risposta": "La funzione non è continua in $x_0$",
+            "spiegazione_vera_o_falsa": "Errato. La differenziabilità implica la continuità."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Ottimizzazione: Massimi e Minimi",
+    "domande": [
+      {
+        "difficolta": 3,
+        "testo_domanda": "Per classificare un punto critico, se det(H) > 0 e $f_{xx} > 0$, il punto è:",
+        "risposte": [
+          {
+            "testo_risposta": "Un minimo locale",
+            "spiegazione_vera_o_falsa": "Corretto. Hessiana definita positiva implica minimo locale."
+          },
+          {
+            "testo_risposta": "Un massimo locale",
+            "spiegazione_vera_o_falsa": "Errato. Per il massimo servirebbe $f_{xx} < 0$ (e det > 0)."
+          },
+          {
+            "testo_risposta": "Un punto di sella",
+            "spiegazione_vera_o_falsa": "Errato. Per la sella serve det(H) < 0."
+          },
+          {
+            "testo_risposta": "Un punto di flesso",
+            "spiegazione_vera_o_falsa": "Errato. Terminologia solitamente usata in una variabile."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "I punti critici di $f(x,y) = x^2 - y^2$ sono:",
+        "risposte": [
+          {
+            "testo_risposta": "(0,0), ed è un punto di sella",
+            "spiegazione_vera_o_falsa": "Corretto. $\\nabla f = (2x, -2y) = (0,0) \\to (0,0)$. Hessiana ha autovalori 2 e -2."
+          },
+          {
+            "testo_risposta": "(0,0), ed è un minimo",
+            "spiegazione_vera_o_falsa": "Errato. Lungo y la funzione decresce."
+          },
+          {
+            "testo_risposta": "(0,0), ed è un massimo",
+            "spiegazione_vera_o_falsa": "Errato. Lungo x la funzione cresce."
+          },
+          {
+            "testo_risposta": "Non ci sono punti critici",
+            "spiegazione_vera_o_falsa": "Errato. L'origine è un punto stazionario."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il metodo dei moltiplicatori di Lagrange serve a trovare:",
+        "risposte": [
+          {
+            "testo_risposta": "I punti critici vincolati su una superficie o curva",
+            "spiegazione_vera_o_falsa": "Corretto. Risolve problemi di ottimizzazione con vincoli di uguaglianza."
+          },
+          {
+            "testo_risposta": "L'area di una regione",
+            "spiegazione_vera_o_falsa": "Errato. Per quello si usano gli integrali."
+          },
+          {
+            "testo_risposta": "La derivata di una funzione composta",
+            "spiegazione_vera_o_falsa": "Errato. Quella è la Chain Rule."
+          },
+          {
+            "testo_risposta": "I punti di sella non vincolati",
+            "spiegazione_vera_o_falsa": "Errato. Si usa specificamente per la presenza di vincoli."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Trovare il massimo di $f(x,y) = xy$ sul vincolo $x^2 + y^2 = 2$.",
+        "risposte": [
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Corretto. Usando Lagrange o sostituendo $y = \\pm \\sqrt{2-x^2}$, si trovano i punti $(\\pm 1, \\pm 1)$. Il prodotto massimo è 1."
+          },
+          {
+            "testo_risposta": "2",
+            "spiegazione_vera_o_falsa": "Errato. Il valore 2 è la costante del vincolo."
+          },
+          {
+            "testo_risposta": "1/2",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo errato del valore della funzione."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. 0 è il valore minimo (nei punti $(\\sqrt{2}, 0)$ etc. se ammessi, ma il prodotto può essere negativo)."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Se la matrice Hessiana in un punto critico ha determinante nullo, allora:",
+        "risposte": [
+          {
+            "testo_risposta": "Il test dell'Hessiana è inconcludente",
+            "spiegazione_vera_o_falsa": "Corretto. Bisogna studiare il comportamento della funzione con altri metodi (es. incrementi o sviluppi superiori)."
+          },
+          {
+            "testo_risposta": "È sicuramente un punto di sella",
+            "spiegazione_vera_o_falsa": "Errato. Potrebbe essere un estremo debole o una sella."
+          },
+          {
+            "testo_risposta": "La funzione è piatta in tutto il dominio",
+            "spiegazione_vera_o_falsa": "Errato. È solo una proprietà locale del secondo ordine."
+          },
+          {
+            "testo_risposta": "Il punto non è critico",
+            "spiegazione_vera_o_falsa": "Errato. Il test si applica proprio ai punti critici."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Una funzione continua su un insieme compatto (chiuso e limitato):",
+        "risposte": [
+          {
+            "testo_risposta": "Ammette sempre massimo e minimo assoluti",
+            "spiegazione_vera_o_falsa": "Corretto. Teorema di Weierstrass."
+          },
+          {
+            "testo_risposta": "È sempre differenziabile",
+            "spiegazione_vera_o_falsa": "Errato. La continuità non implica derivabilità."
+          },
+          {
+            "testo_risposta": "Deve essere lineare",
+            "spiegazione_vera_o_falsa": "Errato. Non c'è alcun vincolo di linearità."
+          },
+          {
+            "testo_risposta": "Non può avere punti di sella",
+            "spiegazione_vera_o_falsa": "Errato. Può averne molti."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Per la funzione $f(x,y) = x^3 + y^3 - 3xy$, il punto (1,1) è:",
+        "risposte": [
+          {
+            "testo_risposta": "Un minimo locale",
+            "spiegazione_vera_o_falsa": "Corretto. $\\nabla f = (3x^2-3y, 3y^2-3x)$. In (1,1) Hessiana è [[6,-3],[-3,6]], det=27, $f_{xx}=6 > 0$."
+          },
+          {
+            "testo_risposta": "Un massimo locale",
+            "spiegazione_vera_o_falsa": "Errato. $f_{xx}$ è positiva."
+          },
+          {
+            "testo_risposta": "Un punto di sella",
+            "spiegazione_vera_o_falsa": "Errato. Il determinante dell'Hessiana è positivo."
+          },
+          {
+            "testo_risposta": "L'unico punto critico",
+            "spiegazione_vera_o_falsa": "Errato. Anche (0,0) è un punto critico (sella)."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Dove possono trovarsi i massimi e minimi assoluti di una funzione in un dominio D?",
+        "risposte": [
+          {
+            "testo_risposta": "Nei punti critici interni o sulla frontiera del dominio",
+            "spiegazione_vera_o_falsa": "Corretto. Bisogna controllare sia dove il gradiente si annulla sia il bordo."
+          },
+          {
+            "testo_risposta": "Solo dove il gradiente è nullo",
+            "spiegazione_vera_o_falsa": "Errato. Potrebbero essere sul bordo (es. funzione lineare su un quadrato)."
+          },
+          {
+            "testo_risposta": "Sempre e solo nell'origine",
+            "spiegazione_vera_o_falsa": "Errato. L'origine non ha un ruolo privilegiato a priori."
+          },
+          {
+            "testo_risposta": "Solo nei vertici del dominio",
+            "spiegazione_vera_o_falsa": "Errato. Possono essere in qualsiasi punto della frontiera."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La funzione $f(x,y) = e^{-(x^2+y^2)}$ ha:",
+        "risposte": [
+          {
+            "testo_risposta": "Un massimo assoluto nell'origine",
+            "spiegazione_vera_o_falsa": "Corretto. L'esponente $-r^2$ è massimo per $r=0$, dove $f(0,0)=1$."
+          },
+          {
+            "testo_risposta": "Un minimo assoluto nell'origine",
+            "spiegazione_vera_o_falsa": "Errato. Per $r \\to \\infty$ la funzione tende a 0, che è l'estremo inferiore."
+          },
+          {
+            "testo_risposta": "Nessun punto critico",
+            "spiegazione_vera_o_falsa": "Errato. L'origine è un punto stazionario."
+          },
+          {
+            "testo_risposta": "Infiniti punti di massimo",
+            "spiegazione_vera_o_falsa": "Errato. Solo l'origine è un punto di massimo."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "In un problema di Lagrange con vincolo $g(x,y)=c$, la condizione $\\nabla f = \\lambda \\nabla g$ significa che:",
+        "risposte": [
+          {
+            "testo_risposta": "Le curve di livello di f e g sono tangenti tra loro",
+            "spiegazione_vera_o_falsa": "Corretto. I vettori normali alle curve (i gradienti) sono paralleli."
+          },
+          {
+            "testo_risposta": "La funzione f è nulla sul vincolo",
+            "spiegazione_vera_o_falsa": "Errato. f può assumere qualsiasi valore."
+          },
+          {
+            "testo_risposta": "Il vincolo deve essere una retta",
+            "spiegazione_vera_o_falsa": "Errato. Il vincolo può essere una curva qualsiasi (regolare)."
+          },
+          {
+            "testo_risposta": "$\\lambda$ deve essere sempre positivo",
+            "spiegazione_vera_o_falsa": "Errato. Il segno di $\\lambda$ non è vincolato a priori."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Integrali Multipli",
+    "domande": [
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'integrale doppio di $f(x,y)=1$ su un dominio D rappresenta:",
+        "risposte": [
+          {
+            "testo_risposta": "L'area della regione D",
+            "spiegazione_vera_o_falsa": "Corretto. $\\iint_D 1 dxdy = \\text{Area}(D)$."
+          },
+          {
+            "testo_risposta": "Il volume di una sfera",
+            "spiegazione_vera_o_falsa": "Errato. Solo se D è un cerchio e la funzione è opportuna, ma in generale è l'area di D."
+          },
+          {
+            "testo_risposta": "La lunghezza del bordo di D",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe un integrale di linea."
+          },
+          {
+            "testo_risposta": "La massa di un corpo con densità variabile",
+            "spiegazione_vera_o_falsa": "Errato. Con densità unitaria sì, ma in generale rappresenta l'area."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Quanto vale $\\iint_D (x+y) dxdy$ dove $D = [0,1] \\times [0,1]$?",
+        "risposte": [
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Corretto. $\\int_0^1 \\int_0^1 (x+y) dx dy = \\int_0^1 [x^2/2 + xy]_0^1 dy = \\int_0^1 (1/2 + y) dy = [y/2 + y^2/2]_0^1 = 1/2 + 1/2 = 1$."
+          },
+          {
+            "testo_risposta": "1/2",
+            "spiegazione_vera_o_falsa": "Errato. Controlla l'integrazione di entrambi i termini."
+          },
+          {
+            "testo_risposta": "2",
+            "spiegazione_vera_o_falsa": "Errato. Valore eccessivo per l'area unitaria e valori medi di x,y."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. La funzione è positiva sul dominio."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Passando in coordinate polari, l'elemento d'area $dx dy$ diventa:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\rho d\\rho d\\theta$",
+            "spiegazione_vera_o_falsa": "Corretto. $\\rho$ è lo Jacobiano della trasformazione."
+          },
+          {
+            "testo_risposta": "$d\\rho d\\theta$",
+            "spiegazione_vera_o_falsa": "Errato. Manca il fattore di scala radiale."
+          },
+          {
+            "testo_risposta": "$\\rho^2 d\\rho d\\theta$",
+            "spiegazione_vera_o_falsa": "Errato. $\\rho^2$ appare nelle coordinate sferiche (con il seno di $\\phi$)."
+          },
+          {
+            "testo_risposta": "$2\\pi \\rho d\\rho$",
+            "spiegazione_vera_o_falsa": "Errato. Questa è la forma per domini radiali già integrati in $\\theta$."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il volume di una sfera di raggio R si calcola come:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\frac{4}{3} \\pi R^3$",
+            "spiegazione_vera_o_falsa": "Corretto. Risultato standard dell'integrale triplo in coordinate sferiche."
+          },
+          {
+            "testo_risposta": "$4\\pi R^2$",
+            "spiegazione_vera_o_falsa": "Errato. Questa è la superficie della sfera."
+          },
+          {
+            "testo_risposta": "$\\pi R^2$",
+            "spiegazione_vera_o_falsa": "Errato. Questa è l'area del cerchio massimo."
+          },
+          {
+            "testo_risposta": "$2\\pi R^3$",
+            "spiegazione_vera_o_falsa": "Errato. Coefficiente errato."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Calcolare $\\iint_D e^{x^2+y^2} dx dy$ dove D è il cerchio $x^2+y^2 \\leq 1$.",
+        "risposte": [
+          {
+            "testo_risposta": "$\\pi (e - 1)$",
+            "spiegazione_vera_o_falsa": "Corretto. In polari: $\\int_0^{2\\pi} \\int_0^1 e^{\\rho^2} \\rho d\\rho d\\theta = 2\\pi [\\frac{1}{2} e^{\\rho^2}]_0^1 = \\pi(e-1)$."
+          },
+          {
+            "testo_risposta": "$2\\pi e$",
+            "spiegazione_vera_o_falsa": "Errato. Manca la sottrazione del limite inferiore."
+          },
+          {
+            "testo_risposta": "$\\pi e$",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo dell'integrale radiale errato."
+          },
+          {
+            "testo_risposta": "$e - 1$",
+            "spiegazione_vera_o_falsa": "Errato. Hai dimenticato il contributo dell'angolo (2pi)."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Un dominio D si dice 'semplice rispetto all'asse y' se:",
+        "risposte": [
+          {
+            "testo_risposta": "Può essere descritto come $a \\leq x \\leq b$ e $g_1(x) \\leq y \\leq g_2(x)$",
+            "spiegazione_vera_o_falsa": "Corretto. La variabile y è compresa tra due funzioni di x."
+          },
+          {
+            "testo_risposta": "È un rettangolo",
+            "spiegazione_vera_o_falsa": "Errato. I rettangoli sono semplici rispetto a entrambi gli assi, ma non sono gli unici."
+          },
+          {
+            "testo_risposta": "È simmetrico rispetto all'origine",
+            "spiegazione_vera_o_falsa": "Errato. La simmetria è un concetto diverso."
+          },
+          {
+            "testo_risposta": "La sua area è facile da calcolare",
+            "spiegazione_vera_o_falsa": "Errato. 'Semplice' è un termine tecnico per la descrizione analitica."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il Teorema di Guldino per i solidi di rotazione afferma che il volume è:",
+        "risposte": [
+          {
+            "testo_risposta": "Area della figura piana $\\times$ percorso del suo baricentro",
+            "spiegazione_vera_o_falsa": "Corretto. $V = 2\\pi d A$, dove d è la distanza del baricentro dall'asse."
+          },
+          {
+            "testo_risposta": "Circonferenza massima $\\times$ raggio",
+            "spiegazione_vera_o_falsa": "Errato. Definizione troppo restrittiva."
+          },
+          {
+            "testo_risposta": "L'integrale della superficie laterale",
+            "spiegazione_vera_o_falsa": "Errato. Relazione non diretta in questi termini."
+          },
+          {
+            "testo_risposta": "Area di base $\\times$ altezza",
+            "spiegazione_vera_o_falsa": "Errato. Questo vale solo per i cilindri."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Nelle coordinate sferiche $(\\rho, \\theta, \\phi)$, lo Jacobiano è:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\rho^2 \\sin \\phi$",
+            "spiegazione_vera_o_falsa": "Corretto. Fattore di volume standard per le coordinate sferiche (con $\\phi$ angolo zenitale)."
+          },
+          {
+            "testo_risposta": "$\\rho \\sin \\theta$",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe per le polari cilindriche (ma con $\\rho$ invece di r)."
+          },
+          {
+            "testo_risposta": "$\\rho^2$",
+            "spiegazione_vera_o_falsa": "Errato. Manca la dipendenza dall'angolo di latitudine/zenit."
+          },
+          {
+            "testo_risposta": "$d\\rho d\\theta d\\phi$",
+            "spiegazione_vera_o_falsa": "Errato. Non è una trasformazione unitaria."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'integrale $\\iiint_V dx dy dz$ su un solido V fornisce:",
+        "risposte": [
+          {
+            "testo_risposta": "Il volume di V",
+            "spiegazione_vera_o_falsa": "Corretto. Integrazione della funzione unitaria sullo spazio 3D."
+          },
+          {
+            "testo_risposta": "La superficie esterna di V",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe un integrale di superficie."
+          },
+          {
+            "testo_risposta": "La massa di V",
+            "spiegazione_vera_o_falsa": "Errato. Solo se la densità è unitaria e costante."
+          },
+          {
+            "testo_risposta": "Il momento d'inerzia",
+            "spiegazione_vera_o_falsa": "Errato. Servirebbe pesare i punti con il quadrato della distanza dall'asse."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Calcolare il volume del solido compreso tra $z = x^2+y^2$ e $z = 1$.",
+        "risposte": [
+          {
+            "testo_risposta": "$\\pi/2$",
+            "spiegazione_vera_o_falsa": "Corretto. In coordinate cilindriche: $\\int_0^{2\\pi} \\int_0^1 (1 - \\rho^2) \\rho d\\rho d\\theta = 2\\pi [\\rho^2/2 - \\rho^4/4]_0^1 = 2\\pi(1/4) = \\pi/2$."
+          },
+          {
+            "testo_risposta": "$\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Hai dimenticato di integrare correttamente la funzione $1-\\rho^2$."
+          },
+          {
+            "testo_risposta": "$2\\pi/3$",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe il volume di una semisfera di raggio 1."
+          },
+          {
+            "testo_risposta": "$\\pi/4$",
+            "spiegazione_vera_o_falsa": "Errato. Coefficiente errato."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa indica il baricentro di una figura piana D con densità costante?",
+        "risposte": [
+          {
+            "testo_risposta": "Il punto $(\\frac{1}{A} \\iint x dA, \\frac{1}{A} \\iint y dA)$",
+            "spiegazione_vera_o_falsa": "Corretto. Medie delle coordinate pesate sull'area."
+          },
+          {
+            "testo_risposta": "Il centro del cerchio circoscritto",
+            "spiegazione_vera_o_falsa": "Errato. Proprietà geometrica valida solo per alcuni poligoni regolari."
+          },
+          {
+            "testo_risposta": "Il punto dove la funzione è massima",
+            "spiegazione_vera_o_falsa": "Errato. Concetto di ottimizzazione, non di media integrale."
+          },
+          {
+            "testo_risposta": "L'origine degli assi",
+            "spiegazione_vera_o_falsa": "Errato. Dipende dalla posizione della figura."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale improprio $\\iint_{\\mathbb{R}^2} e^{-(x^2+y^2)} dx dy$ vale:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\pi$",
+            "spiegazione_vera_o_falsa": "Corretto. È il quadrato dell'integrale di Gauss $\\sqrt{\\pi}$."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. Manca il fattore dovuto alla rotazione spaziale."
+          },
+          {
+            "testo_risposta": "$2\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Risultato dell'integrazione radiale senza il 1/2 dell'esponente."
+          },
+          {
+            "testo_risposta": "$\\sqrt{\\pi}$",
+            "spiegazione_vera_o_falsa": "Errato. Questo è il valore dell'integrale monodimensionale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Come si esprime l'area di una superficie parametrizzata $\\sigma(u,v)$?",
+        "risposte": [
+          {
+            "testo_risposta": "$\\iint \\|\\sigma_u \\times \\sigma_v\\| du dv$",
+            "spiegazione_vera_o_falsa": "Corretto. La norma del prodotto vettoriale delle derivate parziali dà l'elemento d'area."
+          },
+          {
+            "testo_risposta": "$\\iint \\sigma_u \\cdot \\sigma_v du dv$",
+            "spiegazione_vera_o_falsa": "Errato. Il prodotto scalare non rappresenta l'area locale."
+          },
+          {
+            "testo_risposta": "$\\iint (\\sigma_u + \\sigma_v) du dv$",
+            "spiegazione_vera_o_falsa": "Errato. Somma vettoriale priva di significato per l'area."
+          },
+          {
+            "testo_risposta": "$\\iint du dv$",
+            "spiegazione_vera_o_falsa": "Errato. Questa sarebbe l'area nel piano dei parametri."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'integrale di $f(x,y,z)=z$ su un cubo di lato 1 nel primo ottante vale:",
+        "risposte": [
+          {
+            "testo_risposta": "1/2",
+            "spiegazione_vera_o_falsa": "Corretto. $\\int_0^1 dx \\int_0^1 dy \\int_0^1 z dz = 1 \\cdot 1 \\cdot [z^2/2]_0^1 = 1/2$."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. Hai dimenticato il fattore 1/2 dell'integrazione di z."
+          },
+          {
+            "testo_risposta": "1/3",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe per $z^2$."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. La funzione è positiva."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Cambiando l'ordine di integrazione in $\\int_0^1 dx \\int_0^x f(x,y) dy$, si ottiene:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\int_0^1 dy \\int_y^1 f(x,y) dx$",
+            "spiegazione_vera_o_falsa": "Corretto. Il dominio è il triangolo con vertici (0,0), (1,0), (1,1). Fissato y, x varia tra y e 1."
+          },
+          {
+            "testo_risposta": "$\\int_0^1 dy \\int_0^y f(x,y) dx$",
+            "spiegazione_vera_o_falsa": "Errato. Questo descriverebbe l'altro triangolo del quadrato unitario."
+          },
+          {
+            "testo_risposta": "$\\int_0^x dy \\int_0^1 f(x,y) dx$",
+            "spiegazione_vera_o_falsa": "Errato. Notazione formalmente scorretta (limiti dipendenti dalla variabile esterna)."
+          },
+          {
+            "testo_risposta": "$\\int_0^1 dy \\int_0^1 f(x,y) dx$",
+            "spiegazione_vera_o_falsa": "Errato. Questo è un quadrato, non il triangolo originale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "In coordinate cilindriche $(\\rho, \\theta, z)$, l'elemento di volume è:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\rho d\\rho d\\theta dz$",
+            "spiegazione_vera_o_falsa": "Corretto. È l'estensione delle polari con la quota z indipendente."
+          },
+          {
+            "testo_risposta": "$\\rho^2 d\\rho d\\theta dz$",
+            "spiegazione_vera_o_falsa": "Errato. Il quadrato compare solo nelle sferiche."
+          },
+          {
+            "testo_risposta": "$d\\rho d\\theta dz$",
+            "spiegazione_vera_o_falsa": "Errato. Manca lo Jacobiano della parte radiale."
+          },
+          {
+            "testo_risposta": "$\\rho \\sin \\theta d\\rho d\\theta dz$",
+            "spiegazione_vera_o_falsa": "Errato. Il seno appare solo se c'è un angolo zenitale (sferiche)."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'integrale di $\\sqrt{x^2+y^2}$ sul cerchio unitario vale:",
+        "risposte": [
+          {
+            "testo_risposta": "$2\\pi/3$",
+            "spiegazione_vera_o_falsa": "Corretto. In polari: $\\int_0^{2\\pi} \\int_0^1 \\rho \\cdot \\rho d\\rho d\\theta = 2\\pi [\\rho^3/3]_0^1 = 2\\pi/3$."
+          },
+          {
+            "testo_risposta": "$\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo dell'integrale radiale errato."
+          },
+          {
+            "testo_risposta": "$\\pi/2$",
+            "spiegazione_vera_o_falsa": "Errato. Hai usato $\\rho$ invece di $\\rho^2$ nell'integrale."
+          },
+          {
+            "testo_risposta": "$4\\pi/3$",
+            "spiegazione_vera_o_falsa": "Errato. Coefficiente errato."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Il volume della regione definita da $x^2+y^2+z^2 \\leq 1$ e $z \\geq \\sqrt{x^2+y^2}$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\frac{\\pi}{3} (2 - \\sqrt{2})$",
+            "spiegazione_vera_o_falsa": "Corretto. È un cono sferico. In sferiche: $\\int_0^{2\\pi} d\\theta \\int_0^{\\pi/4} \\sin \\phi d\\phi \\int_0^1 \\rho^2 d\\rho = 2\\pi [-\\cos \\phi]_0^{\\pi/4} (1/3) = \\frac{2\\pi}{3}(1 - \\sqrt{2}/2)$."
+          },
+          {
+            "testo_risposta": "$\\pi/3$",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe il volume del solo cono troncato dal piano z=1."
+          },
+          {
+            "testo_risposta": "$2\\pi/3$",
+            "spiegazione_vera_o_falsa": "Errato. Volume della semisfera."
+          },
+          {
+            "testo_risposta": "$\\pi/6$",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo errato dei limiti angolari."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'integrale doppio esteso a un dominio D simmetrico rispetto all'asse y di una funzione dispari in x vale:",
+        "risposte": [
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Corretto. I contributi di segno opposto per x e -x si cancellano."
+          },
+          {
+            "testo_risposta": "Il doppio dell'integrale su metà dominio",
+            "spiegazione_vera_o_falsa": "Errato. Questo varrebbe per una funzione pari."
+          },
+          {
+            "testo_risposta": "L'area di D",
+            "spiegazione_vera_o_falsa": "Errato. Non dipende dalla funzione."
+          },
+          {
+            "testo_risposta": "Dipende dal valore in x=0",
+            "spiegazione_vera_o_falsa": "Errato. Il valore in un punto non influenza l'integrale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è il volume di un cilindro di raggio R e altezza H?",
+        "risposte": [
+          {
+            "testo_risposta": "$\\pi R^2 H$",
+            "spiegazione_vera_o_falsa": "Corretto. Area di base $\\times$ altezza."
+          },
+          {
+            "testo_risposta": "$2\\pi R H$",
+            "spiegazione_vera_o_falsa": "Errato. Questa è la superficie laterale."
+          },
+          {
+            "testo_risposta": "$\\frac{1}{3} \\pi R^2 H$",
+            "spiegazione_vera_o_falsa": "Errato. Questo è il volume del cono."
+          },
+          {
+            "testo_risposta": "$\\pi R H^2$",
+            "spiegazione_vera_o_falsa": "Errato. Dimensioni non corrette."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Calcolo Vettoriale e Teoremi Integrali",
+    "domande": [
+      {
+        "difficolta": 2,
+        "testo_domanda": "Il lavoro di un campo vettoriale $\\mathbf{F}$ lungo una curva $\\gamma$ è dato da:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\int_\\gamma \\mathbf{F} \\cdot d\\mathbf{r}$",
+            "spiegazione_vera_o_falsa": "Corretto. Integrale di linea di seconda specie."
+          },
+          {
+            "testo_risposta": "$\\int_\\gamma \\|\\mathbf{F}\\| ds$",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe l'integrale di linea di prima specie del modulo."
+          },
+          {
+            "testo_risposta": "$\\nabla \\mathbf{F} \\cdot \\gamma$",
+            "spiegazione_vera_o_falsa": "Errato. Notazione priva di significato standard."
+          },
+          {
+            "testo_risposta": "$\\iint \\text{div } \\mathbf{F} dA$",
+            "spiegazione_vera_o_falsa": "Errato. Quello è legato al flusso tramite il teorema della divergenza."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Un campo vettoriale si dice conservativo se:",
+        "risposte": [
+          {
+            "testo_risposta": "Esiste una funzione scalare U tale che $\\mathbf{F} = \\nabla U$",
+            "spiegazione_vera_o_falsa": "Corretto. U è chiamato potenziale del campo."
+          },
+          {
+            "testo_risposta": "La sua divergenza è nulla",
+            "spiegazione_vera_o_falsa": "Errato. Quello definisce un campo solenoidale."
+          },
+          {
+            "testo_risposta": "Il suo rotore è nullo ovunque",
+            "spiegazione_vera_o_falsa": "Errato. Condizione necessaria (irrotazionale), ma sufficiente solo in domini semplicemente connessi."
+          },
+          {
+            "testo_risposta": "È costante nello spazio",
+            "spiegazione_vera_o_falsa": "Errato. I campi costanti sono conservativi, ma non sono gli unici."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il Teorema di Green mette in relazione:",
+        "risposte": [
+          {
+            "testo_risposta": "Un integrale doppio su D con un integrale di linea sul bordo di D",
+            "spiegazione_vera_o_falsa": "Corretto. $\\iint_D (Q_x - P_y) dA = \\oint_{\\partial D} (P dx + Q dy)$."
+          },
+          {
+            "testo_risposta": "Il flusso attraverso una superficie con il volume racchiuso",
+            "spiegazione_vera_o_falsa": "Errato. Quello è il teorema della divergenza (Gauss)."
+          },
+          {
+            "testo_risposta": "La derivata di una funzione con il suo integrale",
+            "spiegazione_vera_o_falsa": "Errato. Quello è il teorema fondamentale del calcolo."
+          },
+          {
+            "testo_risposta": "Due integrali di superficie tra loro",
+            "spiegazione_vera_o_falsa": "Errato. Green lavora nel piano (o su superfici tramite Stokes)."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La divergenza di un campo $\\mathbf{F} = (P, Q, R)$ è definita come:",
+        "risposte": [
+          {
+            "testo_risposta": "$P_x + Q_y + R_z$",
+            "spiegazione_vera_o_falsa": "Corretto. Somma delle derivate parziali delle componenti rispetto alle rispettive variabili."
+          },
+          {
+            "testo_risposta": "$(P_x, Q_y, R_z)$",
+            "spiegazione_vera_o_falsa": "Errato. La divergenza è uno scalare, non un vettore."
+          },
+          {
+            "testo_risposta": "$R_y - Q_z, P_z - R_x, Q_x - P_y$",
+            "spiegazione_vera_o_falsa": "Errato. Queste sono le componenti del rotore."
+          },
+          {
+            "testo_risposta": "$P^2 + Q^2 + R^2$",
+            "spiegazione_vera_o_falsa": "Errato. Questo è il quadrato del modulo."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il rotore di un campo vettoriale misura localmente:",
+        "risposte": [
+          {
+            "testo_risposta": "La tendenza del campo a ruotare attorno a un punto",
+            "spiegazione_vera_o_falsa": "Corretto. È legato alla circolazione infinitesima."
+          },
+          {
+            "testo_risposta": "Quanto il campo si espande verso l'esterno",
+            "spiegazione_vera_o_falsa": "Errato. Quella è la divergenza."
+          },
+          {
+            "testo_risposta": "L'intensità del campo in un punto",
+            "spiegazione_vera_o_falsa": "Errato. Quella è la norma."
+          },
+          {
+            "testo_risposta": "La variazione della densità",
+            "spiegazione_vera_o_falsa": "Errato. Non è legato direttamente alla densità scalare."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il Teorema della Divergenza (Gauss) afferma che il flusso di $\\mathbf{F}$ attraverso $\\partial V$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "L'integrale triplo della divergenza su V",
+            "spiegazione_vera_o_falsa": "Corretto. $\\iint_{\\partial V} \\mathbf{F} \\cdot \\mathbf{n} dS = \\iiint_V \\text{div } \\mathbf{F} dV$."
+          },
+          {
+            "testo_risposta": "L'integrale di linea del lavoro lungo il bordo",
+            "spiegazione_vera_o_falsa": "Errato. Quello è il teorema di Stokes."
+          },
+          {
+            "testo_risposta": "Zero per ogni campo",
+            "spiegazione_vera_o_falsa": "Errato. Solo per campi solenoidali."
+          },
+          {
+            "testo_risposta": "Il volume di V moltiplicato per una costante",
+            "spiegazione_vera_o_falsa": "Errato. Dipende dal campo vettoriale specifico."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il Teorema di Stokes mette in relazione:",
+        "risposte": [
+          {
+            "testo_risposta": "Il flusso del rotore attraverso una superficie con la circolazione lungo il suo bordo",
+            "spiegazione_vera_o_falsa": "Corretto. $\\iint_S (\\text{rot } \\mathbf{F}) \\cdot d\\mathbf{S} = \\oint_{\\partial S} \\mathbf{F} \\cdot d\\mathbf{r}$."
+          },
+          {
+            "testo_risposta": "Il flusso della divergenza con il volume",
+            "spiegazione_vera_o_falsa": "Errato. Quello è Gauss."
+          },
+          {
+            "testo_risposta": "Due superfici chiuse tra loro",
+            "spiegazione_vera_o_falsa": "Errato. Stokes si applica a superfici con bordo."
+          },
+          {
+            "testo_risposta": "La derivata parziale con l'integrale doppio",
+            "spiegazione_vera_o_falsa": "Errato. Green è un caso particolare di Stokes nel piano."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se $\\text{rot } \\mathbf{F} = \\mathbf{0}$ in un dominio semplicemente connesso, allora:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\mathbf{F}$ è conservativo",
+            "spiegazione_vera_o_falsa": "Corretto. L'assenza di rotore e la connessione semplice garantiscono l'esistenza del potenziale."
+          },
+          {
+            "testo_risposta": "$\\mathbf{F}$ è costante",
+            "spiegazione_vera_o_falsa": "Errato. Può variare, purché segua un gradiente."
+          },
+          {
+            "testo_risposta": "Il lavoro lungo ogni curva è infinito",
+            "spiegazione_vera_o_falsa": "Errato. Il lavoro lungo ogni curva chiusa è zero."
+          },
+          {
+            "testo_risposta": "La divergenza è nulla",
+            "spiegazione_vera_o_falsa": "Errato. Irrotazionale non implica solenoidale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Calcolare il lavoro del campo $\\mathbf{F} = (y, -x)$ lungo la circonferenza unitaria percorsa in senso orario.",
+        "risposte": [
+          {
+            "testo_risposta": "$2\\pi$",
+            "spiegazione_vera_o_falsa": "Corretto. Parametrizzando $( \\cos t, -\\sin t)$ per il senso orario, o usando Green: $\\iint (-1 - 1) dA = -2 \\text{Area} = -2\\pi$ se antiorario, quindi $2\\pi$ se orario rispetto alla forma standard."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. Il campo non è conservativo ($\\text{rot } \\mathbf{F} = -2$)."
+          },
+          {
+            "testo_risposta": "$\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo errato dell'integrale."
+          },
+          {
+            "testo_risposta": "$-2\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Dipende dal verso di percorrenza richiesto."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Un campo $\\mathbf{F}$ è solenoidale se:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\text{div } \\mathbf{F} = 0$",
+            "spiegazione_vera_o_falsa": "Corretto. Significa che il flusso netto attraverso ogni superficie chiusa è nullo."
+          },
+          {
+            "testo_risposta": "$\\text{rot } \\mathbf{F} = 0$",
+            "spiegazione_vera_o_falsa": "Errato. Quello è irrotazionale."
+          },
+          {
+            "testo_risposta": "Il campo è parallelo agli assi",
+            "spiegazione_vera_o_falsa": "Errato. Non è una condizione sulla divergenza."
+          },
+          {
+            "testo_risposta": "È il gradiente di una funzione",
+            "spiegazione_vera_o_falsa": "Errato. Quello è conservativo."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Equazioni Differenziali",
+    "domande": [
+      {
+        "difficolta": 2,
+        "testo_domanda": "Un'equazione differenziale si dice 'lineare' se:",
+        "risposte": [
+          {
+            "testo_risposta": "La funzione incognita e le sue derivate compaiono con grado 1",
+            "spiegazione_vera_o_falsa": "Corretto. Non devono esserci prodotti tra y e le sue derivate o funzioni non lineari di esse."
+          },
+          {
+            "testo_risposta": "La soluzione è una retta",
+            "spiegazione_vera_o_falsa": "Errato. La linearità si riferisce all'operatore differenziale, non alla forma della soluzione."
+          },
+          {
+            "testo_risposta": "È di primo grado rispetto alla variabile x",
+            "spiegazione_vera_o_falsa": "Errato. La x può comparire in qualsiasi forma (es. coefficienti)."
+          },
+          {
+            "testo_risposta": "Non contiene derivate di ordine superiore al primo",
+            "spiegazione_vera_o_falsa": "Errato. Esistono equazioni lineari di ogni ordine."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è la soluzione generale di $y'' + 4y = 0$?",
+        "risposte": [
+          {
+            "testo_risposta": "$c_1 \\cos(2x) + c_2 \\sin(2x)$",
+            "spiegazione_vera_o_falsa": "Corretto. L'equazione caratteristica è $\\lambda^2 + 4 = 0$, con radici $\\pm 2i$."
+          },
+          {
+            "testo_risposta": "$c_1 e^{2x} + c_2 e^{-2x}$",
+            "spiegazione_vera_o_falsa": "Errato. Queste sono le soluzioni per $y'' - 4y = 0$."
+          },
+          {
+            "testo_risposta": "$c_1 \\cos(4x) + c_2 \\sin(4x)$",
+            "spiegazione_vera_o_falsa": "Errato. La frequenza è la radice quadrata del coefficiente (2)."
+          },
+          {
+            "testo_risposta": "$c_1 e^{4x}$",
+            "spiegazione_vera_o_falsa": "Errato. L'equazione è del secondo ordine e richiede due costanti arbitrarie."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il problema di Cauchy per un'equazione del secondo ordine richiede:",
+        "risposte": [
+          {
+            "testo_risposta": "Il valore della funzione e della sua derivata prima in un punto",
+            "spiegazione_vera_o_falsa": "Corretto. Condizioni iniziali $y(x_0)=y_0$ e $y'(x_0)=y_1$."
+          },
+          {
+            "testo_risposta": "Solo il valore della funzione in due punti diversi",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe un problema ai limiti (boundary value problem)."
+          },
+          {
+            "testo_risposta": "La derivata seconda in un punto",
+            "spiegazione_vera_o_falsa": "Errato. La derivata seconda è determinata dall'equazione stessa."
+          },
+          {
+            "testo_risposta": "Nessuna condizione aggiuntiva",
+            "spiegazione_vera_o_falsa": "Errato. Senza condizioni si ha una famiglia infinita di soluzioni."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Per risolvere $y' + a(x)y = f(x)$, si usa il fattore integrante:",
+        "risposte": [
+          {
+            "testo_risposta": "$e^{\\int a(x) dx}$",
+            "spiegazione_vera_o_falsa": "Corretto. Moltiplicando per esso, il lato sinistro diventa la derivata del prodotto $y e^{\\int a}$."
+          },
+          {
+            "testo_risposta": "$\\ln(a(x))$",
+            "spiegazione_vera_o_falsa": "Errato. Non semplifica l'equazione differenziale."
+          },
+          {
+            "testo_risposta": "$a(x)^2$",
+            "spiegazione_vera_o_falsa": "Errato. Non è correlato alla regola del prodotto per derivate."
+          },
+          {
+            "testo_risposta": "$e^{-f(x)}$",
+            "spiegazione_vera_o_falsa": "Errato. Il fattore integrante dipende dai coefficienti della parte omogenea."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La soluzione di $y' = y^2$ con $y(0)=1$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "$y(x) = \\frac{1}{1-x}$",
+            "spiegazione_vera_o_falsa": "Corretto. Per separazione di variabili: $-1/y = x + C$. Con $y(0)=1 \\to C=-1 \\to y = 1/(1-x)$."
+          },
+          {
+            "testo_risposta": "$y(x) = e^x$",
+            "spiegazione_vera_o_falsa": "Errato. Questa risolve $y' = y$."
+          },
+          {
+            "testo_risposta": "$y(x) = x+1$",
+            "spiegazione_vera_o_falsa": "Errato. La derivata sarebbe 1, mentre $y^2$ sarebbe $(x+1)^2$."
+          },
+          {
+            "testo_risposta": "$y(x) = 1/(1+x)$",
+            "spiegazione_vera_o_falsa": "Errato. Errore nel segno della costante di integrazione."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "In un sistema lineare $\\mathbf{y}' = A\\mathbf{y}$, se A ha autovalori reali e distinti $\\lambda_1, \\lambda_2$, la soluzione è:",
+        "risposte": [
+          {
+            "testo_risposta": "$c_1 \\mathbf{v}_1 e^{\\lambda_1 x} + c_2 \\mathbf{v}_2 e^{\\lambda_2 x}$",
+            "spiegazione_vera_o_falsa": "Corretto. Le soluzioni sono combinazioni lineari dei modi propri associati agli autovettori."
+          },
+          {
+            "testo_risposta": "$e^{Ax}$",
+            "spiegazione_vera_o_falsa": "Corretto (ma meno pratica). Rappresenta la matrice di transizione, ma la forma esplicita usa autovalori."
+          },
+          {
+            "testo_risposta": "$\\sin(Ax)$",
+            "spiegazione_vera_o_falsa": "Errato. Funzioni trigonometriche appaiono con autovalori complessi."
+          },
+          {
+            "testo_risposta": "Costante",
+            "spiegazione_vera_o_falsa": "Errato. Solo se tutti gli autovalori sono nulli."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Un punto di equilibrio $y^*$ per $y' = f(y)$ è stabile se:",
+        "risposte": [
+          {
+            "testo_risposta": "$f'(y^*) < 0$",
+            "spiegazione_vera_o_falsa": "Corretto. La linearizzazione mostra che piccoli scostamenti vengono riassorbiti."
+          },
+          {
+            "testo_risposta": "$f'(y^*) > 0$",
+            "spiegazione_vera_o_falsa": "Errato. Il punto sarebbe instabile (repulsore)."
+          },
+          {
+            "testo_risposta": "$f(y^*) > 0$",
+            "spiegazione_vera_o_falsa": "Errato. f deve essere nulla in un equilibrio."
+          },
+          {
+            "testo_risposta": "La soluzione è periodica",
+            "spiegazione_vera_o_falsa": "Errato. La stabilità riguarda il comportamento asintotico vicino all'equilibrio."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'equazione $y' = f(x)g(y)$ si risolve tramite:",
+        "risposte": [
+          {
+            "testo_risposta": "Separazione delle variabili",
+            "spiegazione_vera_o_falsa": "Corretto. Si scrive $\\int (1/g(y)) dy = \\int f(x) dx$."
+          },
+          {
+            "testo_risposta": "Sostituzione $u = y/x$",
+            "spiegazione_vera_o_falsa": "Errato. Quello si usa per le equazioni omogenee."
+          },
+          {
+            "testo_risposta": "Metodo delle variazioni delle costanti",
+            "spiegazione_vera_o_falsa": "Errato. Si usa per trovare soluzioni particolari di equazioni lineari non omogenee."
+          },
+          {
+            "testo_risposta": "Trasformata di Fourier",
+            "spiegazione_vera_o_falsa": "Errato. Troppo complesso per equazioni a variabili separabili."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Qual è il metodo della 'somiglianza' per $y'' + ay' + by = e^{kx}$?",
+        "risposte": [
+          {
+            "testo_risposta": "Cercare una soluzione particolare del tipo $C e^{kx}$ (o $Cx e^{kx}$ se k è radice)",
+            "spiegazione_vera_o_falsa": "Corretto. Si ipotizza una forma simile al termine noto."
+          },
+          {
+            "testo_risposta": "Integrare l'esponenziale due volte",
+            "spiegazione_vera_o_falsa": "Errato. Valido solo se a=b=0."
+          },
+          {
+            "testo_risposta": "Usare i moltiplicatori di Lagrange",
+            "spiegazione_vera_o_falsa": "Errato. Lagrange si usa per l'ottimizzazione vincolata."
+          },
+          {
+            "testo_risposta": "Approssimare con Taylor",
+            "spiegazione_vera_o_falsa": "Errato. Taylor dà soluzioni locali, non la forma analitica globale richiesta."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "L'equazione di Bernoulli $y' + p(x)y = q(x)y^n$ si riconduce a lineare con la sostituzione:",
+        "risposte": [
+          {
+            "testo_risposta": "$z = y^{1-n}$",
+            "spiegazione_vera_o_falsa": "Corretto. È la sostituzione standard per linearizzare le equazioni di Bernoulli."
+          },
+          {
+            "testo_risposta": "$z = \\ln y$",
+            "spiegazione_vera_o_falsa": "Errato. Non linearizza il termine $y^n$."
+          },
+          {
+            "testo_risposta": "$z = y^n$",
+            "spiegazione_vera_o_falsa": "Errato. Esponente scorretto."
+          },
+          {
+            "testo_risposta": "$z = e^y$",
+            "spiegazione_vera_o_falsa": "Errato. Sostituzione non standard."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La soluzione di $y' = k y$ (con $k$ costante) è:",
+        "risposte": [
+          {
+            "testo_risposta": "$C e^{kx}$",
+            "spiegazione_vera_o_falsa": "Corretto. Modello di crescita/decadimento esponenziale."
+          },
+          {
+            "testo_risposta": "$kx + C$",
+            "spiegazione_vera_o_falsa": "Errato. Quella risolve $y' = k$."
+          },
+          {
+            "testo_risposta": "$x^k$",
+            "spiegazione_vera_o_falsa": "Errato. Non soddisfa l'equazione differenziale."
+          },
+          {
+            "testo_risposta": "$e^{x^2}$",
+            "spiegazione_vera_o_falsa": "Errato. Derivata non proporzionale alla funzione."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il Wronskiano di due soluzioni $y_1, y_2$ serve a:",
+        "risposte": [
+          {
+            "testo_risposta": "Verificare se sono linearmente indipendenti",
+            "spiegazione_vera_o_falsa": "Corretto. Se $W \\neq 0$, le soluzioni formano una base dello spazio delle soluzioni."
+          },
+          {
+            "testo_risposta": "Calcolare l'integrale della funzione",
+            "spiegazione_vera_o_falsa": "Errato. È un determinante di derivate."
+          },
+          {
+            "testo_risposta": "Trovare i punti critici",
+            "spiegazione_vera_o_falsa": "Errato. Non è legato all'ottimizzazione."
+          },
+          {
+            "testo_risposta": "Determinare la stabilità di un punto",
+            "spiegazione_vera_o_falsa": "Errato. Per quello si usa lo studio degli autovalori o la funzione di Lyapunov."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'equazione $y'' - 2y' + y = 0$ ha come soluzione generale:",
+        "risposte": [
+          {
+            "testo_risposta": "$(c_1 + c_2 x) e^x$",
+            "spiegazione_vera_o_falsa": "Corretto. L'equazione caratteristica ha una radice doppia $\\lambda = 1$."
+          },
+          {
+            "testo_risposta": "$c_1 e^x + c_2 e^{-x}$",
+            "spiegazione_vera_o_falsa": "Errato. Quella risolve $y'' - y = 0$."
+          },
+          {
+            "testo_risposta": "$c_1 \\cos x + c_2 \\sin x$",
+            "spiegazione_vera_o_falsa": "Errato. Quella risolve $y'' + y = 0$."
+          },
+          {
+            "testo_risposta": "$c_1 e^x$",
+            "spiegazione_vera_o_falsa": "Errato. Serve una seconda soluzione indipendente per l'ordine 2."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Nel metodo della variazione delle costanti, si cerca una soluzione particolare del tipo:",
+        "risposte": [
+          {
+            "testo_risposta": "$c_1(x)y_1(x) + c_2(x)y_2(x)$",
+            "spiegazione_vera_o_falsa": "Corretto. Si rendono variabili le costanti della soluzione omogenea."
+          },
+          {
+            "testo_risposta": "$y_h(x) + f(x)$",
+            "spiegazione_vera_o_falsa": "Errato. Non è una semplice somma con il termine noto."
+          },
+          {
+            "testo_risposta": "$c_1 y_1 + c_2 y_2$",
+            "spiegazione_vera_o_falsa": "Errato. Questa è la soluzione omogenea con costanti fisse."
+          },
+          {
+            "testo_risposta": "$P(x) e^{\\lambda x}$",
+            "spiegazione_vera_o_falsa": "Errato. Quello è il metodo di somiglianza."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "La soluzione di $x^2 y'' + xy' - y = 0$ (Equazione di Eulero) si cerca del tipo:",
+        "risposte": [
+          {
+            "testo_risposta": "$y = x^r$",
+            "spiegazione_vera_o_falsa": "Corretto. Sostituendo $x^r$ si ottiene un'equazione algebrica per r."
+          },
+          {
+            "testo_risposta": "$y = e^{rx}$",
+            "spiegazione_vera_o_falsa": "Errato. Valido solo per equazioni a coefficienti costanti."
+          },
+          {
+            "testo_risposta": "$y = \\ln x$",
+            "spiegazione_vera_o_falsa": "Errato. Potrebbe apparire solo in caso di radici doppie."
+          },
+          {
+            "testo_risposta": "$y = \\sin(rx)$",
+            "spiegazione_vera_o_falsa": "Errato. Non adatto alla struttura dell'equazione di Eulero."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "In un sistema preda-predatore di Lotka-Volterra, le traiettorie nello spazio delle fasi sono:",
+        "risposte": [
+          {
+            "testo_risposta": "Curve chiuse (periodiche)",
+            "spiegazione_vera_o_falsa": "Corretto. Le popolazioni oscillano ciclicamente attorno all'equilibrio."
+          },
+          {
+            "testo_risposta": "Rette divergenti",
+            "spiegazione_vera_o_falsa": "Errato. Implicherebbe l'estinzione o la crescita infinita immediata."
+          },
+          {
+            "testo_risposta": "Spirali verso l'origine",
+            "spiegazione_vera_o_falsa": "Errato. Succederebbe con termini di smorzamento o competizione interna."
+          },
+          {
+            "testo_risposta": "Punti isolati",
+            "spiegazione_vera_o_falsa": "Errato. Le popolazioni variano nel tempo."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "L'ordine di un'equazione differenziale è:",
+        "risposte": [
+          {
+            "testo_risposta": "Il massimo ordine di derivazione che compare nell'equazione",
+            "spiegazione_vera_o_falsa": "Corretto. Definizione fondamentale."
+          },
+          {
+            "testo_risposta": "Il grado del polinomio caratteristico",
+            "spiegazione_vera_o_falsa": "Errato. Corrisponde solo per equazioni lineari a coefficienti costanti."
+          },
+          {
+            "testo_risposta": "Il numero di variabili indipendenti",
+            "spiegazione_vera_o_falsa": "Errato. Quello distingue tra ordinarie (1 var) e alle parziali (>1 var)."
+          },
+          {
+            "testo_risposta": "La potenza massima della y",
+            "spiegazione_vera_o_falsa": "Errato. Quello è il grado dell'equazione."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Per l'equazione $y' = y(1-y)$ (logistica), i punti di equilibrio sono:",
+        "risposte": [
+          {
+            "testo_risposta": "0 (instabile) e 1 (stabile)",
+            "spiegazione_vera_o_falsa": "Corretto. Per $y=0$ la derivata è positiva appena sopra; per $y=1$ le soluzioni tendono a stabilizzarsi."
+          },
+          {
+            "testo_risposta": "Solo 1",
+            "spiegazione_vera_o_falsa": "Errato. Anche 0 è un equilibrio poiché annulla la derivata."
+          },
+          {
+            "testo_risposta": "0 e 1, entrambi stabili",
+            "spiegazione_vera_o_falsa": "Errato. La stabilità dipende dal segno di f' nell'equilibrio."
+          },
+          {
+            "testo_risposta": "Nessun equilibrio",
+            "spiegazione_vera_o_falsa": "Errato. Le radici di $f(y)=0$ sono equilibri."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "L'equazione $y'' + y = \\tan x$ si risolve preferibilmente con:",
+        "risposte": [
+          {
+            "testo_risposta": "Metodo della variazione delle costanti",
+            "spiegazione_vera_o_falsa": "Corretto. Il termine noto non è tra quelli 'standard' del metodo di somiglianza."
+          },
+          {
+            "testo_risposta": "Metodo di somiglianza",
+            "spiegazione_vera_o_falsa": "Errato. La tangente non ha derivate che si chiudono in un sottospazio finito."
+          },
+          {
+            "testo_risposta": "Separazione delle variabili",
+            "spiegazione_vera_o_falsa": "Errato. Non è un'equazione del primo ordine separabile."
+          },
+          {
+            "testo_risposta": "Sostituzione $u = \\tan x$",
+            "spiegazione_vera_o_falsa": "Errato. Non semplifica la struttura differenziale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "La soluzione di $y' = x + y$ è del tipo:",
+        "risposte": [
+          {
+            "testo_risposta": "$C e^x - x - 1$",
+            "spiegazione_vera_o_falsa": "Corretto. Risolvendo come lineare: $y' - y = x$. Omogenea $C e^x$. Particolare $-x-1$."
+          },
+          {
+            "testo_risposta": "$e^{x+y}$",
+            "spiegazione_vera_o_falsa": "Errato. Derivando non si ottiene l'uguaglianza."
+          },
+          {
+            "testo_risposta": "$x^2/2 + y^2/2$",
+            "spiegazione_vera_o_falsa": "Errato. Non è una soluzione valida."
+          },
+          {
+            "testo_risposta": "$C e^x + x$",
+            "spiegazione_vera_o_falsa": "Errato. La parte polinomiale è incompleta."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  },
+  {
+    "argomento": "Serie di Funzioni e Complementi",
+    "domande": [
+      {
+        "difficolta": 3,
+        "testo_domanda": "Una serie di potenze $\\sum a_n x^n$ ha raggio di convergenza R. La serie converge:",
+        "risposte": [
+          {
+            "testo_risposta": "Assolutamente per $|x| < R$",
+            "spiegazione_vera_o_falsa": "Corretto. All'interno dell'intervallo di convergenza la serie è ben definita e converge assolutamente."
+          },
+          {
+            "testo_risposta": "Sempre per ogni x",
+            "spiegazione_vera_o_falsa": "Errato. Solo se $R = \\infty$."
+          },
+          {
+            "testo_risposta": "Solo in x=0",
+            "spiegazione_vera_o_falsa": "Errato. Solo se R=0."
+          },
+          {
+            "testo_risposta": "Anche per $|x| > R$",
+            "spiegazione_vera_o_falsa": "Errato. Al di fuori del raggio la serie diverge."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il raggio di convergenza della serie $\\sum \\frac{x^n}{n!}$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\infty$",
+            "spiegazione_vera_o_falsa": "Corretto. È lo sviluppo dell'esponenziale $e^x$, valido ovunque."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. Il fattoriale cresce molto più velocemente di qualsiasi potenza."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. La serie converge in ogni punto."
+          },
+          {
+            "testo_risposta": "e",
+            "spiegazione_vera_o_falsa": "Errato. Numero non legato al raggio in questo caso."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si intende per 'convergenza totale' di una serie di funzioni?",
+        "risposte": [
+          {
+            "testo_risposta": "La serie delle norme infinito (sup) dei termini converge",
+            "spiegazione_vera_o_falsa": "Corretto. È la condizione più forte, che implica la convergenza uniforme."
+          },
+          {
+            "testo_risposta": "La serie converge in ogni punto del dominio",
+            "spiegazione_vera_o_falsa": "Errato. Quella è la convergenza puntuale."
+          },
+          {
+            "testo_risposta": "La somma della serie è una funzione continua",
+            "spiegazione_vera_o_falsa": "Errato. È una conseguenza della convergenza uniforme, non la definizione di totale."
+          },
+          {
+            "testo_risposta": "La serie converge per quasi ogni x",
+            "spiegazione_vera_o_falsa": "Errato. Concetto legato alla teoria della misura."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Lo sviluppo in serie di Fourier di una funzione pari contiene solo:",
+        "risposte": [
+          {
+            "testo_risposta": "Termini in coseno e la costante $a_0$",
+            "spiegazione_vera_o_falsa": "Corretto. I termini in seno (dispari) si annullano per ortogonalità."
+          },
+          {
+            "testo_risposta": "Termini in seno",
+            "spiegazione_vera_o_falsa": "Errato. Quelli appaiono per le funzioni dispari."
+          },
+          {
+            "testo_risposta": "Potenze di x",
+            "spiegazione_vera_o_falsa": "Errato. Quello è lo sviluppo di Taylor."
+          },
+          {
+            "testo_risposta": "Solo il termine costante",
+            "spiegazione_vera_o_falsa": "Errato. Serve una base di funzioni periodiche."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il Teorema di Abel garantisce che se una serie di potenze converge in un estremo dell'intervallo:",
+        "risposte": [
+          {
+            "testo_risposta": "La convergenza è uniforme su tutto l'intervallo che include quell'estremo",
+            "spiegazione_vera_o_falsa": "Corretto. Permette di estendere la continuità della somma fino al bordo."
+          },
+          {
+            "testo_risposta": "Allora diverge nell'altro estremo",
+            "spiegazione_vera_o_falsa": "Errato. Non c'è legame diretto tra i due estremi."
+          },
+          {
+            "testo_risposta": "Il raggio di convergenza raddoppia",
+            "spiegazione_vera_o_falsa": "Errato. Il raggio è fisso."
+          },
+          {
+            "testo_risposta": "La serie deve essere a segni alterni",
+            "spiegazione_vera_o_falsa": "Errato. Vale per ogni serie di potenze convergente nell'estremo."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Lo sviluppo di Taylor di $e^x$ centrato in 0 è:",
+        "risposte": [
+          {
+            "testo_risposta": "$\\sum_{n=0}^\\infty \\frac{x^n}{n!}$",
+            "spiegazione_vera_o_falsa": "Corretto. Uno degli sviluppi fondamentali in analisi."
+          },
+          {
+            "testo_risposta": "$\\sum x^n$",
+            "spiegazione_vera_o_falsa": "Errato. Quella è la serie geometrica (1/(1-x))."
+          },
+          {
+            "testo_risposta": "$\\sum (-1)^n \\frac{x^n}{n}$",
+            "spiegazione_vera_o_falsa": "Errato. Quello è correlato al logaritmo."
+          },
+          {
+            "testo_risposta": "$\\sum n! x^n$",
+            "spiegazione_vera_o_falsa": "Errato. Questa serie converge solo in x=0."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Se una successione di funzioni $f_n$ converge uniformemente a f, allora:",
+        "risposte": [
+          {
+            "testo_risposta": "Il limite dell'integrale è l'integrale del limite",
+            "spiegazione_vera_o_falsa": "Corretto. L'uniformità permette lo scambio tra limite e integrale."
+          },
+          {
+            "testo_risposta": "Il limite della derivata è la derivata del limite",
+            "spiegazione_vera_o_falsa": "Errato. Per questo serve l'uniformità delle derivate $f_n'$."
+          },
+          {
+            "testo_risposta": "f è necessariamente derivabile",
+            "spiegazione_vera_o_falsa": "Errato. Può convergere a una funzione non derivabile."
+          },
+          {
+            "testo_risposta": "La convergenza è anche totale",
+            "spiegazione_vera_o_falsa": "Errato. La totale implica l'uniforme, ma non viceversa."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Il raggio di convergenza di $\\sum n^2 x^n$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Corretto. $\\sqrt[n]{n^2} \\to 1$ per $n \\to \\infty$."
+          },
+          {
+            "testo_risposta": "0",
+            "spiegazione_vera_o_falsa": "Errato. La crescita polinomiale di $n^2$ non impedisce la convergenza entro il raggio 1."
+          },
+          {
+            "testo_risposta": "$\\infty$",
+            "spiegazione_vera_o_falsa": "Errato. Per $|x| > 1$ i termini non tendono a zero."
+          },
+          {
+            "testo_risposta": "2",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo del limite errato."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Cosa afferma il Teorema di Parseval per le serie di Fourier?",
+        "risposte": [
+          {
+            "testo_risposta": "La norma della funzione è legata alla somma dei quadrati dei coefficienti",
+            "spiegazione_vera_o_falsa": "Corretto. Esprime la conservazione dell'energia/norma nel passaggio alla base di Fourier."
+          },
+          {
+            "testo_risposta": "La serie di Fourier converge uniformemente",
+            "spiegazione_vera_o_falsa": "Errato. Parseval riguarda le norme $L^2$, non la convergenza uniforme."
+          },
+          {
+            "testo_risposta": "Ogni funzione continua è somma della sua serie",
+            "spiegazione_vera_o_falsa": "Errato. Riguarda l'uguaglianza delle energie."
+          },
+          {
+            "testo_risposta": "La derivata della serie è la serie delle derivate",
+            "spiegazione_vera_o_falsa": "Errato. Proprietà distinta."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Qual è lo sviluppo in serie di Taylor di $\\ln(1+x)$ intorno a 0?",
+        "risposte": [
+          {
+            "testo_risposta": "$\\sum_{n=1}^\\infty (-1)^{n+1} \\frac{x^n}{n}$",
+            "spiegazione_vera_o_falsa": "Corretto. Valido per $x \\in (-1, 1]$."
+          },
+          {
+            "testo_risposta": "$\\sum \\frac{x^n}{n!}$",
+            "spiegazione_vera_o_falsa": "Errato. Quello è l'esponenziale."
+          },
+          {
+            "testo_risposta": "$\\sum x^n$",
+            "spiegazione_vera_o_falsa": "Errato. Quella è la serie geometrica."
+          },
+          {
+            "testo_risposta": "$\\sum \\frac{x^n}{n^2}$",
+            "spiegazione_vera_o_falsa": "Errato. Coefficienti errati."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Una serie di funzioni $\\sum f_n(x)$ converge uniformemente se:",
+        "risposte": [
+          {
+            "testo_risposta": "Il resto $R_N(x)$ tende a zero uniformemente",
+            "spiegazione_vera_o_falsa": "Corretto. $\\sup |S(x) - S_N(x)| \\to 0$."
+          },
+          {
+            "testo_risposta": "Tutte le $f_n$ sono costanti",
+            "spiegazione_vera_o_falsa": "Errato. Non necessario."
+          },
+          {
+            "testo_risposta": "La serie converge in un solo punto",
+            "spiegazione_vera_o_falsa": "Errato. Quella è convergenza puntuale minima."
+          },
+          {
+            "testo_risposta": "Le funzioni sono tutte crescenti",
+            "spiegazione_vera_o_falsa": "Errato. La monotonia non garantisce uniformità senza altre ipotesi (es. Teorema di Dini)."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il raggio di convergenza di $\\sum 2^n x^n$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "1/2",
+            "spiegazione_vera_o_falsa": "Corretto. Il criterio della radice dà $\\sqrt[n]{2^n} = 2$, quindi $R = 1/2$."
+          },
+          {
+            "testo_risposta": "2",
+            "spiegazione_vera_o_falsa": "Errato. Hai dimenticato di invertire il limite."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. La base 2 accelera la divergenza."
+          },
+          {
+            "testo_risposta": "$\\infty$",
+            "spiegazione_vera_o_falsa": "Errato. Converge solo in un intorno piccolo dell'origine."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "Se una serie di potenze converge in $x_0$, allora converge:",
+        "risposte": [
+          {
+            "testo_risposta": "Assolutamente per ogni x tale che $|x| < |x_0|$",
+            "spiegazione_vera_o_falsa": "Corretto. Proprietà fondamentale dei cerchi di convergenza."
+          },
+          {
+            "testo_risposta": "Uniformemente per ogni x reale",
+            "spiegazione_vera_o_falsa": "Errato. Solo all'interno del raggio."
+          },
+          {
+            "testo_risposta": "Solo in $x_0$ e in 0",
+            "spiegazione_vera_o_falsa": "Errato. Converge in tutto il disco centrato in 0."
+          },
+          {
+            "testo_risposta": "Diverge ovunque altrove",
+            "spiegazione_vera_o_falsa": "Errato. Potrebbe convergere anche oltre $x_0$ se il raggio è maggiore."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "La serie $\\sum_{n=0}^\\infty x^n$ converge a:",
+        "risposte": [
+          {
+            "testo_risposta": "$1/(1-x)$ per $|x| < 1$",
+            "spiegazione_vera_o_falsa": "Corretto. È la somma della serie geometrica."
+          },
+          {
+            "testo_risposta": "$1/(1+x)$",
+            "spiegazione_vera_o_falsa": "Errato. Quello sarebbe lo sviluppo di $\\sum (-x)^n$."
+          },
+          {
+            "testo_risposta": "$e^x$",
+            "spiegazione_vera_o_falsa": "Errato. Mancano i fattoriali al denominatore."
+          },
+          {
+            "testo_risposta": "infinito",
+            "spiegazione_vera_o_falsa": "Errato. Converge se la ragione è piccola in modulo."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Cosa si ottiene derivando termine a termine una serie di potenze entro il raggio di convergenza?",
+        "risposte": [
+          {
+            "testo_risposta": "Una nuova serie di potenze con lo stesso raggio di convergenza",
+            "spiegazione_vera_o_falsa": "Corretto. Il raggio non cambia per derivazione o integrazione."
+          },
+          {
+            "testo_risposta": "Una serie che converge solo in 0",
+            "spiegazione_vera_o_falsa": "Errato. Il raggio si conserva."
+          },
+          {
+            "testo_risposta": "La derivata della funzione somma",
+            "spiegazione_vera_o_falsa": "Corretto. È una delle proprietà chiave delle serie di potenze."
+          },
+          {
+            "testo_risposta": "Una serie divergente",
+            "spiegazione_vera_o_falsa": "Errato. Converge all'interno dell'intervallo originale."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 5,
+        "testo_domanda": "Il Teorema di Dini per le serie di funzioni afferma che se $f_n$ è una successione monotona di funzioni continue che converge puntualmente a una funzione continua su un compatto, allora:",
+        "risposte": [
+          {
+            "testo_risposta": "La convergenza è uniforme",
+            "spiegazione_vera_o_falsa": "Corretto. Risultato potente che trasforma convergenza puntuale in uniforme sotto ipotesi forti."
+          },
+          {
+            "testo_risposta": "La funzione limite è derivabile",
+            "spiegazione_vera_o_falsa": "Errato. Garantisce solo l'uniformità della convergenza."
+          },
+          {
+            "testo_risposta": "Le funzioni sono costanti",
+            "spiegazione_vera_o_falsa": "Errato. Nessun vincolo di questo tipo."
+          },
+          {
+            "testo_risposta": "La serie diverge",
+            "spiegazione_vera_o_falsa": "Errato. Si parla di una successione già convergente."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 2,
+        "testo_domanda": "Qual è il periodo fondamentale delle funzioni $\\sin(nx)$ e $\\cos(nx)$?",
+        "risposte": [
+          {
+            "testo_risposta": "$2\\pi/n$",
+            "spiegazione_vera_o_falsa": "Corretto. All'aumentare di n, la frequenza aumenta e il periodo diminuisce."
+          },
+          {
+            "testo_risposta": "$2\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Questo è il periodo di sin(x)."
+          },
+          {
+            "testo_risposta": "$n\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Calcolo del periodo errato."
+          },
+          {
+            "testo_risposta": "$\\pi$",
+            "spiegazione_vera_o_falsa": "Errato. Periodo delle funzioni al quadrato o della tangente."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 4,
+        "testo_domanda": "La serie di Fourier di una funzione discontinua (es. onda quadra) nei punti di salto converge a:",
+        "risposte": [
+          {
+            "testo_risposta": "La media dei limiti destro e sinistro (Teorema di Dirichlet)",
+            "spiegazione_vera_o_falsa": "Corretto. Si posiziona esattamente a metà del salto."
+          },
+          {
+            "testo_risposta": "Zero",
+            "spiegazione_vera_o_falsa": "Errato. Solo se il salto è centrato in zero."
+          },
+          {
+            "testo_risposta": "Il valore superiore del salto",
+            "spiegazione_vera_o_falsa": "Errato. Converge al valore medio."
+          },
+          {
+            "testo_risposta": "Diverge",
+            "spiegazione_vera_o_falsa": "Errato. La serie di Fourier converge puntualmente sotto ipotesi di regolarità a tratti."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "Il raggio di convergenza di $\\sum \\frac{n}{3^n} x^n$ è:",
+        "risposte": [
+          {
+            "testo_risposta": "3",
+            "spiegazione_vera_o_falsa": "Corretto. Il termine $3^n$ al denominatore sposta il raggio a 3."
+          },
+          {
+            "testo_risposta": "1/3",
+            "spiegazione_vera_o_falsa": "Errato. Hai invertito il raggio."
+          },
+          {
+            "testo_risposta": "1",
+            "spiegazione_vera_o_falsa": "Errato. La base 3 influenza il raggio."
+          },
+          {
+            "testo_risposta": "$\\infty$",
+            "spiegazione_vera_o_falsa": "Errato. Diverge per $|x| > 3$."
+          }
+        ],
+        "risposta_corretta": 0
+      },
+      {
+        "difficolta": 3,
+        "testo_domanda": "In una serie di Fourier, il coefficiente $a_0$ rappresenta:",
+        "risposte": [
+          {
+            "testo_risposta": "Il valore medio della funzione nel periodo",
+            "spiegazione_vera_o_falsa": "Corretto. È l'integrale della funzione diviso il periodo (o metà periodo a seconda della convenzione)."
+          },
+          {
+            "testo_risposta": "L'ampiezza dell'armonica fondamentale",
+            "spiegazione_vera_o_falsa": "Errato. Quella è legata a $a_1$ e $b_1$."
+          },
+          {
+            "testo_risposta": "La derivata nell'origine",
+            "spiegazione_vera_o_falsa": "Errato. Non c'è legame diretto."
+          },
+          {
+            "testo_risposta": "L'energia totale",
+            "spiegazione_vera_o_falsa": "Errato. L'energia è legata alla somma dei quadrati di tutti i coefficienti."
+          }
+        ],
+        "risposta_corretta": 0
+      }
+    ]
+  }
+]

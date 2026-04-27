@@ -52,5 +52,22 @@
       "Appello 1 2026 - Secondo turno"
     ],
     "totale_domande": 20
+  },
+  {
+    "id": "analisi2",
+    "titolo": "Analisi Matematica 2",
+    "descrizione": "Limiti in più variabili, Calcolo differenziale, Ottimizzazione, Integrali multipli, Calcolo vettoriale, Equazioni differenziali e Serie di funzioni",
+    "file": "data/ai_generated/analisi2.json",
+    "categoria": "ai_generated",
+    "argomenti": [
+      "Limiti e Continuità",
+      "Calcolo Differenziale",
+      "Ottimizzazione",
+      "Integrali Multipli",
+      "Calcolo Vettoriale",
+      "Equazioni Differenziali",
+      "Serie di Funzioni"
+    ],
+    "totale_domande": 100
   }
 ]
