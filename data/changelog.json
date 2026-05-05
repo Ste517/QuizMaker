@@ -7,6 +7,8 @@
       "Aggiunti meta tag SEO e supporto Open Graph per una migliore condivisione",
       "Implementate animazioni di transizione fluide tra le schermate",
       "Nuova funzionalità 'Non ripetere domande' per sessioni di studio più efficaci",
+      "Aggiunto contatore dinamico 'Disponibili / Totali' per il pool di domande",
+      "Implementate scorciatoie da tastiera (A-E, 1-5, Enter, Esc) per un'interazione rapida",
       "Aggiunte descrizioni specifiche per ogni pagina del sito",
       "Raffinato il sistema di feedback visivo dell'interfaccia"
     ]

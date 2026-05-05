@@ -130,6 +130,7 @@ async function init() {
 
   renderHistory();
   renderRecentJson();
+  updateNoRepeatUI();
   
   allAvailableDatasets = await fetchDatasets(catalogGrid, datasetsList, 
     (ds) => renderCatalogGrid(ds, catalogGrid, loadDatasetFileFromCatalog, toggleCatalog),
@@ -188,9 +189,28 @@ function populateTopics() {
 }
 
 function updateCounters() {
+  if (!dataset || !dataset.length) {
+    topicCount.textContent = '0';
+    questionPoolCount.textContent = '0';
+    filteredCount.textContent = '0';
+    return;
+  }
+
   topicCount.textContent = String(dataset.length);
   questionPoolCount.textContent = String(flattenQuestions(dataset).length);
-  filteredCount.textContent = String(getFilteredQuestions(dataset, topicSelect.value, difficultySelect.value).length);
+  
+  const allFiltered = getFilteredQuestions(dataset, topicSelect.value, difficultySelect.value);
+  let available = allFiltered;
+  
+  if (noRepeatToggle.checked && doneQuestionTexts.size > 0) {
+    available = allFiltered.filter(q => !doneQuestionTexts.has(q.testo_domanda));
+  }
+  
+  if (noRepeatToggle.checked) {
+    filteredCount.innerHTML = `${available.length} <span class="text-[10px] opacity-60 font-normal">/ ${allFiltered.length}</span>`;
+  } else {
+    filteredCount.textContent = String(allFiltered.length);
+  }
 }
 
 function renderRecentJson() {
@@ -390,6 +410,7 @@ function checkAnswer(timeout = false) {
 
   // Track as done
   doneQuestionTexts.add(q.testo_domanda);
+  updateCounters();
 
   quizFooter.classList.remove('bg-white', 'dark:bg-slate-950');
   quizFooter.classList.add(isCorrect ? 'bg-emerald-50' : 'bg-rose-50');
@@ -540,9 +561,18 @@ function updateNoRepeatUI() {
   noRepeatToggleKnob.classList.toggle('translate-x-0', !isChecked);
 }
 
-noRepeatToggleBg.addEventListener('click', () => {
-  noRepeatToggle.checked = !noRepeatToggle.checked;
+// Handler per lo switch (div)
+noRepeatToggleBg.addEventListener('click', (e) => {
+  // Se l'evento non proviene già dalla checkbox (per evitare loop)
+  if (e.target !== noRepeatToggle) {
+    noRepeatToggle.click();
+  }
+});
+
+// Logica centralizzata sul cambiamento della checkbox
+noRepeatToggle.addEventListener('change', () => {
   updateNoRepeatUI();
+  updateCounters();
   
   if (noRepeatToggle.checked && !hasShownNoRepeatNotice) {
     showStatus('Nota: Le domande già fatte non verranno ripetute in questa sessione. Il tracciamento si resetta ricaricando la pagina o cambiando dataset.', true);
@@ -630,9 +660,13 @@ confirmQuitBtn.addEventListener('click', () => {
   toggleQuitModal(false);
   stopTimer(quizTimerBadge);
   setView('config');
+  updateCounters();
 });
 
-playAgainBtn.addEventListener('click', () => setView('config'));
+playAgainBtn.addEventListener('click', () => {
+  setView('config');
+  updateCounters();
+});
 
 openReportBtn.addEventListener('click', openReport);
 closeReportBtn.addEventListener('click', () => toggleReportModal(false));
@@ -646,6 +680,48 @@ copyReportBtn.addEventListener('click', () => {
   setTimeout(() => {
     copyReportBtn.innerHTML = originalIcon;
   }, 2000);
+});
+
+// --- Keyboard Shortcuts ---
+
+document.addEventListener('keydown', (e) => {
+  // Disabilita scorciatoie se l'utente sta scrivendo in un input o textarea
+  const activeTag = document.activeElement.tagName.toLowerCase();
+  if (activeTag === 'input' || activeTag === 'textarea') return;
+
+  // Shortcuts per la vista QUIZ
+  if (quizState === 'playing') {
+    const key = e.key.toLowerCase();
+    
+    // Selezione risposte (A-E o 1-5)
+    if (['a', 'b', 'c', 'd', 'e'].includes(key)) {
+      const index = key.charCodeAt(0) - 97;
+      const buttons = quizAnswersArea.querySelectorAll('.answer-card');
+      if (buttons[index] && !isChecking) {
+        selectAnswer(index);
+      }
+    } else if (['1', '2', '3', '4', '5'].includes(key)) {
+      const index = parseInt(key) - 1;
+      const buttons = quizAnswersArea.querySelectorAll('.answer-card');
+      if (buttons[index] && !isChecking) {
+        selectAnswer(index);
+      }
+    }
+    
+    // Invio per confermare o continuare
+    if (e.key === 'Enter') {
+      handleActionClick();
+    }
+    
+    // Esc per uscire
+    if (e.key === 'Escape') {
+      toggleQuitModal(true);
+    }
+  } 
+  // Shortcuts per la vista SUMMARY
+  else if (quizState === 'finished' && e.key === 'Enter') {
+    setView('config');
+  }
 });
 
 // Start initialization
