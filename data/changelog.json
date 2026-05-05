@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.1.0",
+    "date": "2026-05-05",
+    "title": "Ottimizzazione SEO e Miglioramenti UX",
+    "changes": [
+      "Aggiunti meta tag SEO e supporto Open Graph per una migliore condivisione",
+      "Implementate animazioni di transizione fluide tra le schermate",
+      "Nuova funzionalità 'Non ripetere domande' per sessioni di studio più efficaci",
+      "Aggiunte descrizioni specifiche per ogni pagina del sito",
+      "Raffinato il sistema di feedback visivo dell'interfaccia"
+    ]
+  },
+  {
     "version": "1.0.0",
     "date": "2026-04-23",
     "title": "Lancio QuizMaker",

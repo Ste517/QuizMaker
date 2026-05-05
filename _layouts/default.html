@@ -11,6 +11,16 @@
   <meta name="apple-mobile-web-app-title" content="QuizMaker" />
   <link rel="manifest" href="{{ '/assets/manifest.json' | relative_url }}">
   <meta name="theme-color" content="#0c87eb">
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="author" content="Stefano Brogi">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | default: site.title }} | QuizMaker">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/icon/favicon-96x96.png' | absolute_url }}">
+
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Google tag (gtag.js) -->
@@ -248,6 +258,15 @@
     /* Scrollbar Hide */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Page Transitions */
+    .view-transition-fade {
+      animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
   
   {% if page.extra_css %}

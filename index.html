@@ -1,6 +1,7 @@
 ---
 layout: default
 title: QuizMaker - Allena la tua mente
+description: "QuizMaker è lo strumento definitivo per creare e affrontare quiz interattivi con supporto per Markdown, LaTeX e dataset personalizzati."
 extra_css:
   - /assets/css/markdown.css
 extra_js:
@@ -89,6 +90,14 @@ katex: true
           <div>
             <label for="questionCount" class="mb-2 block text-sm font-medium">Numero domande</label>
             <input id="questionCount" type="number" min="1" value="5" class="min-h-11 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-950" />
+          </div>
+
+          <div class="flex items-center gap-3 px-1">
+            <div class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-slate-200 dark:bg-slate-700" id="noRepeatToggleBg">
+              <input type="checkbox" id="noRepeatToggle" class="sr-only" />
+              <span id="noRepeatToggleKnob" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+            </div>
+            <label for="noRepeatToggle" class="text-sm font-medium text-slate-600 dark:text-slate-400 cursor-pointer select-none">Non ripetere domande già fatte</label>
           </div>
         </div>
 

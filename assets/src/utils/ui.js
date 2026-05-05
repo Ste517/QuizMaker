@@ -43,18 +43,27 @@ export function setView(view) {
   // Reset all views first
   [configView, quizView, summaryView].forEach(v => {
     v.classList.add('hidden');
-    v.classList.remove('flex', 'block');
+    v.classList.remove('flex', 'block', 'view-transition-fade');
   });
 
+  let target;
   if (view === 'config') {
     configView.classList.remove('hidden');
     configView.classList.add('block');
+    target = configView;
   } else if (view === 'quiz') {
     quizView.classList.remove('hidden');
     quizView.classList.add('flex');
+    target = quizView;
   } else if (view === 'summary') {
     summaryView.classList.remove('hidden');
     summaryView.classList.add('flex');
+    target = summaryView;
+  }
+  
+  if (target) {
+    // Trigger animation
+    target.classList.add('view-transition-fade');
   }
   
   window.scrollTo(0, 0);

@@ -39,6 +39,9 @@ const recentJsonList = document.getElementById('recentJsonList');
 const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 const clearRecentJsonBtn = document.getElementById('clearRecentJsonBtn');
 const dropzoneApp = document.getElementById('dropzoneApp');
+const noRepeatToggle = document.getElementById('noRepeatToggle');
+const noRepeatToggleBg = document.getElementById('noRepeatToggleBg');
+const noRepeatToggleKnob = document.getElementById('noRepeatToggleKnob');
 
 // DOM Elements - Quiz UI
 const quizProgressBar = document.getElementById('quizProgressBar');
@@ -95,6 +98,8 @@ let currentQuestionIndex = 0;
 let selectedAnswerIndex = null;
 let isChecking = false;
 let correctAnswersCount = 0;
+let doneQuestionTexts = new Set();
+let hasShownNoRepeatNotice = false;
 
 const sampleData = [
   {
@@ -157,6 +162,7 @@ function parseJsonFromInput() {
     populateTopics();
     currentQuiz = [];
     currentQuizContext = null;
+    doneQuestionTexts.clear();
     saveRecentJson(content, 'editor', summarizeJson);
     renderRecentJson();
     showStatus(`JSON valido: ${dataset.length} argomento/i e ${flattenQuestions(dataset).length} domanda/e disponibili.`);
@@ -164,6 +170,7 @@ function parseJsonFromInput() {
     dataset = [];
     currentQuiz = [];
     currentQuizContext = null;
+    doneQuestionTexts.clear();
     populateTopics();
     showStatus(error.message || 'JSON non valido.', false);
   }
@@ -240,10 +247,20 @@ function generateQuiz() {
     showStatus('Analizza prima un JSON valido.', false);
     return;
   }
-  const filtered = getFilteredQuestions(dataset, topicSelect.value, difficultySelect.value);
+  let filtered = getFilteredQuestions(dataset, topicSelect.value, difficultySelect.value);
+  
+  if (noRepeatToggle.checked && doneQuestionTexts.size > 0) {
+    const prevCount = filtered.length;
+    filtered = filtered.filter(q => !doneQuestionTexts.has(q.testo_domanda));
+    console.log(`Filtrate ${prevCount - filtered.length} domande già fatte.`);
+  }
+
   updateCounters();
   if (!filtered.length) {
-    showStatus('Nessuna domanda disponibile con i filtri selezionati.', false);
+    const msg = noRepeatToggle.checked && doneQuestionTexts.size > 0 
+      ? 'Tutte le domande disponibili sono già state fatte. Disattiva "Non ripetere" o resetta per ricominciare.'
+      : 'Nessuna domanda disponibile con i filtri selezionati.';
+    showStatus(msg, false);
     return;
   }
 
@@ -371,6 +388,9 @@ function checkAnswer(timeout = false) {
     }
   });
 
+  // Track as done
+  doneQuestionTexts.add(q.testo_domanda);
+
   quizFooter.classList.remove('bg-white', 'dark:bg-slate-950');
   quizFooter.classList.add(isCorrect ? 'bg-emerald-50' : 'bg-rose-50');
   quizFooter.classList.add(isCorrect ? 'dark:bg-emerald-950/40' : 'dark:bg-rose-950/40');
@@ -495,6 +515,7 @@ resetBtn.addEventListener('click', () => {
   dataset = [];
   currentQuiz = [];
   currentDatasetInfo = null;
+  doneQuestionTexts.clear();
   populateTopics();
   hideStatus();
 });
@@ -509,6 +530,25 @@ generateBtn.addEventListener('click', generateQuiz);
 
 topicSelect.addEventListener('change', updateCounters);
 difficultySelect.addEventListener('change', updateCounters);
+
+function updateNoRepeatUI() {
+  const isChecked = noRepeatToggle.checked;
+  noRepeatToggleBg.classList.toggle('bg-brand-600', isChecked);
+  noRepeatToggleBg.classList.toggle('bg-slate-200', !isChecked);
+  noRepeatToggleBg.classList.toggle('dark:bg-slate-700', !isChecked);
+  noRepeatToggleKnob.classList.toggle('translate-x-5', isChecked);
+  noRepeatToggleKnob.classList.toggle('translate-x-0', !isChecked);
+}
+
+noRepeatToggleBg.addEventListener('click', () => {
+  noRepeatToggle.checked = !noRepeatToggle.checked;
+  updateNoRepeatUI();
+  
+  if (noRepeatToggle.checked && !hasShownNoRepeatNotice) {
+    showStatus('Nota: Le domande già fatte non verranno ripetute in questa sessione. Il tracciamento si resetta ricaricando la pagina o cambiando dataset.', true);
+    hasShownNoRepeatNotice = true;
+  }
+});
 
 themeToggle.addEventListener('click', () => {
   const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
